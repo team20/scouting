@@ -10,6 +10,7 @@
 		<script type="module" src="src/vaadin.ts"></script>
 		<script type="module" src="src/main-element.ts"></script>
 		<script type="module" src="src/node-button.ts"></script>
+		<script type="module" src="src/grid.ts"></script>
 	</head>
 	<body>
 		<vaadin-tabsheet theme="equal-width-tabs">
@@ -19,44 +20,8 @@
 				<vaadin-tab id="teleop-tab">Teleop</vaadin-tab>
 				<vaadin-tab id="end-tab">End</vaadin-tab>
 			</vaadin-tabs>
-			<div tab="general-tab">
-				<my-element></my-element>
-			</div>
-			<div tab="auto-tab">
-				<div class="row">
-					<node-button pieceType="Cone"></node-button>
-					<node-button pieceType="Cube"></node-button>
-					<node-button pieceType="Cone"></node-button>
-					<node-button pieceType="Cube"></node-button>
-					<node-button pieceType="Cone"></node-button>
-					<node-button pieceType="Cube"></node-button>
-					<node-button pieceType="Cone"></node-button>
-					<node-button pieceType="Cube"></node-button>
-					<node-button pieceType="Cone"></node-button>
-				</div>
-				<div class="row">
-					<node-button pieceType="Cone"></node-button>
-					<node-button pieceType="Cube"></node-button>
-					<node-button pieceType="Cone"></node-button>
-					<node-button pieceType="Cube"></node-button>
-					<node-button pieceType="Cone"></node-button>
-					<node-button pieceType="Cube"></node-button>
-					<node-button pieceType="Cone"></node-button>
-					<node-button pieceType="Cube"></node-button>
-					<node-button pieceType="Cone"></node-button>
-				</div>
-				<div class="row">
-					<node-button pieceType="Hybrid"></node-button>
-					<node-button pieceType="Hybrid"></node-button>
-					<node-button pieceType="Hybrid"></node-button>
-					<node-button pieceType="Hybrid"></node-button>
-					<node-button pieceType="Hybrid"></node-button>
-					<node-button pieceType="Hybrid"></node-button>
-					<node-button pieceType="Hybrid"></node-button>
-					<node-button pieceType="Hybrid"></node-button>
-					<node-button pieceType="Hybrid"></node-button>
-				</div>
-			</div>
+			<game-piece-grid tab="auto-tab"></game-piece-grid>
+			<game-piece-grid tab="teleop-tab"></game-piece-grid>
 		</vaadin-tabsheet>
 		<!-- <div id="info">
 			<div class="inputBox">

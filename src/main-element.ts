@@ -14,7 +14,6 @@ export class MyElement extends LitElement {
 		:host {
 			display: flex;
 			flex-direction: column;
-			// width: 50%;
 		}
 	`;
 	// @ts-ignore
@@ -24,9 +23,6 @@ export class MyElement extends LitElement {
 		{ label: "Cube", value: "Cube" },
 		{ label: "Cone", value: "Cone" },
 	];
-	constructor() {
-		super();
-	}
 
 	render() {
 		return html`<vaadin-text-field

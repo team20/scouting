@@ -22,6 +22,7 @@ export class NodeButton extends LitElement {
 	`;
 	@property()
 	pieceType: "Cube" | "Cone" | "Hybrid";
+
 	@state()
 	state: "Cube" | "Cone" | "None" = "None";
 	render() {

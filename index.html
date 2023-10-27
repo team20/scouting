@@ -6,7 +6,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Vite + TS</title>
 		<link rel="stylesheet" href="css/pico.min.css" />
-		<link rel="stylesheet" href="css/style.css" />
 		<script type="module" src="src/vaadin.ts"></script>
 		<script type="module" src="src/main-element.ts"></script>
 		<script type="module" src="src/node-button.ts"></script>
@@ -20,14 +19,11 @@
 				<vaadin-tab id="teleop-tab">Teleop</vaadin-tab>
 				<vaadin-tab id="end-tab">End</vaadin-tab>
 			</vaadin-tabs>
+			<my-element tab="general-tab"></my-element>
 			<game-piece-grid tab="auto-tab"></game-piece-grid>
 			<game-piece-grid tab="teleop-tab"></game-piece-grid>
 		</vaadin-tabsheet>
 		<!-- <div id="info">
-			<div class="inputBox">
-				<label for="name">Name:</label>
-				<input type="text" id="name" />
-			</div>
 			<div class="inputBox">
 				<label for="matchNum">Match Number:</label>
 				<input type="text" id="matchNum" />
@@ -39,14 +35,6 @@
 			<div class="inputBox">
 				<label for="replay">Replay?</label>
 				<input type="checkbox" id="replay" />
-			</div>
-			<div class="inputBox">
-				<label for="replay">Preload?</label>
-				<select id="preload">
-					<option>None</option>
-					<option>Cube</option>
-					<option>Cone</option>
-				</select>
 			</div>
 			<script type="module" src="/src/main.ts"></script>
 		</div> -->

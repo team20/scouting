@@ -1,0 +1,43 @@
+/* .inputBox {
+	display: flex;
+	justify-content: space-between;
+	width: 45vw;
+} */
+html {
+	display: inline-block;
+}
+input[type="text"] {
+	width: 30vw;
+	height: 5vh;
+}
+#preload {
+	width: 30vw;
+}
+#teleop {
+	display: flex;
+	width: 100vw;
+	justify-content: space-between;
+	flex-direction: column;
+}
+.row {
+	display: flex;
+	width: 100%;
+	margin-top: 15px;
+	justify-content: space-between;
+}
+.empty {
+	--lumo-contrast-5pct: #cccccc;
+	border: 0;
+}
+.cubeEmpty {
+	--lumo-contrast-5pct: #b4a7d6ff;
+}
+.cubeScored {
+	--lumo-contrast-5pct: #674ea7ff;
+}
+.coneEmpty {
+	--lumo-contrast-5pct: #ffe599ff;
+}
+.coneScored {
+	--lumo-contrast-5pct: #f1c232ff;
+}

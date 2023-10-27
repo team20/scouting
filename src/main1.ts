@@ -1,0 +1,10 @@
+import { toCanvas } from "qrcode";
+
+// toCanvas(
+// 	document.getElementById("canvas"),
+// 	"jfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjnd",
+// 	function (error) {
+// 		if (error) console.error(error);
+// 		console.log("success!");
+// 	}
+// );

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite + TS</title>
+		<link rel="stylesheet" href="css/pico.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="module" src="src/vaadin.ts"></script>
+		<script type="module" src="src/main-element.ts"></script>
+		<script type="module" src="src/node-button.ts"></script>
+	</head>
+	<body>
+		<vaadin-tabsheet theme="equal-width-tabs">
+			<vaadin-tabs slot="tabs">
+				<vaadin-tab style="padding: 0" id="general-tab">General</vaadin-tab>
+				<vaadin-tab id="auto-tab">Auto</vaadin-tab>
+				<vaadin-tab id="teleop-tab">Teleop</vaadin-tab>
+				<vaadin-tab id="end-tab">End</vaadin-tab>
+			</vaadin-tabs>
+			<div tab="general-tab">
+				<my-element></my-element>
+			</div>
+			<div tab="auto-tab">
+				<div class="row">
+					<node-button pieceType="Cone"></node-button>
+					<node-button pieceType="Cube"></node-button>
+					<node-button pieceType="Cone"></node-button>
+					<node-button pieceType="Cube"></node-button>
+					<node-button pieceType="Cone"></node-button>
+					<node-button pieceType="Cube"></node-button>
+					<node-button pieceType="Cone"></node-button>
+					<node-button pieceType="Cube"></node-button>
+					<node-button pieceType="Cone"></node-button>
+				</div>
+				<div class="row">
+					<node-button pieceType="Cone"></node-button>
+					<node-button pieceType="Cube"></node-button>
+					<node-button pieceType="Cone"></node-button>
+					<node-button pieceType="Cube"></node-button>
+					<node-button pieceType="Cone"></node-button>
+					<node-button pieceType="Cube"></node-button>
+					<node-button pieceType="Cone"></node-button>
+					<node-button pieceType="Cube"></node-button>
+					<node-button pieceType="Cone"></node-button>
+				</div>
+				<div class="row">
+					<node-button pieceType="Hybrid"></node-button>
+					<node-button pieceType="Hybrid"></node-button>
+					<node-button pieceType="Hybrid"></node-button>
+					<node-button pieceType="Hybrid"></node-button>
+					<node-button pieceType="Hybrid"></node-button>
+					<node-button pieceType="Hybrid"></node-button>
+					<node-button pieceType="Hybrid"></node-button>
+					<node-button pieceType="Hybrid"></node-button>
+					<node-button pieceType="Hybrid"></node-button>
+				</div>
+			</div>
+		</vaadin-tabsheet>
+		<!-- <div id="info">
+			<div class="inputBox">
+				<label for="name">Name:</label>
+				<input type="text" id="name" />
+			</div>
+			<div class="inputBox">
+				<label for="matchNum">Match Number:</label>
+				<input type="text" id="matchNum" />
+			</div>
+			<div class="inputBox">
+				<label for="teamNum">Team Number:</label>
+				<input type="text" id="teamNum" />
+			</div>
+			<div class="inputBox">
+				<label for="replay">Replay?</label>
+				<input type="checkbox" id="replay" />
+			</div>
+			<div class="inputBox">
+				<label for="replay">Preload?</label>
+				<select id="preload">
+					<option>None</option>
+					<option>Cube</option>
+					<option>Cone</option>
+				</select>
+			</div>
+			<script type="module" src="/src/main.ts"></script>
+		</div> -->
+	</body>
+</html>

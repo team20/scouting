@@ -21,6 +21,10 @@ export class NodeButton extends LitElement {
 		}
 	`;
 	@property()
+	column: number;
+	@property()
+	row: number;
+	@property()
 	pieceType: "Cube" | "Cone" | "Hybrid";
 
 	@state()

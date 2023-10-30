@@ -13,10 +13,6 @@ export class GamePieceGrid extends LitElement {
 			margin-top: 15px;
 			justify-content: space-between;
 		}
-		.bottom {
-			position: relative;
-			bottom: -100;
-		}
 		.empty {
 			position: relative;
 			bottom: 0;
@@ -205,8 +201,7 @@ export class GamePieceGrid extends LitElement {
 					column="9"
 					@click=${this.onClick}
 				></node-button>
-			</div>
-			<div class="bottom"><vaadin-button class="bottom"></vaadin-button></div>`;
+			</div>`;
 	}
 	protected updated(
 		_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>

@@ -1,7 +1,6 @@
-import { LitElement, css, html, PropertyValueMap } from "lit";
-import { live } from "lit/directives/live.js";
+import { css, html, LitElement } from "lit";
+import { customElement } from "lit/decorators.js";
 import { createRef, Ref, ref } from "lit/directives/ref.js";
-import { customElement, property, state } from "lit/decorators.js";
 /**
  * An example element.
  *

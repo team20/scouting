@@ -10,6 +10,16 @@
 		<script type="module" src="src/main-element.ts"></script>
 		<script type="module" src="src/node-button.ts"></script>
 		<script type="module" src="src/grid.ts"></script>
+		<style>
+			html {
+				background-color: gray;
+				--lumo-base-color: gray;
+				--lumo-primary-text-color: black;
+			}
+			vaadin-tabsheet::part(tabs-container) {
+				background-color: #019d04;
+			}
+		</style>
 	</head>
 	<body>
 		<vaadin-tabsheet theme="equal-width-tabs">

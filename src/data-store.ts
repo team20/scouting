@@ -55,4 +55,6 @@ export function combineData(): string {
 	}
 	return `${matchInfo.name}	${matchInfo.matchType}	${matchInfo.matchNum}	${matchInfo.isReplay}	${matchInfo.alliance}	${matchInfo.startingPosition}	${matchInfo.teamNum}	${matchInfo.preload}	${autoGridList}${autoInfo.conesDropped}	${autoInfo.cubesDropped}	${autoInfo.mobility}	${autoInfo.attemptedEndgame}	${autoInfo.actualEndgame}	${teleopGridList}${teleopInfo.conesDropped}	${teleopInfo.cubesDropped}	${teleopInfo.fouls}	${teleopInfo.techFouls}	${teleopInfo.attemptedEndgame}	${teleopInfo.actualEndgame}	${endInfo.defenseQualityFaced}	${endInfo.defenseQuantityFaced}	${endInfo.defenseQualityPlayed}	${endInfo.defenseQuantityPlayed}	${endInfo.breakdown}	${endInfo.chargeStationClimbTime}	${endInfo.chargeStationSide}	comments: ${endInfo.comments}	`;
 }
-export function resetSession() {}
+export function resetSession(isSameScouter: boolean) {
+	matchScreen.reset(isSameScouter);
+}

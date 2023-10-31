@@ -2,7 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { toCanvas } from "qrcode";
-import { combineData } from "./data-store";
+import { combineData, resetSession } from "./data-store";
 
 @customElement("end-screen")
 export class EndScreen extends LitElement {
@@ -148,7 +148,9 @@ export class EndScreen extends LitElement {
 			comments: this.comments.value!.value,
 		};
 	}
-	restartSession() {}
+	restartSession() {
+		resetSession(this.continueScouting.value!.checked);
+	}
 	renderQRCode() {
 		let data = combineData();
 		console.log(data);

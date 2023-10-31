@@ -124,14 +124,14 @@ export class MatchInfo extends LitElement {
 		};
 	}
 	reset(isSameScouter: boolean) {
-		this.name.value!.value = "";
-		this.matchType.value!.value = "";
+		if (isSameScouter) {
+		} else {
+			this.name.value!.value = "";
+		}
 		this.matchNum.value!.value = (
 			Number.parseInt(this.matchNum.value!.value) + 1
 		).toString();
 		this.isReplay.value!.checked = false;
-		this.alliance.value!.value = "";
-		this.startingPosition.value!.value = "";
 		this.teamNum.value!.value = "";
 		this.preload.value!.value = "";
 	}

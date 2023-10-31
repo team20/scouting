@@ -55,10 +55,13 @@ export class ChargeStationInfo extends LitElement {
 	processActualChargeStationSelection() {
 		if (this.actual.value!.value === this.actualOptions[3].value) {
 			this.attemptedChargeStation = "Engaged";
+			// @ts-ignore
 			this.attempted.value!.readonly = true;
 		} else {
+			// @ts-ignore
 			this.attempted.value!.readonly = false;
 		}
+		// @ts-ignore
 		console.log(this.attempted.value!.readonly);
 	}
 	getAttemptedChargeStation() {

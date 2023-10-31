@@ -1,6 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
-import { createRef, Ref } from "lit/directives/ref.js";
+import { createRef, ref, Ref } from "lit/directives/ref.js";
 /**
  * An example element.
  *
@@ -26,7 +26,14 @@ export class MatchInfo extends LitElement {
 		}
 	`;
 	// @ts-ignore
-	ref: Ref<HTMLInputElement> = createRef();
+	name: Ref<HTMLInputElement> = createRef();
+	matchType: Ref<HTMLInputElement> = createRef();
+	matchNum: Ref<HTMLInputElement> = createRef();
+	isReplay: Ref<HTMLInputElement> = createRef();
+	alliance: Ref<HTMLInputElement> = createRef();
+	startingPosition: Ref<HTMLInputElement> = createRef();
+	teamNum: Ref<HTMLInputElement> = createRef();
+	preload: Ref<HTMLInputElement> = createRef();
 	preloadOptions = [
 		{ label: "None", value: "None" },
 		{ label: "Cube", value: "Cube" },
@@ -51,46 +58,71 @@ export class MatchInfo extends LitElement {
 		return html`<div>
 			<label
 				>Name:
-				<vaadin-text-field theme="small"></vaadin-text-field>
+				<vaadin-text-field ${ref(this.name)} theme="small"></vaadin-text-field>
 			</label>
 			<label>
 				Match Type:
 				<vaadin-select
+					${ref(this.matchType)}
 					theme="small"
 					.items="${this.matchTypes}"
 				></vaadin-select>
 			</label>
 			<label>
 				Match Number:
-				<vaadin-integer-field theme="small"></vaadin-integer-field>
+				<vaadin-integer-field
+					${ref(this.matchNum)}
+					theme="small"
+				></vaadin-integer-field>
 			</label>
 			<label>
 				Replay?
-				<vaadin-checkbox></vaadin-checkbox>
+				<vaadin-checkbox ${ref(this.isReplay)}></vaadin-checkbox>
 			</label>
 			<label>
 				Alliance:
-				<vaadin-select theme="small" .items="${this.alliances}"></vaadin-select>
+				<vaadin-select
+					${ref(this.alliance)}
+					theme="small"
+					.items="${this.alliances}"
+				></vaadin-select>
 			</label>
 			<label>
 				Starting Position:
 				<vaadin-select
+					${ref(this.startingPosition)}
 					theme="small"
 					.items="${this.startingPositions}"
 				></vaadin-select>
 			</label>
 			<label>
 				Team Number:
-				<vaadin-integer-field theme="small"></vaadin-integer-field>
+				<vaadin-integer-field
+					${ref(this.teamNum)}
+					theme="small"
+				></vaadin-integer-field>
 			</label>
 			<label>
 				Preload:
 				<vaadin-select
+					${ref(this.preload)}
 					theme="small"
 					.items="${this.preloadOptions}"
 				></vaadin-select>
 			</label>
 		</div>`;
+	}
+	getInfo(): object {
+		console.log({
+			name: this.name.value?.value,
+			matchType: this.matchType.value?.value,
+			matchNum: this.matchNum.value?.value,
+			isReplay: this.isReplay.value?.checked,
+			alliance: this.alliance.value?.value,
+			startingPosition: this.startingPosition.value?.value,
+			teamNum: this.teamNum.value?.value,
+			preload: this.preload.value?.value,
+		});
 	}
 }
 

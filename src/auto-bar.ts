@@ -40,10 +40,12 @@ export class AutoInfo extends LitElement {
 				countType="Cubes Dropped"
 				style="grid-row: 2; grid-column: 1 / span 2"
 			></game-counter>
-			<label style="grid-row: 1; grid-column: 2;">
-				Mobility?
-				<vaadin-checkbox ${ref(this.mobility)}></vaadin-checkbox>
-			</label>
+			<toggle-button
+				${ref(this.mobility)}
+				label="Mobility?"
+				style="grid-row: 1 / span 2; grid-column: 2;"
+			>
+			</toggle-button>
 			<charge-station-info
 				${ref(this.chargeStation)}
 				style="justify-self: end; grid-row: 1 / span 2; grid-column: 3"

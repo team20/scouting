@@ -20,7 +20,7 @@ export class ToggleButton extends LitElement {
 			margin: 0;
 		}
 		.off {
-			--lumo-contrast-5pct: #cccccc;
+			--lumo-contrast-5pct: #ff0000;
 		}
 		.on {
 			--lumo-contrast-5pct: #019d04;

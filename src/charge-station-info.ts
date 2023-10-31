@@ -1,5 +1,5 @@
 import { css, html, LitElement } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 @customElement("charge-station-info")
 export class ChargeStationInfo extends LitElement {
@@ -34,6 +34,8 @@ export class ChargeStationInfo extends LitElement {
 		{ label: "Dock", value: "Dock" },
 		{ label: "Engage", value: "Engage" },
 	];
+	@property()
+	attemptedChargeStation = "None";
 	attempted: Ref<HTMLInputElement> = createRef();
 	actual: Ref<HTMLInputElement> = createRef();
 	render() {
@@ -41,16 +43,25 @@ export class ChargeStationInfo extends LitElement {
 				${ref(this.attempted)}
 				label="Attempted"
 				.items="${this.attemptedEngage}"
-				.value="${this.attemptedEngage[0].value}"
+				.value="${this.attemptedChargeStation}"
 			></vaadin-select>
 			<vaadin-select
 				${ref(this.actual)}
 				label="Actual"
 				.items="${this.actualEndgame}"
 				.value="${this.actualEndgame[0].value}"
+				@change=${this.processActualChargeStationSelection}
 			></vaadin-select>`;
 	}
-
+	processActualChargeStationSelection() {
+		if (this.actual.value!.value === this.actualEndgame[3].value) {
+			this.attemptedChargeStation = "Engaged";
+			this.attempted.value!.readonly = true;
+		} else {
+			this.attempted.value!.readonly = false;
+		}
+		console.log(this.attempted.value!.readonly);
+	}
 	getAttemptedEndgame() {
 		return this.attempted.value!.value;
 	}

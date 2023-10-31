@@ -6,7 +6,7 @@ export class PieceCounter extends LitElement {
 		:host {
 			display: grid;
 			grid-template-columns: min-content min-content min-content;
-			grid-template-rows: auto auto;
+			grid-template-rows: 25px 25px;
 			width: min-content;
 			text-align: center;
 			margin: 0;
@@ -23,7 +23,6 @@ export class PieceCounter extends LitElement {
 		div {
 			font-size: medium;
 			color: #000000;
-			height: 25px;
 			width: 120px;
 		}
 		.leftButton {
@@ -41,7 +40,6 @@ export class PieceCounter extends LitElement {
 		.droppedCount {
 			grid-column: 2;
 			grid-row: 2;
-			width: 120px;
 		}
 	`;
 	@property()

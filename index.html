@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Vite + TS</title>
+		<title>Team 20 Scouting</title>
 		<link rel="stylesheet" href="css/pico.min.css" />
 		<script type="module" src="src/vaadin.ts"></script>
 		<script type="module" src="src/main-element.ts"></script>
@@ -24,29 +24,14 @@
 	<body>
 		<vaadin-tabsheet theme="equal-width-tabs">
 			<vaadin-tabs slot="tabs">
-				<vaadin-tab style="padding: 0" id="general-tab">General</vaadin-tab>
+				<vaadin-tab id="general-tab">General</vaadin-tab>
 				<vaadin-tab id="auto-tab">Auto</vaadin-tab>
 				<vaadin-tab id="teleop-tab">Teleop</vaadin-tab>
 				<vaadin-tab id="end-tab">End</vaadin-tab>
 			</vaadin-tabs>
-			<my-element tab="general-tab"></my-element>
+			<match-info tab="general-tab"></match-info>
 			<game-piece-grid tab="auto-tab"></game-piece-grid>
 			<game-piece-grid tab="teleop-tab"></game-piece-grid>
 		</vaadin-tabsheet>
-		<!-- <div id="info">
-			<div class="inputBox">
-				<label for="matchNum">Match Number:</label>
-				<input type="text" id="matchNum" />
-			</div>
-			<div class="inputBox">
-				<label for="teamNum">Team Number:</label>
-				<input type="text" id="teamNum" />
-			</div>
-			<div class="inputBox">
-				<label for="replay">Replay?</label>
-				<input type="checkbox" id="replay" />
-			</div>
-			<script type="module" src="/src/main.ts"></script>
-		</div> -->
 	</body>
 </html>

@@ -2,10 +2,10 @@
 	"name": "Team 20 Scouting",
 	"short_name": "Scouting",
 	"description": "Team 20's scouting app",
-	"start_url": "/",
+	"start_url": "/scouting",
 	"icons": [
 		{
-			"src": "/favicon.png",
+			"src": "./favicon.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any"

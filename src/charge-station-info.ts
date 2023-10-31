@@ -9,6 +9,9 @@ export class ChargeStationInfo extends LitElement {
 			margin: 0;
 			width: min-content;
 		}
+		vaadin-select {
+			padding-top: 0;
+		}
 		.checkbox {
 			color: var(--lumo-secondary-text-color);
 			font-family: var(--lumo-font-family);

@@ -6,10 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Team 20 Scouting</title>
 		<link rel="stylesheet" href="css/pico.min.css" />
-		<script type="module" src="src/vaadin.ts"></script>
-		<script type="module" src="src/main-element.ts"></script>
-		<script type="module" src="src/node-button.ts"></script>
-		<script type="module" src="src/grid.ts"></script>
+		<script type="module" src="src/main.ts"></script>
 		<style>
 			html {
 				background-color: gray;
@@ -30,7 +27,10 @@
 				<vaadin-tab id="end-tab">End</vaadin-tab>
 			</vaadin-tabs>
 			<match-info tab="general-tab"></match-info>
-			<game-piece-grid tab="auto-tab"></game-piece-grid>
+			<div class="auto-tab" tab="auto-tab">
+				<game-piece-grid></game-piece-grid>
+				<other-info></other-info>
+			</div>
 			<game-piece-grid tab="teleop-tab"></game-piece-grid>
 		</vaadin-tabsheet>
 	</body>

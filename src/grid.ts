@@ -7,10 +7,12 @@ export class GamePieceGrid extends LitElement {
 			margin: 0;
 			width: 100%;
 		}
+		div {
+			margin-top: 5px;
+		}
 		.row {
 			display: flex;
 			width: 100%;
-			margin-top: 15px;
 			justify-content: space-between;
 		}
 	`;

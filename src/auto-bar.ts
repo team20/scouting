@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
-@customElement("other-info")
-export class OtherInfo extends LitElement {
+@customElement("auto-info")
+export class AutoInfo extends LitElement {
 	static styles = css`
 		:host {
 			display: grid;
@@ -42,6 +42,6 @@ export class OtherInfo extends LitElement {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"other-info": OtherInfo;
+		"auto-info": AutoInfo;
 	}
 }

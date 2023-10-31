@@ -19,19 +19,38 @@ export class NodeButton extends LitElement {
 			cursor: pointer;
 			margin: 0;
 		}
+		.empty {
+			--lumo-contrast-5pct: #cccccc;
+		}
+		.cubeEmpty {
+			--lumo-contrast-5pct: #b4a7d6ff;
+		}
+		.cubeScored {
+			--lumo-contrast-5pct: #674ea7ff;
+		}
+		.coneEmpty {
+			--lumo-contrast-5pct: #ffe599ff;
+		}
+		.coneScored {
+			--lumo-contrast-5pct: #f1c232ff;
+		}
 	`;
+
 	@property()
 	column: number;
+
 	@property()
 	row: number;
+
 	@property()
 	pieceType: "Cube" | "Cone" | "Hybrid";
 
 	@state()
 	state: "Cube" | "Cone" | "None" = "None";
 	render() {
-		this.className = this.calculateColor();
-		return html`<vaadin-button @click=${this.onClick}
+		return html`<vaadin-button
+			class=${this.calculateColor()}
+			@click=${this.onClick}
 			>${this.state}</vaadin-button
 		>`;
 	}
@@ -62,7 +81,6 @@ export class NodeButton extends LitElement {
 				}
 				break;
 		}
-		this.className = this.calculateColor();
 	}
 
 	/**

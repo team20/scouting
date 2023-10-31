@@ -13,24 +13,6 @@ export class GamePieceGrid extends LitElement {
 			margin-top: 15px;
 			justify-content: space-between;
 		}
-		.empty {
-			position: relative;
-			bottom: 0;
-			right: 0;
-			--lumo-contrast-5pct: #cccccc;
-		}
-		.cubeEmpty {
-			--lumo-contrast-5pct: #b4a7d6ff;
-		}
-		.cubeScored {
-			--lumo-contrast-5pct: #674ea7ff;
-		}
-		.coneEmpty {
-			--lumo-contrast-5pct: #ffe599ff;
-		}
-		.coneScored {
-			--lumo-contrast-5pct: #f1c232ff;
-		}
 	`;
 	states: string[] = [];
 	render() {

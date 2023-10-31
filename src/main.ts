@@ -1,10 +1,10 @@
 import "./auto-bar";
 import "./charge-station-info";
 import "./counter";
+import "./end-screen";
 import "./grid";
 import "./main-element";
 import "./node-button";
 import "./teleop-info";
-import "./end-screen";
 import "./toggle-button";
 import "./vaadin";

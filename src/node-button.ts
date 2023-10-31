@@ -1,5 +1,5 @@
-import { LitElement, html, css } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { css, html, LitElement } from "lit";
+import { customElement, property } from "lit/decorators.js";
 @customElement("node-button")
 export class NodeButton extends LitElement {
 	static styles = css`
@@ -38,12 +38,15 @@ export class NodeButton extends LitElement {
 	`;
 
 	@property()
+	// @ts-ignore
 	column: number;
 
 	@property()
+	// @ts-ignore
 	row: number;
 
 	@property()
+	// @ts-ignore
 	pieceType: "Cube" | "Cone" | "Hybrid";
 
 	@property()

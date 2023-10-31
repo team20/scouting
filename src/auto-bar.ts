@@ -22,11 +22,11 @@ export class AutoInfo extends LitElement {
 			line-height: 2;
 		}
 	`;
-
 	conesDropped: Ref<GameCounter> = createRef();
 	cubesDropped: Ref<GameCounter> = createRef();
 	mobility: Ref<HTMLInputElement> = createRef();
 	chargeStation: Ref<ChargeStationInfo> = createRef();
+
 	render() {
 		return html` <game-counter
 				${ref(this.conesDropped)}

@@ -31,7 +31,6 @@ export class GamePieceGrid extends LitElement {
 					pieceType="Cone"
 					row="1"
 					column="${i + 1}"
-					@click=${this.onClick}
 				></node-button>`);
 			} else {
 				highButtons.push(html`<node-button
@@ -39,7 +38,6 @@ export class GamePieceGrid extends LitElement {
 					pieceType="Cube"
 					row="1"
 					column="${i + 1}"
-					@click=${this.onClick}
 				></node-button>`);
 			}
 		}
@@ -53,7 +51,6 @@ export class GamePieceGrid extends LitElement {
 					pieceType="Cone"
 					row="1"
 					column="${i + 1}"
-					@click=${this.onClick}
 				></node-button>`);
 			} else {
 				midButtons.push(html`<node-button
@@ -61,7 +58,6 @@ export class GamePieceGrid extends LitElement {
 					pieceType="Cube"
 					row="1"
 					column="${i + 1}"
-					@click=${this.onClick}
 				></node-button>`);
 			}
 		}
@@ -74,7 +70,6 @@ export class GamePieceGrid extends LitElement {
 				pieceType="Hybrid"
 				row="3"
 				column="${i + 1}"
-				@click=${this.onClick}
 			></node-button>`);
 		}
 		return html`

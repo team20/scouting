@@ -43,6 +43,7 @@ export class GameCounter extends LitElement {
 		}
 	`;
 	@property()
+	// @ts-ignore
 	countType: string;
 	@property()
 	count: number = 0;

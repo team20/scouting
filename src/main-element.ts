@@ -25,7 +25,6 @@ export class MatchInfo extends LitElement {
 			line-height: 2;
 		}
 	`;
-	// @ts-ignore
 	name: Ref<HTMLInputElement> = createRef();
 	matchType: Ref<HTMLInputElement> = createRef();
 	matchNum: Ref<HTMLInputElement> = createRef();

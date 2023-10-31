@@ -27,6 +27,7 @@ export class ToggleButton extends LitElement {
 		}
 	`;
 	@property()
+	// @ts-ignore
 	label: string;
 
 	@property()

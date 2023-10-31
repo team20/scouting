@@ -152,6 +152,16 @@ export class EndScreen extends LitElement {
 			comments: this.comments.value!.value,
 		};
 	}
+	reset() {
+		this.defenseQualityPlayed.value!.value = "";
+		this.defenseQuantityPlayed.value!.value = "";
+		this.defenseQualityFaced.value!.value = "";
+		this.defenseQuantityFaced.value!.value = "";
+		this.breakdown.value!.checked = false;
+		this.chargeStationClimbTime.value!.value = "";
+		this.chargeStationSide.value!.value = "";
+		this.comments.value!.value = "";
+	}
 	restartSession() {
 		resetSession(this.continueScouting.value!.checked);
 	}

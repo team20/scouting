@@ -57,4 +57,9 @@ export function combineData(): string {
 }
 export function resetSession(isSameScouter: boolean) {
 	matchScreen.reset(isSameScouter);
+	autoGrid.reset();
+	autoInfoBar.reset();
+	teleopGrid.reset();
+	teleopInfoBar.reset();
+	endScreen.reset();
 }

@@ -3,6 +3,7 @@ import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { ChargeStationInfo } from "./charge-station-info";
 import { GameCounter } from "./counter";
+import { ToggleButton } from "./toggle-button";
 /**
  * Contains additional info about the auto period.
  *
@@ -28,7 +29,7 @@ export class AutoInfo extends LitElement {
 	`;
 	conesDropped: Ref<GameCounter> = createRef();
 	cubesDropped: Ref<GameCounter> = createRef();
-	mobility: Ref<HTMLInputElement> = createRef();
+	mobility: Ref<ToggleButton> = createRef();
 	chargeStation: Ref<ChargeStationInfo> = createRef();
 
 	render() {
@@ -59,10 +60,16 @@ export class AutoInfo extends LitElement {
 		return {
 			cubesDropped: this.cubesDropped.value!.count,
 			conesDropped: this.conesDropped.value!.count,
-			mobility: this.mobility.value!.checked,
+			mobility: this.mobility.value!.toggled,
 			attemptedEndgame: this.chargeStation.value!.getAttemptedChargeStation(),
 			actualEndgame: this.chargeStation.value!.getActualChargeStation(),
 		};
+	}
+	reset() {
+		this.conesDropped.value!.count = 0;
+		this.cubesDropped.value!.count = 0;
+		this.mobility.value!.toggled = false;
+		this.chargeStation.value!.reset();
 	}
 }
 

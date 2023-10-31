@@ -105,6 +105,17 @@ export class GamePieceGrid extends LitElement {
 			low: lowPieces,
 		};
 	}
+	reset() {
+		for (const node of this.highNodes) {
+			node.value!.state = "None";
+		}
+		for (const node of this.midNodes) {
+			node.value!.state = "None";
+		}
+		for (const node of this.lowNodes) {
+			node.value!.state = "None";
+		}
+	}
 }
 
 declare global {

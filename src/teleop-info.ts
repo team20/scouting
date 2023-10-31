@@ -64,6 +64,13 @@ export class TeleopInfo extends LitElement {
 			actualEndgame: this.chargeStation.value!.getActualChargeStation(),
 		};
 	}
+	reset() {
+		this.conesDropped.value!.count = 0;
+		this.cubesDropped.value!.count = 0;
+		this.fouls.value!.count = 0;
+		this.techFouls.value!.count = 0;
+		this.chargeStation.value!.reset();
+	}
 }
 
 declare global {

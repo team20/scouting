@@ -54,7 +54,7 @@ export class ChargeStationInfo extends LitElement {
 	}
 	processActualChargeStationSelection() {
 		if (this.actual.value!.value === this.actualOptions[3].value) {
-			this.attemptedChargeStation = "Engaged";
+			this.attemptedChargeStation = this.attemptedOptions[1].value;
 			// @ts-ignore
 			this.attempted.value!.readonly = true;
 		} else {
@@ -69,6 +69,12 @@ export class ChargeStationInfo extends LitElement {
 	}
 	getActualChargeStation() {
 		return this.actual.value!.value;
+	}
+	reset() {
+		this.attempted.value!.value = "None";
+		this.actual.value!.value = "None";
+		// @ts-ignore
+		this.attempted.value!.readonly = false;
 	}
 }
 

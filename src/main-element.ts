@@ -13,11 +13,11 @@ export class MatchInfo extends LitElement {
 		:host {
 			display: flex;
 			flex-direction: column;
-			width: 25%;
+			align-items: flex-start;
 		}
 		label {
 			display: flex;
-			justify-content: space-between;
+			justify-content: right;
 			color: var(--lumo-secondary-text-color);
 			font-family: var(--lumo-font-family);
 			font-size: var(--lumo-font-size-m);
@@ -48,7 +48,8 @@ export class MatchInfo extends LitElement {
 	];
 
 	render() {
-		return html` <label
+		return html`<div>
+			<label
 				>Name:
 				<vaadin-text-field theme="small"></vaadin-text-field>
 			</label>
@@ -88,7 +89,8 @@ export class MatchInfo extends LitElement {
 					theme="small"
 					.items="${this.preloadOptions}"
 				></vaadin-select>
-			</label>`;
+			</label>
+		</div>`;
 	}
 }
 

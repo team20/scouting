@@ -7,7 +7,6 @@ export class ChargeStationInfo extends LitElement {
 		:host {
 			display: block;
 			text-align: center;
-			margin: 0;
 			width: min-content;
 		}
 		vaadin-select {

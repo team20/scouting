@@ -12,7 +12,6 @@ export class EndScreen extends LitElement {
 			grid-template-columns: 400px auto auto;
 			grid-column-gap: 10px;
 			text-align: left;
-			margin: 0;
 		}
 		.info {
 			display: flex;

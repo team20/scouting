@@ -9,7 +9,6 @@ export class GameCounter extends LitElement {
 			grid-template-rows: 25px 25px;
 			width: min-content;
 			text-align: center;
-			margin: 0;
 		}
 		vaadin-button {
 			user-select: none;

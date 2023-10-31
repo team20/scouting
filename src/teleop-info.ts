@@ -10,7 +10,6 @@ export class TeleopInfo extends LitElement {
 			display: grid;
 			grid-template-columns: auto auto min-content;
 			text-align: center;
-			margin: 0;
 			align-items: end;
 		}
 	`;

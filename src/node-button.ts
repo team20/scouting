@@ -5,16 +5,14 @@ export class NodeButton extends LitElement {
 	static styles = css`
 		:host {
 			display: block;
-			max-width: 1280px;
 			text-align: center;
-			margin: 0;
 			width: min-content;
 		}
 		vaadin-button {
+			display: block;
 			user-select: none;
 			line-height: 100px;
 			color: #000000;
-			display: block;
 			height: 85px;
 			width: 85px;
 			cursor: pointer;

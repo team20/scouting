@@ -10,16 +10,15 @@ export class AutoInfo extends LitElement {
 			display: grid;
 			grid-template-columns: auto auto min-content;
 			text-align: center;
-			margin: 0;
 			align-items: end;
 		}
 		label {
-			justify-self: right;
 			color: var(--lumo-secondary-text-color);
 			font-family: var(--lumo-font-family);
 			font-size: var(--lumo-font-size-m);
 			font-weight: 500;
 			line-height: 2;
+			justify-self: right;
 		}
 	`;
 	conesDropped: Ref<GameCounter> = createRef();
@@ -43,7 +42,7 @@ export class AutoInfo extends LitElement {
 			<toggle-button
 				${ref(this.mobility)}
 				label="Mobility?"
-				style="grid-row: 1 / span 2; grid-column: 2;"
+				style="grid-row: 1 / span 2; grid-column: 2"
 			>
 			</toggle-button>
 			<charge-station-info

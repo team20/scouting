@@ -6,7 +6,6 @@ import { NodeButton } from "./node-button";
 export class GamePieceGrid extends LitElement {
 	static styles = css`
 		:host {
-			margin: 0;
 			width: 100%;
 		}
 		div {

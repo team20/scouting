@@ -5,17 +5,17 @@ export class ToggleButton extends LitElement {
 	static styles = css`
 		:host {
 			display: block;
-			max-width: 1280px;
 			text-align: center;
-			margin: 0;
 			width: min-content;
+			height: 100%;
+			aspect-ratio: 1 / 1;
 		}
 		vaadin-button {
+			display: block;
 			user-select: none;
 			line-height: 100px;
 			color: #000000;
-			display: block;
-			height: min-content;
+			height: 100%;
 			cursor: pointer;
 			margin: 0;
 		}

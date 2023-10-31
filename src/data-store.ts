@@ -20,16 +20,16 @@ export function combineData(): string {
 	let autoGridList = "";
 	for (let i = 0; i < autoScoring.high.length; i++) {
 		if (autoScoring.high[i] === "None") {
-			autoGridList += `true\t`;
-		} else {
 			autoGridList += `false\t`;
+		} else {
+			autoGridList += `true\t`;
 		}
 	}
 	for (let i = 0; i < autoScoring.middle.length; i++) {
 		if (autoScoring.middle[i] === "None") {
-			autoGridList += `true\t`;
-		} else {
 			autoGridList += `false\t`;
+		} else {
+			autoGridList += `true\t`;
 		}
 	}
 	for (let i = 0; i < autoScoring.low.length; i++) {
@@ -38,16 +38,16 @@ export function combineData(): string {
 	let teleopGridList = "";
 	for (let i = 0; i < teleopScoring.high.length; i++) {
 		if (teleopScoring.high[i] === "None") {
-			teleopGridList += `true\t`;
-		} else {
 			teleopGridList += `false\t`;
+		} else {
+			teleopGridList += `true\t`;
 		}
 	}
 	for (let i = 0; i < teleopScoring.middle.length; i++) {
 		if (teleopScoring.middle[i] === "None") {
-			teleopGridList += `true\t`;
-		} else {
 			teleopGridList += `false\t`;
+		} else {
+			teleopGridList += `true\t`;
 		}
 	}
 	for (let i = 0; i < teleopScoring.low.length; i++) {

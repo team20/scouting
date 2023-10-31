@@ -127,9 +127,11 @@ export class MatchInfo extends LitElement {
 		} else {
 			this.name.value!.value = "";
 		}
-		this.matchNum.value!.value = (
-			Number.parseInt(this.matchNum.value!.value) + 1
-		).toString();
+		if (this.matchNum.value!.value) {
+			this.matchNum.value!.value = (
+				Number.parseInt(this.matchNum.value!.value) + 1
+			).toString();
+		}
 		this.isReplay.value!.checked = false;
 		this.teamNum.value!.value = "";
 		this.preload.value!.value = "";

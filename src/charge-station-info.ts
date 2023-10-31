@@ -23,16 +23,16 @@ export class ChargeStationInfo extends LitElement {
 	`;
 
 	/** Whether or not the team attempted to engage the charge station.*/
-	attemptedEngage = [
+	attemptedOptions = [
 		{ label: "None", value: "None" },
-		{ label: "Engaged", value: "Engaged" },
-	];
-	/** What the team's actual endgame was.*/
-	actualEndgame = [
-		{ label: "None", value: "None" },
-		{ label: "Park", value: "Park" },
-		{ label: "Dock", value: "Dock" },
 		{ label: "Engage", value: "Engage" },
+	];
+	/** What the team's actual charge station status was.*/
+	actualOptions = [
+		{ label: "None", value: "None" },
+		{ label: "Parked", value: "Parked" },
+		{ label: "Docked", value: "Docked" },
+		{ label: "Engaged", value: "Engaged" },
 	];
 	@property()
 	attemptedChargeStation = "None";
@@ -42,19 +42,19 @@ export class ChargeStationInfo extends LitElement {
 		return html` <vaadin-select
 				${ref(this.attempted)}
 				label="Attempted"
-				.items="${this.attemptedEngage}"
+				.items="${this.attemptedOptions}"
 				.value="${this.attemptedChargeStation}"
 			></vaadin-select>
 			<vaadin-select
 				${ref(this.actual)}
 				label="Actual"
-				.items="${this.actualEndgame}"
-				.value="${this.actualEndgame[0].value}"
+				.items="${this.actualOptions}"
+				.value="${this.actualOptions[0].value}"
 				@change=${this.processActualChargeStationSelection}
 			></vaadin-select>`;
 	}
 	processActualChargeStationSelection() {
-		if (this.actual.value!.value === this.actualEndgame[3].value) {
+		if (this.actual.value!.value === this.actualOptions[3].value) {
 			this.attemptedChargeStation = "Engaged";
 			this.attempted.value!.readonly = true;
 		} else {
@@ -62,10 +62,10 @@ export class ChargeStationInfo extends LitElement {
 		}
 		console.log(this.attempted.value!.readonly);
 	}
-	getAttemptedEndgame() {
+	getAttemptedChargeStation() {
 		return this.attempted.value!.value;
 	}
-	getActualEndgame() {
+	getActualChargeStation() {
 		return this.actual.value!.value;
 	}
 }

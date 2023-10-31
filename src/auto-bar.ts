@@ -56,8 +56,8 @@ export class AutoInfo extends LitElement {
 			cubesDropped: this.cubesDropped.value!.count,
 			conesDropped: this.conesDropped.value!.count,
 			mobility: this.mobility.value!.checked,
-			attemptedEndgame: this.chargeStation.value!.getAttemptedEndgame(),
-			actualEndgame: this.chargeStation.value!.getActualEndgame(),
+			attemptedEndgame: this.chargeStation.value!.getAttemptedChargeStation(),
+			actualEndgame: this.chargeStation.value!.getActualChargeStation(),
 		};
 	}
 }

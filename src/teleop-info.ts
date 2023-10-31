@@ -56,8 +56,8 @@ export class TeleopInfo extends LitElement {
 			conesDropped: this.conesDropped.value!.count,
 			fouls: this.fouls.value!.count,
 			techFouls: this.techFouls.value!.count,
-			attemptedEndgame: this.chargeStation.value!.getAttemptedEndgame(),
-			actualEndgame: this.chargeStation.value!.getActualEndgame(),
+			attemptedEndgame: this.chargeStation.value!.getAttemptedChargeStation(),
+			actualEndgame: this.chargeStation.value!.getActualChargeStation(),
 		};
 	}
 }

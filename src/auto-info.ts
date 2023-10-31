@@ -3,6 +3,11 @@ import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { ChargeStationInfo } from "./charge-station-info";
 import { GameCounter } from "./counter";
+/**
+ * Contains additional info about the auto period.
+ *
+ * Contains dropped pieces, mobility, and charge station status.
+ */
 @customElement("auto-info")
 export class AutoInfo extends LitElement {
 	static styles = css`

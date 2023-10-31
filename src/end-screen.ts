@@ -3,7 +3,12 @@ import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { toCanvas } from "qrcode";
 import { combineData, resetSession } from "./data-store";
-
+/**
+ * The final scouting screen.
+ *
+ * Contains defense info, additional comments, charge station climbing, and a field diagram.
+ * Also has a slot for QR code display and restarting the scouting session.
+ */
 @customElement("end-screen")
 export class EndScreen extends LitElement {
 	static styles = css`

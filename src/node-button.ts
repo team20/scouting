@@ -1,5 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+/**
+ * A button that represents a node on the field.
+ */
 @customElement("node-button")
 export class NodeButton extends LitElement {
 	static styles = css`

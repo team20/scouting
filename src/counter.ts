@@ -1,5 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+/**
+ * Counter for various game related things like fouls.
+ */
 @customElement("game-counter")
 export class GameCounter extends LitElement {
 	static styles = css`

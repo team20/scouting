@@ -1,9 +1,9 @@
-import "./auto-bar";
+import "./auto-info";
 import "./charge-station-info";
 import "./counter";
 import "./end-screen";
 import "./grid";
-import "./main-element";
+import "./match-info";
 import "./node-button";
 import "./teleop-info";
 import "./toggle-button";

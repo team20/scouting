@@ -2,6 +2,11 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { NodeButton } from "./node-button";
+/**
+ * The node grid.
+ *
+ * Contains a button for each game piece node, mirroring the 9 x 3 grid on the field.
+ */
 @customElement("game-piece-grid")
 export class GamePieceGrid extends LitElement {
 	static styles = css`
@@ -21,6 +26,7 @@ export class GamePieceGrid extends LitElement {
 	midNodes: Ref<NodeButton>[] = [];
 	lowNodes: Ref<NodeButton>[] = [];
 	render() {
+		// Generate the HTML for the top row
 		let highButtons = [];
 		for (let i = 0; i < 9; i++) {
 			this.highNodes[i] = createRef();
@@ -41,6 +47,7 @@ export class GamePieceGrid extends LitElement {
 			}
 		}
 
+		// Generate the HTML for the middle row
 		let midButtons = [];
 		for (let i = 0; i < 9; i++) {
 			this.midNodes[i] = createRef();
@@ -61,6 +68,7 @@ export class GamePieceGrid extends LitElement {
 			}
 		}
 
+		// Generate the HTML for the bottom row
 		let lowButtons = [];
 		for (let i = 0; i < 9; i++) {
 			this.lowNodes[i] = createRef();

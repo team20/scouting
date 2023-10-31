@@ -1,7 +1,7 @@
-import { AutoInfo } from "./auto-bar";
+import { AutoInfo } from "./auto-info";
 import { EndScreen } from "./end-screen";
 import { GamePieceGrid } from "./grid";
-import { MatchInfo } from "./main-element";
+import { MatchInfo } from "./match-info";
 import { TeleopInfo } from "./teleop-info";
 
 let matchScreen = document.getElementById("matchInfo")! as MatchInfo;

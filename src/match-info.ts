@@ -2,10 +2,9 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 /**
- * An example element.
+ * The main scouting screen.
  *
- * @slot - This element has a slot
- * @csspart button - The button
+ * Contains basic info about the match and the scouter.
  */
 @customElement("match-info")
 export class MatchInfo extends LitElement {

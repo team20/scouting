@@ -1,5 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+/**
+ * A button that switches between red and Team 20 green.
+ */
 @customElement("toggle-button")
 export class ToggleButton extends LitElement {
 	static styles = css`

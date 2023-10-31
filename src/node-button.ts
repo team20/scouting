@@ -15,7 +15,8 @@ export class NodeButton extends LitElement {
 			line-height: 100px;
 			color: #000000;
 			display: block;
-			height: min-content;
+			height: 85px;
+			width: 85px;
 			cursor: pointer;
 			margin: 0;
 		}

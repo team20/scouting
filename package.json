@@ -4,9 +4,9 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite --base /scouting",
 		"build": "tsc && vite build",
-		"preview": "vite preview"
+		"preview": "vite preview --base /scouting"
 	},
 	"devDependencies": {
 		"@types/qrcode": "^1.5.2",

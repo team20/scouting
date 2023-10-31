@@ -154,10 +154,15 @@ export class EndScreen extends LitElement {
 	renderQRCode() {
 		let data = combineData();
 		console.log(data);
-		toCanvas(this.canvas.value, data, function (error) {
-			if (error) console.error(error);
-			console.log("success!");
-		});
+		toCanvas(
+			this.canvas.value,
+			data,
+			{ errorCorrectionLevel: "low" },
+			function (error) {
+				if (error) console.error(error);
+				console.log("success!");
+			}
+		);
 	}
 }
 

@@ -31,7 +31,7 @@ export class EndScreen extends LitElement {
 		vaadin-select,
 		vaadin-checkbox,
 		vaadin-integer-field,
-		vaadin-text-area {
+		vaadin-text-field {
 			padding-top: 0;
 		}
 		label {
@@ -63,66 +63,99 @@ export class EndScreen extends LitElement {
 		{ label: "2", value: "2" },
 		{ label: "3", value: "3" },
 	];
-	defenseQuality: Ref<HTMLInputElement> = createRef();
-	defenseQuantity: Ref<HTMLInputElement> = createRef();
+	defenseQualityPlayed: Ref<HTMLInputElement> = createRef();
+	defenseQuantityPlayed: Ref<HTMLInputElement> = createRef();
+	defenseQualityFaced: Ref<HTMLInputElement> = createRef();
+	defenseQuantityFaced: Ref<HTMLInputElement> = createRef();
 	breakdown: Ref<HTMLInputElement> = createRef();
 	chargeStationClimbTime: Ref<HTMLInputElement> = createRef();
 	chargeStationSide: Ref<HTMLInputElement> = createRef();
+	comments: Ref<HTMLInputElement> = createRef();
+	continueScouting: Ref<HTMLInputElement> = createRef();
 	canvas: Ref<HTMLCanvasElement> = createRef();
 	render() {
 		return html` <div class="info" style="grid-column: 1">
-				<vaadin-text-area label="Comments?"></vaadin-text-area>
 				<vaadin-select
-					${ref(this.defenseQuality)}
-					label="Quality of Defense"
+					${ref(this.defenseQualityPlayed)}
+					theme="small"
+					label="Quality of Defense Played"
 					.items="${this.defenseQualityOptions}"
 				></vaadin-select>
 				<vaadin-select
-					${ref(this.defenseQuantity)}
-					label="Quantity of Defense"
+					${ref(this.defenseQuantityPlayed)}
+					theme="small"
+					label="Quantity of Defense Played"
+					.items="${this.defenseQuantityOptions}"
+				></vaadin-select>
+				<vaadin-select
+					${ref(this.defenseQualityFaced)}
+					theme="small"
+					label="Quality of Defense Faced"
+					.items="${this.defenseQualityOptions}"
+				></vaadin-select>
+				<vaadin-select
+					${ref(this.defenseQuantityFaced)}
+					theme="small"
+					label="Quantity of Defense Faced"
 					.items="${this.defenseQuantityOptions}"
 				></vaadin-select>
 				<label>
 					Breakdown?<vaadin-checkbox ${ref(this.breakdown)}></vaadin-checkbox
 				></label>
+				<vaadin-text-field
+					${ref(this.comments)}
+					label="Comments?"
+				></vaadin-text-field>
+			</div>
+			<div class="diagramDiv" style="grid-column: 2">
 				<vaadin-integer-field
 					${ref(this.chargeStationClimbTime)}
+					theme="small"
 					label="Charge Station climb time"
 				></vaadin-integer-field>
 				<vaadin-select
 					${ref(this.chargeStationSide)}
+					theme="small"
 					label="Charge Station Side"
 					.items="${this.chargeStationSides}"
 				></vaadin-select>
-			</div>
-			<div class="diagramDiv" style="grid-column: 2">
 				<img src="./field_diagram.png" class="diagram" />
 				<vaadin-button @click=${this.renderQRCode}
 					>Display QR Code</vaadin-button
 				>
+				<vaadin-button @click=${this.restartSession}
+					>Restart Session</vaadin-button
+				>
+				<label>
+					Continue Scouting?<vaadin-checkbox
+						${ref(this.continueScouting)}
+						checked
+					></vaadin-checkbox
+				></label>
 			</div>
 			<canvas ${ref(this.canvas)} style="grid-column: 3	"></canvas>`;
 	}
 
 	getInfo() {
 		return {
-			defenseQuality: this.defenseQuality.value!.value,
-			defenseQuantity: this.defenseQuantity.value!.value,
+			defenseQualityPlayed: this.defenseQualityPlayed.value!.value,
+			defenseQuantityPlayed: this.defenseQuantityPlayed.value!.value,
+			defenseQualityFaced: this.defenseQualityFaced.value!.value,
+			defenseQuantityFaced: this.defenseQuantityFaced.value!.value,
 			breakdown: this.breakdown.value!.checked,
 			chargeStationClimbTime: this.chargeStationClimbTime.value!.value,
 			chargeStationSide: this.chargeStationSide.value!.value,
+			comments: this.comments.value!.value,
 		};
 	}
+	restartSession() {}
 	renderQRCode() {
-		combineData();
-		toCanvas(
-			this.canvas.value,
-			"jfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjndjfiewgjiuwgnwiungierngirwngienrgiwnignwirng ihjnd",
-			function (error) {
-				if (error) console.error(error);
-				console.log("success!");
-			}
-		);
+		let data = combineData();
+		console.log(data);
+		toCanvas(this.canvas.value, data, function (error) {
+			if (error) console.error(error);
+			console.log("success!");
+		});
 	}
 }
 

@@ -3,8 +3,8 @@ import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { ChargeStationInfo } from "./charge-station-info";
 import { GameCounter } from "./counter";
-@customElement("auto-info")
-export class AutoInfo extends LitElement {
+@customElement("teleop-info")
+export class TeleopInfo extends LitElement {
 	static styles = css`
 		:host {
 			display: grid;
@@ -12,14 +12,6 @@ export class AutoInfo extends LitElement {
 			text-align: center;
 			margin: 0;
 			align-items: end;
-		}
-		label {
-			justify-self: right;
-			color: var(--lumo-secondary-text-color);
-			font-family: var(--lumo-font-family);
-			font-size: var(--lumo-font-size-m);
-			font-weight: 500;
-			line-height: 2;
 		}
 	`;
 
@@ -40,10 +32,18 @@ export class AutoInfo extends LitElement {
 				countType="Cubes Dropped"
 				style="grid-row: 2; grid-column: 1 / span 2"
 			></game-counter>
-			<label style="grid-row: 1; grid-column: 2;">
-				Mobility?
-				<vaadin-checkbox ${ref(this.mobility)}></vaadin-checkbox>
-			</label>
+			<game-counter
+				${ref(this.conesDropped)}
+				class="counter"
+				countType="Fouls"
+				style="grid-row: 1; grid-column: 2 / 3"
+			></game-counter>
+			<game-counter
+				${ref(this.cubesDropped)}
+				class="counter"
+				countType="Tech Fouls"
+				style="grid-row: 2; grid-column: 2 / 3"
+			></game-counter>
 			<charge-station-info
 				${ref(this.chargeStation)}
 				style="justify-self: end; grid-row: 1 / span 2; grid-column: 3"
@@ -62,6 +62,6 @@ export class AutoInfo extends LitElement {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"auto-info": AutoInfo;
+		"teleop-info": TeleopInfo;
 	}
 }

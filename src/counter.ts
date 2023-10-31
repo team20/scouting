@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-@customElement("piece-counter")
-export class PieceCounter extends LitElement {
+@customElement("game-counter")
+export class GameCounter extends LitElement {
 	static styles = css`
 		:host {
 			display: grid;
@@ -33,44 +33,44 @@ export class PieceCounter extends LitElement {
 			grid-column: 3;
 			grid-row: 1 / span 2;
 		}
-		.pieceLabel {
+		.countLabel {
 			grid-column: 2;
 			grid-row: 1;
 		}
-		.droppedCount {
+		.count {
 			grid-column: 2;
 			grid-row: 2;
 		}
 	`;
 	@property()
-	pieceType: "Cube" | "Cone";
+	countType: string;
 	@property()
-	value: number = 0;
+	count: number = 0;
 	render() {
 		return html`<vaadin-button class="leftButton" @click=${this.decrement}
 				>-</vaadin-button
 			>
-			<div class="pieceLabel">${this.pieceType} Dropped</div>
-			<div class="droppedCount">${this.value}</div>
+			<div class="countLabel">${this.countType}</div>
+			<div class="count">${this.count}</div>
 			<vaadin-button class="rightButton" @click=${this.increment}
 				>+</vaadin-button
 			>`;
 	}
 
 	decrement() {
-		if (this.value <= 0) {
+		if (this.count <= 0) {
 			return;
 		}
-		this.value--;
+		this.count--;
 	}
 
 	increment() {
-		this.value++;
+		this.count++;
 	}
 }
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"piece-counter": PieceCounter;
+		"game-counter": GameCounter;
 	}
 }

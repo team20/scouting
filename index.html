@@ -27,11 +27,14 @@
 				<vaadin-tab id="end-tab">End</vaadin-tab>
 			</vaadin-tabs>
 			<match-info tab="general-tab"></match-info>
-			<div class="auto-tab" tab="auto-tab">
+			<div tab="auto-tab">
 				<game-piece-grid></game-piece-grid>
 				<auto-info></auto-info>
 			</div>
-			<game-piece-grid tab="teleop-tab"></game-piece-grid>
+			<div tab="teleop-tab">
+				<game-piece-grid></game-piece-grid>
+				<teleop-info></teleop-info>
+			</div>
 		</vaadin-tabsheet>
 	</body>
 </html>

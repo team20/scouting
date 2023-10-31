@@ -46,7 +46,7 @@ export class NodeButton extends LitElement {
 	@property()
 	pieceType: "Cube" | "Cone" | "Hybrid";
 
-	@state()
+	@property()
 	state: "Cube" | "Cone" | "None" = "None";
 	render() {
 		return html`<vaadin-button

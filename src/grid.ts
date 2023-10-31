@@ -1,5 +1,7 @@
-import { css, html, LitElement, PropertyValueMap } from "lit";
+import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
+import { createRef, ref, Ref } from "lit/directives/ref.js";
+import { NodeButton } from "./node-button";
 @customElement("game-piece-grid")
 export class GamePieceGrid extends LitElement {
 	static styles = css`
@@ -16,190 +18,89 @@ export class GamePieceGrid extends LitElement {
 			justify-content: space-between;
 		}
 	`;
-	states: string[] = [];
+	highNodes: Ref<NodeButton>[] = [];
+	midNodes: Ref<NodeButton>[] = [];
+	lowNodes: Ref<NodeButton>[] = [];
 	render() {
-		return html`<div class="row">
-				<node-button
+		let highButtons = [];
+		for (let i = 0; i < 9; i++) {
+			this.highNodes[i] = createRef();
+			if (i % 2 == 0) {
+				highButtons.push(html`<node-button
+					${ref(this.highNodes[i])}
 					pieceType="Cone"
 					row="1"
-					column="1"
+					column="${i + 1}"
 					@click=${this.onClick}
-				></node-button>
-				<node-button
+				></node-button>`);
+			} else {
+				highButtons.push(html`<node-button
+					${ref(this.highNodes[i])}
 					pieceType="Cube"
 					row="1"
-					column="2"
+					column="${i + 1}"
 					@click=${this.onClick}
-				></node-button>
-				<node-button
+				></node-button>`);
+			}
+		}
+
+		let midButtons = [];
+		for (let i = 0; i < 9; i++) {
+			this.midNodes[i] = createRef();
+			if (i % 2 == 0) {
+				midButtons.push(html`<node-button
+					${ref(this.midNodes[i])}
 					pieceType="Cone"
 					row="1"
-					column="3"
+					column="${i + 1}"
 					@click=${this.onClick}
-				></node-button>
-				<node-button
+				></node-button>`);
+			} else {
+				midButtons.push(html`<node-button
+					${ref(this.midNodes[i])}
 					pieceType="Cube"
 					row="1"
-					column="4"
+					column="${i + 1}"
 					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cone"
-					row="1"
-					column="5"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cube"
-					row="1"
-					column="6"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cone"
-					row="1"
-					column="7"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cube"
-					row="1"
-					column="8"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cone"
-					row="1"
-					column="9"
-					@click=${this.onClick}
-				></node-button>
-			</div>
-			<div class="row">
-				<node-button
-					pieceType="Cone"
-					row="2"
-					column="1"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cube"
-					row="2"
-					column="2"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cone"
-					row="2"
-					column="3"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cube"
-					row="2"
-					column="4"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cone"
-					row="2"
-					column="5"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cube"
-					row="2"
-					column="6"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cone"
-					row="2"
-					column="7"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cube"
-					row="2"
-					column="8"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Cone"
-					row="2"
-					column="9"
-					@click=${this.onClick}
-				></node-button>
-			</div>
-			<div class="row">
-				<node-button
-					pieceType="Hybrid"
-					row="3"
-					column="1"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Hybrid"
-					row="3"
-					column="2"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Hybrid"
-					row="3"
-					column="3"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Hybrid"
-					row="3"
-					column="4"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Hybrid"
-					row="3"
-					column="5"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Hybrid"
-					row="3"
-					column="6"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Hybrid"
-					row="3"
-					column="7"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Hybrid"
-					row="3"
-					column="8"
-					@click=${this.onClick}
-				></node-button>
-				<node-button
-					pieceType="Hybrid"
-					row="3"
-					column="9"
-					@click=${this.onClick}
-				></node-button>
-			</div>`;
-	}
-	protected updated(
-		_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
-	): void {
-		console.log(this.states);
+				></node-button>`);
+			}
+		}
+
+		let lowButtons = [];
+		for (let i = 0; i < 9; i++) {
+			this.lowNodes[i] = createRef();
+			lowButtons.push(html`<node-button
+				${ref(this.lowNodes[i])}
+				pieceType="Hybrid"
+				row="3"
+				column="${i + 1}"
+				@click=${this.onClick}
+			></node-button>`);
+		}
+		return html`
+			<div class="row">${highButtons}</div>
+			<div class="row">${midButtons}</div>
+			<div class="row">${lowButtons}</div>
+		`;
 	}
 
 	onClick(e: PointerEvent) {
 		// @ts-ignore
-		console.log(e.currentTarget!.state);
-		// @ts-ignore
-		console.log(e.currentTarget!.row);
-		// @ts-ignore
-		console.log(e.currentTarget!.column);
+		let highPieces = [];
+		let midPieces = [];
+		let lowPieces = [];
+		for (const node of this.highNodes) {
+			highPieces.push(node.value?.state);
+		}
+		for (const node of this.midNodes) {
+			midPieces.push(node.value?.state);
+		}
+		for (const node of this.lowNodes) {
+			lowPieces.push(node.value?.state);
+		}
+		console.log(highPieces);
+		console.log(midPieces);
+		console.log(lowPieces);
 	}
 }
 

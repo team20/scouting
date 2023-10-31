@@ -1,5 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
+import { createRef, Ref } from "lit/directives/ref.js";
 @customElement("charge-station-info")
 export class ChargeStationInfo extends LitElement {
 	static styles = css`
@@ -33,6 +34,8 @@ export class ChargeStationInfo extends LitElement {
 		{ label: "Dock", value: "Dock" },
 		{ label: "Engage", value: "Engage" },
 	];
+	attempted: Ref<HTMLInputElement> = createRef();
+	actual: Ref<HTMLInputElement> = createRef();
 	render() {
 		return html` <vaadin-select
 				label="Attempted"
@@ -42,6 +45,13 @@ export class ChargeStationInfo extends LitElement {
 				label="Actual"
 				.items="${this.actualEndgame}"
 			></vaadin-select>`;
+	}
+
+	getAttemptedEndgame() {
+		return this.attempted.value?.value;
+	}
+	getActualEndgame() {
+		return this.actual.value?.value;
 	}
 }
 

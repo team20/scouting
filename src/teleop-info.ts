@@ -17,7 +17,8 @@ export class TeleopInfo extends LitElement {
 
 	conesDropped: Ref<GameCounter> = createRef();
 	cubesDropped: Ref<GameCounter> = createRef();
-	mobility: Ref<HTMLInputElement> = createRef();
+	fouls: Ref<GameCounter> = createRef();
+	techFouls: Ref<GameCounter> = createRef();
 	chargeStation: Ref<ChargeStationInfo> = createRef();
 	render() {
 		return html` <game-counter
@@ -33,13 +34,13 @@ export class TeleopInfo extends LitElement {
 				style="grid-row: 2; grid-column: 1 / span 2"
 			></game-counter>
 			<game-counter
-				${ref(this.conesDropped)}
+				${ref(this.fouls)}
 				class="counter"
 				countType="Fouls"
 				style="grid-row: 1; grid-column: 2 / 3"
 			></game-counter>
 			<game-counter
-				${ref(this.cubesDropped)}
+				${ref(this.techFouls)}
 				class="counter"
 				countType="Tech Fouls"
 				style="grid-row: 2; grid-column: 2 / 3"
@@ -51,11 +52,12 @@ export class TeleopInfo extends LitElement {
 	}
 	getInfo() {
 		return {
-			cubesDropped: this.cubesDropped.value?.count,
-			conesDropped: this.conesDropped.value?.count,
-			mobility: this.mobility.value?.value,
-			attemptedEndgame: this.chargeStation.value?.getAttemptedEndgame(),
-			actualEndgame: this.chargeStation.value?.getActualEndgame(),
+			cubesDropped: this.cubesDropped.value!.count,
+			conesDropped: this.conesDropped.value!.count,
+			fouls: this.fouls.value!.count,
+			techFouls: this.techFouls.value!.count,
+			attemptedEndgame: this.chargeStation.value!.getAttemptedEndgame(),
+			actualEndgame: this.chargeStation.value!.getActualEndgame(),
 		};
 	}
 }

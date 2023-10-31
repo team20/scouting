@@ -5,5 +5,6 @@ import "./grid";
 import "./main-element";
 import "./node-button";
 import "./teleop-info";
+import "./end-screen";
 // import "./toggle-button";
 import "./vaadin";

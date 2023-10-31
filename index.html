@@ -26,15 +26,16 @@
 				<vaadin-tab id="teleop-tab">Teleop</vaadin-tab>
 				<vaadin-tab id="end-tab">End</vaadin-tab>
 			</vaadin-tabs>
-			<match-info tab="general-tab"></match-info>
+			<match-info tab="general-tab" id="matchInfo"></match-info>
 			<div tab="auto-tab">
-				<game-piece-grid></game-piece-grid>
-				<auto-info></auto-info>
+				<game-piece-grid id="autoScoringInfo"></game-piece-grid>
+				<auto-info id="autoInfo"></auto-info>
 			</div>
 			<div tab="teleop-tab">
-				<game-piece-grid></game-piece-grid>
-				<teleop-info></teleop-info>
+				<game-piece-grid id="teleopScoringInfo"></game-piece-grid>
+				<teleop-info id="teleopInfo"></teleop-info>
 			</div>
+			<div tab="end-tab"><end-screen id="endInfo"></end-screen></div>
 		</vaadin-tabsheet>
 	</body>
 </html>

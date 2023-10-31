@@ -112,17 +112,29 @@ export class MatchInfo extends LitElement {
 			</label>
 		</div>`;
 	}
-	getInfo(): object {
-		console.log({
-			name: this.name.value?.value,
-			matchType: this.matchType.value?.value,
-			matchNum: this.matchNum.value?.value,
-			isReplay: this.isReplay.value?.checked,
-			alliance: this.alliance.value?.value,
-			startingPosition: this.startingPosition.value?.value,
-			teamNum: this.teamNum.value?.value,
-			preload: this.preload.value?.value,
-		});
+	getInfo() {
+		return {
+			name: this.name.value!.value,
+			matchType: this.matchType.value!.value,
+			matchNum: this.matchNum.value!.value,
+			isReplay: this.isReplay.value!.checked,
+			alliance: this.alliance.value!.value,
+			startingPosition: this.startingPosition.value!.value,
+			teamNum: this.teamNum.value!.value,
+			preload: this.preload.value!.value,
+		};
+	}
+	reset(isSameScouter: boolean) {
+		this.name.value!.value = "";
+		this.matchType.value!.value = "";
+		this.matchNum.value!.value = (
+			Number.parseInt(this.matchNum.value!.value) + 1
+		).toString();
+		this.isReplay.value!.checked = false;
+		this.alliance.value!.value = "";
+		this.startingPosition.value!.value = "";
+		this.teamNum.value!.value = "";
+		this.preload.value!.value = "";
 	}
 }
 

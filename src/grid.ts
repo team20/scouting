@@ -84,23 +84,24 @@ export class GamePieceGrid extends LitElement {
 		`;
 	}
 
-	onClick(e: PointerEvent) {
-		// @ts-ignore
+	getScoringInfo() {
 		let highPieces = [];
 		let midPieces = [];
 		let lowPieces = [];
 		for (const node of this.highNodes) {
-			highPieces.push(node.value?.state);
+			highPieces.push(node.value!.state);
 		}
 		for (const node of this.midNodes) {
-			midPieces.push(node.value?.state);
+			midPieces.push(node.value!.state);
 		}
 		for (const node of this.lowNodes) {
-			lowPieces.push(node.value?.state);
+			lowPieces.push(node.value!.state);
 		}
-		console.log(highPieces);
-		console.log(midPieces);
-		console.log(lowPieces);
+		return {
+			high: highPieces,
+			middle: midPieces,
+			low: lowPieces,
+		};
 	}
 }
 

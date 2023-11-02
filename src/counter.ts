@@ -20,7 +20,7 @@ export class GameCounter extends LitElement {
 			min-width: 50px;
 			width: 50px;
 			height: 50px;
-			--lumo-contrast-5pct: #ffffff;
+			--lumo-contrast-5pct: gray;
 		}
 		div {
 			font-size: medium;

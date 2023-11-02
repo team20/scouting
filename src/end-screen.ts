@@ -177,6 +177,9 @@ export class EndScreen extends LitElement {
 				console.log("success!");
 			}
 		);
+		let width = this.canvas.value!.width;
+		let height = this.canvas.value!.height;
+		// this.canvas.value!.getContext("2d")?.drawImage(createImageBitmap(new File))
 	}
 }
 

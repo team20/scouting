@@ -55,11 +55,11 @@ export class MatchInfo extends LitElement {
 	render() {
 		return html`<div>
 			<label
-				>Name:
+				>Name:&nbsp
 				<vaadin-text-field ${ref(this.name)} theme="small"></vaadin-text-field>
 			</label>
 			<label>
-				Match Type:
+				Match Type:&nbsp
 				<vaadin-select
 					${ref(this.matchType)}
 					theme="small"
@@ -67,7 +67,7 @@ export class MatchInfo extends LitElement {
 				></vaadin-select>
 			</label>
 			<label>
-				Match Number:
+				Match Number:&nbsp
 				<vaadin-integer-field
 					${ref(this.matchNum)}
 					theme="small"
@@ -78,7 +78,7 @@ export class MatchInfo extends LitElement {
 				<vaadin-checkbox ${ref(this.isReplay)}></vaadin-checkbox>
 			</label>
 			<label>
-				Alliance:
+				Alliance:&nbsp
 				<vaadin-select
 					${ref(this.alliance)}
 					theme="small"
@@ -86,7 +86,7 @@ export class MatchInfo extends LitElement {
 				></vaadin-select>
 			</label>
 			<label>
-				Starting Position:
+				Starting Position:&nbsp
 				<vaadin-select
 					${ref(this.startingPosition)}
 					theme="small"
@@ -94,14 +94,14 @@ export class MatchInfo extends LitElement {
 				></vaadin-select>
 			</label>
 			<label>
-				Team Number:
+				Team Number:&nbsp
 				<vaadin-integer-field
 					${ref(this.teamNum)}
 					theme="small"
 				></vaadin-integer-field>
 			</label>
 			<label>
-				Preload:
+				Preload:&nbsp
 				<vaadin-select
 					${ref(this.preload)}
 					theme="small"

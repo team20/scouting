@@ -32,7 +32,14 @@
 				<vaadin-tab id="teleop-tab">Teleop</vaadin-tab>
 				<vaadin-tab id="end-tab">End</vaadin-tab>
 			</vaadin-tabs>
-			<match-info tab="general-tab" id="matchInfo"></match-info>
+			<div
+				tab="general-tab"
+				style="display: flex; justify-content: space-between"
+			>
+				<match-info id="matchInfo"></match-info>
+				<img src="./favicon.png" />
+			</div>
+
 			<div tab="auto-tab">
 				<game-piece-grid id="autoScoringInfo"></game-piece-grid>
 				<auto-info id="autoInfo"></auto-info>

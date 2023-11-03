@@ -40,7 +40,7 @@ export class MatchInfo extends LitElement {
 	matchTypes = [
 		{ label: "Practice", value: "Practice" },
 		{ label: "Qualification", value: "Qualification" },
-		{ label: "Playoffs", value: "Playoffs" },
+		{ label: "Playoffs", value: "PLAYOFFS" },
 	];
 	alliances = [
 		{ label: "Blue", value: "Blue" },

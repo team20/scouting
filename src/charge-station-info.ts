@@ -23,15 +23,15 @@ export class ChargeStationInfo extends LitElement {
 
 	/** Whether or not the team attempted to engage the charge station.*/
 	attemptedOptions = [
-		{ label: "None", value: "None" },
-		{ label: "Engage", value: "Engage" },
+		{ label: "None", value: "NONE" },
+		{ label: "Engage", value: "ENGAGE" },
 	];
 	/** What the team's actual charge station status was.*/
 	actualOptions = [
-		{ label: "None", value: "None" },
-		{ label: "Parked", value: "Parked" },
-		{ label: "Docked", value: "Docked" },
-		{ label: "Engaged", value: "Engaged" },
+		{ label: "None", value: "NONE" },
+		{ label: "Parked", value: "PARKED" },
+		{ label: "Docked", value: "DOCKED" },
+		{ label: "Engaged", value: "ENGAGED" },
 	];
 	@property()
 	attemptedChargeStation = "None";
@@ -71,8 +71,8 @@ export class ChargeStationInfo extends LitElement {
 		return this.actual.value!.value;
 	}
 	reset() {
-		this.attempted.value!.value = "None";
-		this.actual.value!.value = "None";
+		this.attempted.value!.value = this.attemptedOptions[0].value;
+		this.actual.value!.value = this.actualOptions[0].value;
 		// @ts-ignore
 		this.attempted.value!.readonly = false;
 	}

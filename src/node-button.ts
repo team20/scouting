@@ -51,7 +51,7 @@ export class NodeButton extends LitElement {
 	pieceType: "Cube" | "Cone" | "Hybrid";
 
 	@property()
-	state: "Cube" | "Cone" | "None" = "None";
+	state: "CUBE" | "CONE" | "NONE" = "NONE";
 	render() {
 		return html`<vaadin-button
 			class=${this.calculateColor()}
@@ -62,27 +62,27 @@ export class NodeButton extends LitElement {
 
 	onClick() {
 		switch (this.pieceType) {
-			case "Cone":
-				if (this.state === "None") {
-					this.state = "Cone";
+			case "CONE":
+				if (this.state === "NONE") {
+					this.state = "CONE";
 				} else {
-					this.state = "None";
+					this.state = "NONE";
 				}
 				break;
-			case "Cube":
-				if (this.state === "None") {
-					this.state = "Cube";
+			case "CUBE":
+				if (this.state === "NONE") {
+					this.state = "CUBE";
 				} else {
-					this.state = "None";
+					this.state = "NONE";
 				}
 				break;
 			case "Hybrid":
-				if (this.state === "None") {
-					this.state = "Cone";
-				} else if (this.state === "Cone") {
-					this.state = "Cube";
+				if (this.state === "NONE") {
+					this.state = "CONE";
+				} else if (this.state === "CONE") {
+					this.state = "CUBE";
 				} else {
-					this.state = "None";
+					this.state = "NONE";
 				}
 				break;
 		}
@@ -93,22 +93,22 @@ export class NodeButton extends LitElement {
 	 * @returns The class name for the color
 	 */
 	calculateColor() {
-		if (this.pieceType === "Cone") {
-			if (this.state === "None") {
+		if (this.pieceType === "CONE") {
+			if (this.state === "NONE") {
 				return "coneEmpty";
 			} else {
 				return "coneScored";
 			}
-		} else if (this.pieceType === "Cube") {
-			if (this.state === "None") {
+		} else if (this.pieceType === "CUBE") {
+			if (this.state === "NONE") {
 				return "cubeEmpty";
 			} else {
 				return "cubeScored";
 			}
 		} else {
-			if (this.state === "None") {
+			if (this.state === "NONE") {
 				return "empty";
-			} else if (this.state === "Cone") {
+			} else if (this.state === "CONE") {
 				return "coneScored";
 			} else {
 				return "cubeScored";

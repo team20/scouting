@@ -53,7 +53,10 @@ export function combineData(): string {
 	for (let i = 0; i < teleopScoring.low.length; i++) {
 		teleopGridList += `${teleopScoring.low[i]}\t`;
 	}
-	return `${matchInfo.name}	${matchInfo.matchType}	${matchInfo.matchNum}	${matchInfo.isReplay}	${matchInfo.alliance}	${matchInfo.startingPosition}	${matchInfo.teamNum}	${matchInfo.preload}	${autoGridList}${autoInfo.conesDropped}	${autoInfo.cubesDropped}	${autoInfo.mobility}	${autoInfo.attemptedEndgame}	${autoInfo.actualEndgame}	${teleopGridList}${teleopInfo.conesDropped}	${teleopInfo.cubesDropped}	${teleopInfo.fouls}	${teleopInfo.techFouls}	${teleopInfo.attemptedEndgame}	${teleopInfo.actualEndgame}	${endInfo.defenseQualityFaced}	${endInfo.defenseQuantityFaced}	${endInfo.defenseQualityPlayed}	${endInfo.defenseQuantityPlayed}	${endInfo.breakdown}	${endInfo.chargeStationClimbTime}	${endInfo.chargeStationSide}	comments: ${endInfo.comments}	`;
+	return `${matchInfo.name}	${matchInfo.matchType}	${matchInfo.matchNum}	${matchInfo.isReplay}	${matchInfo.alliance}	${matchInfo.startingPosition}	${matchInfo.teamNum}	${matchInfo.preload}	${autoGridList}${autoInfo.conesDropped}	${autoInfo.cubesDropped}	${autoInfo.mobility}	${autoInfo.attemptedEndgame}	${autoInfo.actualEndgame}	${teleopGridList}${teleopInfo.conesDropped}	${teleopInfo.cubesDropped}	${teleopInfo.fouls}	${teleopInfo.techFouls}	${teleopInfo.attemptedEndgame}	${teleopInfo.actualEndgame}	${endInfo.defenseQualityFaced}	${endInfo.defenseQuantityFaced}	${endInfo.defenseQualityPlayed}	${endInfo.defenseQuantityPlayed}	${endInfo.breakdown}	${endInfo.chargeStationClimbTime}	${endInfo.chargeStationSide}	comments: ${endInfo.comments}\n`;
+}
+export function getMatchInfo() {
+	return matchScreen.getInfo();
 }
 export function resetSession(isSameScouter: boolean) {
 	matchScreen.reset(isSameScouter);

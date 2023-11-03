@@ -2,7 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { toCanvas } from "qrcode";
-import { combineData, resetSession } from "./data-store";
+import { combineData, getMatchInfo, resetSession } from "./data-store";
 /**
  * The final scouting screen.
  *
@@ -177,9 +177,16 @@ export class EndScreen extends LitElement {
 				console.log("success!");
 			}
 		);
-		// let width = this.canvas.value!.width;
-		// let height = this.canvas.value!.height;
-		// this.canvas.value!.getContext("2d")?.drawImage(createImageBitmap(new File))
+		let file = new Blob([data], { type: "text/plain" });
+		let link = document.createElement("a");
+		let matchInfo = getMatchInfo();
+		link.download = `${matchInfo.alliance}${matchInfo.startingPosition}${
+			matchInfo.matchType
+		}${matchInfo.isReplay ? "replay" : ""}ScoutingData${
+			matchInfo.matchNum
+		}.json`;
+		link.href = URL.createObjectURL(file);
+		link.click();
 	}
 }
 

@@ -62,14 +62,14 @@ export class NodeButton extends LitElement {
 
 	onClick() {
 		switch (this.pieceType) {
-			case "CONE":
+			case "Cone":
 				if (this.state === "NONE") {
 					this.state = "CONE";
 				} else {
 					this.state = "NONE";
 				}
 				break;
-			case "CUBE":
+			case "Cube":
 				if (this.state === "NONE") {
 					this.state = "CUBE";
 				} else {
@@ -93,13 +93,13 @@ export class NodeButton extends LitElement {
 	 * @returns The class name for the color
 	 */
 	calculateColor() {
-		if (this.pieceType === "CONE") {
+		if (this.pieceType === "Cone") {
 			if (this.state === "NONE") {
 				return "coneEmpty";
 			} else {
 				return "coneScored";
 			}
-		} else if (this.pieceType === "CUBE") {
+		} else if (this.pieceType === "Cube") {
 			if (this.state === "NONE") {
 				return "cubeEmpty";
 			} else {

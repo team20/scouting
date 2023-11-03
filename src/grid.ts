@@ -107,13 +107,13 @@ export class GamePieceGrid extends LitElement {
 	}
 	reset() {
 		for (const node of this.highNodes) {
-			node.value!.state = "None";
+			node.value!.state = "NONE";
 		}
 		for (const node of this.midNodes) {
-			node.value!.state = "None";
+			node.value!.state = "NONE";
 		}
 		for (const node of this.lowNodes) {
-			node.value!.state = "None";
+			node.value!.state = "NONE";
 		}
 	}
 }

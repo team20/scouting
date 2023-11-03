@@ -42,7 +42,7 @@ export class ChargeStationInfo extends LitElement {
 				${ref(this.attempted)}
 				label="Attempted"
 				.items="${this.attemptedOptions}"
-				.value="${this.attemptedChargeStation}"
+				.value="${this.attemptedOptions[0].value}"
 			></vaadin-select>
 			<vaadin-select
 				${ref(this.actual)}

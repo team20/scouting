@@ -1,5 +1,5 @@
 import { css, html, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 /**
  * A button that represents a node on the field.
  */
@@ -52,11 +52,14 @@ export class NodeButton extends LitElement {
 
 	@property()
 	state: "CUBE" | "CONE" | "NONE" = "NONE";
+
+	@state()
+	displayedState: "Cube" | "Cone" | "None" = "None";
 	render() {
 		return html`<vaadin-button
 			class=${this.calculateColor()}
 			@click=${this.onClick}
-			>${this.state}</vaadin-button
+			>${this.displayedState}</vaadin-button
 		>`;
 	}
 
@@ -65,24 +68,31 @@ export class NodeButton extends LitElement {
 			case "Cone":
 				if (this.state === "NONE") {
 					this.state = "CONE";
+					this.displayedState = "Cone";
 				} else {
 					this.state = "NONE";
+					this.displayedState = "None";
 				}
 				break;
 			case "Cube":
 				if (this.state === "NONE") {
 					this.state = "CUBE";
+					this.displayedState = "Cube";
 				} else {
 					this.state = "NONE";
+					this.displayedState = "None";
 				}
 				break;
 			case "Hybrid":
 				if (this.state === "NONE") {
 					this.state = "CONE";
+					this.displayedState = "Cone";
 				} else if (this.state === "CONE") {
 					this.state = "CUBE";
+					this.displayedState = "Cube";
 				} else {
 					this.state = "NONE";
+					this.displayedState = "None";
 				}
 				break;
 		}

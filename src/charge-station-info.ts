@@ -1,5 +1,5 @@
 import { css, html, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 @customElement("charge-station-info")
 export class ChargeStationInfo extends LitElement {
@@ -30,11 +30,9 @@ export class ChargeStationInfo extends LitElement {
 	actualOptions = [
 		{ label: "None", value: "NONE" },
 		{ label: "Parked", value: "PARKED" },
-		{ label: "Docked", value: "DOCKED" },
+		{ label: "Docked", value: "DOCK" },
 		{ label: "Engaged", value: "ENGAGED" },
 	];
-	@property()
-	attemptedChargeStation = "None";
 	attempted: Ref<HTMLInputElement> = createRef();
 	actual: Ref<HTMLInputElement> = createRef();
 	render() {
@@ -53,8 +51,9 @@ export class ChargeStationInfo extends LitElement {
 			></vaadin-select>`;
 	}
 	processActualChargeStationSelection() {
+		// If the actual charge station was engaged, force attempted to also be engaged
 		if (this.actual.value!.value === this.actualOptions[3].value) {
-			this.attemptedChargeStation = this.attemptedOptions[1].value;
+			this.attempted.value!.value = this.attemptedOptions[1].value;
 			// @ts-ignore
 			this.attempted.value!.readonly = true;
 		} else {

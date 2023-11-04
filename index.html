@@ -14,10 +14,19 @@
 		</script>
 		<script type="module" src="src/main.ts"></script>
 		<style>
-			html {
-				/* background-color: gray; */
-				/* --lumo-base-color: gray; */
-				--lumo-primary-text-color: black;
+			@media (prefers-color-scheme: dark) {
+				html {
+					--lumo-primary-text-color: white;
+					--lumo-secondary-text-color: green;
+					--lumo-body-text-color: white;
+					--lumo-base-color: black;
+					--lumo-contrast-10pct: var(--lumo-contrast-90pct);
+				}
+			}
+			@media (prefers-color-scheme: light) {
+				html {
+					--lumo-primary-text-color: black;
+				}
 			}
 			vaadin-tabsheet::part(tabs-container) {
 				background-color: #019d04;

@@ -24,7 +24,6 @@ export class GameCounter extends LitElement {
 		}
 		div {
 			font-size: medium;
-			color: #000000;
 			width: 120px;
 		}
 		.leftButton {

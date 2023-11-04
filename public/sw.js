@@ -1,5 +1,5 @@
 // Increment when you update the repo
-const cacheName = "Team20-Scouting-v6";
+const cacheName = "Team20-Scouting-v7";
 // URLs for all the assets
 const resourceFiles = [];
 self.addEventListener("install", (e) => {

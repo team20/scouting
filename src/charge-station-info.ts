@@ -29,9 +29,9 @@ export class ChargeStationInfo extends LitElement {
 	/** What the team's actual charge station status was.*/
 	actualOptions = [
 		{ label: "None", value: "NONE" },
-		{ label: "Parked", value: "PARKED" },
+		{ label: "Parked", value: "PARK" },
 		{ label: "Docked", value: "DOCK" },
-		{ label: "Engaged", value: "ENGAGED" },
+		{ label: "Engaged", value: "ENGAGE" },
 	];
 	attempted: Ref<HTMLInputElement> = createRef();
 	actual: Ref<HTMLInputElement> = createRef();

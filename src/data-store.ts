@@ -20,40 +20,40 @@ export function combineData(): string {
 	let autoGridList = "";
 	for (let i = 0; i < autoScoring.high.length; i++) {
 		if (autoScoring.high[i] === "None") {
-			autoGridList += `false\t`;
+			autoGridList += `false|`;
 		} else {
-			autoGridList += `true\t`;
+			autoGridList += `true|`;
 		}
 	}
 	for (let i = 0; i < autoScoring.middle.length; i++) {
 		if (autoScoring.middle[i] === "None") {
-			autoGridList += `false\t`;
+			autoGridList += `false|`;
 		} else {
-			autoGridList += `true\t`;
+			autoGridList += `true|`;
 		}
 	}
 	for (let i = 0; i < autoScoring.low.length; i++) {
-		autoGridList += `${autoScoring.low[i]}\t`;
+		autoGridList += `${autoScoring.low[i]}|`;
 	}
 	let teleopGridList = "";
 	for (let i = 0; i < teleopScoring.high.length; i++) {
 		if (teleopScoring.high[i] === "None") {
-			teleopGridList += `false\t`;
+			teleopGridList += `false|`;
 		} else {
-			teleopGridList += `true\t`;
+			teleopGridList += `true|`;
 		}
 	}
 	for (let i = 0; i < teleopScoring.middle.length; i++) {
 		if (teleopScoring.middle[i] === "None") {
-			teleopGridList += `false\t`;
+			teleopGridList += `false|`;
 		} else {
-			teleopGridList += `true\t`;
+			teleopGridList += `true|`;
 		}
 	}
 	for (let i = 0; i < teleopScoring.low.length; i++) {
-		teleopGridList += `${teleopScoring.low[i]}\t`;
+		teleopGridList += `${teleopScoring.low[i]}|`;
 	}
-	return `${matchInfo.name}	${matchInfo.matchType}	${matchInfo.matchNum}	${matchInfo.isReplay}	${matchInfo.alliance}	${matchInfo.startingPosition}	${matchInfo.teamNum}	${matchInfo.preload}	${autoGridList}${autoInfo.conesDropped}	${autoInfo.cubesDropped}	${autoInfo.mobility}	${autoInfo.attemptedEndgame}	${autoInfo.actualEndgame}	${teleopGridList}${teleopInfo.conesDropped}	${teleopInfo.cubesDropped}	${teleopInfo.fouls}	${teleopInfo.techFouls}	${teleopInfo.attemptedEndgame}	${teleopInfo.actualEndgame}	${endInfo.defenseQualityFaced}	${endInfo.defenseQuantityFaced}	${endInfo.defenseQualityPlayed}	${endInfo.defenseQuantityPlayed}	${endInfo.breakdown}	${endInfo.chargeStationClimbTime}	${endInfo.chargeStationSide}	${endInfo.comments}|`;
+	return `${matchInfo.name}|${matchInfo.matchType}|${matchInfo.matchNum}|${matchInfo.isReplay}|${matchInfo.alliance}|${matchInfo.startingPosition}|${matchInfo.teamNum}|${matchInfo.preload}|${autoGridList}${autoInfo.conesDropped}|${autoInfo.cubesDropped}|${autoInfo.mobility}|${autoInfo.attemptedEndgame}|${autoInfo.actualEndgame}|${teleopGridList}${teleopInfo.conesDropped}|${teleopInfo.cubesDropped}|${teleopInfo.fouls}${teleopInfo.techFouls}|${teleopInfo.attemptedEndgame}|${teleopInfo.actualEndgame}|${endInfo.defenseQualityFaced}|${endInfo.defenseQuantityFaced}|${endInfo.defenseQualityPlayed}|${endInfo.defenseQuantityPlayed}|${endInfo.breakdown}|${endInfo.chargeStationClimbTime}|${endInfo.chargeStationSide}|${endInfo.comments}|`;
 }
 export function getMatchInfo() {
 	return matchScreen.getInfo();

@@ -36,13 +36,13 @@ export class NodeButton extends LitElement {
 		}
 	`;
 
-	static pieceOptions = ["CUBE", "CONE", "NONE"];
+	static pieceOptions: ("CUBE" | "CONE" | "NONE")[] = ["CUBE", "CONE", "NONE"];
 	@property()
 	// @ts-ignore
 	pieceType: "Cube" | "Cone" | "Hybrid";
 
 	@property()
-	state: "CUBE" | "CONE" | "NONE" = "NONE";
+	state: "CUBE" | "CONE" | "NONE" = NodeButton.pieceOptions[0];
 
 	@state()
 	displayedState: "Cube" | "Cone" | "None" = "None";

@@ -9,11 +9,6 @@ import { createRef, ref, Ref } from "lit/directives/ref.js";
 @customElement("match-info")
 export class MatchInfo extends LitElement {
 	static styles = css`
-		:host {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-		}
 		label {
 			display: flex;
 			justify-content: right;

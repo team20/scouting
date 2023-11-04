@@ -14,16 +14,16 @@ export class EndScreen extends LitElement {
 	static styles = css`
 		:host {
 			display: grid;
-			grid-template-columns: 400px auto auto;
+			grid-template-columns: min-content auto auto;
 			grid-column-gap: 10px;
 			text-align: left;
 		}
 		.info {
 			display: flex;
+			width: 400px;
 			flex-direction: column;
 			text-align: left;
 			margin: 0;
-			width: 400px;
 		}
 		.diagramDiv {
 			display: flex;
@@ -46,7 +46,7 @@ export class EndScreen extends LitElement {
 			line-height: 2;
 		}
 		.diagram {
-			width: 500px;
+			width: 400px;
 			aspect-ratio: 1056 / 562;
 		}
 	`;

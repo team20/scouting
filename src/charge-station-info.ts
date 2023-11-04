@@ -6,8 +6,8 @@ export class ChargeStationInfo extends LitElement {
 	static styles = css`
 		:host {
 			display: block;
-			text-align: center;
 			width: min-content;
+			text-align: center;
 		}
 		vaadin-select {
 			padding-top: 0;

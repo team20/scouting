@@ -14,12 +14,11 @@ export class GameCounter extends LitElement {
 			text-align: center;
 		}
 		vaadin-button {
-			user-select: none;
-			cursor: pointer;
-			margin: 0;
 			min-width: 50px;
 			width: 50px;
 			height: 50px;
+			margin: 0;
+			cursor: pointer;
 			--lumo-contrast-5pct: gray;
 		}
 		div {

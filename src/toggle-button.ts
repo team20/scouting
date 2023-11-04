@@ -15,12 +15,11 @@ export class ToggleButton extends LitElement {
 		}
 		vaadin-button {
 			display: block;
-			user-select: none;
+			height: 100%;
+			margin: 0;
 			line-height: 100px;
 			color: #000000;
-			height: 100%;
 			cursor: pointer;
-			margin: 0;
 		}
 		.off {
 			--lumo-contrast-5pct: #ff0000;

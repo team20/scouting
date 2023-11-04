@@ -2,6 +2,7 @@ import { AutoInfo } from "./auto-info";
 import { EndScreen } from "./end-screen";
 import { GamePieceGrid } from "./grid";
 import { MatchInfo } from "./match-info";
+import { NodeButton } from "./node-button";
 import { TeleopInfo } from "./teleop-info";
 
 let matchScreen = document.getElementById("matchInfo")! as MatchInfo;
@@ -19,17 +20,17 @@ export function combineData(): string {
 	let endInfo = endScreen.getInfo();
 	let autoGridList = "";
 	for (let i = 0; i < autoScoring.high.length; i++) {
-		if (autoScoring.high[i] === "None") {
-			autoGridList += `false|`;
+		if (autoScoring.high[i] === NodeButton.pieceOptions[2]) {
+			autoGridList += "false|";
 		} else {
-			autoGridList += `true|`;
+			autoGridList += "true|";
 		}
 	}
 	for (let i = 0; i < autoScoring.middle.length; i++) {
-		if (autoScoring.middle[i] === "None") {
-			autoGridList += `false|`;
+		if (autoScoring.middle[i] === NodeButton.pieceOptions[2]) {
+			autoGridList += "false|";
 		} else {
-			autoGridList += `true|`;
+			autoGridList += "true|";
 		}
 	}
 	for (let i = 0; i < autoScoring.low.length; i++) {
@@ -37,23 +38,23 @@ export function combineData(): string {
 	}
 	let teleopGridList = "";
 	for (let i = 0; i < teleopScoring.high.length; i++) {
-		if (teleopScoring.high[i] === "None") {
-			teleopGridList += `false|`;
+		if (teleopScoring.high[i] === NodeButton.pieceOptions[2]) {
+			teleopGridList += "false|";
 		} else {
-			teleopGridList += `true|`;
+			teleopGridList += "true|";
 		}
 	}
 	for (let i = 0; i < teleopScoring.middle.length; i++) {
-		if (teleopScoring.middle[i] === "None") {
-			teleopGridList += `false|`;
+		if (teleopScoring.middle[i] === NodeButton.pieceOptions[2]) {
+			teleopGridList += "false|";
 		} else {
-			teleopGridList += `true|`;
+			teleopGridList += "true|";
 		}
 	}
 	for (let i = 0; i < teleopScoring.low.length; i++) {
 		teleopGridList += `${teleopScoring.low[i]}|`;
 	}
-	return `${matchInfo.name}|${matchInfo.matchType}|${matchInfo.matchNum}|${matchInfo.isReplay}|${matchInfo.alliance}|${matchInfo.startingPosition}|${matchInfo.teamNum}|${matchInfo.preload}|${autoGridList}${autoInfo.conesDropped}|${autoInfo.cubesDropped}|${autoInfo.mobility}|${autoInfo.attemptedEndgame}|${autoInfo.actualEndgame}|${teleopGridList}${teleopInfo.conesDropped}|${teleopInfo.cubesDropped}|${teleopInfo.fouls}${teleopInfo.techFouls}|${teleopInfo.attemptedEndgame}|${teleopInfo.actualEndgame}|${endInfo.defenseQualityFaced}|${endInfo.defenseQuantityFaced}|${endInfo.defenseQualityPlayed}|${endInfo.defenseQuantityPlayed}|${endInfo.breakdown}|${endInfo.chargeStationClimbTime}|${endInfo.chargeStationSide}|${endInfo.comments}|`;
+	return `${matchInfo.name}|${matchInfo.matchType}|${matchInfo.matchNum}|${matchInfo.isReplay}|${matchInfo.alliance}|${matchInfo.startingPosition}|${matchInfo.teamNum}|${matchInfo.preload}|${autoGridList}${autoInfo.conesDropped}|${autoInfo.cubesDropped}|${autoInfo.mobility}|${autoInfo.attemptedEndgame}|${autoInfo.actualEndgame}|${teleopGridList}${teleopInfo.conesDropped}|${teleopInfo.cubesDropped}|${teleopInfo.fouls}|${teleopInfo.techFouls}|${teleopInfo.attemptedEndgame}|${teleopInfo.actualEndgame}|${endInfo.defenseQualityFaced}|${endInfo.defenseQuantityFaced}|${endInfo.defenseQualityPlayed}|${endInfo.defenseQuantityPlayed}|${endInfo.breakdown}|${endInfo.chargeStationClimbTime}|${endInfo.chargeStationSide}|${endInfo.comments}|`;
 }
 export function getMatchInfo() {
 	return matchScreen.getInfo();

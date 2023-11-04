@@ -30,19 +30,20 @@ export class GamePieceGrid extends LitElement {
 		let highButtons = [];
 		for (let i = 0; i < 9; i++) {
 			this.highNodes[i] = createRef();
-			if (i % 2 == 0) {
+			if (i % 3 == 0) {
 				highButtons.push(html`<node-button
 					${ref(this.highNodes[i])}
 					pieceType="Cone"
-					row="1"
-					column="${i + 1}"
+				></node-button>`);
+			} else if (i % 3 == 1) {
+				highButtons.push(html`<node-button
+					${ref(this.highNodes[i])}
+					pieceType="Cube"
 				></node-button>`);
 			} else {
 				highButtons.push(html`<node-button
 					${ref(this.highNodes[i])}
-					pieceType="Cube"
-					row="1"
-					column="${i + 1}"
+					pieceType="Cone"
 				></node-button>`);
 			}
 		}
@@ -51,19 +52,20 @@ export class GamePieceGrid extends LitElement {
 		let midButtons = [];
 		for (let i = 0; i < 9; i++) {
 			this.midNodes[i] = createRef();
-			if (i % 2 == 0) {
+			if (i % 3 == 0) {
 				midButtons.push(html`<node-button
 					${ref(this.midNodes[i])}
 					pieceType="Cone"
-					row="1"
-					column="${i + 1}"
+				></node-button>`);
+			} else if (i % 3 == 1) {
+				midButtons.push(html`<node-button
+					${ref(this.midNodes[i])}
+					pieceType="Cube"
 				></node-button>`);
 			} else {
 				midButtons.push(html`<node-button
 					${ref(this.midNodes[i])}
-					pieceType="Cube"
-					row="1"
-					column="${i + 1}"
+					pieceType="Cone"
 				></node-button>`);
 			}
 		}
@@ -75,8 +77,6 @@ export class GamePieceGrid extends LitElement {
 			lowButtons.push(html`<node-button
 				${ref(this.lowNodes[i])}
 				pieceType="Hybrid"
-				row="3"
-				column="${i + 1}"
 			></node-button>`);
 		}
 		return html`

@@ -184,7 +184,7 @@ export class EndScreen extends LitElement {
 			matchInfo.matchType
 		}${matchInfo.isReplay ? "replay" : ""}ScoutingData${
 			matchInfo.matchNum
-		}.json`;
+		}.txt`;
 		link.href = URL.createObjectURL(file);
 		link.click();
 	}

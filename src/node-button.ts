@@ -38,14 +38,7 @@ export class NodeButton extends LitElement {
 		}
 	`;
 
-	@property()
-	// @ts-ignore
-	column: number;
-
-	@property()
-	// @ts-ignore
-	row: number;
-
+	static pieceOptions = ["CUBE", "CONE", "NONE"];
 	@property()
 	// @ts-ignore
 	pieceType: "Cube" | "Cone" | "Hybrid";

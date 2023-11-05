@@ -34,7 +34,7 @@ export class MatchInfo extends LitElement {
 	];
 	matchTypes = [
 		{ label: "Practice", value: "Practice" },
-		{ label: "Qualification", value: "Qualification" },
+		{ label: "Qualifications", value: "Qualification" },
 		{ label: "Playoffs", value: "PLAYOFFS" },
 	];
 	alliances = [

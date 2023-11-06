@@ -27,11 +27,6 @@ export class MatchInfo extends LitElement {
 	startingPosition: Ref<HTMLInputElement> = createRef();
 	teamNum: Ref<HTMLInputElement> = createRef();
 	preload: Ref<HTMLInputElement> = createRef();
-	preloadOptions = [
-		{ label: "None", value: "None" },
-		{ label: "Cube", value: "Cube" },
-		{ label: "Cone", value: "Cone" },
-	];
 	matchTypes = [
 		{ label: "Practice", value: "Practice" },
 		{ label: "Qualifications", value: "Qualification" },
@@ -45,6 +40,11 @@ export class MatchInfo extends LitElement {
 		{ label: "1", value: "1" },
 		{ label: "2", value: "2" },
 		{ label: "3", value: "3" },
+	];
+	preloadOptions = [
+		{ label: "None", value: "None" },
+		{ label: "Cube", value: "Cube" },
+		{ label: "Cone", value: "Cone" },
 	];
 
 	render() {

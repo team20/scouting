@@ -4,9 +4,9 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite --base /scouting",
+		"dev": "vite --base /scouting --port 5000",
 		"build": "tsc && vite build",
-		"preview": "vite preview --base /scouting"
+		"preview": "vite preview --base /scouting --port 5000"
 	},
 	"devDependencies": {
 		"@types/qrcode": "^1.5.2",
@@ -27,6 +27,7 @@
 		"@vaadin/text-area": "^24.2.1",
 		"@vaadin/text-field": "^24.2.1",
 		"@vaadin/tooltip": "^24.2.1",
+		"cypress": "^13.4.0",
 		"lit": "^2.7.6",
 		"qrcode": "^1.5.3"
 	}

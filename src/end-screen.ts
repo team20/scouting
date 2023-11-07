@@ -75,6 +75,7 @@ export class EndScreen extends LitElement {
 	chargeStationClimbTime: Ref<HTMLInputElement> = createRef();
 	chargeStationSide: Ref<HTMLInputElement> = createRef();
 	comments: Ref<HTMLInputElement> = createRef();
+	sessionRestart: Ref<HTMLButtonElement> = createRef();
 	continueScouting: Ref<HTMLInputElement> = createRef();
 	canvas: Ref<HTMLCanvasElement> = createRef();
 	render() {
@@ -127,7 +128,10 @@ export class EndScreen extends LitElement {
 				<vaadin-button @click=${this.renderQRCode}
 					>Display QR Code</vaadin-button
 				>
-				<vaadin-button @click=${this.restartSession}
+				<vaadin-button
+					${ref(this.sessionRestart)}
+					disabled
+					@click=${this.restartSession}
 					>Restart Session</vaadin-button
 				>
 				<label>
@@ -164,6 +168,7 @@ export class EndScreen extends LitElement {
 	}
 	restartSession() {
 		resetSession(this.continueScouting.value!.checked);
+		this.sessionRestart.value!.disabled = true;
 	}
 	renderQRCode() {
 		let data = combineData();
@@ -187,6 +192,7 @@ export class EndScreen extends LitElement {
 		}.txt`;
 		link.href = URL.createObjectURL(file);
 		link.click();
+		this.sessionRestart.value!.disabled = false;
 	}
 }
 

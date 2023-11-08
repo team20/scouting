@@ -104,6 +104,7 @@ export class MatchInfo extends LitElement {
 				></vaadin-select>
 			</label>
 			Revision ${__version__}
+			<theme-button> </theme-button>
 		</div>`;
 	}
 	getInfo() {

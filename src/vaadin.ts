@@ -3,6 +3,8 @@ import "@vaadin/checkbox";
 import "@vaadin/combo-box";
 import "@vaadin/form-layout";
 import "@vaadin/grid";
+import "@vaadin/icon";
+import "@vaadin/icons";
 import "@vaadin/integer-field";
 import "@vaadin/item";
 import "@vaadin/select";

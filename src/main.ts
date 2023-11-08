@@ -6,5 +6,6 @@ import "./grid";
 import "./match-info";
 import "./node-button";
 import "./teleop-info";
+import "./theme-button";
 import "./toggle-button";
 import "./vaadin";

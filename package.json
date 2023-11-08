@@ -19,6 +19,8 @@
 		"@vaadin/combo-box": "^24.2.1",
 		"@vaadin/form-layout": "^24.2.1",
 		"@vaadin/grid": "^24.2.1",
+		"@vaadin/icon": "^24.2.2",
+		"@vaadin/icons": "^24.2.2",
 		"@vaadin/integer-field": "^24.2.1",
 		"@vaadin/item": "^24.2.1",
 		"@vaadin/select": "^24.2.1",
@@ -28,7 +30,7 @@
 		"@vaadin/text-field": "^24.2.1",
 		"@vaadin/tooltip": "^24.2.1",
 		"cypress": "^13.4.0",
-		"lit": "^2.7.6",
+		"lit": "^2.8.0",
 		"qrcode": "^1.5.3"
 	}
 }

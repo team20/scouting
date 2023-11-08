@@ -14,8 +14,13 @@
 		</script>
 		<script type="module" src="src/main.ts"></script>
 		<style>
+			html {
+				transition-property: background-color;
+				transition-duration: 0.15s;
+			}
 			@media (prefers-color-scheme: dark) {
 				html {
+					--text-color: white;
 					--lumo-primary-text-color: white;
 					--lumo-secondary-text-color: white;
 					--lumo-body-text-color: white;
@@ -29,6 +34,17 @@
 				html {
 					--lumo-primary-text-color: black;
 				}
+			}
+			.dark {
+				background-color: #11191f;
+				--text-color: white;
+				--lumo-primary-text-color: white;
+				--lumo-secondary-text-color: white;
+				--lumo-body-text-color: white;
+				--lumo-base-color: black;
+				--lumo-contrast-5pct: var(--lumo-contrast);
+				--lumo-contrast-10pct: var(--lumo-contrast-90pct);
+				/* --lumo-contrast-20pct: var(--lumo-contrast-80pct); */
 			}
 			vaadin-tabsheet::part(tabs-container) {
 				background-color: #019d04;

@@ -103,6 +103,7 @@ export class MatchInfo extends LitElement {
 					.items="${this.preloadOptions}"
 				></vaadin-select>
 			</label>
+			${__version__}
 		</div>`;
 	}
 	getInfo() {

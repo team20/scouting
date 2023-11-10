@@ -21,6 +21,9 @@ export class ThemeButton extends LitElement {
 			color: #000000;
 			cursor: pointer;
 		}
+		vaadin-icon {
+			color: var(--text-color);
+		}
 	`;
 
 	@property()
@@ -39,17 +42,6 @@ export class ThemeButton extends LitElement {
 		} else {
 			document.querySelector("html")!.className = "light";
 		}
-	}
-
-	/**
-	 *
-	 * @returns The class name for the color
-	 */
-	calculateColor() {
-		if (this.toggled) {
-			return "on";
-		}
-		return "off";
 	}
 }
 

@@ -25,9 +25,10 @@
 					--lumo-secondary-text-color: white;
 					--lumo-body-text-color: white;
 					--lumo-base-color: black;
-					--lumo-contrast-5pct: var(--lumo-contrast);
-					--lumo-contrast-10pct: var(--lumo-contrast-90pct);
-					--lumo-contrast-20pct: var(--lumo-contrast-80pct);
+					--lumo-contrast-5pct: hsla(214, 60%, 80%, 0.14);
+					--lumo-contrast-10pct: hsla(214, 60%, 80%, 0.14);
+					--lumo-contrast-20pct: hsla(214, 64%, 82%, 0.23); /* Checkbox */
+					--lumo-contrast-30pct: hsla(214, 69%, 84%, 0.32); /* Button */
 				}
 			}
 			@media (prefers-color-scheme: light) {
@@ -42,9 +43,21 @@
 				--lumo-secondary-text-color: white;
 				--lumo-body-text-color: white;
 				--lumo-base-color: black;
-				--lumo-contrast-5pct: var(--lumo-contrast);
-				--lumo-contrast-10pct: var(--lumo-contrast-90pct);
-				/* --lumo-contrast-20pct: var(--lumo-contrast-80pct); */
+				--lumo-contrast-5pct: hsla(214, 60%, 80%, 0.14);
+				--lumo-contrast-10pct: hsla(214, 60%, 80%, 0.14);
+				--lumo-contrast-20pct: hsla(214, 64%, 82%, 0.23); /* Checkbox */
+				--lumo-contrast-30pct: hsla(214, 69%, 84%, 0.32); /* Button */
+			}
+			.light {
+				background-color: #ffffff;
+				--text-color: black;
+				--lumo-primary-text-color: var(--lumo-primary-text-color);
+				--lumo-secondary-text-color: hsla(214, 42%, 18%, 0.69);
+				--lumo-body-text-color: hsla(214, 40%, 16%, 0.94);
+				--lumo-base-color: white;
+				--lumo-contrast-5pct: hsla(214, 61%, 25%, 0.05);
+				--lumo-contrast-10pct: hsla(214, 57%, 24%, 0.1);
+				--lumo-contrast-20pct: hsla(214, 53%, 23%, 0.16);
 			}
 			vaadin-tabsheet::part(tabs-container) {
 				background-color: #019d04;

@@ -56,6 +56,10 @@ export class AutoInfo extends LitElement {
 				style="justify-self: end; grid-row: 1 / span 2; grid-column: 3"
 			></charge-station-info>`;
 	}
+	/**
+	 * Combines all the data into JSON.
+	 * @returns An object containing this element's data
+	 */
 	getInfo() {
 		return {
 			cubesDropped: this.cubesDropped.value!.count,
@@ -65,6 +69,11 @@ export class AutoInfo extends LitElement {
 			actualEndgame: this.chargeStation.value!.getActualChargeStation(),
 		};
 	}
+	/**
+	 * Prepares this element for a new scouting session.
+	 *
+	 * Resets all values to their defaults.
+	 */
 	reset() {
 		this.conesDropped.value!.count = 0;
 		this.cubesDropped.value!.count = 0;

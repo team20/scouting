@@ -85,7 +85,10 @@ export class GamePieceGrid extends LitElement {
 			<div class="row">${lowButtons}</div>
 		`;
 	}
-
+	/**
+	 * Combines all the data into JSON.
+	 * @returns An object containing this element's data
+	 */
 	getScoringInfo() {
 		let highPieces = [];
 		let midPieces = [];
@@ -105,6 +108,11 @@ export class GamePieceGrid extends LitElement {
 			low: lowPieces,
 		};
 	}
+	/**
+	 * Prepares this element for a new scouting session.
+	 *
+	 * Resets all values to their defaults.
+	 */
 	reset() {
 		for (const node of this.highNodes) {
 			node.value!.state = "NONE";

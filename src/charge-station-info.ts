@@ -69,6 +69,11 @@ export class ChargeStationInfo extends LitElement {
 	getActualChargeStation() {
 		return this.actual.value!.value;
 	}
+	/**
+	 * Prepares this element for a new scouting session.
+	 *
+	 * Resets all values to their defaults.
+	 */
 	reset() {
 		this.attempted.value!.value = this.attemptedOptions[0].value;
 		this.actual.value!.value = this.actualOptions[0].value;

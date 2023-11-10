@@ -107,6 +107,10 @@ export class MatchInfo extends LitElement {
 			<theme-button> </theme-button>
 		</div>`;
 	}
+	/**
+	 * Combines all the data into JSON.
+	 * @returns An object containing this element's data
+	 */
 	getInfo() {
 		return {
 			name: this.name.value!.value,
@@ -119,16 +123,24 @@ export class MatchInfo extends LitElement {
 			preload: this.preload.value!.value,
 		};
 	}
+	/**
+	 * Prepares this element for a new scouting session.
+	 * @param isSameScouter Whether or not the same scouter will be scouting the next session
+	 */
 	reset(isSameScouter: boolean) {
+		// If it's the same scouter, keep their name
 		if (isSameScouter) {
 		} else {
+			// Otherwise, reset the name field
 			this.name.value!.value = "";
 		}
+		// Increment the match number
 		if (this.matchNum.value!.value) {
 			this.matchNum.value!.value = (
 				Number.parseInt(this.matchNum.value!.value) + 1
 			).toString();
 		}
+		// Reset everything else
 		this.isReplay.value!.checked = false;
 		this.teamNum.value!.value = "";
 		this.preload.value!.value = "";

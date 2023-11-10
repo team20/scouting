@@ -48,7 +48,7 @@ export class ToggleButton extends LitElement {
 	}
 
 	/**
-	 *
+	 * Calculates the class name for the button color when the button is clicked.
 	 * @returns The class name for the color
 	 */
 	calculateColor() {

@@ -55,6 +55,7 @@ export class NodeButton extends LitElement {
 	}
 
 	onClick() {
+		// Cycle through the different states when the button is clicked
 		switch (this.pieceType) {
 			case "Cone":
 				if (this.state === "NONE") {
@@ -90,7 +91,7 @@ export class NodeButton extends LitElement {
 	}
 
 	/**
-	 *
+	 * Calculates the class name for the button color when the button is clicked.
 	 * @returns The class name for the color
 	 */
 	calculateColor() {

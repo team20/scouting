@@ -143,7 +143,10 @@ export class EndScreen extends LitElement {
 			</div>
 			<canvas ${ref(this.canvas)} style="grid-column: 3	"></canvas>`;
 	}
-
+	/**
+	 * Combines all the data into JSON.
+	 * @returns An object containing this element's data
+	 */
 	getInfo() {
 		return {
 			defenseQualityPlayed: this.defenseQualityPlayed.value!.value,
@@ -156,6 +159,11 @@ export class EndScreen extends LitElement {
 			comments: this.comments.value!.value,
 		};
 	}
+	/**
+	 * Prepares this element for a new scouting session.
+	 *
+	 * Resets all values to their defaults.
+	 */
 	reset() {
 		this.defenseQualityPlayed.value!.value = "";
 		this.defenseQuantityPlayed.value!.value = "";

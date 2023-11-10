@@ -1,16 +1,10 @@
 import "@vaadin/button";
 import "@vaadin/checkbox";
-import "@vaadin/combo-box";
-import "@vaadin/form-layout";
-import "@vaadin/grid";
 import "@vaadin/icon";
-import "@vaadin/icons";
+import("@vaadin/icons");
 import "@vaadin/integer-field";
-import "@vaadin/item";
 import "@vaadin/select";
 import "@vaadin/tabs";
-import "@vaadin/tabs/theme/lumo/vaadin-tabs.js";
 import "@vaadin/tabsheet";
-import "@vaadin/text-area";
 import "@vaadin/text-field";
 import "@vaadin/tooltip";

@@ -78,6 +78,7 @@ export class EndScreen extends LitElement {
 	sessionRestart: Ref<HTMLButtonElement> = createRef();
 	continueScouting: Ref<HTMLInputElement> = createRef();
 	canvas: Ref<HTMLCanvasElement> = createRef();
+
 	render() {
 		return html` <div class="info" style="grid-column: 1">
 				<vaadin-select

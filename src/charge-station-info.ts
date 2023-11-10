@@ -35,6 +35,7 @@ export class ChargeStationInfo extends LitElement {
 	];
 	attempted: Ref<HTMLInputElement> = createRef();
 	actual: Ref<HTMLInputElement> = createRef();
+
 	render() {
 		return html` <vaadin-select
 				${ref(this.attempted)}

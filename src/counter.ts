@@ -48,6 +48,7 @@ export class GameCounter extends LitElement {
 	countType: string;
 	@property()
 	count: number = 0;
+
 	render() {
 		return html`<vaadin-button class="leftButton" @click=${this.decrement}
 				>-</vaadin-button

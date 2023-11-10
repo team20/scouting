@@ -25,6 +25,7 @@ export class GamePieceGrid extends LitElement {
 	highNodes: Ref<NodeButton>[] = [];
 	midNodes: Ref<NodeButton>[] = [];
 	lowNodes: Ref<NodeButton>[] = [];
+
 	render() {
 		// Generate the HTML for the top row
 		let highButtons = [];

@@ -46,6 +46,7 @@ export class NodeButton extends LitElement {
 
 	@state()
 	displayedState: "Cube" | "Cone" | "None" = "None";
+
 	render() {
 		return html`<vaadin-button
 			class=${this.calculateColor()}

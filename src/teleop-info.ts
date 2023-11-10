@@ -24,6 +24,7 @@ export class TeleopInfo extends LitElement {
 	fouls: Ref<GameCounter> = createRef();
 	techFouls: Ref<GameCounter> = createRef();
 	chargeStation: Ref<ChargeStationInfo> = createRef();
+
 	render() {
 		return html` <game-counter
 				${ref(this.conesDropped)}

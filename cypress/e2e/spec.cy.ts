@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Scouting data validation", () => {
-	it("passes", () => {
+	it("Match info creates correct output", () => {
 		cy.visit("/scouting");
 		// Match Info tab
 		cy.get("#matchInfo")
@@ -181,5 +181,13 @@ describe("Scouting data validation", () => {
 				.readFile("cypress/downloads/Red2QualificationScoutingData1.txt")
 				.should("eq", referenceData)
 		);
+		// cy.get("#teleopInfo")
+		// 	.shadow()
+		// 	.find("game-counter:nth-child(1)")
+		// 	.shadow()
+		// 	.find("vaadin-button.rightButton")
+		// 	.then((element) => {
+		// 		cy.wrap(element.css("backgroundColor")).eq("rgb()");
+		// 	});
 	});
 });

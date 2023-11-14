@@ -37,7 +37,7 @@ export class DataScreen extends LitElement {
 	displayQRCodes() {
 		getData().then((matches) => {
 			this.div.value!.innerHTML = "";
-			for (const match of matches) {
+			for (const match of matches.reverse()) {
 				let canvas = document.createElement("canvas");
 				this.div.value!.appendChild(canvas);
 				toCanvas(canvas, match, { errorCorrectionLevel: "low" });
@@ -68,6 +68,7 @@ export class DataScreen extends LitElement {
 	clearData() {
 		this.closeDialog();
 		removeData();
+		this.displayQRCodes();
 	}
 }
 

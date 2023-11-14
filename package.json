@@ -17,6 +17,7 @@
 	"dependencies": {
 		"@vaadin/button": "^24.2.1",
 		"@vaadin/checkbox": "^24.2.1",
+		"@vaadin/confirm-dialog": "^24.2.3",
 		"@vaadin/icon": "^24.2.2",
 		"@vaadin/icons": "^24.2.2",
 		"@vaadin/integer-field": "^24.2.1",

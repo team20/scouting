@@ -190,4 +190,73 @@ describe("Scouting data validation", () => {
 		// 		cy.wrap(element.css("backgroundColor")).eq("rgb()");
 		// 	});
 	});
+	it("Scouting data downloads correctly", () => {
+		cy.visit("/scouting");
+		// Match Info tab
+		cy.get("#matchInfo")
+			.shadow()
+			.find("div > label:nth-child(1) > vaadin-text-field")
+			.type("Scouter Name");
+		cy.get("#matchInfo")
+			.shadow()
+			.find("div > label:nth-child(2) > vaadin-select")
+			.click();
+		cy.get(
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
+		).click();
+		cy.root().click(); // Required before typing into another input field to fix weird focus bug
+		cy.get("#matchInfo")
+			.shadow()
+			.find("div > label:nth-child(3) > vaadin-integer-field")
+			.type("1");
+		cy.get("#matchInfo")
+			.shadow()
+			.find("div > label:nth-child(5) > vaadin-select")
+			.click();
+		cy.get(
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
+		).click();
+		cy.get("#matchInfo")
+			.shadow()
+			.find("div > label:nth-child(6) > vaadin-select")
+			.click();
+		cy.get(
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
+		).click();
+		cy.root().click(); // Required before typing into another input field to fix weird focus bug
+		cy.get("#matchInfo")
+			.shadow()
+			.find("div > label:nth-child(7) > vaadin-integer-field")
+			.type("20");
+		cy.get("#matchInfo")
+			.shadow()
+			.find("div > label:nth-child(8) > vaadin-select")
+			.click();
+		cy.get(
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
+		).click();
+
+		cy.get("#end-tab").click();
+		cy.get("#endInfo")
+			.shadow()
+			.find("div.diagramDiv > vaadin-button:nth-child(4)")
+			.click();
+		// Prepare another scouting session
+		cy.get("#endInfo")
+			.shadow()
+			.find("div.diagramDiv > vaadin-button:nth-child(5)")
+			.click();
+		// Record another scouting session
+		cy.get("#endInfo")
+			.shadow()
+			.find("div.diagramDiv > vaadin-button:nth-child(4)")
+			.click();
+		cy.get("#data-tab").click();
+		cy.get("#dataScreen").shadow().find("vaadin-button:nth-child(2)").click();
+		cy.fixture("completeScoutingData.txt").then((referenceData) =>
+			cy
+				.readFile("cypress/downloads/scoutingData.txt")
+				.should("eq", referenceData)
+		);
+	});
 });

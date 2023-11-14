@@ -5,6 +5,22 @@ import { MatchInfo } from "./match-info";
 import { NodeButton } from "./node-button";
 import { TeleopInfo } from "./teleop-info";
 
+// Open database
+let dbRequest = window.indexedDB.open("db");
+let db: IDBDatabase;
+dbRequest.addEventListener("success", () => {
+	db = dbRequest.result;
+});
+dbRequest.addEventListener("error", () => {
+	alert(
+		"DATABASE COULD NOT BE OPENED! PLEASE CONTACT A SCOUTER BEFORE PROCEEDING"
+	);
+});
+dbRequest.addEventListener("upgradeneeded", (e) => {
+	// @ts-ignore
+	db = e.target.result;
+	db.createObjectStore("scoutingData");
+});
 let matchScreen = document.getElementById("matchInfo")! as MatchInfo;
 let autoGrid = document.getElementById("autoScoringInfo")! as GamePieceGrid;
 let autoInfoBar = document.getElementById("autoInfo")! as AutoInfo;
@@ -66,4 +82,43 @@ export function resetSession(isSameScouter: boolean) {
 	teleopGrid.reset();
 	teleopInfoBar.reset();
 	endScreen.reset();
+}
+/**
+ * Stores data in IndexedDB.
+ * @param data The data to store
+ * @param key The key to store the data under
+ */
+export function storeData(data: string, key: string) {
+	db
+		.transaction("scoutingData", "readwrite")
+		.objectStore("scoutingData")
+		.put(data, key).onerror = () => {
+		alert("Data could not be saved to database. Notify a scouter");
+	};
+}
+/**
+ * Removes all data in IndexedDB.
+ */
+export function removeData() {
+	db.transaction("scoutingData", "readwrite")
+		.objectStore("scoutingData")
+		.clear();
+}
+/**
+ * Gets all the data stored in IndexedDB.
+ * @returns A promise returning an array of string data
+ */
+export function getData(): Promise<string[]> {
+	return new Promise((resolve, reject) => {
+		const readRequest = db
+			.transaction("scoutingData", "readonly")
+			.objectStore("scoutingData")
+			.getAll();
+		readRequest.addEventListener("success", () => {
+			resolve(readRequest.result);
+		});
+		readRequest.addEventListener("success", () => {
+			reject(readRequest.result);
+		});
+	});
 }

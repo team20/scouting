@@ -2,7 +2,12 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { toCanvas } from "qrcode";
-import { combineData, getMatchInfo, resetSession } from "./data-store";
+import {
+	combineData,
+	getMatchInfo,
+	resetSession,
+	storeData,
+} from "./data-store";
 /**
  * The final scouting screen.
  *
@@ -191,14 +196,14 @@ export class EndScreen extends LitElement {
 				console.log("success!");
 			}
 		);
+		let matchInfo = getMatchInfo();
+		let key = `${matchInfo.alliance}${matchInfo.startingPosition}${
+			matchInfo.matchType
+		}${matchInfo.isReplay ? "replay" : ""}ScoutingData${matchInfo.matchNum}`;
+		storeData(data, key);
 		let file = new Blob([data], { type: "text/plain" });
 		let link = document.createElement("a");
-		let matchInfo = getMatchInfo();
-		link.download = `${matchInfo.alliance}${matchInfo.startingPosition}${
-			matchInfo.matchType
-		}${matchInfo.isReplay ? "replay" : ""}ScoutingData${
-			matchInfo.matchNum
-		}.txt`;
+		link.download = `${key}.txt`;
 		link.href = URL.createObjectURL(file);
 		link.click();
 		this.sessionRestart.value!.disabled = false;

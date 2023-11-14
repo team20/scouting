@@ -1,6 +1,7 @@
 import "./auto-info";
 import "./charge-station-info";
 import "./counter";
+import "./data-screen";
 import "./end-screen";
 import "./grid";
 import "./match-info";

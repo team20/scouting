@@ -16,6 +16,7 @@ export class ThemeButton extends LitElement {
 		vaadin-button {
 			display: block;
 			height: 100%;
+			min-width: 1px;
 			margin: 0;
 			line-height: 100px;
 			color: #000000;

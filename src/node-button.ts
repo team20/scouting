@@ -14,8 +14,9 @@ export class NodeButton extends LitElement {
 		vaadin-button {
 			display: block;
 			color: #000000;
-			height: 85px;
-			width: 85px;
+			height: 90px;
+			width: 90px;
+			min-width: 90px;
 			cursor: pointer;
 			margin: 0;
 		}

@@ -9,14 +9,22 @@ import { createRef, ref, Ref } from "lit/directives/ref.js";
 @customElement("match-info")
 export class MatchInfo extends LitElement {
 	static styles = css`
+		:host {
+			display: flex;
+			justify-content: space-between;
+		}
 		label {
 			display: flex;
 			justify-content: right;
+			align-items: center;
 			color: var(--lumo-secondary-text-color);
 			font-family: var(--lumo-font-family);
-			font-size: var(--lumo-font-size-m);
+			font-size: var(--lumo-font-size-s);
 			font-weight: 500;
-			line-height: 2;
+		}
+		theme-button {
+			width: 80px;
+			height: 80px;
 		}
 	`;
 	name: Ref<HTMLInputElement> = createRef();
@@ -49,63 +57,67 @@ export class MatchInfo extends LitElement {
 
 	render() {
 		return html`<div>
-			<label
-				>Name:&nbsp
-				<vaadin-text-field ${ref(this.name)} theme="small"></vaadin-text-field>
-			</label>
-			<label>
-				Match Type:&nbsp
-				<vaadin-select
-					${ref(this.matchType)}
-					theme="small"
-					.items="${this.matchTypes}"
-				></vaadin-select>
-			</label>
-			<label>
-				Match Number:&nbsp
-				<vaadin-integer-field
-					${ref(this.matchNum)}
-					theme="small"
-				></vaadin-integer-field>
-			</label>
-			<label>
-				Replay?
-				<vaadin-checkbox ${ref(this.isReplay)}></vaadin-checkbox>
-			</label>
-			<label>
-				Alliance:&nbsp
-				<vaadin-select
-					${ref(this.alliance)}
-					theme="small"
-					.items="${this.alliances}"
-				></vaadin-select>
-			</label>
-			<label>
-				Starting Position:&nbsp
-				<vaadin-select
-					${ref(this.startingPosition)}
-					theme="small"
-					.items="${this.startingPositions}"
-				></vaadin-select>
-			</label>
-			<label>
-				Team Number:&nbsp
-				<vaadin-integer-field
-					${ref(this.teamNum)}
-					theme="small"
-				></vaadin-integer-field>
-			</label>
-			<label>
-				Preload:&nbsp
-				<vaadin-select
-					${ref(this.preload)}
-					theme="small"
-					.items="${this.preloadOptions}"
-				></vaadin-select>
-			</label>
-			<label>Revision ${__version__}</label>
-			<theme-button> </theme-button>
-		</div>`;
+				<label
+					>Name:&nbsp
+					<vaadin-text-field
+						${ref(this.name)}
+						theme="small"
+					></vaadin-text-field>
+				</label>
+				<label>
+					Match Type:&nbsp
+					<vaadin-select
+						${ref(this.matchType)}
+						theme="small"
+						.items="${this.matchTypes}"
+					></vaadin-select>
+				</label>
+				<label>
+					Match Number:&nbsp
+					<vaadin-integer-field
+						${ref(this.matchNum)}
+						theme="small"
+					></vaadin-integer-field>
+				</label>
+				<label>
+					Replay?
+					<vaadin-checkbox ${ref(this.isReplay)}></vaadin-checkbox>
+				</label>
+				<label>
+					Alliance:&nbsp
+					<vaadin-select
+						${ref(this.alliance)}
+						theme="small"
+						.items="${this.alliances}"
+					></vaadin-select>
+				</label>
+				<label>
+					Starting Position:&nbsp
+					<vaadin-select
+						${ref(this.startingPosition)}
+						theme="small"
+						.items="${this.startingPositions}"
+					></vaadin-select>
+				</label>
+				<label>
+					Team Number:&nbsp
+					<vaadin-integer-field
+						${ref(this.teamNum)}
+						theme="small"
+					></vaadin-integer-field>
+				</label>
+				<label>
+					Preload:&nbsp
+					<vaadin-select
+						${ref(this.preload)}
+						theme="small"
+						.items="${this.preloadOptions}"
+					></vaadin-select>
+				</label>
+				<label>Revision ${__version__}</label>
+				<theme-button></theme-button>
+			</div>
+			<img src="./favicon.png" /> `;
 	}
 	/**
 	 * Combines all the data into JSON.

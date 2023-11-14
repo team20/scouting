@@ -7,7 +7,6 @@
 		<link rel="manifest" href="manifest.json" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Team 20 Scouting</title>
-		<link rel="stylesheet" href="css/pico.min.css" />
 		<script>
 			if ("serviceWorker" in navigator) {
 				navigator.serviceWorker.register("./sw.js");
@@ -18,9 +17,18 @@
 			html {
 				transition-property: background-color;
 				transition-duration: 0.15s;
+				--lumo-font-size-s: 20px; /* Controls size of labels and input text */
+				--lumo-font-size-m: 20px; /* Controls size of select text and button text */
+				--lumo-size-s: 40px; /* Controls size of input field */
+				--lumo-size-m: 50px; /* Controls size of checkbox */
+				--lumo-size-l: 55px; /* Controls size of tabs */
+			}
+			body {
+				margin: 0;
 			}
 			@media (prefers-color-scheme: dark) {
 				html {
+					background-color: #11191f;
 					--text-color: white;
 					--lumo-primary-text-color: white;
 					--lumo-secondary-text-color: white;
@@ -63,6 +71,9 @@
 			vaadin-tabsheet::part(tabs-container) {
 				background-color: #019d04;
 			}
+			vaadin-tabsheet {
+				height: 100vh;
+			}
 		</style>
 	</head>
 	<body>
@@ -74,12 +85,8 @@
 				<vaadin-tab id="end-tab">End</vaadin-tab>
 				<vaadin-tab id="data-tab">Data</vaadin-tab>
 			</vaadin-tabs>
-			<div
-				tab="general-tab"
-				style="display: flex; justify-content: space-between"
-			>
+			<div tab="general-tab" id="generalTab">
 				<match-info id="matchInfo"></match-info>
-				<img src="./favicon.png" />
 			</div>
 			<div tab="auto-tab">
 				<game-piece-grid

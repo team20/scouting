@@ -1,13 +1,19 @@
-import { html, LitElement } from "lit";
+import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { createRef, Ref, ref } from "lit/directives/ref.js";
-import { toCanvas } from "qrcode";
 import { getData, removeData } from "./data-store";
+import { QRCode } from "./qr-code";
 /**
  * A button that switches between red and Team 20 green.
  */
 @customElement("data-screen")
 export class DataScreen extends LitElement {
+	static styles = css`
+		.qrcode {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	`;
 	div: Ref<HTMLDivElement> = createRef();
 	@state()
 	isDialogOpen = false;
@@ -29,7 +35,7 @@ export class DataScreen extends LitElement {
 				>You are about to wipe device's scouting data. Are you sure you want to
 				clear scouting data?</vaadin-confirm-dialog
 			>
-			<div ${ref(this.div)}></div>`;
+			<div ${ref(this.div)} class="qrcode"></div>`;
 	}
 	/**
 	 * Takes all the match data in the database and renders them into QR Codes.
@@ -38,9 +44,9 @@ export class DataScreen extends LitElement {
 		getData().then((matches) => {
 			this.div.value!.innerHTML = "";
 			for (const match of matches.reverse()) {
-				let canvas = document.createElement("canvas");
-				this.div.value!.appendChild(canvas);
-				toCanvas(canvas, match, { errorCorrectionLevel: "low" });
+				let qrCode = document.createElement("qr-code") as QRCode;
+				this.div.value!.appendChild(qrCode);
+				qrCode.renderQRCode(match);
 			}
 		});
 	}

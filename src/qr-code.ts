@@ -12,6 +12,10 @@ export class QRCode extends LitElement {
 			flex-direction: column;
 			align-items: center;
 			width: min-content;
+			color: var(--lumo-secondary-text-color);
+			font-family: var(--lumo-font-family);
+			font-size: var(--lumo-font-size-s);
+			font-weight: 500;
 		}
 	`;
 	canvas: HTMLCanvasElement = document.createElement("canvas");

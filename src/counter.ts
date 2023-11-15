@@ -22,7 +22,7 @@ export class GameCounter extends LitElement {
 			--lumo-contrast-5pct: gray;
 		}
 		div {
-			color: var(--text-color);
+			color: var(--lumo-primary-text-color);
 			font-size: medium;
 			width: 120px;
 		}

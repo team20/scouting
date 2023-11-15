@@ -23,7 +23,7 @@ export class ThemeButton extends LitElement {
 			cursor: pointer;
 		}
 		vaadin-icon {
-			color: var(--text-color);
+			color: var(--lumo-primary-text-color);
 		}
 	`;
 

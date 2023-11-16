@@ -15,6 +15,7 @@ export class DataScreen extends LitElement {
 		}
 	`;
 	div: Ref<HTMLDivElement> = createRef();
+	passwordField: Ref<HTMLInputElement> = createRef();
 	@state()
 	isDialogOpen = false;
 	render() {
@@ -25,7 +26,6 @@ export class DataScreen extends LitElement {
 				>Clear Data</vaadin-button
 			><vaadin-confirm-dialog
 				header="Wipe Scouting Data"
-				cancel-button-visible
 				reject-button-visible
 				reject-text="No"
 				?opened=${this.isDialogOpen}
@@ -33,8 +33,13 @@ export class DataScreen extends LitElement {
 				@confirm=${this.clearData}
 				@reject=${this.closeDialog}
 				>You are about to wipe device's scouting data. Are you sure you want to
-				clear scouting data?</vaadin-confirm-dialog
-			>
+				clear scouting data?
+				<vaadin-text-field
+					${ref(this.passwordField)}
+					theme="small"
+					autocomplete="off"
+				></vaadin-text-field
+			></vaadin-confirm-dialog>
 			<div ${ref(this.div)} class="qrcode"></div>`;
 	}
 	/**
@@ -73,7 +78,10 @@ export class DataScreen extends LitElement {
 	 */
 	clearData() {
 		this.closeDialog();
-		removeData();
+		if (this.passwordField.value!.value == "frc20") {
+			removeData();
+		}
+		this.passwordField.value!.value = "";
 		this.displayQRCodes();
 	}
 }

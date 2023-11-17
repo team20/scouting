@@ -11,7 +11,7 @@
 			"purpose": "any"
 		}
 	],
-	"scope": "/",
+	"scope": "/scouting",
 	"display": "standalone",
 	"theme_color": "#019D04",
 	"background_color": "#019D04"

@@ -5,5 +5,14 @@ export default {
     define: {
         __version__: JSON.stringify(execSync("git rev-parse --short HEAD").toString())
     },
-    base: "./"
+    base: "./",
+    build: {
+        rollupOptions: {
+            output: {
+                assetFileNames: "assets/[name][extname]",
+                chunkFileNames: "assets/[name].js",
+                entryFileNames: "assets/[name].js"
+            }
+        }
+    }
 }

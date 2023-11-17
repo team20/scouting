@@ -1,14 +1,11 @@
 // Increment when you update the repo
 const cacheName = "Team20-Scouting-v11";
-// URLs for all the assets
-const resourceFiles = ["/scouting", "./assets/index.js", "./assets/vaadin-iconset.js", "./assets/elements.js", "./favicon.png", "./manifest.json"];
 self.addEventListener("install", (e) => {
 	console.log("[Service Worker] Install");
 	e.waitUntil(
 		(async () => {
 			// Retrieve our cache object
 			const cache = await caches.open(cacheName);
-			cache.addAll(resourceFiles)
 			console.log("[ServiceWorker] Caching assets");
 		})()
 	);

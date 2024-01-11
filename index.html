@@ -1,106 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<base href="/scouting/" />
-		<meta charset="UTF-8" />
-		<link rel="icon" href="favicon.png" />
-		<link rel="manifest" href="manifest.json" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Team 20 Scouting</title>
-		<script>
-			if ("serviceWorker" in navigator) {
-				navigator.serviceWorker.register("./sw.js");
-			}
-		</script>
-		<script type="module" src="src/main.ts"></script>
-		<style>
+
+<head>
+	<base href="/scouting/" />
+	<meta charset="UTF-8" />
+	<link rel="icon" href="favicon.svg" />
+	<link rel="manifest" href="manifest.json" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Team 20 Scouting</title>
+	<script>
+		if ("serviceWorker" in navigator) {
+			navigator.serviceWorker.register("./sw.js");
+		}
+	</script>
+	<script type="module" src="src/main.ts"></script>
+	<style>
+		html {
+			transition-property: background-color;
+			transition-duration: 0.15s;
+			--lumo-font-size-s: 20px;
+			/* Controls size of labels and input text */
+			--lumo-font-size-m: 20px;
+			/* Controls size of select text and button text */
+			--lumo-size-s: 40px;
+			/* Controls size of input field */
+			--lumo-size-m: 50px;
+			/* Controls size of checkbox */
+			--lumo-size-l: 55px;
+			/* Controls size of tabs */
+		}
+
+		body {
+			margin: 0;
+		}
+
+		@media (prefers-color-scheme: dark) {
 			html {
-				transition-property: background-color;
-				transition-duration: 0.15s;
-				--lumo-font-size-s: 20px; /* Controls size of labels and input text */
-				--lumo-font-size-m: 20px; /* Controls size of select text and button text */
-				--lumo-size-s: 40px; /* Controls size of input field */
-				--lumo-size-m: 50px; /* Controls size of checkbox */
-				--lumo-size-l: 55px; /* Controls size of tabs */
-			}
-			body {
-				margin: 0;
-			}
-			@media (prefers-color-scheme: dark) {
-				html {
-					background-color: #11191f;
-					--lumo-primary-text-color: white;
-					--lumo-secondary-text-color: white;
-					--lumo-body-text-color: white;
-					--lumo-base-color: #11191f;
-					--lumo-contrast-5pct: hsla(214, 60%, 80%, 0.14); /* Button */
-					--lumo-contrast-10pct: hsla(214, 60%, 80%, 0.14); /* Input field */
-					--lumo-contrast-20pct: hsla(214, 64%, 82%, 0.23); /* Checkbox */
-					--lumo-contrast-30pct: hsla(214, 69%, 84%, 0.32); /* Disabled text */
-				}
-			}
-			@media (prefers-color-scheme: light) {
-				html {
-					--lumo-primary-text-color: black;
-				}
-			}
-			.dark {
 				background-color: #11191f;
 				--lumo-primary-text-color: white;
 				--lumo-secondary-text-color: white;
 				--lumo-body-text-color: white;
 				--lumo-base-color: #11191f;
-				--lumo-contrast-5pct: hsla(214, 60%, 80%, 0.14); /* Button */
-				--lumo-contrast-10pct: hsla(214, 60%, 80%, 0.14); /* Input field */
-				--lumo-contrast-20pct: hsla(214, 64%, 82%, 0.23); /* Checkbox */
-				--lumo-contrast-30pct: hsla(214, 69%, 84%, 0.32); /* Disabled text */
+				--lumo-contrast-5pct: hsla(214, 60%, 80%, 0.14);
+				/* Button */
+				--lumo-contrast-10pct: hsla(214, 60%, 80%, 0.14);
+				/* Input field */
+				--lumo-contrast-20pct: hsla(214, 64%, 82%, 0.23);
+				/* Checkbox */
+				--lumo-contrast-30pct: hsla(214, 69%, 84%, 0.32);
+				/* Disabled text */
 			}
-			.light {
-				background-color: #ffffff;
-				--lumo-primary-text-color: var(--lumo-primary-text-color);
-				--lumo-secondary-text-color: hsla(214, 42%, 18%, 0.69);
-				--lumo-body-text-color: hsla(214, 40%, 16%, 0.94);
-				--lumo-contrast-5pct: hsla(214, 61%, 25%, 0.05); /* Button */
-				--lumo-contrast-10pct: hsla(214, 57%, 24%, 0.1); /* Input field */
-				--lumo-contrast-20pct: hsla(214, 53%, 23%, 0.16); /* Checkbox */
-				--lumo-contrast-30pct: hsla(214, 50%, 22%, 0.26); /* Disabled text */
+		}
+
+		@media (prefers-color-scheme: light) {
+			html {
+				--lumo-primary-text-color: black;
 			}
-			vaadin-tabsheet::part(tabs-container) {
-				background-color: #019d04;
-			}
-			vaadin-tabsheet {
-				height: 100vh;
-			}
-		</style>
-	</head>
-	<body>
-		<vaadin-tabsheet theme="equal-width-tabs">
-			<vaadin-tabs slot="tabs">
-				<vaadin-tab id="general-tab">General</vaadin-tab>
-				<vaadin-tab id="auto-tab">Auto</vaadin-tab>
-				<vaadin-tab id="teleop-tab">Teleop</vaadin-tab>
-				<vaadin-tab id="end-tab">End</vaadin-tab>
-				<vaadin-tab id="data-tab">Data</vaadin-tab>
-			</vaadin-tabs>
-			<div tab="general-tab" id="generalTab">
-				<match-info id="matchInfo"></match-info>
-			</div>
-			<div tab="auto-tab">
-				<game-piece-grid
-					id="autoScoringInfo"
-					draggable="false"
-				></game-piece-grid>
-				<auto-info id="autoInfo"></auto-info>
-			</div>
-			<div tab="teleop-tab">
-				<game-piece-grid
-					id="teleopScoringInfo"
-					draggable="false"
-				></game-piece-grid>
-				<teleop-info id="teleopInfo"></teleop-info>
-			</div>
-			<div tab="end-tab"><end-screen id="endInfo"></end-screen></div>
-			<div tab="data-tab"><data-screen id="dataScreen"></data-screen></div>
-		</vaadin-tabsheet>
-	</body>
+		}
+
+		.dark {
+			background-color: #11191f;
+			--lumo-primary-text-color: white;
+			--lumo-secondary-text-color: white;
+			--lumo-body-text-color: white;
+			--lumo-base-color: #11191f;
+			--lumo-contrast-5pct: hsla(214, 60%, 80%, 0.14);
+			/* Button */
+			--lumo-contrast-10pct: hsla(214, 60%, 80%, 0.14);
+			/* Input field */
+			--lumo-contrast-20pct: hsla(214, 64%, 82%, 0.23);
+			/* Checkbox */
+			--lumo-contrast-30pct: hsla(214, 69%, 84%, 0.32);
+			/* Disabled text */
+		}
+
+		.light {
+			background-color: #ffffff;
+			--lumo-primary-text-color: var(--lumo-primary-text-color);
+			--lumo-secondary-text-color: hsla(214, 42%, 18%, 0.69);
+			--lumo-body-text-color: hsla(214, 40%, 16%, 0.94);
+			--lumo-contrast-5pct: hsla(214, 61%, 25%, 0.05);
+			/* Button */
+			--lumo-contrast-10pct: hsla(214, 57%, 24%, 0.1);
+			/* Input field */
+			--lumo-contrast-20pct: hsla(214, 53%, 23%, 0.16);
+			/* Checkbox */
+			--lumo-contrast-30pct: hsla(214, 50%, 22%, 0.26);
+			/* Disabled text */
+		}
+
+		vaadin-tabsheet::part(tabs-container) {
+			background-color: #019d04;
+		}
+
+		vaadin-tabsheet {
+			height: 100vh;
+		}
+	</style>
+</head>
+
+<body>
+	<vaadin-tabsheet theme="equal-width-tabs">
+		<vaadin-tabs slot="tabs">
+			<vaadin-tab id="general-tab">General</vaadin-tab>
+			<vaadin-tab id="auto-tab">Auto</vaadin-tab>
+			<vaadin-tab id="teleop-tab">Teleop</vaadin-tab>
+			<vaadin-tab id="end-tab">End</vaadin-tab>
+			<vaadin-tab id="data-tab">Data</vaadin-tab>
+		</vaadin-tabs>
+		<div tab="general-tab" id="generalTab">
+			<match-info id="matchInfo"></match-info>
+		</div>
+		<div tab="auto-tab">
+			<game-piece-grid id="autoScoringInfo" draggable="false"></game-piece-grid>
+			<auto-info id="autoInfo"></auto-info>
+		</div>
+		<div tab="teleop-tab">
+			<game-piece-grid id="teleopScoringInfo" draggable="false"></game-piece-grid>
+			<teleop-info id="teleopInfo"></teleop-info>
+		</div>
+		<div tab="end-tab"><end-screen id="endInfo"></end-screen></div>
+		<div tab="data-tab"><data-screen id="dataScreen"></data-screen></div>
+	</vaadin-tabsheet>
+</body>
+
 </html>

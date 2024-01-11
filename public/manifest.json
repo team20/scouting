@@ -5,7 +5,7 @@
 	"start_url": "/scouting",
 	"icons": [
 		{
-			"src": "./favicon.png",
+			"src": "./favicon.svg",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any"

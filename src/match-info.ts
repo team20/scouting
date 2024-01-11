@@ -35,6 +35,7 @@ export class MatchInfo extends LitElement {
 	startingPosition: Ref<HTMLInputElement> = createRef();
 	teamNum: Ref<HTMLInputElement> = createRef();
 	preload: Ref<HTMLInputElement> = createRef();
+	img: Ref<HTMLImageElement> = createRef();
 	matchTypes = [
 		{ label: "Practice", value: "Practice" },
 		{ label: "Qualifications", value: "Qualification" },
@@ -115,9 +116,9 @@ export class MatchInfo extends LitElement {
 					></vaadin-select>
 				</label>
 				<label>Revision ${__version__}</label>
-				<theme-button></theme-button>
+				<theme-button @click=${this.onClick}></theme-button>
 			</div>
-			<img src="./favicon.png" /> `;
+			<img ${ref(this.img)} src="./favicon.svg" /> `;
 	}
 	/**
 	 * Combines all the data into JSON.
@@ -156,6 +157,14 @@ export class MatchInfo extends LitElement {
 		this.isReplay.value!.checked = false;
 		this.teamNum.value!.value = "";
 		this.preload.value!.value = "";
+	}
+	onClick() {
+		if (document.querySelector("html")?.className == "dark") {
+			this.img.value!.src = "./dark_logo.svg";
+		} else {
+			this.img.value!.src = "./favicon.svg";
+		}
+		this.img.value!.decode();
 	}
 }
 

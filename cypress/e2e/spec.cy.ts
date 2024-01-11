@@ -252,7 +252,7 @@ describe("Scouting data validation", () => {
 			.find("div.diagramDiv > vaadin-button:nth-child(4)")
 			.click();
 		cy.get("#data-tab").click();
-		cy.get("#dataScreen").shadow().find("vaadin-button:nth-child(2)").click();
+		cy.get("#dataScreen").shadow().find("vaadin-button:nth-child(3)").click();
 		cy.fixture("completeScoutingData.txt").then((referenceData) =>
 			cy
 				.readFile("cypress/downloads/scoutingData.txt")

@@ -11,9 +11,9 @@
 	"devDependencies": {
 		"@types/qrcode": "^1.5.2",
 		"cypress": "^13.5.1",
-		"cypress-ct-lit": "^0.3.3",
+		"cypress-ct-lit": "^0.4.0",
 		"typescript": "^5.0.2",
-		"vite": "^4.4.5"
+		"vite": "^5.0.0"
 	},
 	"dependencies": {
 		"@vaadin/button": "^24.2.1",

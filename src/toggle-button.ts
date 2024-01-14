@@ -19,8 +19,12 @@ export class ToggleButton extends LitElement {
 			margin: 0;
 			line-height: 100px;
 			color: #000000;
+			/* color: var(--lumo-primary-text-color); */
 			cursor: pointer;
 		}
+
+
+
 		.off {
 			--lumo-contrast-5pct: #ff0000;
 		}
@@ -30,7 +34,7 @@ export class ToggleButton extends LitElement {
 	`;
 	@property()
 	label!: string;
-
+	statusLabel: string = "No";
 	@property()
 	toggled: boolean = false;
 
@@ -38,12 +42,13 @@ export class ToggleButton extends LitElement {
 		return html`<vaadin-button
 			class=${this.calculateColor()}
 			@click=${this.onClick}
-			>${this.label}</vaadin-button
+			><h1 style="margin-bottom: 0;">${this.label}</h1><br><h3>${this.statusLabel}</h3></vaadin-button
 		>`;
 	}
 
 	onClick() {
 		this.toggled = !this.toggled;
+		this.statusLabel! = this.calculateLabel();
 	}
 
 	/**
@@ -55,6 +60,13 @@ export class ToggleButton extends LitElement {
 			return "on";
 		}
 		return "off";
+	}
+
+	calculateLabel() {
+		if (this.toggled) {
+			return "Yes";
+		}
+		return "No";
 	}
 }
 

@@ -1,9 +1,9 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
-import { ChargeStationInfo } from "./charge-station-info";
-import { GameCounter } from "./counter";
-import { ToggleButton } from "./toggle-button";
+import { GameCounter } from "./counter.ts";
+import { ToggleButton } from "./toggle-button.ts";
+
 /**
  * Contains additional info about the auto period.
  *
@@ -12,41 +12,62 @@ import { ToggleButton } from "./toggle-button";
 @customElement("auto-info")
 export class AutoInfo extends LitElement {
 	static styles = css`
-		:host {
-			display: grid;
-			grid-template-columns: auto auto min-content;
+
+		#button-container {
+			display: flex;
+			align-items: center;
+  			justify-content: center;
 			text-align: center;
-			align-items: end;
+			padding-top:50px;
 		}
+
+		#mobility {
+			height: 200px;
+			padding-bottom: 25px;
+			margin: 0;
+		}
+
+
 	`;
-	conesDropped: Ref<GameCounter> = createRef();
-	cubesDropped: Ref<GameCounter> = createRef();
-	mobility: Ref<ToggleButton> = createRef();
-	chargeStation: Ref<ChargeStationInfo> = createRef();
+	speakerCounter: Ref<GameCounter> = createRef();
+	ampCounter: Ref<GameCounter> = createRef();
+	notesDroppedCounter: Ref<GameCounter> = createRef();
+	toggleLeft: Ref<ToggleButton> = createRef();
+
 
 	render() {
-		return html` <game-counter
-				${ref(this.conesDropped)}
+		return html`
+		<div id="button-container">
+		<div style="padding-right: 30px;">
+		<game-counter
+				${ref(this.speakerCounter)}
 				class="counter"
-				countType="Cones Dropped"
-				style="grid-row: 1; grid-column: 1 / span 2"
+				countLabel="Speaker Notes"
 			></game-counter>
-			<game-counter
-				${ref(this.cubesDropped)}
+
+		<game-counter
+				${ref(this.ampCounter)}
 				class="counter"
-				countType="Cubes Dropped"
-				style="grid-row: 2; grid-column: 1 / span 2"
+				countLabel="AMP Notes"
 			></game-counter>
-			<toggle-button
-				${ref(this.mobility)}
-				label="Mobility?"
-				style="grid-row: 1 / span 2; grid-column: 2"
-			>
-			</toggle-button>
-			<charge-station-info
-				${ref(this.chargeStation)}
-				style="justify-self: end; grid-row: 1 / span 2; grid-column: 3"
-			></charge-station-info>`;
+		</div>
+
+
+				<div>
+					<game-counter
+				${ref(this.notesDroppedCounter)}
+				class="counter"
+				countLabel="Dropped Notes"
+			></game-counter>
+
+			<div id="mobility">
+				<toggle-button ${ref(this.toggleLeft)} style="width: 600px;" label="Left"></toggle-button>
+				</div>
+
+		</div>
+		</div>
+		`;
+
 	}
 	/**
 	 * Combines all the data into JSON.
@@ -54,11 +75,10 @@ export class AutoInfo extends LitElement {
 	 */
 	getInfo() {
 		return {
-			cubesDropped: this.cubesDropped.value!.count,
-			conesDropped: this.conesDropped.value!.count,
-			mobility: this.mobility.value!.toggled,
-			attemptedEndgame: this.chargeStation.value!.getAttemptedChargeStation(),
-			actualEndgame: this.chargeStation.value!.getActualChargeStation(),
+			speakerNum: this.speakerCounter.value!.count,
+			ampNum: this.ampCounter.value!.count,
+			notesDroppedCounter: this.notesDroppedCounter.value!.count,
+			toggleLeft: this.toggleLeft.value!.toggled,
 		};
 	}
 	/**
@@ -67,10 +87,10 @@ export class AutoInfo extends LitElement {
 	 * Resets all values to their defaults.
 	 */
 	reset() {
-		this.conesDropped.value!.count = 0;
-		this.cubesDropped.value!.count = 0;
-		this.mobility.value!.toggled = false;
-		this.chargeStation.value!.reset();
+		this.speakerCounter.value!.count = 0;
+		this.ampCounter.value!.count = 0;
+		this.notesDroppedCounter.value!.count = 0;
+		this.toggleLeft.value!.toggled = false;
 	}
 }
 

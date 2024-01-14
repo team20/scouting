@@ -54,6 +54,15 @@ export class EndScreen extends LitElement {
 			width: 400px;
 			aspect-ratio: 1056 / 562;
 		}
+
+		#left {
+			width: 60%;
+		}
+
+		#right {
+			width: 40%;
+	background-color: red;
+		}
 	`;
 
 	defenseQualityOptions = [
@@ -85,69 +94,15 @@ export class EndScreen extends LitElement {
 	canvas: Ref<HTMLCanvasElement> = createRef();
 
 	render() {
-		return html` <div class="info" style="grid-column: 1">
-				<vaadin-select
-					${ref(this.defenseQualityPlayed)}
-					theme="small"
-					label="Quality of Defense Played"
-					.items="${this.defenseQualityOptions}"
-				></vaadin-select>
-				<vaadin-select
-					${ref(this.defenseQuantityPlayed)}
-					theme="small"
-					label="Quantity of Defense Played"
-					.items="${this.defenseQuantityOptions}"
-				></vaadin-select>
-				<vaadin-select
-					${ref(this.defenseQualityFaced)}
-					theme="small"
-					label="Quality of Defense Faced"
-					.items="${this.defenseQualityOptions}"
-				></vaadin-select>
-				<vaadin-select
-					${ref(this.defenseQuantityFaced)}
-					theme="small"
-					label="Quantity of Defense Faced"
-					.items="${this.defenseQuantityOptions}"
-				></vaadin-select>
-				<label>
-					Breakdown?<vaadin-checkbox ${ref(this.breakdown)}></vaadin-checkbox
-				></label>
-				<vaadin-text-field
-					${ref(this.comments)}
-					label="Comments?"
-				></vaadin-text-field>
-			</div>
-			<div class="diagramDiv" style="grid-column: 2">
-				<vaadin-integer-field
-					${ref(this.chargeStationClimbTime)}
-					theme="small"
-					label="Charge Station climb time"
-				></vaadin-integer-field>
-				<vaadin-select
-					${ref(this.chargeStationSide)}
-					theme="small"
-					label="Charge Station Side"
-					.items="${this.chargeStationSides}"
-				></vaadin-select>
-				<img src="./field_diagram.png" class="diagram" />
-				<vaadin-button @click=${this.renderQRCode}
-					>Display QR Code</vaadin-button
-				>
-				<vaadin-button
-					${ref(this.sessionRestart)}
-					disabled
-					@click=${this.restartSession}
-					>Restart Session</vaadin-button
-				>
-				<label>
-					Continue Scouting?<vaadin-checkbox
-						${ref(this.continueScouting)}
-						checked
-					></vaadin-checkbox
-				></label>
-			</div>
-			<canvas ${ref(this.canvas)} style="grid-column: 3	"></canvas>`;
+		return html`
+		<div id="left">
+		left
+		</div>
+
+		<div id="right">
+		right
+		</div>
+		`;
 	}
 	/**
 	 * Combines all the data into JSON.

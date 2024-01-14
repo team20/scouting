@@ -28,7 +28,7 @@ export class ThemeButton extends LitElement {
 	`;
 
 	@property()
-	toggled: boolean = false;
+	toggled: boolean = true;
 
 	render() {
 		return html`<vaadin-button @click=${this.onClick}>

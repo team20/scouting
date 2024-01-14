@@ -12,6 +12,7 @@ export class MatchInfo extends LitElement {
 		:host {
 			display: flex;
 			justify-content: space-between;
+			margin: 0px;
 		}
 		label {
 			display: flex;
@@ -22,9 +23,28 @@ export class MatchInfo extends LitElement {
 			font-size: var(--lumo-font-size-s);
 			font-weight: 500;
 		}
+
 		theme-button {
 			width: 80px;
 			height: 80px;
+		}
+
+		#icon {
+			width: 310px;
+			height: 310px;
+		}
+
+		#icon-container {
+			text-align: center;
+		}
+
+		#starting-diagram {
+			height:36em;
+			float: center;
+		}
+
+		#container {
+			display: flex;
 		}
 	`;
 	name: Ref<HTMLInputElement> = createRef();
@@ -34,8 +54,9 @@ export class MatchInfo extends LitElement {
 	alliance: Ref<HTMLInputElement> = createRef();
 	startingPosition: Ref<HTMLInputElement> = createRef();
 	teamNum: Ref<HTMLInputElement> = createRef();
-	preload: Ref<HTMLInputElement> = createRef();
 	img: Ref<HTMLImageElement> = createRef();
+	diagram: Ref<HTMLImageElement> = createRef();
+
 	matchTypes = [
 		{ label: "Practice", value: "Practice" },
 		{ label: "Qualifications", value: "Qualification" },
@@ -50,14 +71,10 @@ export class MatchInfo extends LitElement {
 		{ label: "2", value: "2" },
 		{ label: "3", value: "3" },
 	];
-	preloadOptions = [
-		{ label: "None", value: "None" },
-		{ label: "Cube", value: "Cube" },
-		{ label: "Cone", value: "Cone" },
-	];
 
 	render() {
-		return html`<div>
+		return html`
+		<div style="padding-left: 20px;">
 				<label
 					>Name:&nbsp
 					<vaadin-text-field
@@ -107,19 +124,28 @@ export class MatchInfo extends LitElement {
 						theme="small"
 					></vaadin-integer-field>
 				</label>
-				<label>
-					Preload:&nbsp
-					<vaadin-select
-						${ref(this.preload)}
-						theme="small"
-						.items="${this.preloadOptions}"
-					></vaadin-select>
-				</label>
-				<label>Revision ${__version__}</label>
-				<theme-button @click=${this.onClick}></theme-button>
+
+
+
+				<div id="icon-container">
+					<img ${ref(this.img)} id="icon" src="./dark_logo.svg" />
+				</div>
+
+				<div style="display: flex;">
+					<theme-button @click=${this.onClick}></theme-button>
+					<label style="padding-left:10em; padding-top: 2em;">Revision ${__version__}</label>
+				</div>
+
+
 			</div>
-			<img ${ref(this.img)} src="./favicon.svg" /> `;
+			<div>
+			<img id="starting-diagram" src="./red_diagram.png" />
+			<img id="starting-diagram" src="./blue_diagram.png" />
+														</div>
+		`
+
 	}
+
 	/**
 	 * Combines all the data into JSON.
 	 * @returns An object containing this element's data
@@ -133,7 +159,6 @@ export class MatchInfo extends LitElement {
 			alliance: this.alliance.value!.value,
 			startingPosition: this.startingPosition.value!.value,
 			teamNum: this.teamNum.value!.value,
-			preload: this.preload.value!.value,
 		};
 	}
 	/**
@@ -156,7 +181,6 @@ export class MatchInfo extends LitElement {
 		// Reset everything else
 		this.isReplay.value!.checked = false;
 		this.teamNum.value!.value = "";
-		this.preload.value!.value = "";
 	}
 	onClick() {
 		if (document.querySelector("html")?.className == "dark") {

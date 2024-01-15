@@ -25,6 +25,7 @@
 		"@vaadin/select": "^24.2.1",
 		"@vaadin/tabs": "^24.2.1",
 		"@vaadin/tabsheet": "^24.2.1",
+		"@vaadin/text-area": "^24.3.3",
 		"@vaadin/text-field": "^24.2.1",
 		"lit": "^2.8.0",
 		"qrcode": "^1.5.3"

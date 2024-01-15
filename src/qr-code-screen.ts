@@ -34,10 +34,10 @@ export class QrCodeScreen extends LitElement {
 					<vaadin-button style="width: 500px;" @click=${this.renderQRCode}
 					>Display QR Code</vaadin-button
 					><br />
-					<h1 ${ref(this.matchLabel)}>XXXX_XXXX</h1>
+					<h1 ${ref(this.matchLabel)} style="margin-bottom:5px;margin-top:10px;">XXXX_XXXX</h1>
 					<canvas
 						${ref(this.canvas)}
-						style="grid-column: 3; background-color: var(--lumo-secondary-text-color); width: 500px; height: 500px;"
+						style="grid-column: 3; background-color: var(--lumo-secondary-text-color); width: 500px; height: 500px;margin-bottom:10px;"
 					></canvas><br>
 					<vaadin-button
 						${ref(this.sessionRestart)}

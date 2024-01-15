@@ -10,6 +10,7 @@ import { QRCode } from "./qr-code";
 export class DataScreen extends LitElement {
 	static styles = css`
 		.qrcode {
+			gap:10px;
 			display: flex;
 			flex-wrap: wrap;
 		}
@@ -21,8 +22,8 @@ export class DataScreen extends LitElement {
 	render() {
 		return html` <vaadin-button @click=${this.displayQRCodes}
 				>Display QR Codes</vaadin-button
-			><vaadin-button @click=${this.exportData}>Download Data</vaadin-button
-			><vaadin-button @click=${this.displayDialog} theme="primary error"
+			> <vaadin-button @click=${this.exportData}>Download Data</vaadin-button
+			> <vaadin-button @click=${this.displayDialog} theme="primary error"
 				>Clear Data</vaadin-button
 			><vaadin-confirm-dialog
 				header="Wipe Scouting Data"
@@ -47,6 +48,7 @@ export class DataScreen extends LitElement {
 	 */
 	displayQRCodes() {
 		getData().then((matches) => {
+			console.log(matches);
 			this.div.value!.innerHTML = "";
 			for (const match of matches.reverse()) {
 				let qrCode = document.createElement("qr-code") as QRCode;

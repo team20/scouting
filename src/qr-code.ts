@@ -29,6 +29,6 @@ export class QRCode extends LitElement {
 
 	renderQRCode(data: string) {
 		toCanvas(this.canvas, data, { errorCorrectionLevel: "low" });
-		this.label = "Match " + data.split("|")[2];
+		this.label = "Match " + data.split(";")[2];
 	}
 }

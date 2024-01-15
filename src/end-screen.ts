@@ -88,10 +88,6 @@ export class EndScreen extends LitElement {
 	breakdown: Ref<BreakdownButton> = createRef();
 	comments: Ref<HTMLInputElement> = createRef();
 
-	//TODO Will be back
-	//sessionRestart: Ref<HTMLButtonElement> = createRef();
-	//continueScouting: Ref<HTMLInputElement> = createRef();
-
 	render() {
 		return html`
 			<div id="container">
@@ -122,7 +118,7 @@ export class EndScreen extends LitElement {
 						<vaadin-select
 							${ref(this.climbResult)}
 							theme="small"
-							label="Climb Result"
+							label="Climb Success"
 							.items="${this.yesNoOptions}"
 						></vaadin-select>
 
@@ -166,7 +162,14 @@ export class EndScreen extends LitElement {
 	 */
 	getInfo() {
 		return {
-			//TODO return data
+			trapAttempted: this.trapAttempted.value!.value === "Yes" ? 1 : 0,
+			trapResult: this.trapResult.value!.value,
+			climbAttempted: this.climbAttempted.value!.value === "Yes" ? 1 : 0,
+			climbResult: this.climbResult.value!.value === "Yes" ? 1 : 0,
+			harmony: this.harmony.value!.value,
+			park: this.park.value!.value === "Yes" ? 1 : 0,
+			breakdown: this.breakdown.value!.toggled ? 1 : 0,
+			comments: this.comments.value!.value
 		};
 	}
 
@@ -176,7 +179,15 @@ export class EndScreen extends LitElement {
 	 * Resets all values to their defaults.
 	 */
 	reset() {
-		//TODO reset data
+		this.trapAttempted.value!.value = "";
+		this.trapResult.value!.value = "";
+		this.climbAttempted.value!.value = "";
+		this.climbResult.value!.value = "";
+		this.harmony.value!.value = "";
+		this.park.value!.value = "";
+		this.breakdown.value!.toggled = false;
+		this.breakdown.value!.render();
+		this.comments.value!.value = "";
 	}
 }
 

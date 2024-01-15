@@ -2,7 +2,6 @@ import { AutoInfo } from "./auto-info";
 import { EndScreen } from "./end-screen";
 import { MatchInfo } from "./match-info";
 import { TeleopInfo } from "./teleop-info";
-import { QrCodeScreen } from "./qr-code-screen.ts";
 
 // Open database
 let dbRequest = window.indexedDB.open("db");
@@ -24,13 +23,20 @@ let matchScreen = document.getElementById("matchInfo")! as MatchInfo;
 let autoInfoBar = document.getElementById("autoInfo")! as AutoInfo;
 let teleopInfoBar = document.getElementById("teleopInfo")! as TeleopInfo;
 let endScreen = document.getElementById("endInfo")! as EndScreen;
-let qrCodeScreen = document.getElementById("qrInfo")! as QrCodeScreen;
+
 export function combineData(): string {
 	let matchInfo = matchScreen.getInfo();
+	let autoInfo = autoInfoBar.getInfo();
 	let teleopInfo = teleopInfoBar.getInfo();
 	let endInfo = endScreen.getInfo();
 
-	return `${matchInfo.name}|${matchInfo.matchType}|${matchInfo.matchNum}|${matchInfo.isReplay}|${matchInfo.alliance}|${matchInfo.startingPosition}|${matchInfo.teamNum}|${teleopInfo.cubesDropped}|${teleopInfo.fouls}|${teleopInfo.techFouls}|${teleopInfo.attemptedEndgame}|${teleopInfo.actualEndgame}|${endInfo.defenseQualityFaced}|${endInfo.defenseQuantityFaced}|${endInfo.defenseQualityPlayed}|${endInfo.defenseQuantityPlayed}|${endInfo.breakdown}|${endInfo.chargeStationClimbTime}|${endInfo.chargeStationSide}|${endInfo.comments}|`;
+	var matchTypeNum = matchInfo.matchType == "PRAC" ? 0 : (matchInfo.matchType == "QUAL" ? 1 : 2)
+	
+	
+	return `${matchInfo.name};${matchTypeNum};${matchInfo.matchNum};${matchInfo.isReplay};${matchInfo.alliance};${matchInfo.teamNum};${matchInfo.startingPosition};`+
+	`${autoInfo.speakerNum};${autoInfo.ampNum};${autoInfo.notesDroppedCounter};${autoInfo.toggleLeft};`+
+	`${teleopInfo.speakerNum};${teleopInfo.ampNum};${teleopInfo.notesDroppedCounter};${teleopInfo.foulCounter};${teleopInfo.techCounter};`+
+	`${endInfo.trapAttempted};${endInfo.trapResult};${endInfo.climbAttempted};${endInfo.climbResult};${endInfo.park};${endInfo.harmony};${endInfo.breakdown};${endInfo.comments}`;
 }
 export function getMatchInfo() {
 	return matchScreen.getInfo();
@@ -39,7 +45,6 @@ export function resetSession(isSameScouter: boolean) {
 	matchScreen.reset(isSameScouter);
 	autoInfoBar.reset();
 	teleopInfoBar.reset();
-	qrCodeScreen.reset();
 	endScreen.reset();
 }
 /**

@@ -46,14 +46,15 @@ export class BreakdownButton extends LitElement {
 
 	onClick() {
 		this.toggled = !this.toggled;
-		this.statusLabel! = this.calculateLabel();
 	}
+
 
 	/**
 	 * Calculates the class name for the button color when the button is clicked.
 	 * @returns The class name for the color
 	 */
 	calculateColor() {
+		this.statusLabel! = this.calculateLabel();
 		if (this.toggled) {
 			return "on";
 		}

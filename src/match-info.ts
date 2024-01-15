@@ -58,9 +58,9 @@ export class MatchInfo extends LitElement {
 	diagram: Ref<HTMLImageElement> = createRef();
 
 	matchTypes = [
-		{ label: "Practice", value: "Practice" },
-		{ label: "Qualifications", value: "Qualification" },
-		{ label: "Playoffs", value: "PLAYOFFS" }
+		{ label: "Practice", value: "PRAC" },
+		{ label: "Qualifications", value: "QUAL" },
+		{ label: "Playoffs", value: "PLAY" }
 	];
 	alliances = [
 		{ label: "Blue", value: "Blue" },
@@ -152,8 +152,8 @@ export class MatchInfo extends LitElement {
 			name: this.name.value!.value,
 			matchType: this.matchType.value!.value,
 			matchNum: this.matchNum.value!.value,
-			isReplay: this.isReplay.value!.checked,
-			alliance: this.alliance.value!.value,
+			isReplay: this.isReplay.value!.checked ? 1 : 0,
+			alliance: this.alliance.value!.value == "Red" ? "R": "B",
 			startingPosition: this.startingPosition.value!.value,
 			teamNum: this.teamNum.value!.value
 		};

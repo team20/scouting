@@ -12,13 +12,12 @@ import { ToggleButton } from "./toggle-button.ts";
 @customElement("auto-info")
 export class AutoInfo extends LitElement {
 	static styles = css`
-
 		#button-container {
 			display: flex;
 			align-items: center;
-  			justify-content: center;
+			justify-content: center;
 			text-align: center;
-			padding-top:50px;
+			padding-top: 50px;
 		}
 
 		#mobility {
@@ -26,48 +25,46 @@ export class AutoInfo extends LitElement {
 			padding-bottom: 25px;
 			margin: 0;
 		}
-
-
 	`;
 	speakerCounter: Ref<GameCounter> = createRef();
 	ampCounter: Ref<GameCounter> = createRef();
 	notesDroppedCounter: Ref<GameCounter> = createRef();
 	toggleLeft: Ref<ToggleButton> = createRef();
 
-
 	render() {
 		return html`
-		<div id="button-container">
-		<div style="padding-right: 30px;">
-		<game-counter
-				${ref(this.speakerCounter)}
-				class="counter"
-				countLabel="Speaker Notes"
-			></game-counter>
+			<div id="button-container">
+				<div style="padding-right: 30px;">
+					<game-counter
+						${ref(this.speakerCounter)}
+						class="counter"
+						countLabel="Speaker Notes"
+					></game-counter>
 
-		<game-counter
-				${ref(this.ampCounter)}
-				class="counter"
-				countLabel="AMP Notes"
-			></game-counter>
-		</div>
-
+					<game-counter
+						${ref(this.ampCounter)}
+						class="counter"
+						countLabel="AMP Notes"
+					></game-counter>
+				</div>
 
 				<div>
 					<game-counter
-				${ref(this.notesDroppedCounter)}
-				class="counter"
-				countLabel="Dropped Notes"
-			></game-counter>
+						${ref(this.notesDroppedCounter)}
+						class="counter"
+						countLabel="Dropped Notes"
+					></game-counter>
 
-			<div id="mobility">
-				<toggle-button ${ref(this.toggleLeft)} style="width: 600px;" label="Left"></toggle-button>
+					<div id="mobility">
+						<toggle-button
+							${ref(this.toggleLeft)}
+							style="width: 600px;"
+							label="Left"
+						></toggle-button>
+					</div>
 				</div>
-
-		</div>
-		</div>
+			</div>
 		`;
-
 	}
 	/**
 	 * Combines all the data into JSON.
@@ -78,7 +75,7 @@ export class AutoInfo extends LitElement {
 			speakerNum: this.speakerCounter.value!.count,
 			ampNum: this.ampCounter.value!.count,
 			notesDroppedCounter: this.notesDroppedCounter.value!.count,
-			toggleLeft: this.toggleLeft.value!.toggled,
+			toggleLeft: this.toggleLeft.value!.toggled
 		};
 	}
 	/**

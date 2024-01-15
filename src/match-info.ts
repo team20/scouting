@@ -39,7 +39,7 @@ export class MatchInfo extends LitElement {
 		}
 
 		#starting-diagram {
-			height:36em;
+			height: 36em;
 			float: center;
 		}
 
@@ -60,21 +60,21 @@ export class MatchInfo extends LitElement {
 	matchTypes = [
 		{ label: "Practice", value: "Practice" },
 		{ label: "Qualifications", value: "Qualification" },
-		{ label: "Playoffs", value: "PLAYOFFS" },
+		{ label: "Playoffs", value: "PLAYOFFS" }
 	];
 	alliances = [
 		{ label: "Blue", value: "Blue" },
-		{ label: "Red", value: "Red" },
+		{ label: "Red", value: "Red" }
 	];
 	startingPositions = [
 		{ label: "1", value: "1" },
 		{ label: "2", value: "2" },
-		{ label: "3", value: "3" },
+		{ label: "3", value: "3" }
 	];
 
 	render() {
 		return html`
-		<div style="padding-left: 20px;">
+			<div style="padding-left: 20px;">
 				<label
 					>Name:&nbsp
 					<vaadin-text-field
@@ -125,25 +125,22 @@ export class MatchInfo extends LitElement {
 					></vaadin-integer-field>
 				</label>
 
-
-
 				<div id="icon-container">
 					<img ${ref(this.img)} id="icon" src="./dark_logo.svg" />
 				</div>
 
 				<div style="display: flex;">
 					<theme-button @click=${this.onClick}></theme-button>
-					<label style="padding-left:10em; padding-top: 2em;">Revision ${__version__}</label>
+					<label style="padding-left:10em; padding-top: 2em;"
+						>Revision ${__version__}</label
+					>
 				</div>
-
-
 			</div>
 			<div>
-			<img id="starting-diagram" src="./red_diagram.png" />
-			<img id="starting-diagram" src="./blue_diagram.png" />
-														</div>
-		`
-
+				<img id="starting-diagram" src="./red_diagram.png" />
+				<img id="starting-diagram" src="./blue_diagram.png" />
+			</div>
+		`;
 	}
 
 	/**
@@ -158,7 +155,7 @@ export class MatchInfo extends LitElement {
 			isReplay: this.isReplay.value!.checked,
 			alliance: this.alliance.value!.value,
 			startingPosition: this.startingPosition.value!.value,
-			teamNum: this.teamNum.value!.value,
+			teamNum: this.teamNum.value!.value
 		};
 	}
 	/**

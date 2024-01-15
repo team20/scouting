@@ -23,8 +23,6 @@ export class ToggleButton extends LitElement {
 			cursor: pointer;
 		}
 
-
-
 		.off {
 			--lumo-contrast-5pct: #ff0000;
 		}
@@ -42,7 +40,9 @@ export class ToggleButton extends LitElement {
 		return html`<vaadin-button
 			class=${this.calculateColor()}
 			@click=${this.onClick}
-			><h1 style="margin-bottom: 0;">${this.label}</h1><br><h3>${this.statusLabel}</h3></vaadin-button
+			><h1 style="margin-bottom: 0;">${this.label}</h1>
+			<br />
+			<h3>${this.statusLabel}</h3></vaadin-button
 		>`;
 	}
 

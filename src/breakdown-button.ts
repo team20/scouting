@@ -29,7 +29,6 @@ export class BreakdownButton extends LitElement {
 		.on {
 			--lumo-contrast-5pct: #ff0000;
 		}
-
 	`;
 	@property()
 	label!: string;
@@ -41,7 +40,7 @@ export class BreakdownButton extends LitElement {
 		return html`<vaadin-button
 			class=${this.calculateColor()}
 			@click=${this.onClick}
-			>${this.label}<br>${this.statusLabel}</vaadin-button
+			>${this.label}<br />${this.statusLabel}</vaadin-button
 		>`;
 	}
 

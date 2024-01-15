@@ -34,15 +34,15 @@ export class HalfCounter extends LitElement {
 			grid-row: 1 / span 2;
 		}
 		.countLabel {
-	padding-top: 20px;
+			padding-top: 20px;
 			grid-column: 2;
 			grid-row: 1;
-			font-size:40px;
+			font-size: 40px;
 		}
 		.count {
 			grid-column: 2;
 			grid-row: 2;
-			font-size:30px;
+			font-size: 30px;
 			padding-top: 50px;
 		}
 	`;

@@ -9,4 +9,5 @@ import "@vaadin/tabs/theme/lumo/vaadin-tabs.js";
 import "@vaadin/tabsheet";
 import "@vaadin/text-field";
 import("@vaadin/icons");
+import "@vaadin/text-area";
 import("./elements");

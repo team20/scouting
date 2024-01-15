@@ -2,6 +2,7 @@ import { AutoInfo } from "./auto-info";
 import { EndScreen } from "./end-screen";
 import { MatchInfo } from "./match-info";
 import { TeleopInfo } from "./teleop-info";
+import { QrCodeScreen } from "./qr-code-screen.ts";
 
 // Open database
 let dbRequest = window.indexedDB.open("db");
@@ -23,6 +24,7 @@ let matchScreen = document.getElementById("matchInfo")! as MatchInfo;
 let autoInfoBar = document.getElementById("autoInfo")! as AutoInfo;
 let teleopInfoBar = document.getElementById("teleopInfo")! as TeleopInfo;
 let endScreen = document.getElementById("endInfo")! as EndScreen;
+let qrCodeScreen = document.getElementById("qrInfo")! as QrCodeScreen;
 export function combineData(): string {
 	let matchInfo = matchScreen.getInfo();
 	let teleopInfo = teleopInfoBar.getInfo();
@@ -37,6 +39,7 @@ export function resetSession(isSameScouter: boolean) {
 	matchScreen.reset(isSameScouter);
 	autoInfoBar.reset();
 	teleopInfoBar.reset();
+	qrCodeScreen.reset();
 	endScreen.reset();
 }
 /**

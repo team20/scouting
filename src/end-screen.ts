@@ -2,7 +2,6 @@ import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {createRef, ref, Ref} from "lit/directives/ref.js";
 import {BreakdownButton} from "./breakdown-button.ts"
-import "@vaadin/text-area";
 
 
 /**
@@ -40,7 +39,7 @@ export class EndScreen extends LitElement {
 		#container {
 			display: flex;
 			width: 100%;
-			height: 100%;
+			height: 150%;
 		}
 		#row1 {
 			display: flex;
@@ -53,10 +52,15 @@ export class EndScreen extends LitElement {
 			display: flex;
             gap: 10px;
             height: 150px;
+    		align-items: center;
+  			justify-content: center;
 		}
 	#row3 {
 			display: flex;
             height: 150px;
+            gap: 10px;
+            align-items: center;
+  			justify-content: center;
 		}
 	`;
 
@@ -147,7 +151,7 @@ export class EndScreen extends LitElement {
                         ></vaadin-select>
 
 
-                        <breakdown-button ${ref(this.breakdown)} style="" label="Left"></breakdown-button>
+                        <breakdown-button ${ref(this.breakdown)} style="width: 200px; margin-top:120px" label="BREAKDOWN"></breakdown-button>
 
                     </div>
                 </div>

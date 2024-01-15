@@ -15,7 +15,7 @@ export class BreakdownButton extends LitElement {
 		}
 		vaadin-button {
 			display: block;
-			height: 100%;
+			height: 60%;
 			margin: 0;
 			line-height: 100px;
 			color: #000000;
@@ -23,14 +23,13 @@ export class BreakdownButton extends LitElement {
 			cursor: pointer;
 		}
 
-
-
 		.off {
-			--lumo-contrast-5pct: #ff0000;
-		}
-		.on {
 			--lumo-contrast-5pct: #019d04;
 		}
+		.on {
+			--lumo-contrast-5pct: #ff0000;
+		}
+
 	`;
 	@property()
 	label!: string;
@@ -42,7 +41,7 @@ export class BreakdownButton extends LitElement {
 		return html`<vaadin-button
 			class=${this.calculateColor()}
 			@click=${this.onClick}
-			><h1 style="margin-bottom: 0;">${this.label}</h1><br><h3>${this.statusLabel}</h3></vaadin-button
+			>${this.label}<br>${this.statusLabel}</vaadin-button
 		>`;
 	}
 
@@ -72,6 +71,6 @@ export class BreakdownButton extends LitElement {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"toggle-button": ToggleButton;
+		"breakdown-button": BreakdownButton;
 	}
 }

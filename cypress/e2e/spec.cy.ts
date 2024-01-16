@@ -4,7 +4,7 @@ import { MatchInfo } from "../../src/match-info"
 import { AutoInfo } from "../../src/auto-info"
 
 describe("Scouting data validation", () => {
-	it("Fills in general tab with data", () => {
+	it("Test data output", () => {
 		cy.viewport(1366, 768)
 		cy.visit("/scouting");
 		// Match Info tab

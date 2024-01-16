@@ -25,7 +25,7 @@ export class EndScreen extends LitElement {
 		}
 
 		#left {
-			width: 120%;
+			width: 135%;
 			height: 100%;
 		}
 
@@ -36,7 +36,7 @@ export class EndScreen extends LitElement {
 		#container {
 			display: flex;
 			width: 100%;
-			height: 150%;
+			height: 100%;
 		}
 		#row1 {
 			display: flex;
@@ -54,7 +54,7 @@ export class EndScreen extends LitElement {
 		}
 		#row3 {
 			display: flex;
-			height: 150px;
+			height: 340px;
 			gap: 10px;
 			align-items: center;
 			justify-content: center;

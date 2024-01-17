@@ -31,7 +31,7 @@ export class QrCodeScreen extends LitElement {
 		return html`
 			<center>
 				<div id="qr-container">
-					<vaadin-button style="width: 450px;" @click=${this.renderQRCode}
+					<vaadin-button style="width: 450px;" @click=${this.renderQRCode} id="display-code-button"
 					>Display QR Code</vaadin-button
 					><br />
 					<h1 ${ref(this.matchLabel)} style="margin-bottom:5px;margin-top:10px;">XXXX_XXXX</h1>

@@ -25,7 +25,7 @@ export class EndScreen extends LitElement {
 		}
 
 		#left {
-			width: 120%;
+			width: 135%;
 			height: 100%;
 		}
 
@@ -36,7 +36,7 @@ export class EndScreen extends LitElement {
 		#container {
 			display: flex;
 			width: 100%;
-			height: 150%;
+			height: 100%;
 		}
 		#row1 {
 			display: flex;
@@ -54,7 +54,7 @@ export class EndScreen extends LitElement {
 		}
 		#row3 {
 			display: flex;
-			height: 150px;
+			height: 340px;
 			gap: 10px;
 			align-items: center;
 			justify-content: center;
@@ -96,6 +96,7 @@ export class EndScreen extends LitElement {
 						<vaadin-select
 							${ref(this.trapAttempted)}
 							theme="small"
+							id="end-trap-attempted"
 							label="Trap Attempted?"
 							.items="${this.yesNoOptions}"
 						></vaadin-select>
@@ -103,6 +104,7 @@ export class EndScreen extends LitElement {
 						<vaadin-select
 							${ref(this.trapResult)}
 							theme="small"
+							id="end-trap-result"
 							label="Traps Result"
 							.items="${this.trapResultOptions}"
 						></vaadin-select>
@@ -110,6 +112,7 @@ export class EndScreen extends LitElement {
 					<div id="row2">
 						<vaadin-select
 							${ref(this.climbAttempted)}
+							id="end-climb-attempted"
 							theme="small"
 							label="Climb Attempted?"
 							.items="${this.yesNoOptions}"
@@ -119,6 +122,7 @@ export class EndScreen extends LitElement {
 						<vaadin-select
 							${ref(this.climbResult)}
 							theme="small"
+							id="end-climb-success"
 							label="Climb Success"
 							.items="${this.yesNoOptions}"
 						></vaadin-select>
@@ -126,6 +130,7 @@ export class EndScreen extends LitElement {
 						<vaadin-select
 							${ref(this.harmony)}
 							theme="small"
+							id="end-harmony"
 							label="Harmony?"
 							.items="${this.harmonyOptions}"
 						></vaadin-select>
@@ -134,12 +139,14 @@ export class EndScreen extends LitElement {
 						<vaadin-select
 							${ref(this.park)}
 							theme="small"
+							id="end-park"
 							label="Park"
 							.items="${this.yesNoOptions}"
 						></vaadin-select>
 
 						<breakdown-button
 							${ref(this.breakdown)}
+							id="end-breakdown"
 							style="width: 200px; margin-top:120px"
 							label="BREAKDOWN"
 						></breakdown-button>
@@ -177,13 +184,13 @@ export class EndScreen extends LitElement {
 	getInfo() {
 		return {
 			trapAttempted: this.trapAttempted.value!.value === "Yes" ? 1 : 0,
-			trapResult: this.trapResult.value!.value,
+			trapResult: this.trapResult.value!.value || 0,
 			climbAttempted: this.climbAttempted.value!.value === "Yes" ? 1 : 0,
 			climbResult: this.climbResult.value!.value === "Yes" ? 1 : 0,
-			harmony: this.harmony.value!.value,
+			harmony: this.harmony.value!.value === "Yes" ? 1 : 0,
 			park: this.park.value!.value === "Yes" ? 1 : 0,
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
-			comments: this.comments.value!.value
+			comments: this.comments.value!.value || "No comment."
 		};
 	}
 

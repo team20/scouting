@@ -31,13 +31,13 @@ export class QrCodeScreen extends LitElement {
 		return html`
 			<center>
 				<div id="qr-container">
-					<vaadin-button style="width: 500px;" @click=${this.renderQRCode}
+					<vaadin-button style="width: 450px;" @click=${this.renderQRCode}
 					>Display QR Code</vaadin-button
 					><br />
 					<h1 ${ref(this.matchLabel)} style="margin-bottom:5px;margin-top:10px;">XXXX_XXXX</h1>
 					<canvas
 						${ref(this.canvas)}
-						style="grid-column: 3; background-color: var(--lumo-secondary-text-color); width: 500px; height: 500px;margin-bottom:10px;"
+						style="grid-column: 3; background-color: var(--lumo-secondary-text-color); width: 450px; height: 450px;margin-bottom:10px;"
 					></canvas><br>
 					<vaadin-button
 						${ref(this.sessionRestart)}
@@ -67,7 +67,7 @@ export class QrCodeScreen extends LitElement {
 		toCanvas(
 			this.canvas.value,
 			data,
-			{ errorCorrectionLevel: "low" },
+			{width: 450},
 			function (error) {
 				if (error) console.error(error);
 				console.log("success!");

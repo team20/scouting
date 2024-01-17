@@ -30,8 +30,8 @@ export class MatchInfo extends LitElement {
 		}
 
 		#icon {
-			width: 310px;
-			height: 310px;
+			width: 300px;
+			height: 300px;
 		}
 
 		#icon-container {
@@ -39,7 +39,7 @@ export class MatchInfo extends LitElement {
 		}
 
 		#starting-diagram {
-			height: 36em;
+			height: 30em;
 			float: center;
 		}
 
@@ -129,13 +129,14 @@ export class MatchInfo extends LitElement {
 					<img ${ref(this.img)} id="icon" src="./dark_logo.svg" />
 				</div>
 
-				<div style="display: flex;">
+				
+			</div>
+			<div style="display: flex; position: fixed; left:15px; bottom: 15px;">
 					<theme-button @click=${this.onClick}></theme-button>
 					<label style="padding-left:10em; padding-top: 2em;"
 						>Revision ${__version__}</label
 					>
 				</div>
-			</div>
 			<div>
 				<img id="starting-diagram" src="./red_diagram.png" />
 				<img id="starting-diagram" src="./blue_diagram.png" />
@@ -149,7 +150,7 @@ export class MatchInfo extends LitElement {
 	 */
 	getInfo() {
 		return {
-			name: this.name.value!.value,
+			name: this.name.value!.value  || "Name left blank",
 			matchType: this.matchType.value!.value,
 			matchNum: this.matchNum.value!.value,
 			isReplay: this.isReplay.value!.checked ? 1 : 0,

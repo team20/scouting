@@ -113,6 +113,7 @@ export class EndScreen extends LitElement {
 							theme="small"
 							label="Climb Attempted?"
 							.items="${this.yesNoOptions}"
+							@change=${this.processClimbResult}
 						></vaadin-select>
 
 						<vaadin-select
@@ -154,6 +155,19 @@ export class EndScreen extends LitElement {
 				</div>
 			</div>
 		`;
+	}
+
+
+	processClimbResult() {
+		// If the actual charge station was engaged, force attempted to also be engaged
+		if (this.climbAttempted.value!.value === this.yesNoOptions[1].value) {
+			this.climbResult.value!.value = this.yesNoOptions[1].value;
+			// @ts-ignore
+			this.climbResult.value!.readonly = true;
+		} else {
+			// @ts-ignore
+			this.climbResult.value!.readonly = false;
+		}
 	}
 
 	/**

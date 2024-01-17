@@ -150,7 +150,7 @@ export class MatchInfo extends LitElement {
 	 */
 	getInfo() {
 		return {
-			name: this.name.value!.value,
+			name: this.name.value!.value  || "Name left blank",
 			matchType: this.matchType.value!.value,
 			matchNum: this.matchNum.value!.value,
 			isReplay: this.isReplay.value!.checked ? 1 : 0,

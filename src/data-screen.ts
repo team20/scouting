@@ -49,7 +49,6 @@ export class DataScreen extends LitElement {
 	 */
 	displayQRCodes() {
 		getData().then((matches) => {
-			console.log(matches);
 			this.div.value!.innerHTML = "";
 			for (const match of matches.reverse()) {
 				let qrCode = document.createElement("qr-code") as QRCode;

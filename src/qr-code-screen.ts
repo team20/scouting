@@ -70,11 +70,7 @@ export class QrCodeScreen extends LitElement {
 
 	renderQRCode() {
 		let data = combineData();
-		console.log(data);
-		toCanvas(this.canvas.value, data, { width: 450 }, function (error) {
-			if (error) console.error(error);
-			console.log("success!");
-		});
+		toCanvas(this.canvas.value, data, { width: 450 });
 		let logoLength = 128;
 		this.canvas
 			.value!.getContext("2d")!
@@ -91,7 +87,6 @@ export class QrCodeScreen extends LitElement {
 		let key = `${matchInfo.alliance}${matchInfo.startingPosition}${
 			matchInfo.matchType
 		}${matchInfo.isReplay ? "replay" : ""}ScoutingData${matchInfo.matchNum}`;
-		console.log("key: " + key);
 		storeData(data, key);
 
 		let file = new Blob([data], { type: "text/plain" });

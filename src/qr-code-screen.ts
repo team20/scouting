@@ -28,6 +28,12 @@ export class QrCodeScreen extends LitElement {
 		}
 	`;
 
+	img = document.createElement("img") as HTMLImageElement;
+	constructor() {
+		super();
+		this.img.src = "./favicon.svg";
+		this.img.decode();
+	}
 	matchLabel: Ref<HTMLHeadingElement> = createRef();
 	canvas: Ref<HTMLCanvasElement> = createRef();
 	sessionRestart: Ref<HTMLButtonElement> = createRef();
@@ -70,10 +76,19 @@ export class QrCodeScreen extends LitElement {
 			if (error) console.error(error);
 			console.log("success!");
 		});
+		let logoLength = 128;
+		this.canvas
+			.value!.getContext("2d")!
+			.drawImage(
+				this.img,
+				this.canvas.value!.height / 2 - logoLength / 2,
+				this.canvas.value!.width / 2 - logoLength / 2,
+				logoLength,
+				logoLength
+			);
 		let matchInfo = getMatchInfo();
 		this.matchLabel.value!.innerText =
 			(matchInfo.matchType || "????") + "_" + (matchInfo.matchNum || "????");
-		this.render();
 		let key = `${matchInfo.alliance}${matchInfo.startingPosition}${
 			matchInfo.matchType
 		}${matchInfo.isReplay ? "replay" : ""}ScoutingData${matchInfo.matchNum}`;

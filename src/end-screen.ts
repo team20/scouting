@@ -205,7 +205,6 @@ export class EndScreen extends LitElement {
 		this.harmony.value!.value = "";
 		this.park.value!.value = "";
 		this.breakdown.value!.toggled = false;
-		this.breakdown.value!.render();
 		this.comments.value!.value = "";
 	}
 }

@@ -83,7 +83,7 @@ export function getData(): Promise<string[]> {
 		readRequest.addEventListener("success", () => {
 			resolve(readRequest.result);
 		});
-		readRequest.addEventListener("success", () => {
+		readRequest.addEventListener("error", () => {
 			reject(readRequest.result);
 		});
 	});

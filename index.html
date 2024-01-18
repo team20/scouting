@@ -112,23 +112,9 @@
 				<vaadin-tab id="qr-tab">Qr</vaadin-tab>
 				<vaadin-tab id="data-tab">Data</vaadin-tab>
 			</vaadin-tabs>
-			<div tab="general-tab" id="generalTab">
-				<match-info id="matchInfo"></match-info>
-			</div>
-			<div tab="auto-tab">
-				<game-piece-grid
-					id="autoScoringInfo"
-					draggable="false"
-				></game-piece-grid>
-				<auto-info id="autoInfo"></auto-info>
-			</div>
-			<div tab="teleop-tab">
-				<game-piece-grid
-					id="teleopScoringInfo"
-					draggable="false"
-				></game-piece-grid>
-				<teleop-info id="teleopInfo"></teleop-info>
-			</div>
+			<div tab="general-tab"><match-info id="matchInfo"></match-info></div>
+			<div tab="auto-tab"><auto-info id="autoInfo"></auto-info></div>
+			<div tab="teleop-tab"><teleop-info id="teleopInfo"></teleop-info></div>
 			<div tab="end-tab"><end-screen id="endInfo"></end-screen></div>
 			<div tab="qr-tab"><qr-code-screen id="qrInfo"></qr-code-screen></div>
 			<div tab="data-tab"><data-screen id="dataScreen"></data-screen></div>

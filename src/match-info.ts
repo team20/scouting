@@ -38,7 +38,6 @@ export class MatchInfo extends LitElement {
 			text-align: center;
 		}
 
-
 		#container {
 			display: flex;
 		}
@@ -128,15 +127,13 @@ export class MatchInfo extends LitElement {
 				<div id="icon-container">
 					<img ${ref(this.img)} id="icon" src="./dark_logo.svg" />
 				</div>
-
-				
 			</div>
 			<div style="display: flex; position: fixed; left:15px; bottom: 15px;">
-					<theme-button @click=${this.onClick}></theme-button>
-					<label style="padding-left:10em; padding-top: 2em;"
-						>Revision ${__version__}</label
-					>
-				</div>
+				<theme-button @click=${this.onClick}></theme-button>
+				<label style="padding-left:10em; padding-top: 2em;"
+					>Revision ${__version__}</label
+				>
+			</div>
 			<div style="height: calc(100vh - 100px)">
 				<img class="diagram" src="./red_diagram.png" />
 				<img class="diagram" src="./blue_diagram.png" />
@@ -150,11 +147,11 @@ export class MatchInfo extends LitElement {
 	 */
 	getInfo() {
 		return {
-			name: this.name.value!.value  || "Name left blank",
+			name: this.name.value!.value || "Name left blank",
 			matchType: this.matchType.value!.value,
 			matchNum: this.matchNum.value!.value,
 			isReplay: this.isReplay.value!.checked ? 1 : 0,
-			alliance: this.alliance.value!.value == "Red" ? "R": "B",
+			alliance: this.alliance.value!.value == "Red" ? "R" : "B",
 			startingPosition: this.startingPosition.value!.value,
 			teamNum: this.teamNum.value!.value
 		};

@@ -165,7 +165,6 @@ export class EndScreen extends LitElement {
 		`;
 	}
 
-
 	processClimbResult() {
 		// If the actual charge station was engaged, force attempted to also be engaged
 		if (this.climbAttempted.value!.value === this.yesNoOptions[1].value) {

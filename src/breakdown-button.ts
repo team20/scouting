@@ -48,7 +48,6 @@ export class BreakdownButton extends LitElement {
 		this.toggled = !this.toggled;
 	}
 
-
 	/**
 	 * Calculates the class name for the button color when the button is clicked.
 	 * @returns The class name for the color

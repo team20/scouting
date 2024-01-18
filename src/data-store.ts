@@ -30,13 +30,15 @@ export function combineData(): string {
 	let teleopInfo = teleopInfoBar.getInfo();
 	let endInfo = endScreen.getInfo();
 
-	var matchTypeNum = matchInfo.matchType == "PRAC" ? 0 : (matchInfo.matchType == "QUAL" ? 1 : 2)
-	
-	
-	return `${matchInfo.name};${matchTypeNum};${matchInfo.matchNum};${matchInfo.isReplay};${matchInfo.alliance};${matchInfo.teamNum};${matchInfo.startingPosition};`+
-	`${autoInfo.speakerNum};${autoInfo.ampNum};${autoInfo.notesDroppedCounter};${autoInfo.toggleLeft};`+
-	`${teleopInfo.speakerNum};${teleopInfo.ampNum};${teleopInfo.notesDroppedCounter};${teleopInfo.foulCounter};${teleopInfo.techCounter};`+
-	`${endInfo.trapAttempted};${endInfo.trapResult};${endInfo.climbAttempted};${endInfo.climbResult};${endInfo.park};${endInfo.harmony};${endInfo.breakdown};${endInfo.comments}`;
+	var matchTypeNum =
+		matchInfo.matchType == "PRAC" ? 0 : matchInfo.matchType == "QUAL" ? 1 : 2;
+
+	return (
+		`${matchInfo.name};${matchTypeNum};${matchInfo.matchNum};${matchInfo.isReplay};${matchInfo.alliance};${matchInfo.teamNum};${matchInfo.startingPosition};` +
+		`${autoInfo.speakerNum};${autoInfo.ampNum};${autoInfo.notesDroppedCounter};${autoInfo.toggleLeft};` +
+		`${teleopInfo.speakerNum};${teleopInfo.ampNum};${teleopInfo.notesDroppedCounter};${teleopInfo.foulCounter};${teleopInfo.techCounter};` +
+		`${endInfo.trapAttempted};${endInfo.trapResult};${endInfo.climbAttempted};${endInfo.climbResult};${endInfo.park};${endInfo.harmony};${endInfo.breakdown};${endInfo.comments}`
+	);
 }
 export function getMatchInfo() {
 	return matchScreen.getInfo();

@@ -2,22 +2,22 @@
 
 import { html } from "lit";
 
-describe('matchInfo.cy.ts', () => {
-  it('Name', () => {
-    cy.viewport(1366, 768)
-    cy.mount(html`<match-info></match-info>`);
-    cy.get("match-info")
+describe("matchInfo.cy.ts", () => {
+	it("Name", () => {
+		cy.viewport(1366, 768);
+		cy.mount(html`<match-info></match-info>`);
+		cy.get("match-info")
 			.shadow()
 			.find("div > label:nth-child(1) > vaadin-text-field")
 			.type("Scouter Name");
-    cy.get("match-info").then((element) => {
+		cy.get("match-info").then((element) => {
 			cy.wrap(element.get(0).getInfo())
 				.its("name")
 				.should("eq", "Scouter Name");
 		});
-  })
+	});
 
-  it("Match type", () => {
+	it("Match type", () => {
 		cy.mount(html`<match-info></match-info>`);
 		cy.get("match-info")
 			.shadow()
@@ -27,9 +27,7 @@ describe('matchInfo.cy.ts', () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
 		).click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo())
-				.its("matchType")
-				.should("eq", "PRAC");
+			cy.wrap(element.get(0).getInfo()).its("matchType").should("eq", "PRAC");
 		});
 		cy.get("match-info")
 			.shadow()
@@ -39,9 +37,7 @@ describe('matchInfo.cy.ts', () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo())
-				.its("matchType")
-				.should("eq", "QUAL");
+			cy.wrap(element.get(0).getInfo()).its("matchType").should("eq", "QUAL");
 		});
 		cy.get("match-info")
 			.shadow()
@@ -51,12 +47,10 @@ describe('matchInfo.cy.ts', () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(3)"
 		).click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo())
-				.its("matchType")
-				.should("eq", "PLAY");
+			cy.wrap(element.get(0).getInfo()).its("matchType").should("eq", "PLAY");
 		});
 	});
-  it("Match number", () => {
+	it("Match number", () => {
 		cy.mount(html`<match-info></match-info>`);
 		cy.get("match-info")
 			.shadow()
@@ -66,7 +60,7 @@ describe('matchInfo.cy.ts', () => {
 			cy.wrap(element.get(0).getInfo()).its("matchNum").should("eq", "1");
 		});
 	});
-  it("Replay", () => {
+	it("Replay", () => {
 		cy.mount(html`<match-info></match-info>`);
 		cy.get("match-info")
 			.shadow()
@@ -155,4 +149,4 @@ describe('matchInfo.cy.ts', () => {
 			cy.wrap(element.get(0).getInfo()).its("teamNum").should("eq", "20");
 		});
 	});
-})
+});

@@ -78,7 +78,7 @@ export class AutoInfo extends LitElement {
 			speakerNum: this.speakerCounter.value!.count,
 			ampNum: this.ampCounter.value!.count,
 			notesDroppedCounter: this.notesDroppedCounter.value!.count,
-			toggleLeft: this.toggleLeft.value!.toggled ? 1 : 0,
+			toggleLeft: this.toggleLeft.value!.toggled ? 1 : 0
 		};
 	}
 	/**

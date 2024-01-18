@@ -31,14 +31,23 @@ export class QrCodeScreen extends LitElement {
 		return html`
 			<center>
 				<div id="qr-container">
-					<vaadin-button style="width: 450px;" @click=${this.renderQRCode} id="display-code-button"
-					>Display QR Code</vaadin-button
+					<vaadin-button
+						style="width: 450px;"
+						@click=${this.renderQRCode}
+						id="display-code-button"
+						>Display QR Code</vaadin-button
 					><br />
-					<h1 ${ref(this.matchLabel)} style="margin-bottom:5px;margin-top:10px;">XXXX_XXXX</h1>
+					<h1
+						${ref(this.matchLabel)}
+						style="margin-bottom:5px;margin-top:10px;"
+					>
+						XXXX_XXXX
+					</h1>
 					<canvas
 						${ref(this.canvas)}
 						style="grid-column: 3; background-color: var(--lumo-secondary-text-color); width: 450px; height: 450px;margin-bottom:10px;"
-					></canvas><br>
+					></canvas
+					><br />
 					<vaadin-button
 						${ref(this.sessionRestart)}
 						@click=${this.restartSession}
@@ -64,20 +73,17 @@ export class QrCodeScreen extends LitElement {
 	renderQRCode() {
 		let data = combineData();
 		console.log(data);
-		toCanvas(
-			this.canvas.value,
-			data,
-			{width: 450},
-			function (error) {
-				if (error) console.error(error);
-				console.log("success!");
-			}
-		);
+		toCanvas(this.canvas.value, data, { width: 450 }, function (error) {
+			if (error) console.error(error);
+			console.log("success!");
+		});
 		let matchInfo = getMatchInfo();
-		this.matchLabel.value!.innerText = (matchInfo.matchType || "????") +"_"+ (matchInfo.matchNum || "????");
-		this.render();		
+		this.matchLabel.value!.innerText =
+			(matchInfo.matchType || "????") + "_" + (matchInfo.matchNum || "????");
+		this.render();
 		let key = `${matchInfo.alliance}${matchInfo.startingPosition}${
-			matchInfo.matchType}${matchInfo.isReplay ? "replay" : ""}ScoutingData${matchInfo.matchNum}`;
+			matchInfo.matchType
+		}${matchInfo.isReplay ? "replay" : ""}ScoutingData${matchInfo.matchNum}`;
 		console.log("key: " + key);
 		storeData(data, key);
 

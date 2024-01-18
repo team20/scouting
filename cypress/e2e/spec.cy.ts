@@ -222,7 +222,7 @@ describe("Scouting data validation", () => {
 		cy.fixture("completeScoutingData.txt").then(() =>
 			cy
 				.readFile("cypress/downloads/R2QUALScoutingData1.txt")
-				.should("eq", "Scouter Name;1;1;0;R;20;2;5;3;4;0;5;3;4;2;1;1;2;0;0;1;0;0;Don't pick this team.")
+				.should("eq", "Scouter Name;1;1;0;R;20;2;5;3;4;0;5;3;4;2;1;1;2;0;0;1;2;0;Don't pick this team.")
 		);
 	});
 

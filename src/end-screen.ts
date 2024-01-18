@@ -188,7 +188,7 @@ export class EndScreen extends LitElement {
 			trapResult: this.trapResult.value!.value || 0,
 			climbAttempted: this.climbAttempted.value!.value === "Yes" ? 1 : 0,
 			climbResult: this.climbResult.value!.value === "Yes" ? 1 : 0,
-			harmony: this.harmony.value!.value === "Yes" ? 1 : 0,
+			harmony: this.harmony.value!.value,
 			park: this.park.value!.value === "Yes" ? 1 : 0,
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
 			comments: this.comments.value!.value || "No comment."

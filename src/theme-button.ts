@@ -32,7 +32,7 @@ export class ThemeButton extends LitElement {
 
 	render() {
 		return html`<vaadin-button @click=${this.onClick}>
-			<vaadin-icon icon="vaadin:sun-o"></vaadin-icon>
+			<vaadin-icon icon="vaadin:adjust"></vaadin-icon>
 		</vaadin-button>`;
 	}
 

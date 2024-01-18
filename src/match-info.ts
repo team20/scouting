@@ -30,8 +30,8 @@ export class MatchInfo extends LitElement {
 		}
 
 		#icon {
-			width: 300px;
-			height: 300px;
+			width: 200px;
+			height: 200px;
 		}
 
 		#icon-container {

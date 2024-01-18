@@ -5,9 +5,7 @@ import { GameCounter } from "./counter.ts";
 import { ToggleButton } from "./toggle-button.ts";
 
 /**
- * Contains additional info about the auto period.
- *
- * Contains dropped pieces, mobility, and charge station status.
+ * Contains information on the auto period.
  */
 @customElement("auto-info")
 export class AutoInfo extends LitElement {

@@ -5,9 +5,7 @@ import { GameCounter } from "./counter";
 import { HalfCounter } from "./half-counter.ts";
 
 /**
- * Contains additional info about the teleop period.
- *
- * Contains dropped pieces, fouls, and charge station status.
+ * Contains info about the teleop period.
  */
 @customElement("teleop-info")
 export class TeleopInfo extends LitElement {

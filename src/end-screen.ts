@@ -4,10 +4,7 @@ import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { BreakdownButton } from "./breakdown-button.ts";
 
 /**
- * The final scouting screen.
- *
- * Contains defense info, additional comments, charge station climbing, and a field diagram.
- * Also has a slot for QR code display and restarting the scouting session.
+ * Contains information relating to the end of the match.
  */
 @customElement("end-screen")
 export class EndScreen extends LitElement {

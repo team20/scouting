@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 /**
- * A button that switches between red and Team 20 green.
+ * A button that switches the app between dark mode and light mode.
  */
 @customElement("theme-button")
 export class ThemeButton extends LitElement {

@@ -10,9 +10,8 @@ import {
 } from "./data-store";
 
 /**
- * Contains additional info about the auto period.
- *
- * Contains dropped pieces, mobility, and charge station status.
+ * Shows the QR Code for this match.
+ * Also allows you to restart the scouting session.
  */
 @customElement("qr-code-screen")
 export class QrCodeScreen extends LitElement {

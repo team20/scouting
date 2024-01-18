@@ -155,7 +155,7 @@ export class EndScreen extends LitElement {
 
 				<div id="right">
 					<vaadin-text-area
-						style="width:100%; height: 100%;"
+						style="width:100%; height: calc(100vh - 100px);"
 						id="end-comments"
 						${ref(this.comments)}
 						label="Comments?"

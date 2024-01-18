@@ -39,7 +39,7 @@ export class MatchInfo extends LitElement {
 		}
 
 		#starting-diagram {
-			height: 30em;
+			height: 89vh;
 			float: center;
 		}
 

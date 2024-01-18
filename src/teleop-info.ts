@@ -12,7 +12,7 @@ import { HalfCounter } from "./half-counter.ts";
 @customElement("teleop-info")
 export class TeleopInfo extends LitElement {
 	static styles = css`
-		#button-container {
+		:host {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -35,45 +35,43 @@ export class TeleopInfo extends LitElement {
 
 	render() {
 		return html`
-			<div id="button-container">
-				<div style="padding-right: 30px;">
-					<game-counter
-						${ref(this.speakerCounter)}
-						class="counter"
-						id="teleop-speaker-counter"
-						countLabel="Speaker Notes"
-					></game-counter>
+			<div style="padding-right: 30px;">
+				<game-counter
+					${ref(this.speakerCounter)}
+					class="counter"
+					id="teleop-speaker-counter"
+					countLabel="Speaker Notes"
+				></game-counter>
 
-					<game-counter
-						${ref(this.ampCounter)}
-						class="counter"
-						id="teleop-amp-counter"
-						countLabel="AMP Notes"
-					></game-counter>
-				</div>
+				<game-counter
+					${ref(this.ampCounter)}
+					class="counter"
+					id="teleop-amp-counter"
+					countLabel="AMP Notes"
+				></game-counter>
+			</div>
 
-				<div>
-					<game-counter
-						${ref(this.notesDroppedCounter)}
+			<div>
+				<game-counter
+					${ref(this.notesDroppedCounter)}
+					class="counter"
+					id="teleop-drop-counter"
+					countLabel="Dropped Notes"
+				></game-counter>
+				<div style="display:flex;">
+					<half-counter
+						${ref(this.foulCounter)}
 						class="counter"
-						id="teleop-drop-counter"
-						countLabel="Dropped Notes"
-					></game-counter>
-					<div style="display:flex;">
-						<half-counter
-							${ref(this.foulCounter)}
-							class="counter"
-							id="teleop-foul-counter"
-							countLabel="Fouls"
-						></half-counter>
-						<half-counter
-							style="margin-left:10px;"
-							${ref(this.techCounter)}
-							class="counter"
-							id="teleop-tech-counter"
-							countLabel="Techs"
-						></half-counter>
-					</div>
+						id="teleop-foul-counter"
+						countLabel="Fouls"
+					></half-counter>
+					<half-counter
+						style="margin-left:10px;"
+						${ref(this.techCounter)}
+						class="counter"
+						id="teleop-tech-counter"
+						countLabel="Techs"
+					></half-counter>
 				</div>
 			</div>
 		`;

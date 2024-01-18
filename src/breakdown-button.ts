@@ -19,7 +19,6 @@ export class BreakdownButton extends LitElement {
 			margin: 0;
 			line-height: 100px;
 			color: #000000;
-			/* color: var(--lumo-primary-text-color); */
 			cursor: pointer;
 		}
 

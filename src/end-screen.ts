@@ -12,6 +12,12 @@ import { BreakdownButton } from "./breakdown-button.ts";
 @customElement("end-screen")
 export class EndScreen extends LitElement {
 	static styles = css`
+		:host {
+			display: flex;
+			width: 100%;
+			height: 100%;
+		}
+
 		label {
 			color: var(--lumo-secondary-text-color);
 			font-family: var(--lumo-font-family);
@@ -31,12 +37,6 @@ export class EndScreen extends LitElement {
 
 		#right {
 			width: 100%;
-		}
-
-		#container {
-			display: flex;
-			width: 100%;
-			height: 100%;
 		}
 		#row1 {
 			display: flex;
@@ -90,77 +90,75 @@ export class EndScreen extends LitElement {
 
 	render() {
 		return html`
-			<div id="container">
-				<div id="left">
-					<div id="row1">
-						<vaadin-select
-							${ref(this.trapAttempted)}
-							theme="small"
-							id="end-trap-attempted"
-							label="Trap Attempted?"
-							.items="${this.yesNoOptions}"
-						></vaadin-select>
+			<div id="left">
+				<div id="row1">
+					<vaadin-select
+						${ref(this.trapAttempted)}
+						theme="small"
+						id="end-trap-attempted"
+						label="Trap Attempted?"
+						.items="${this.yesNoOptions}"
+					></vaadin-select>
 
-						<vaadin-select
-							${ref(this.trapResult)}
-							theme="small"
-							id="end-trap-result"
-							label="Traps Result"
-							.items="${this.trapResultOptions}"
-						></vaadin-select>
-					</div>
-					<div id="row2">
-						<vaadin-select
-							${ref(this.climbAttempted)}
-							id="end-climb-attempted"
-							theme="small"
-							label="Climb Attempted?"
-							.items="${this.yesNoOptions}"
-							@change=${this.processClimbResult}
-						></vaadin-select>
-
-						<vaadin-select
-							${ref(this.climbResult)}
-							theme="small"
-							id="end-climb-success"
-							label="Climb Success"
-							.items="${this.yesNoOptions}"
-						></vaadin-select>
-
-						<vaadin-select
-							${ref(this.harmony)}
-							theme="small"
-							id="end-harmony"
-							label="Harmony?"
-							.items="${this.harmonyOptions}"
-						></vaadin-select>
-					</div>
-					<div id="row3">
-						<vaadin-select
-							${ref(this.park)}
-							theme="small"
-							id="end-park"
-							label="Park"
-							.items="${this.yesNoOptions}"
-						></vaadin-select>
-
-						<breakdown-button
-							${ref(this.breakdown)}
-							id="end-breakdown"
-							style="width: 200px; margin-top:120px"
-							label="BREAKDOWN"
-						></breakdown-button>
-					</div>
+					<vaadin-select
+						${ref(this.trapResult)}
+						theme="small"
+						id="end-trap-result"
+						label="Traps Result"
+						.items="${this.trapResultOptions}"
+					></vaadin-select>
 				</div>
+				<div id="row2">
+					<vaadin-select
+						${ref(this.climbAttempted)}
+						id="end-climb-attempted"
+						theme="small"
+						label="Climb Attempted?"
+						.items="${this.yesNoOptions}"
+						@change=${this.processClimbResult}
+					></vaadin-select>
 
-				<div id="right">
-					<vaadin-text-area
-						style="width:100%; height: calc(100vh - 100px);"
-						id="end-comments"
-						${ref(this.comments)}
-						label="Comments?"
-					></vaadin-text-area>
+					<vaadin-select
+						${ref(this.climbResult)}
+						theme="small"
+						id="end-climb-success"
+						label="Climb Success"
+						.items="${this.yesNoOptions}"
+					></vaadin-select>
+
+					<vaadin-select
+						${ref(this.harmony)}
+						theme="small"
+						id="end-harmony"
+						label="Harmony?"
+						.items="${this.harmonyOptions}"
+					></vaadin-select>
 				</div>
+				<div id="row3">
+					<vaadin-select
+						${ref(this.park)}
+						theme="small"
+						id="end-park"
+						label="Park"
+						.items="${this.yesNoOptions}"
+					></vaadin-select>
+
+					<breakdown-button
+						${ref(this.breakdown)}
+						id="end-breakdown"
+						style="width: 200px; margin-top:120px"
+						label="BREAKDOWN"
+					></breakdown-button>
+				</div>
+			</div>
+
+			<div id="right">
+				<vaadin-text-area
+					style="width:100%; height: calc(100vh - 100px);"
+					id="end-comments"
+					${ref(this.comments)}
+					label="Comments?"
+				></vaadin-text-area>
 			</div>
 		`;
 	}

@@ -12,7 +12,7 @@ import { ToggleButton } from "./toggle-button.ts";
 @customElement("auto-info")
 export class AutoInfo extends LitElement {
 	static styles = css`
-		#button-container {
+		:host {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -33,38 +33,36 @@ export class AutoInfo extends LitElement {
 
 	render() {
 		return html`
-			<div id="button-container">
-				<div style="padding-right: 30px;">
-					<game-counter
-						${ref(this.speakerCounter)}
-						class="counter"
-						id="auto-speaker-counter"
-						countLabel="Speaker Notes"
-					></game-counter>
+			<div style="padding-right: 30px;">
+				<game-counter
+					${ref(this.speakerCounter)}
+					class="counter"
+					id="auto-speaker-counter"
+					countLabel="Speaker Notes"
+				></game-counter>
 
-					<game-counter
-						${ref(this.ampCounter)}
-						class="counter"
-						id="auto-amp-counter"
-						countLabel="AMP Notes"
-					></game-counter>
-				</div>
+				<game-counter
+					${ref(this.ampCounter)}
+					class="counter"
+					id="auto-amp-counter"
+					countLabel="AMP Notes"
+				></game-counter>
+			</div>
 
-				<div>
-					<game-counter
-						${ref(this.notesDroppedCounter)}
-						class="counter"
-						id="auto-drop-counter"
-						countLabel="Dropped Notes"
-					></game-counter>
+			<div>
+				<game-counter
+					${ref(this.notesDroppedCounter)}
+					class="counter"
+					id="auto-drop-counter"
+					countLabel="Dropped Notes"
+				></game-counter>
 
-					<div id="mobility">
-						<toggle-button
-							${ref(this.toggleLeft)}
-							style="width: 600px;"
-							label="Left"
-						></toggle-button>
-					</div>
+				<div id="mobility">
+					<toggle-button
+						${ref(this.toggleLeft)}
+						style="width: 600px;"
+						label="Left"
+					></toggle-button>
 				</div>
 			</div>
 		`;

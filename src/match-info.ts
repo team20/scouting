@@ -38,13 +38,13 @@ export class MatchInfo extends LitElement {
 			text-align: center;
 		}
 
-		#starting-diagram {
-			height: 89vh;
-			float: center;
-		}
 
 		#container {
 			display: flex;
+		}
+
+		.diagram {
+			height: 100%;
 		}
 	`;
 	name: Ref<HTMLInputElement> = createRef();
@@ -137,9 +137,9 @@ export class MatchInfo extends LitElement {
 						>Revision ${__version__}</label
 					>
 				</div>
-			<div>
-				<img id="starting-diagram" src="./red_diagram.png" />
-				<img id="starting-diagram" src="./blue_diagram.png" />
+			<div style="height: calc(100vh - 100px)">
+				<img class="diagram" src="./red_diagram.png" />
+				<img class="diagram" src="./blue_diagram.png" />
 			</div>
 		`;
 	}

@@ -139,18 +139,30 @@ export class MatchInfo extends LitElement {
 				>
 			</div>
 
-			<img ${ref(this.diagram)} class="diagram" style="height: calc(100vh - 100px)" src="./red_diagram.png" />
+			<img
+				${ref(this.diagram)}
+				class="diagram"
+				style="height: calc(100vh - 100px)"
+				src="./img.png"
+			/>
 		`;
 	}
 
-	updateDiagram(){
-		var color: number = this.alliance.value!.value == "Red" ? 1 : 0;
-		var pos: number = +this.startingPosition.value!.value;
-		var id: number = 5*color + pos - 1;
-		console.log("Id: " + id);
-		this.diagram.value!.src = `./starting-positions/img${id}.png`;
+	updateDiagram() {
+		if (
+			this.alliance.value?.value.length != 0 &&
+			this.startingPosition.value?.value.length != 0
+		) {
+			var color: number = this.alliance.value!.value == "Red" ? 1 : 0;
+			var pos: number = +this.startingPosition.value!.value;
+			var id: number = 5 * color + pos - 1;
+			//console.log("Id: " + id);
+			this.diagram.value!.src = `./img${id}.png`;
+		} else {
+			this.diagram.value!.src = `./img0.png`;
+		}
 	}
-	
+
 	/**
 	 * Combines all the data into JSON.
 	 * @returns An object containing this element's data

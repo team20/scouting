@@ -68,7 +68,9 @@ export class MatchInfo extends LitElement {
 	startingPositions = [
 		{ label: "1", value: "1" },
 		{ label: "2", value: "2" },
-		{ label: "3", value: "3" }
+		{ label: "3", value: "3" },
+		{ label: "4", value: "4" },
+		{ label: "5", value: "5" }
 	];
 
 	render() {
@@ -104,6 +106,7 @@ export class MatchInfo extends LitElement {
 					Alliance:&nbsp
 					<vaadin-select
 						${ref(this.alliance)}
+						@change=${this.updateDiagram}
 						theme="small"
 						.items="${this.alliances}"
 					></vaadin-select>
@@ -112,6 +115,7 @@ export class MatchInfo extends LitElement {
 					Starting Position:&nbsp
 					<vaadin-select
 						${ref(this.startingPosition)}
+						@change=${this.updateDiagram}
 						theme="small"
 						.items="${this.startingPositions}"
 					></vaadin-select>
@@ -134,13 +138,19 @@ export class MatchInfo extends LitElement {
 					>Revision ${__version__}</label
 				>
 			</div>
-			<div style="height: calc(100vh - 100px)">
-				<img class="diagram" src="./red_diagram.png" />
-				<img class="diagram" src="./blue_diagram.png" />
-			</div>
+
+			<img ${ref(this.diagram)} class="diagram" style="height: calc(100vh - 100px)" src="./red_diagram.png" />
 		`;
 	}
 
+	updateDiagram(){
+		var color: number = this.alliance.value!.value == "Red" ? 1 : 0;
+		var pos: number = +this.startingPosition.value!.value;
+		var id: number = 5*color + pos - 1;
+		console.log("Id: " + id);
+		this.diagram.value!.src = `./starting-positions/img${id}.png`;
+	}
+	
 	/**
 	 * Combines all the data into JSON.
 	 * @returns An object containing this element's data

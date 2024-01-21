@@ -50,16 +50,18 @@ export class QrCodeScreen extends LitElement {
 				${ref(this.canvas)}
 				style="grid-column: 3; background-color: var(--lumo-secondary-text-color); width: 450px; height: 450px;margin-bottom:10px;"
 			></canvas>
-			<vaadin-button ${ref(this.sessionRestart)} @click=${this.restartSession}
-				>Restart Session</vaadin-button
-			>
-			<label style="margin-left:50px;">
-				Continue Scouting?
-				<vaadin-checkbox
-					${ref(this.continueScouting)}
-					checked
-				></vaadin-checkbox>
-			</label>
+			<div>
+				<vaadin-button ${ref(this.sessionRestart)} @click=${this.restartSession}
+					>Restart Session</vaadin-button
+				>
+				<label style="margin-left:50px;">
+					Continue Scouting?
+					<vaadin-checkbox
+						${ref(this.continueScouting)}
+						checked
+					></vaadin-checkbox>
+				</label>
+			</div>
 		`;
 	}
 

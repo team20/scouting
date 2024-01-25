@@ -9,6 +9,10 @@ import { BreakdownButton } from "./breakdown-button.ts";
 @customElement("end-screen")
 export class EndScreen extends LitElement {
 	static styles = css`
+		body{
+			overflow-y: hidden;
+  			overflow-x: hidden;
+		}
 		:host {
 			display: flex;
 			width: 100%;
@@ -30,6 +34,7 @@ export class EndScreen extends LitElement {
 		#left {
 			width: 135%;
 			height: 100%;
+			margin-bottom:0px;
 		}
 
 		#right {
@@ -51,7 +56,7 @@ export class EndScreen extends LitElement {
 		}
 		#row3 {
 			display: flex;
-			height: 340px;
+			height: 200px;
 			gap: 10px;
 			align-items: center;
 			justify-content: center;
@@ -143,7 +148,7 @@ export class EndScreen extends LitElement {
 					<breakdown-button
 						${ref(this.breakdown)}
 						id="end-breakdown"
-						style="width: 200px; margin-top:120px"
+						style="width: 200px; height: 150px; margin-bottom:0; margin-top: 45px;"
 						label="BREAKDOWN"
 					></breakdown-button>
 				</div>

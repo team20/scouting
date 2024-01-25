@@ -37,6 +37,7 @@ export class BreakdownButton extends LitElement {
 
 	render() {
 		return html`<vaadin-button
+			style="height:100%"
 			class=${this.calculateColor()}
 			@click=${this.onClick}
 			>${this.label}<br />${this.statusLabel}</vaadin-button

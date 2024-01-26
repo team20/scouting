@@ -114,6 +114,7 @@ export class EndScreen extends LitElement {
 						id="end-climb-success"
 						label="Climb Success"
 						.items="${this.yesNoOptions}"
+						@change=${this.processClimbResult}
 					></vaadin-select>
 
 					<vaadin-select
@@ -150,12 +151,19 @@ export class EndScreen extends LitElement {
 	}
 
 	processClimbResult() {
-		// If the actual charge station was engaged, force attempted to also be engaged
+		// If the team didn't attempt a climb, force actual to be no
 		if (this.climbAttempted.value!.value === this.yesNoOptions[1].value) {
 			this.climbResult.value!.value = this.yesNoOptions[1].value;
 			// @ts-ignore
 			this.climbResult.value!.readonly = true;
+			// If the team successfully climbed, lock attempted to yes
+		} else if (this.climbResult.value!.value === this.yesNoOptions[0].value) {
+			this.climbAttempted.value!.value = this.yesNoOptions[0].value;
+			// @ts-ignore
+			this.climbAttempted.value!.readonly = true;
 		} else {
+			// @ts-ignore
+			this.climbAttempted.value!.readonly = false;
 			// @ts-ignore
 			this.climbResult.value!.readonly = false;
 		}

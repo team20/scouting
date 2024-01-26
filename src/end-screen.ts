@@ -9,16 +9,12 @@ import { BreakdownButton } from "./breakdown-button.ts";
 @customElement("end-screen")
 export class EndScreen extends LitElement {
 	static styles = css`
-		body{
-			overflow-y: hidden;
-  			overflow-x: hidden;
-		}
 		:host {
 			display: flex;
+			gap: 20px;
 			width: 100%;
 			height: 100%;
 		}
-
 		label {
 			color: var(--lumo-secondary-text-color);
 			font-family: var(--lumo-font-family);
@@ -30,36 +26,28 @@ export class EndScreen extends LitElement {
 			width: 400px;
 			aspect-ratio: 1056 / 562;
 		}
-
-		#left {
-			width: 135%;
-			height: 100%;
-			margin-bottom:0px;
+		.row {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			height: 150px;
 		}
-
-		#right {
+		#bottomRow {
+			display: flex;
+			height: fit-content;
+			gap: 10px;
+			align-items: center;
+			justify-content: center;
+		}
+		#end-comments {
 			width: 100%;
 		}
-		#row1 {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
+		#end-breakdown {
+			width: 200px;
 			height: 150px;
-		}
-		#row2 {
-			display: flex;
-			gap: 10px;
-			height: 150px;
-			align-items: center;
-			justify-content: center;
-		}
-		#row3 {
-			display: flex;
-			height: 200px;
-			gap: 10px;
-			align-items: center;
-			justify-content: center;
+			margin-bottom: 0;
+			margin-top: 45px;
 		}
 	`;
 
@@ -92,8 +80,8 @@ export class EndScreen extends LitElement {
 
 	render() {
 		return html`
-			<div id="left">
-				<div id="row1">
+			<div>
+				<div class="row">
 					<vaadin-select
 						${ref(this.trapAttempted)}
 						theme="small"
@@ -110,7 +98,7 @@ export class EndScreen extends LitElement {
 						.items="${this.trapResultOptions}"
 					></vaadin-select>
 				</div>
-				<div id="row2">
+				<div class="row">
 					<vaadin-select
 						${ref(this.climbAttempted)}
 						id="end-climb-attempted"
@@ -136,7 +124,7 @@ export class EndScreen extends LitElement {
 						.items="${this.harmonyOptions}"
 					></vaadin-select>
 				</div>
-				<div id="row3">
+				<div id="bottomRow">
 					<vaadin-select
 						${ref(this.park)}
 						theme="small"
@@ -148,20 +136,16 @@ export class EndScreen extends LitElement {
 					<breakdown-button
 						${ref(this.breakdown)}
 						id="end-breakdown"
-						style="width: 200px; height: 150px; margin-bottom:0; margin-top: 45px;"
 						label="BREAKDOWN"
 					></breakdown-button>
 				</div>
 			</div>
 
-			<div id="right">
-				<vaadin-text-area
-					style="width:100%; height: calc(100vh - 100px);"
-					id="end-comments"
-					${ref(this.comments)}
-					label="Comments?"
-				></vaadin-text-area>
-			</div>
+			<vaadin-text-area
+				id="end-comments"
+				${ref(this.comments)}
+				label="Comments?"
+			></vaadin-text-area>
 		`;
 	}
 

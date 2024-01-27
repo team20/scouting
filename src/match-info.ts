@@ -29,6 +29,13 @@ export class MatchInfo extends LitElement {
 			height: 80px;
 		}
 
+		.bottom {
+			display: flex;
+			position: fixed;
+			left: 15px;
+			bottom: 15px;
+		}
+
 		#icon {
 			width: 200px;
 			height: 200px;
@@ -132,7 +139,7 @@ export class MatchInfo extends LitElement {
 					<img ${ref(this.img)} id="icon" src="./dark_logo.svg" />
 				</div>
 			</div>
-			<div style="display: flex; position: fixed; left:15px; bottom: 15px;">
+			<div class="bottom">
 				<theme-button @click=${this.onClick}></theme-button>
 				<label style="padding-left:10em; padding-top: 2em;"
 					>Revision ${__version__}</label

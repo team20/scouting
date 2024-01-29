@@ -225,12 +225,12 @@ describe("Scouting data validation", () => {
 
 		cy.get("#qrInfo").shadow().find("#display-code-button").click();
 
-		cy.fixture("completeScoutingData.txt").then(() =>
+		cy.fixture("scoutingData.txt").then((refData) =>
 			cy
 				.readFile("cypress/downloads/R2QUALScoutingData1.txt")
 				.should(
 					"eq",
-					"Scouter Name;1;1;0;R;20;2;5;3;4;0;5;3;4;2;1;1;2;0;0;1;2;0;Don't pick this team."
+					refData
 				)
 		);
 	});

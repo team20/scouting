@@ -1,1 +1,1 @@
-Scouter Name|Qualification|1|false|Red|2|20|Cube|true|true|true|true|true|true|true|true|true|false|false|false|false|false|false|false|false|false|CONE|CUBE|NONE|CONE|CUBE|NONE|CONE|CUBE|NONE|1|2|true|ENGAGE|ENGAGE|false|false|false|false|false|false|false|false|false|false|false|false|false|false|false|false|false|false|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|NONE|1|2|3|4|ENGAGE|DOCK|||||false|||Tippy, struggled to move|
+Scouter Name;1;1;0;R;20;2;5;3;4;0;5;3;4;2;1;1;2;0;0;1;2;0;Don't pick this team.

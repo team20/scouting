@@ -1,5 +1,5 @@
 import { css, html, LitElement } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, state } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { toCanvas } from "qrcode";
 import {
@@ -25,18 +25,25 @@ export class QrCodeScreen extends LitElement {
 		h1 {
 			margin: 0;
 		}
+		canvas {
+			background-color: var(--lumo-secondary-text-color);
+			width: 450px;
+			height: 450px;
+			margin-bottom: 5px;
+		}
 	`;
 
 	img = document.createElement("img") as HTMLImageElement;
+	@state()
+	matchLabel: string = "XXXX_XXXX";
+	canvas: Ref<HTMLCanvasElement> = createRef();
+	sessionRestart: Ref<HTMLButtonElement> = createRef();
+	continueScouting: Ref<HTMLInputElement> = createRef();
 	constructor() {
 		super();
 		this.img.src = "./favicon.svg";
 		this.img.decode();
 	}
-	matchLabel: Ref<HTMLHeadingElement> = createRef();
-	canvas: Ref<HTMLCanvasElement> = createRef();
-	sessionRestart: Ref<HTMLButtonElement> = createRef();
-	continueScouting: Ref<HTMLInputElement> = createRef();
 	render() {
 		return html`
 			<vaadin-button
@@ -45,11 +52,8 @@ export class QrCodeScreen extends LitElement {
 				id="display-code-button"
 				>Display QR Code</vaadin-button
 			>
-			<h1 ${ref(this.matchLabel)}>XXXX_XXXX</h1>
-			<canvas
-				${ref(this.canvas)}
-				style="grid-column: 3; background-color: var(--lumo-secondary-text-color); width: 450px; height: 450px;margin-bottom:10px;"
-			></canvas>
+			<h1>${this.matchLabel}</h1>
+			<canvas ${ref(this.canvas)}></canvas>
 			<div>
 				<vaadin-button ${ref(this.sessionRestart)} @click=${this.restartSession}
 					>Restart Session</vaadin-button
@@ -84,7 +88,7 @@ export class QrCodeScreen extends LitElement {
 				logoLength
 			);
 		let matchInfo = getMatchInfo();
-		this.matchLabel.value!.innerText =
+		this.matchLabel =
 			(matchInfo.matchType || "????") + "_" + (matchInfo.matchNum || "????");
 		let key = `${matchInfo.alliance}${matchInfo.startingPosition}${
 			matchInfo.matchType

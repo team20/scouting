@@ -111,11 +111,11 @@ describe("endInfo.cy.ts", () => {
 			.find("#end-climb-attempted vaadin-select-value-button")
 			.click();
 		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 
 		cy.get("end-screen").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("climbAttempted").should("eq", 1);
+			cy.wrap(element.get(0).getInfo()).its("climbAttempted").should("eq", 0);
 		});
 
 		cy.get("end-screen")
@@ -136,45 +136,32 @@ describe("endInfo.cy.ts", () => {
 		cy.mount(html`<end-screen></end-screen>`);
 
 		cy.get("end-screen")
-			.shadow()
-			.find("#end-climb-success vaadin-select-value-button")
-			.click();
+		.shadow()
+		.find("#end-climb-attempted vaadin-select-value-button")
+		.click();
 		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 
 		cy.get("end-screen").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("climbResult").should("eq", 1);
+			cy.wrap(element.get(0).getInfo()).its("climbResult").should("eq", 0);
 		});
+	});
+
+	it("Climb Success excludes Climb Attempted", () => {
+		cy.viewport(1366, 768);
+		cy.mount(html`<end-screen></end-screen>`);
 
 		cy.get("end-screen")
-			.shadow()
-			.find("#end-climb-attempted vaadin-select-value-button")
-			.click();
+		.shadow()
+		.find("#end-climb-success vaadin-select-value-button")
+		.click();
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
 		).click();
 
 		cy.get("end-screen").then((element) => {
 			cy.wrap(element.get(0).getInfo()).its("climbAttempted").should("eq", 1);
-		});
-		cy.get("end-screen").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("climbResult").should("eq", 1);
-		});
-
-		cy.get("end-screen")
-			.shadow()
-			.find("#end-climb-attempted vaadin-select-value-button")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
-		).click();
-
-		cy.get("end-screen").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("climbAttempted").should("eq", 0);
-		});
-		cy.get("end-screen").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("climbResult").should("eq", 0);
 		});
 	});
 

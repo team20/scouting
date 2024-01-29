@@ -154,7 +154,7 @@ export class MatchInfo extends LitElement {
 				${ref(this.diagram)}
 				class="diagram"
 				style="height: calc(100vh - 100px)"
-				src="./img.png"
+				src=""
 			/>
 		`;
 	}
@@ -170,7 +170,7 @@ export class MatchInfo extends LitElement {
 			//console.log("Id: " + id);
 			this.diagram.value!.src = `./img${id}.png`;
 		} else {
-			this.diagram.value!.src = `./img.png`;
+			this.diagram.value!.src = ``;
 		}
 	}
 

@@ -183,13 +183,13 @@ describe("Scouting data validation", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 
-		cy.get("#endInfo")
-			.shadow()
-			.find("#end-climb-success vaadin-select-value-button")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
-		).click();
+		// cy.get("#endInfo")
+		// 	.shadow()
+		// 	.find("#end-climb-success vaadin-select-value-button")
+		// 	.click();
+		// cy.get(
+		// 	"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
+		// ).click();
 
 		cy.get("#endInfo")
 			.shadow()

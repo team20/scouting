@@ -182,7 +182,7 @@ export class EndScreen extends LitElement {
 			harmony: this.harmony.value!.value,
 			park: this.park.value!.value === "Yes" ? 1 : 0,
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
-			comments: this.comments.value!.value || "No comment."
+			comments: (this.comments.value!.value || "No comment.").replaceAll(";","."),
 		};
 	}
 

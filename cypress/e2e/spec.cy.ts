@@ -1,9 +1,13 @@
 /// <reference types="cypress" />
 
+import { MatchInfo } from "../../src/match-info";
+import { AutoInfo } from "../../src/auto-info";
+
 describe("Scouting data validation", () => {
-	it("Match info creates correct output", () => {
+	it("Test data output", () => {
+		cy.viewport(1366, 768);
 		cy.visit("/scouting");
-		// Match Info tab
+		//Match Info tab
 		cy.get("#matchInfo")
 			.shadow()
 			.find("div > label:nth-child(1) > vaadin-text-field")
@@ -39,224 +43,195 @@ describe("Scouting data validation", () => {
 			.shadow()
 			.find("div > label:nth-child(7) > vaadin-integer-field")
 			.type("20");
-		cy.get("#matchInfo")
+
+		cy.get("match-info").then((element) => {
+			cy.wrap((element.get(0) as MatchInfo).getInfo())
+				.its("name")
+				.should("eq", "Scouter Name");
+			cy.wrap((element.get(0) as MatchInfo).getInfo())
+				.its("matchType")
+				.should("eq", "QUAL");
+			cy.wrap((element.get(0) as MatchInfo).getInfo())
+				.its("matchNum")
+				.should("eq", "1");
+			cy.wrap((element.get(0) as MatchInfo).getInfo())
+				.its("isReplay")
+				.should("eq", 0);
+			cy.wrap((element.get(0) as MatchInfo).getInfo())
+				.its("alliance")
+				.should("eq", "R");
+			cy.wrap((element.get(0) as MatchInfo).getInfo())
+				.its("teamNum")
+				.should("eq", "20");
+		});
+
+		// Auto tab
+		cy.get("#auto-tab").click();
+		cy.root().click();
+
+		cy.get("#autoInfo").shadow().find("toggle-button").click();
+
+		cy.get("auto-info").then((element) => {
+			cy.wrap((element.get(0) as AutoInfo).getInfo())
+				.its("toggleLeft")
+				.should("eq", 1);
+		});
+
+		cy.get("#autoInfo").shadow().find("toggle-button").click();
+
+		cy.get("auto-info").then((element) => {
+			cy.wrap((element.get(0) as AutoInfo).getInfo())
+				.its("toggleLeft")
+				.should("eq", 0);
+		});
+
+		for (let i = 0; i < 5; i++) {
+			cy.get("#autoInfo")
+				.shadow()
+				.find("#auto-speaker-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 4; i++) {
+			cy.get("#autoInfo")
+				.shadow()
+				.find("#auto-drop-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 3; i++) {
+			cy.get("#autoInfo")
+				.shadow()
+				.find("#auto-amp-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		cy.get("auto-info").then((element) => {
+			cy.wrap((element.get(0) as AutoInfo).getInfo())
+				.its("ampNum")
+				.should("eq", 3);
+		});
+
+		cy.get("#teleop-tab").click();
+		cy.root().click();
+
+		for (let i = 0; i < 5; i++) {
+			cy.get("#teleopInfo")
+				.shadow()
+				.find("#teleop-speaker-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 4; i++) {
+			cy.get("#teleopInfo")
+				.shadow()
+				.find("#teleop-drop-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 3; i++) {
+			cy.get("#teleopInfo")
+				.shadow()
+				.find("#teleop-amp-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 2; i++) {
+			cy.get("#teleopInfo")
+				.shadow()
+				.find("#teleop-foul-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		cy.get("#teleopInfo")
 			.shadow()
-			.find("div > label:nth-child(8) > vaadin-select")
+			.find("#teleop-tech-counter")
+			.shadow()
+			.find("vaadin-button.rightButton")
+			.click();
+
+		cy.get("#end-tab").click();
+		cy.root().click();
+
+		cy.get("#endInfo")
+			.shadow()
+			.find("#end-park vaadin-select-value-button")
+			.click();
+		cy.get(
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
+		).click();
+
+		cy.get("#endInfo")
+			.shadow()
+			.find("#end-harmony vaadin-select-value-button")
 			.click();
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 
-		// Auto tab
-		cy.get("#auto-tab").click();
-		// Click the entire top row
-		for (let i = 1; i <= 9; i++) {
-			cy.get("#autoScoringInfo")
-				.shadow()
-				.find(`div:nth-child(1) > node-button:nth-child(${i})`)
-				.click();
-		}
-		// Skip the middle row, same as top row
-		// Click some of the bottom row
-		for (let i = 1; i <= 9; i++) {
-			// Don't click every third button
-			if (i % 3 == 0) {
-				// no-op
-			} else if (i % 3 == 1) {
-				// Click every first button once
-				cy.get("#autoScoringInfo")
-					.shadow()
-					.find(`div:nth-child(3) > node-button:nth-child(${i})`)
-					.click();
-			} else {
-				// Click every second button twice
-				cy.get("#autoScoringInfo")
-					.shadow()
-					.find(`div:nth-child(3) > node-button:nth-child(${i})`)
-					.click()
-					.click();
-			}
-		}
-		cy.get("#autoInfo")
+		// cy.get("#endInfo")
+		// 	.shadow()
+		// 	.find("#end-climb-success vaadin-select-value-button")
+		// 	.click();
+		// cy.get(
+		// 	"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
+		// ).click();
+
+		cy.get("#endInfo")
 			.shadow()
-			.find("game-counter:nth-child(1)")
-			.shadow()
-			.find("vaadin-button.rightButton")
-			.click();
-		cy.get("#autoInfo")
-			.shadow()
-			.find("game-counter:nth-child(2)")
-			.shadow()
-			.find("vaadin-button.rightButton")
-			.click()
-			.click()
-			.click();
-		cy.get("#autoInfo")
-			.shadow()
-			.find("game-counter:nth-child(2)")
-			.shadow()
-			.find("vaadin-button.leftButton")
-			.click();
-		cy.get("#autoInfo").shadow().find("toggle-button").click();
-		cy.get("#autoInfo")
-			.shadow()
-			.find("charge-station-info")
-			.shadow()
-			.find("vaadin-select:nth-child(2)")
+			.find("#end-climb-attempted vaadin-select-value-button")
 			.click();
 		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(4)"
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
-		cy.get("#autoInfo")
-			.shadow()
-			.find("charge-station-info")
-			.shadow()
-			.find("vaadin-select:nth-child(1)")
-			.click();
-		cy.get("body > vaadin-select-overlay").should("not.exist");
 
-		// Teleop tab
-		cy.get("#teleop-tab").click();
-		cy.get("#teleopInfo").shadow();
-		cy.get("#teleopInfo")
+		cy.get("#endInfo")
 			.shadow()
-			.find("game-counter:nth-child(1)")
-			.shadow()
-			.find("vaadin-button.rightButton")
-			.click();
-		cy.get("#teleopInfo")
-			.shadow()
-			.find("game-counter:nth-child(2)")
-			.shadow()
-			.find("vaadin-button.rightButton")
-			.click()
-			.click();
-		cy.get("#teleopInfo")
-			.shadow()
-			.find("game-counter:nth-child(3)")
-			.shadow()
-			.find("vaadin-button.rightButton")
-			.click()
-			.click()
-			.click();
-		cy.get("#teleopInfo")
-			.shadow()
-			.find("game-counter:nth-child(4)")
-			.shadow()
-			.find("vaadin-button.rightButton")
-			.click()
-			.click()
-			.click()
-			.click();
-		cy.get("#teleopInfo")
-			.shadow()
-			.find("charge-station-info")
-			.shadow()
-			.find("vaadin-select:nth-child(2)")
+			.find("#end-trap-result vaadin-select-value-button")
 			.click();
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(3)"
 		).click();
-		cy.get("#teleopInfo")
-			.shadow()
-			.find("charge-station-info")
-			.shadow()
-			.find("vaadin-select:nth-child(1)")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
-		).click();
-		cy.get("#end-tab").click();
-		cy.root().click(); // Required before typing into another input field to fix weird focus bug
+
 		cy.get("#endInfo")
 			.shadow()
-			.find("div.info > vaadin-text-field")
-			.type("Tippy, struggled to move");
-		cy.get("#endInfo")
-			.shadow()
-			.find("div.diagramDiv > vaadin-button:nth-child(4)")
-			.click();
-		cy.fixture("scoutingData.txt").then((referenceData) =>
-			cy
-				.readFile("cypress/downloads/Red2QualificationScoutingData1.txt")
-				.should("eq", referenceData)
-		);
-		// cy.get("#teleopInfo")
-		// 	.shadow()
-		// 	.find("game-counter:nth-child(1)")
-		// 	.shadow()
-		// 	.find("vaadin-button.rightButton")
-		// 	.then((element) => {
-		// 		cy.wrap(element.css("backgroundColor")).eq("rgb()");
-		// 	});
-	});
-	it("Scouting data downloads correctly", () => {
-		cy.visit("/scouting");
-		// Match Info tab
-		cy.get("#matchInfo")
-			.shadow()
-			.find("div > label:nth-child(1) > vaadin-text-field")
-			.type("Scouter Name");
-		cy.get("#matchInfo")
-			.shadow()
-			.find("div > label:nth-child(2) > vaadin-select")
+			.find("#end-trap-attempted vaadin-select-value-button")
 			.click();
 		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
-		).click();
-		cy.root().click(); // Required before typing into another input field to fix weird focus bug
-		cy.get("#matchInfo")
-			.shadow()
-			.find("div > label:nth-child(3) > vaadin-integer-field")
-			.type("1");
-		cy.get("#matchInfo")
-			.shadow()
-			.find("div > label:nth-child(5) > vaadin-select")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
-		).click();
-		cy.get("#matchInfo")
-			.shadow()
-			.find("div > label:nth-child(6) > vaadin-select")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
-		).click();
-		cy.root().click(); // Required before typing into another input field to fix weird focus bug
-		cy.get("#matchInfo")
-			.shadow()
-			.find("div > label:nth-child(7) > vaadin-integer-field")
-			.type("20");
-		cy.get("#matchInfo")
-			.shadow()
-			.find("div > label:nth-child(8) > vaadin-select")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
 		).click();
 
-		cy.get("#end-tab").click();
 		cy.get("#endInfo")
 			.shadow()
-			.find("div.diagramDiv > vaadin-button:nth-child(4)")
-			.click();
-		// Prepare another scouting session
-		cy.get("#endInfo")
-			.shadow()
-			.find("div.diagramDiv > vaadin-button:nth-child(5)")
-			.click();
-		// Record another scouting session
-		cy.get("#endInfo")
-			.shadow()
-			.find("div.diagramDiv > vaadin-button:nth-child(4)")
-			.click();
-		cy.get("#data-tab").click();
-		cy.get("#dataScreen").shadow().find("vaadin-button:nth-child(3)").click();
-		cy.fixture("completeScoutingData.txt").then((referenceData) =>
+			.find("#end-comments > label")
+			.type("Don't pick this team.");
+
+		cy.get("#qr-tab").click();
+		cy.root().click();
+
+		cy.get("#qrInfo").shadow().find("#display-code-button").click();
+
+		cy.fixture("scoutingData.txt").then((refData) =>
 			cy
-				.readFile("cypress/downloads/scoutingData.txt")
-				.should("eq", referenceData)
+				.readFile("cypress/downloads/R2QUALScoutingData1.txt")
+				.should(
+					"eq",
+					refData
+				)
 		);
 	});
 });

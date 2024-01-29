@@ -2,8 +2,9 @@
 
 import { html } from "lit";
 
-describe("match-info.cy.ts", () => {
+describe("matchInfo.cy.ts", () => {
 	it("Name", () => {
+		cy.viewport(1366, 768);
 		cy.mount(html`<match-info></match-info>`);
 		cy.get("match-info")
 			.shadow()
@@ -15,6 +16,7 @@ describe("match-info.cy.ts", () => {
 				.should("eq", "Scouter Name");
 		});
 	});
+
 	it("Match type", () => {
 		cy.mount(html`<match-info></match-info>`);
 		cy.get("match-info")
@@ -25,9 +27,7 @@ describe("match-info.cy.ts", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
 		).click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo())
-				.its("matchType")
-				.should("eq", "Practice");
+			cy.wrap(element.get(0).getInfo()).its("matchType").should("eq", "PRAC");
 		});
 		cy.get("match-info")
 			.shadow()
@@ -37,9 +37,7 @@ describe("match-info.cy.ts", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo())
-				.its("matchType")
-				.should("eq", "Qualification");
+			cy.wrap(element.get(0).getInfo()).its("matchType").should("eq", "QUAL");
 		});
 		cy.get("match-info")
 			.shadow()
@@ -49,9 +47,7 @@ describe("match-info.cy.ts", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(3)"
 		).click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo())
-				.its("matchType")
-				.should("eq", "PLAYOFFS");
+			cy.wrap(element.get(0).getInfo()).its("matchType").should("eq", "PLAY");
 		});
 	});
 	it("Match number", () => {
@@ -71,14 +67,14 @@ describe("match-info.cy.ts", () => {
 			.find("div > label:nth-child(4) > vaadin-checkbox")
 			.click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("isReplay").should("eq", true);
+			cy.wrap(element.get(0).getInfo()).its("isReplay").should("eq", 1);
 		});
 		cy.get("match-info")
 			.shadow()
 			.find("div > label:nth-child(4) > vaadin-checkbox")
 			.click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("isReplay").should("eq", false);
+			cy.wrap(element.get(0).getInfo()).its("isReplay").should("eq", 0);
 		});
 	});
 	it("Alliance", () => {
@@ -91,7 +87,7 @@ describe("match-info.cy.ts", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
 		).click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("alliance").should("eq", "Blue");
+			cy.wrap(element.get(0).getInfo()).its("alliance").should("eq", "B");
 		});
 		cy.get("match-info")
 			.shadow()
@@ -101,7 +97,7 @@ describe("match-info.cy.ts", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("alliance").should("eq", "Red");
+			cy.wrap(element.get(0).getInfo()).its("alliance").should("eq", "R");
 		});
 	});
 	it("Starting Position", () => {
@@ -151,39 +147,6 @@ describe("match-info.cy.ts", () => {
 			.type("20");
 		cy.get("match-info").then((element) => {
 			cy.wrap(element.get(0).getInfo()).its("teamNum").should("eq", "20");
-		});
-	});
-	it("Preload", () => {
-		cy.mount(html`<match-info></match-info>`);
-		cy.get("match-info")
-			.shadow()
-			.find("div > label:nth-child(8) > vaadin-select")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
-		).click();
-		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("preload").should("eq", "None");
-		});
-		cy.get("match-info")
-			.shadow()
-			.find("div > label:nth-child(8) > vaadin-select")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
-		).click();
-		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("preload").should("eq", "Cube");
-		});
-		cy.get("match-info")
-			.shadow()
-			.find("div > label:nth-child(8) > vaadin-select")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(3)"
-		).click();
-		cy.get("match-info").then((element) => {
-			cy.wrap(element.get(0).getInfo()).its("preload").should("eq", "Cone");
 		});
 	});
 });

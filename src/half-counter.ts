@@ -1,10 +1,10 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 /**
- * Counter for various game related things like fouls.
+ * Half-width counter for various game related things like fouls.
  */
-@customElement("game-counter")
-export class GameCounter extends LitElement {
+@customElement("half-counter")
+export class HalfCounter extends LitElement {
 	static styles = css`
 		:host {
 			display: grid;
@@ -15,7 +15,7 @@ export class GameCounter extends LitElement {
 		}
 		vaadin-button {
 			min-width: 50px;
-			width: 100px;
+			width: 67px;
 			height: 200px;
 			margin: 0;
 			cursor: pointer;
@@ -23,7 +23,7 @@ export class GameCounter extends LitElement {
 		div {
 			color: var(--lumo-primary-text-color);
 			font-size: medium;
-			width: 400px;
+			width: 160px;
 		}
 		.leftButton {
 			grid-column: 1;
@@ -76,6 +76,6 @@ export class GameCounter extends LitElement {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"game-counter": GameCounter;
+		"half-counter": HalfCounter;
 	}
 }

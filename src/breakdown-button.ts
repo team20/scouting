@@ -3,8 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 /**
  * A button that switches between red and Team 20 green.
  */
-@customElement("toggle-button")
-export class ToggleButton extends LitElement {
+@customElement("breakdown-button")
+export class BreakdownButton extends LitElement {
 	static styles = css`
 		:host {
 			display: block;
@@ -15,19 +15,18 @@ export class ToggleButton extends LitElement {
 		}
 		vaadin-button {
 			display: block;
-			height: 100%;
+			height: 60%;
 			margin: 0;
 			line-height: 100px;
 			color: #000000;
-			/* color: var(--lumo-primary-text-color); */
 			cursor: pointer;
 		}
 
 		.off {
-			--lumo-contrast-5pct: #ff0000;
+			--lumo-contrast-5pct: #019d04;
 		}
 		.on {
-			--lumo-contrast-5pct: #019d04;
+			--lumo-contrast-5pct: #ff0000;
 		}
 	`;
 	@property()
@@ -38,17 +37,15 @@ export class ToggleButton extends LitElement {
 
 	render() {
 		return html`<vaadin-button
+			style="height:100%"
 			class=${this.calculateColor()}
 			@click=${this.onClick}
-			><h1 style="margin-bottom: 0;">${this.label}</h1>
-			<br />
-			<h3>${this.statusLabel}</h3></vaadin-button
+			>${this.label}<br />${this.statusLabel}</vaadin-button
 		>`;
 	}
 
 	onClick() {
 		this.toggled = !this.toggled;
-		this.statusLabel! = this.calculateLabel();
 	}
 
 	/**
@@ -56,6 +53,7 @@ export class ToggleButton extends LitElement {
 	 * @returns The class name for the color
 	 */
 	calculateColor() {
+		this.statusLabel! = this.calculateLabel();
 		if (this.toggled) {
 			return "on";
 		}
@@ -72,6 +70,6 @@ export class ToggleButton extends LitElement {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"toggle-button": ToggleButton;
+		"breakdown-button": BreakdownButton;
 	}
 }

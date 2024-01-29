@@ -1,12 +1,12 @@
 import "./auto-info";
-import "./charge-station-info";
+import "./breakdown-button";
 import "./counter";
 import "./data-screen";
 import "./end-screen";
-import "./grid";
+import "./half-counter";
 import "./match-info";
-import "./node-button";
 import "./qr-code";
+import "./qr-code-screen";
 import "./teleop-info";
 import "./theme-button";
 import "./toggle-button";

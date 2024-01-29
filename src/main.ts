@@ -7,6 +7,7 @@ import "@vaadin/select";
 import "@vaadin/tabs";
 import "@vaadin/tabs/theme/lumo/vaadin-tabs.js";
 import "@vaadin/tabsheet";
+import "@vaadin/text-area";
 import "@vaadin/text-field";
 import("@vaadin/icons");
 import("./elements");

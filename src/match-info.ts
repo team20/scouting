@@ -12,6 +12,7 @@ export class MatchInfo extends LitElement {
 		:host {
 			display: flex;
 			justify-content: space-between;
+			margin: 0px;
 		}
 		label {
 			display: flex;
@@ -22,9 +23,38 @@ export class MatchInfo extends LitElement {
 			font-size: var(--lumo-font-size-s);
 			font-weight: 500;
 		}
+
 		theme-button {
 			width: 80px;
 			height: 80px;
+		}
+
+		.bottom {
+			display: flex;
+			position: fixed;
+			left: 15px;
+			bottom: 15px;
+		}
+
+		#icon {
+			width: 200px;
+			height: 200px;
+		}
+
+		#icon-container {
+			text-align: center;
+		}
+
+		#container {
+			display: flex;
+		}
+
+		.diagram {
+			height: 100%;
+		}
+
+		.diagram-container {
+			
 		}
 	`;
 	name: Ref<HTMLInputElement> = createRef();
@@ -34,30 +64,29 @@ export class MatchInfo extends LitElement {
 	alliance: Ref<HTMLInputElement> = createRef();
 	startingPosition: Ref<HTMLInputElement> = createRef();
 	teamNum: Ref<HTMLInputElement> = createRef();
-	preload: Ref<HTMLInputElement> = createRef();
 	img: Ref<HTMLImageElement> = createRef();
+	diagram: Ref<HTMLImageElement> = createRef();
+
 	matchTypes = [
-		{ label: "Practice", value: "Practice" },
-		{ label: "Qualifications", value: "Qualification" },
-		{ label: "Playoffs", value: "PLAYOFFS" },
+		{ label: "Practice", value: "PRAC" },
+		{ label: "Qualifications", value: "QUAL" },
+		{ label: "Playoffs", value: "PLAY" }
 	];
 	alliances = [
 		{ label: "Blue", value: "Blue" },
-		{ label: "Red", value: "Red" },
+		{ label: "Red", value: "Red" }
 	];
 	startingPositions = [
 		{ label: "1", value: "1" },
 		{ label: "2", value: "2" },
 		{ label: "3", value: "3" },
-	];
-	preloadOptions = [
-		{ label: "None", value: "None" },
-		{ label: "Cube", value: "Cube" },
-		{ label: "Cone", value: "Cone" },
+		{ label: "4", value: "4" },
+		{ label: "5", value: "5" }
 	];
 
 	render() {
-		return html`<div>
+		return html`
+			<div style="padding-left: 20px;">
 				<label
 					>Name:&nbsp
 					<vaadin-text-field
@@ -88,6 +117,7 @@ export class MatchInfo extends LitElement {
 					Alliance:&nbsp
 					<vaadin-select
 						${ref(this.alliance)}
+						@change=${this.updateDiagram}
 						theme="small"
 						.items="${this.alliances}"
 					></vaadin-select>
@@ -96,6 +126,7 @@ export class MatchInfo extends LitElement {
 					Starting Position:&nbsp
 					<vaadin-select
 						${ref(this.startingPosition)}
+						@change=${this.updateDiagram}
 						theme="small"
 						.items="${this.startingPositions}"
 					></vaadin-select>
@@ -107,33 +138,55 @@ export class MatchInfo extends LitElement {
 						theme="small"
 					></vaadin-integer-field>
 				</label>
-				<label>
-					Preload:&nbsp
-					<vaadin-select
-						${ref(this.preload)}
-						theme="small"
-						.items="${this.preloadOptions}"
-					></vaadin-select>
-				</label>
-				<label>Revision ${__version__}</label>
-				<theme-button @click=${this.onClick}></theme-button>
+
+				<div id="icon-container">
+					<img ${ref(this.img)} id="icon" src="./dark_logo.svg" />
+				</div>
 			</div>
-			<img ${ref(this.img)} src="./favicon.svg" /> `;
+			<div class="bottom">
+				<theme-button @click=${this.onClick}></theme-button>
+				<label style="padding-left:10em; padding-top: 2em;"
+					>Revision ${__version__}</label
+				>
+			</div>
+
+			<img
+				${ref(this.diagram)}
+				class="diagram"
+				style="height: calc(100vh - 100px)"
+				src=""
+			/>
+		`;
 	}
+
+	updateDiagram() {
+		if (
+			this.alliance.value?.value.length != 0 &&
+			this.startingPosition.value?.value.length != 0
+		) {
+			var color: number = this.alliance.value!.value == "Red" ? 1 : 0;
+			var pos: number = +this.startingPosition.value!.value;
+			var id: number = 5 * color + pos - 1;
+			//console.log("Id: " + id);
+			this.diagram.value!.src = `./img${id}.png`;
+		} else {
+			this.diagram.value!.src = ``;
+		}
+	}
+
 	/**
 	 * Combines all the data into JSON.
 	 * @returns An object containing this element's data
 	 */
 	getInfo() {
 		return {
-			name: this.name.value!.value,
+			name: this.name.value!.value || "Name left blank",
 			matchType: this.matchType.value!.value,
 			matchNum: this.matchNum.value!.value,
-			isReplay: this.isReplay.value!.checked,
-			alliance: this.alliance.value!.value,
+			isReplay: this.isReplay.value!.checked ? 1 : 0,
+			alliance: this.alliance.value!.value == "Red" ? "R" : "B",
 			startingPosition: this.startingPosition.value!.value,
-			teamNum: this.teamNum.value!.value,
-			preload: this.preload.value!.value,
+			teamNum: this.teamNum.value!.value
 		};
 	}
 	/**
@@ -156,7 +209,6 @@ export class MatchInfo extends LitElement {
 		// Reset everything else
 		this.isReplay.value!.checked = false;
 		this.teamNum.value!.value = "";
-		this.preload.value!.value = "";
 	}
 	onClick() {
 		if (document.querySelector("html")?.className == "dark") {

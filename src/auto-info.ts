@@ -54,7 +54,7 @@ export class AutoInfo extends LitElement {
 				countLabel="Dropped Notes"
 			></game-counter>
 
-			<toggle-button ${ref(this.toggleLeft)} label="Left"></toggle-button>
+			<toggle-button ${ref(this.toggleLeft)} label="Leave"></toggle-button>
 		`;
 	}
 	/**

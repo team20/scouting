@@ -33,6 +33,7 @@ export class AutoInfo extends LitElement {
 
 	render() {
 		return html`
+		<div>
 			<game-counter
 				${ref(this.speakerCounter)}
 				class="counter"
@@ -46,7 +47,8 @@ export class AutoInfo extends LitElement {
 				id="auto-amp-counter"
 				countLabel="AMP Notes"
 			></game-counter>
-
+			</div>
+			<div>
 			<game-counter
 				${ref(this.notesDroppedCounter)}
 				class="counter"
@@ -55,6 +57,7 @@ export class AutoInfo extends LitElement {
 			></game-counter>
 
 			<toggle-button ${ref(this.toggleLeft)} label="Leave"></toggle-button>
+			</div>
 		`;
 	}
 	/**

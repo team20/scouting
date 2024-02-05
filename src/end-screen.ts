@@ -133,7 +133,7 @@ export class EndScreen extends LitElement {
 					<trap-counter
 					${ref(this.trapResult)}
 					class="counter"
-					id="teleop-foul-counter"
+					id="end-trap-count"
 					countLabel="Notes Trap"
 				></trap-counter>
 
@@ -188,7 +188,7 @@ export class EndScreen extends LitElement {
 				<vaadin-select
 						${ref(this.defensePlayed)}
 						theme="small"
-						id="end-defence-faced"
+						id="end-defence-played"
 						label="Defense Played"
 						.items="${this.defenseOptions}"
 					></vaadin-select>

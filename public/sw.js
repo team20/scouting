@@ -3,7 +3,7 @@ const cacheName = "Team20-Scouting-v12";
 
 const imgs = [];
 for (let i = 0; i < 10; i++) {
-	imgs.push(`public/img${i}.png`);
+	imgs.push(`/img${i}.png`);
 }
 
 

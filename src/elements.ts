@@ -11,3 +11,5 @@ import "./teleop-info";
 import "./theme-button";
 import "./toggle-button";
 import "./park-button";
+import "./half-toggle-button";
+import "./trap-counter";

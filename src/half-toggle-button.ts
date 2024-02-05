@@ -3,8 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 /**
  * A button that switches between red and Team 20 green.
  */
-@customElement("park-button")
-export class ParkButton extends LitElement {
+@customElement("half-toggle-button")
+export class HalfToggleButton extends LitElement {
 	static styles = css`
 		:host {
 			display: block;
@@ -21,7 +21,7 @@ export class ParkButton extends LitElement {
 			color: #000000;
 			cursor: pointer;
 			font-weight: bold;
-			font-size: 30px;
+			font-size: 25px;
 		}
 
 		.off {
@@ -74,6 +74,6 @@ export class ParkButton extends LitElement {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"park-button": ParkButton;
+		"half-toggle-button": HalfToggleButton;
 	}
 }

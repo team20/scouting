@@ -2,6 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { BreakdownButton } from "./breakdown-button";
+import { ParkButton } from "./park-button";
 
 /**
  * Contains information relating to the end of the match.
@@ -49,6 +50,12 @@ export class EndScreen extends LitElement {
 			margin-bottom: 0;
 			margin-top: 45px;
 		}
+		#end-park {
+			width: 200px;
+			height: 150px;
+			margin-bottom: 0;
+			margin-top: 45px;
+		}
 	`;
 
 	yesNoOptions = [
@@ -74,7 +81,7 @@ export class EndScreen extends LitElement {
 	climbAttempted: Ref<HTMLInputElement> = createRef();
 	climbResult: Ref<HTMLInputElement> = createRef();
 	harmony: Ref<HTMLInputElement> = createRef();
-	park: Ref<HTMLInputElement> = createRef();
+	park: Ref<ParkButton> = createRef();
 	breakdown: Ref<BreakdownButton> = createRef();
 	comments: Ref<HTMLInputElement> = createRef();
 
@@ -126,13 +133,12 @@ export class EndScreen extends LitElement {
 					></vaadin-select>
 				</div>
 				<div id="bottomRow">
-					<vaadin-select
+			
+					<park-button
 						${ref(this.park)}
-						theme="small"
 						id="end-park"
 						label="Park"
-						.items="${this.yesNoOptions}"
-					></vaadin-select>
+					></park-button>
 
 					<breakdown-button
 						${ref(this.breakdown)}
@@ -180,7 +186,7 @@ export class EndScreen extends LitElement {
 			climbAttempted: this.climbAttempted.value!.value === "Yes" ? 1 : 0,
 			climbResult: this.climbResult.value!.value === "Yes" ? 1 : 0,
 			harmony: this.harmony.value!.value,
-			park: this.park.value!.value === "Yes" ? 1 : 0,
+			park: this.park.value!.toggled ? 1 : 0,
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
 			comments: (this.comments.value!.value || "No comment.").replaceAll(";","."),
 		};
@@ -197,7 +203,7 @@ export class EndScreen extends LitElement {
 		this.climbAttempted.value!.value = "";
 		this.climbResult.value!.value = "";
 		this.harmony.value!.value = "";
-		this.park.value!.value = "";
+		this.park.value!.toggled = false;
 		this.breakdown.value!.toggled = false;
 		this.comments.value!.value = "";
 	}

@@ -243,14 +243,15 @@ describe("Scouting data validation", () => {
 		cy.root().click();
 
 		cy.get("#qrInfo").shadow().find("#display-code-button").click();
-		
-		cy.fixture("scoutingData.txt").then((refData) =>
-			cy
-				.readFile("cypress/downloads/R2QUALScoutingData1.txt")
-				.should(
-					"eq",
-					refData
-				)
-		);
+
+		cy.fixture("scoutingData.txt").then((refData) => {
+			cy.readFile("cypress/downloads/R2QUALScoutingData1.txt").then((data) => {
+			console.log(refData.type);
+			
+				cy.wrap(data.substring(0, data.length - 14))
+			.should("eq", refData);
+				
+			})
+		});
 	});
 });

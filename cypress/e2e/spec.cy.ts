@@ -167,31 +167,18 @@ describe("Scouting data validation", () => {
 		cy.get("#end-tab").click();
 		cy.root().click();
 
-		
-	
+		cy.get("#endInfo").shadow().find("#end-trap-attempted").click();
 
-
-
-		cy.get("#endInfo")
-			.shadow()
-			.find("#end-trap-attempted")
-			.click();
-
-		for(let i = 0; i < 2; i++){
+		for (let i = 0; i < 2; i++) {
 			cy.get("#endInfo")
-			.shadow()
-			.find("#end-trap-count")
-			.shadow()
-			.find("vaadin-button.rightButton")
-			.click();
+				.shadow()
+				.find("#end-trap-count")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
 		}
 
-		cy.get("#endInfo")
-			.shadow()
-			.find("#end-climb-attempted")
-			.click();
-
-
+		cy.get("#endInfo").shadow().find("#end-climb-attempted").click();
 
 		cy.get("#endInfo")
 			.shadow()
@@ -201,14 +188,8 @@ describe("Scouting data validation", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 
+		cy.get("#endInfo").shadow().find("#end-park").click();
 
-
-		cy.get("#endInfo")
-			.shadow()
-			.find("#end-park")
-			.click();
-
-		
 		cy.get("#endInfo")
 			.shadow()
 			.find("#end-defence-faced vaadin-select-value-button")
@@ -216,8 +197,6 @@ describe("Scouting data validation", () => {
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
-
-
 
 		cy.get("#endInfo")
 			.shadow()
@@ -227,17 +206,10 @@ describe("Scouting data validation", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(5)"
 		).click();
 
-
-
 		cy.get("#endInfo")
 			.shadow()
 			.find("#end-comments > label")
 			.type("Pick this team.");
-
-
-
-
-
 
 		cy.get("#qr-tab").click();
 		cy.root().click();
@@ -246,12 +218,10 @@ describe("Scouting data validation", () => {
 
 		cy.fixture("scoutingData.txt").then((refData) => {
 			cy.readFile("cypress/downloads/R2QUALScoutingData1.txt").then((data) => {
-			console.log(refData.type);
-			
-				cy.wrap(data.substring(0, data.length - 14))
-			.should("eq", refData);
-				
-			})
+				console.log(refData.type);
+
+				cy.wrap(data.substring(0, data.length - 14)).should("eq", refData);
+			});
 		});
 	});
 });

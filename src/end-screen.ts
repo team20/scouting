@@ -104,8 +104,8 @@ export class EndScreen extends LitElement {
 		{ label: "Poor", value: "1" },
 		{ label: "Passable", value: "2" },
 		{ label: "Good", value: "3" },
-		{ label: "Excellent", value: "4" },
-	]
+		{ label: "Excellent", value: "4" }
+	];
 
 	trapAttempted: Ref<HalfToggleButton> = createRef();
 	trapResult: Ref<TrapCounter> = createRef();
@@ -123,34 +123,32 @@ export class EndScreen extends LitElement {
 		return html`
 			<div>
 				<div class="row">
-				<half-toggle-button
+					<half-toggle-button
 						${ref(this.trapAttempted)}
 						id="end-trap-attempted"
 						label="Trap Attempted"
 					></half-toggle-button>
-				
 
 					<trap-counter
-					${ref(this.trapResult)}
-					class="counter"
-					id="end-trap-count"
-					countLabel="Notes Trap"
-				></trap-counter>
-
-				
+						${ref(this.trapResult)}
+						class="counter"
+						id="end-trap-count"
+						countLabel="Notes Trap"
+					></trap-counter>
 				</div>
 				<div class="row">
-			
 					<half-toggle-button
 						${ref(this.climbAttempted)}
 						id="end-climb-attempted"
 						label="Climb Attempted"
+						@toggled="${this.processClimbResult}"
 					></half-toggle-button>
 
 					<half-toggle-button
 						${ref(this.climbResult)}
 						id="end-climb-result"
 						label="Climb Result"
+						@toggled="${this.processClimbResult}"
 					></half-toggle-button>
 
 					<vaadin-select
@@ -162,7 +160,6 @@ export class EndScreen extends LitElement {
 					></vaadin-select>
 				</div>
 				<div id="bottomRow">
-			
 					<park-button
 						${ref(this.park)}
 						id="end-park"
@@ -177,15 +174,15 @@ export class EndScreen extends LitElement {
 				</div>
 
 				<div style="display:flex; justify-content: center; gap: 30px;">
-				<vaadin-select
+					<vaadin-select
 						${ref(this.defenseFaced)}
 						theme="small"
 						id="end-defence-faced"
 						label="Defense Faced"
 						.items="${this.defenseOptions}"
 					></vaadin-select>
-				
-				<vaadin-select
+
+					<vaadin-select
 						${ref(this.defensePlayed)}
 						theme="small"
 						id="end-defence-played"
@@ -193,8 +190,6 @@ export class EndScreen extends LitElement {
 						.items="${this.defenseOptions}"
 					></vaadin-select>
 				</div>
-
-
 			</div>
 
 			<vaadin-text-area
@@ -205,25 +200,24 @@ export class EndScreen extends LitElement {
 		`;
 	}
 
-	processClimbResult() {
-		/*
-		// If the team didn't attempt a climb, force actual to be no
-		if (this.climbAttempted.value!.value === this.yesNoOptions[1].value) {
-			this.climbResult.value!.value = this.yesNoOptions[1].value;
-			// @ts-ignore
-			this.climbResult.value!.readonly = true;
-			// If the team successfully climbed, lock attempted to yes
-		} else if (this.climbResult.value!.value === this.yesNoOptions[0].value) {
-			this.climbAttempted.value!.value = this.yesNoOptions[0].value;
-			// @ts-ignore
-			this.climbAttempted.value!.readonly = true;
+	/**
+	 * Forces the climb result and climb attempted buttons
+	 * to always be in a valid state
+	 * @param e toggle event
+	 */
+	processClimbResult(e: CustomEvent) {
+		// Check which button was pressed
+		if (e.detail === this.climbAttempted.value?.label) {
+			// Climb Attempted was toggled
+			if (this.climbAttempted.value?.toggled == false) {
+				this.climbResult.value!.toggled = false;
+			}
 		} else {
-			// @ts-ignore
-			this.climbAttempted.value!.readonly = false;
-			// @ts-ignore
-			this.climbResult.value!.readonly = false;
+			// Climb Result was toggled
+			if (this.climbResult.value?.toggled == true) {
+				this.climbAttempted.value!.toggled = true;
+			}
 		}
-		*/
 	}
 
 	/**
@@ -241,7 +235,10 @@ export class EndScreen extends LitElement {
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
 			defensePlayed: this.defensePlayed.value!.value || 0,
 			defenseFaced: this.defenseFaced.value!.value || 0,
-			comments: (this.comments.value!.value || "No comment.").replaceAll(";","."),
+			comments: (this.comments.value!.value || "No comment.").replaceAll(
+				";",
+				"."
+			)
 		};
 	}
 

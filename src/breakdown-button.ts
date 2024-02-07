@@ -21,7 +21,7 @@ export class BreakdownButton extends LitElement {
 			color: #000000;
 			cursor: pointer;
 			font-weight: bold;
-			font-size: 25px;
+			font-size: 23px;
 		}
 
 		.off {

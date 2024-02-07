@@ -21,11 +21,11 @@ export class HalfToggleButton extends LitElement {
 			color: #000000;
 			cursor: pointer;
 			font-weight: bold;
-			font-size: 25px;
+			font-size: 23px;
 		}
 
 		.off {
-			--lumo-contrast-5pct: #27313C;
+			--lumo-contrast-5pct: #27313c;
 			color: white;
 		}
 		.on {

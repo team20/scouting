@@ -3,8 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 /**
  * A button that switches between red and Team 20 green.
  */
-@customElement("breakdown-button")
-export class BreakdownButton extends LitElement {
+@customElement("half-toggle-button")
+export class HalfToggleButton extends LitElement {
 	static styles = css`
 		:host {
 			display: block;
@@ -25,10 +25,12 @@ export class BreakdownButton extends LitElement {
 		}
 
 		.off {
-			--lumo-contrast-5pct: #019d04;
+			--lumo-contrast-5pct: #27313c;
+			color: white;
 		}
 		.on {
-			--lumo-contrast-5pct: #ff0000;
+			--lumo-contrast-5pct: #506070;
+			color: white;
 		}
 	`;
 	@property()
@@ -48,6 +50,8 @@ export class BreakdownButton extends LitElement {
 
 	onClick() {
 		this.toggled = !this.toggled;
+		const event = new CustomEvent("toggled", { detail: this.label });
+		this.dispatchEvent(event);
 	}
 
 	/**
@@ -72,6 +76,6 @@ export class BreakdownButton extends LitElement {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"breakdown-button": BreakdownButton;
+		"half-toggle-button": HalfToggleButton;
 	}
 }

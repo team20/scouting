@@ -1,5 +1,12 @@
 // Increment when you update the repo
 const cacheName = "Team20-Scouting-v12";
+
+const imgs = [];
+for (let i = 0; i < 10; i++) {
+	imgs.push(`/img${i}.png`);
+}
+
+
 self.addEventListener("install", (e) => {
 	console.log("[Service Worker] Install");
 	e.waitUntil(
@@ -7,6 +14,7 @@ self.addEventListener("install", (e) => {
 			// Retrieve our cache object
 			const cache = await caches.open(cacheName);
 			console.log("[ServiceWorker] Caching assets");
+			await cache.addAll(imgs);
 		})()
 	);
 });

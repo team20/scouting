@@ -3,8 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 /**
  * A button that switches between red and Team 20 green.
  */
-@customElement("breakdown-button")
-export class BreakdownButton extends LitElement {
+@customElement("park-button")
+export class ParkButton extends LitElement {
 	static styles = css`
 		:host {
 			display: block;
@@ -21,14 +21,16 @@ export class BreakdownButton extends LitElement {
 			color: #000000;
 			cursor: pointer;
 			font-weight: bold;
-			font-size: 23px;
+			font-size: 30px;
 		}
 
 		.off {
-			--lumo-contrast-5pct: #019d04;
+			--lumo-contrast-5pct: #27313C;
+			color: white;
 		}
 		.on {
-			--lumo-contrast-5pct: #ff0000;
+			--lumo-contrast-5pct: #506070;
+			color: white;
 		}
 	`;
 	@property()
@@ -72,6 +74,6 @@ export class BreakdownButton extends LitElement {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"breakdown-button": BreakdownButton;
+		"park-button": ParkButton;
 	}
 }

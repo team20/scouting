@@ -2,6 +2,9 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { BreakdownButton } from "./breakdown-button";
+import { ParkButton } from "./park-button";
+import { HalfToggleButton } from "./half-toggle-button";
+import { TrapCounter } from "./trap-counter";
 
 /**
  * Contains information relating to the end of the match.
@@ -49,6 +52,33 @@ export class EndScreen extends LitElement {
 			margin-bottom: 0;
 			margin-top: 45px;
 		}
+		#end-park {
+			width: 200px;
+			height: 150px;
+			margin-bottom: 0;
+			margin-top: 45px;
+		}
+
+		#end-climb-attempted {
+			width: 235px;
+			height: 125px;
+			margin-bottom: 0;
+			margin-top: 45px;
+		}
+
+		#end-climb-result {
+			width: 235px;
+			height: 125px;
+			margin-bottom: 0;
+			margin-top: 45px;
+		}
+
+		#end-trap-attempted {
+			width: 235px;
+			height: 125px;
+			margin-bottom: 0;
+			margin-top: 75px;
+		}
 	`;
 
 	yesNoOptions = [
@@ -69,53 +99,57 @@ export class EndScreen extends LitElement {
 		{ label: "3", value: "3" }
 	];
 
-	trapAttempted: Ref<HTMLInputElement> = createRef();
-	trapResult: Ref<HTMLInputElement> = createRef();
-	climbAttempted: Ref<HTMLInputElement> = createRef();
-	climbResult: Ref<HTMLInputElement> = createRef();
+	defenseOptions = [
+		{ label: "None", value: "0" },
+		{ label: "Poor", value: "1" },
+		{ label: "Passable", value: "2" },
+		{ label: "Good", value: "3" },
+		{ label: "Excellent", value: "4" }
+	];
+
+	trapAttempted: Ref<HalfToggleButton> = createRef();
+	trapResult: Ref<TrapCounter> = createRef();
+	climbAttempted: Ref<HalfToggleButton> = createRef();
+	climbResult: Ref<HalfToggleButton> = createRef();
 	harmony: Ref<HTMLInputElement> = createRef();
-	park: Ref<HTMLInputElement> = createRef();
+	park: Ref<ParkButton> = createRef();
 	breakdown: Ref<BreakdownButton> = createRef();
 	comments: Ref<HTMLInputElement> = createRef();
+
+	defenseFaced: Ref<HTMLInputElement> = createRef();
+	defensePlayed: Ref<HTMLInputElement> = createRef();
 
 	render() {
 		return html`
 			<div>
 				<div class="row">
-					<vaadin-select
+					<half-toggle-button
 						${ref(this.trapAttempted)}
-						theme="small"
 						id="end-trap-attempted"
-						label="Trap Attempted?"
-						.items="${this.yesNoOptions}"
-					></vaadin-select>
+						label="Trap Attempted"
+					></half-toggle-button>
 
-					<vaadin-select
+					<trap-counter
 						${ref(this.trapResult)}
-						theme="small"
-						id="end-trap-result"
-						label="Traps Result"
-						.items="${this.trapResultOptions}"
-					></vaadin-select>
+						class="counter"
+						id="end-trap-count"
+						countLabel="Notes Trap"
+					></trap-counter>
 				</div>
 				<div class="row">
-					<vaadin-select
+					<half-toggle-button
 						${ref(this.climbAttempted)}
 						id="end-climb-attempted"
-						theme="small"
-						label="Climb Attempted?"
-						.items="${this.yesNoOptions}"
-						@change=${this.processClimbResult}
-					></vaadin-select>
+						label="Climb Attempted"
+						@toggled="${this.processClimbResult}"
+					></half-toggle-button>
 
-					<vaadin-select
+					<half-toggle-button
 						${ref(this.climbResult)}
-						theme="small"
-						id="end-climb-success"
-						label="Climb Success"
-						.items="${this.yesNoOptions}"
-						@change=${this.processClimbResult}
-					></vaadin-select>
+						id="end-climb-result"
+						label="Climb Result"
+						@toggled="${this.processClimbResult}"
+					></half-toggle-button>
 
 					<vaadin-select
 						${ref(this.harmony)}
@@ -126,19 +160,35 @@ export class EndScreen extends LitElement {
 					></vaadin-select>
 				</div>
 				<div id="bottomRow">
-					<vaadin-select
+					<park-button
 						${ref(this.park)}
-						theme="small"
 						id="end-park"
 						label="Park"
-						.items="${this.yesNoOptions}"
-					></vaadin-select>
+					></park-button>
 
 					<breakdown-button
 						${ref(this.breakdown)}
 						id="end-breakdown"
 						label="BREAKDOWN"
 					></breakdown-button>
+				</div>
+
+				<div style="display:flex; justify-content: center; gap: 30px;">
+					<vaadin-select
+						${ref(this.defenseFaced)}
+						theme="small"
+						id="end-defence-faced"
+						label="Defense Faced"
+						.items="${this.defenseOptions}"
+					></vaadin-select>
+
+					<vaadin-select
+						${ref(this.defensePlayed)}
+						theme="small"
+						id="end-defence-played"
+						label="Defense Played"
+						.items="${this.defenseOptions}"
+					></vaadin-select>
 				</div>
 			</div>
 
@@ -150,22 +200,23 @@ export class EndScreen extends LitElement {
 		`;
 	}
 
-	processClimbResult() {
-		// If the team didn't attempt a climb, force actual to be no
-		if (this.climbAttempted.value!.value === this.yesNoOptions[1].value) {
-			this.climbResult.value!.value = this.yesNoOptions[1].value;
-			// @ts-ignore
-			this.climbResult.value!.readonly = true;
-			// If the team successfully climbed, lock attempted to yes
-		} else if (this.climbResult.value!.value === this.yesNoOptions[0].value) {
-			this.climbAttempted.value!.value = this.yesNoOptions[0].value;
-			// @ts-ignore
-			this.climbAttempted.value!.readonly = true;
+	/**
+	 * Forces the climb result and climb attempted buttons
+	 * to always be in a valid state
+	 * @param e toggle event
+	 */
+	processClimbResult(e: CustomEvent) {
+		// Check which button was pressed
+		if (e.detail === this.climbAttempted.value?.label) {
+			// Climb Attempted was toggled
+			if (this.climbAttempted.value?.toggled == false) {
+				this.climbResult.value!.toggled = false;
+			}
 		} else {
-			// @ts-ignore
-			this.climbAttempted.value!.readonly = false;
-			// @ts-ignore
-			this.climbResult.value!.readonly = false;
+			// Climb Result was toggled
+			if (this.climbResult.value?.toggled == true) {
+				this.climbAttempted.value!.toggled = true;
+			}
 		}
 	}
 
@@ -175,14 +226,19 @@ export class EndScreen extends LitElement {
 	 */
 	getInfo() {
 		return {
-			trapAttempted: this.trapAttempted.value!.value === "Yes" ? 1 : 0,
-			trapResult: this.trapResult.value!.value || 0,
-			climbAttempted: this.climbAttempted.value!.value === "Yes" ? 1 : 0,
-			climbResult: this.climbResult.value!.value === "Yes" ? 1 : 0,
-			harmony: this.harmony.value!.value,
-			park: this.park.value!.value === "Yes" ? 1 : 0,
+			trapAttempted: this.trapAttempted.value!.toggled ? 1 : 0,
+			trapResult: this.trapResult.value!.count,
+			climbAttempted: this.climbAttempted.value!.toggled ? 1 : 0,
+			climbResult: this.climbResult.value!.toggled ? 1 : 0,
+			harmony: this.harmony.value!.value || 0,
+			park: this.park.value!.toggled ? 1 : 0,
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
-			comments: (this.comments.value!.value || "No comment.").replaceAll(";","."),
+			defensePlayed: this.defensePlayed.value!.value || 0,
+			defenseFaced: this.defenseFaced.value!.value || 0,
+			comments: (this.comments.value!.value || "No comment.").replaceAll(
+				";",
+				"."
+			)
 		};
 	}
 
@@ -192,14 +248,16 @@ export class EndScreen extends LitElement {
 	 * Resets all values to their defaults.
 	 */
 	reset() {
-		this.trapAttempted.value!.value = "";
-		this.trapResult.value!.value = "";
-		this.climbAttempted.value!.value = "";
-		this.climbResult.value!.value = "";
+		this.trapAttempted.value!.toggled = false;
+		this.trapResult.value!.count = 0;
+		this.climbAttempted.value!.toggled = false;
+		this.climbResult.value!.toggled = false;
 		this.harmony.value!.value = "";
-		this.park.value!.value = "";
+		this.park.value!.toggled = false;
 		this.breakdown.value!.toggled = false;
 		this.comments.value!.value = "";
+		this.defenseFaced.value!.value = "";
+		this.defensePlayed.value!.value = "";
 	}
 }
 

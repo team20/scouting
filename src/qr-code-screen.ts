@@ -41,7 +41,7 @@ export class QrCodeScreen extends LitElement {
 	continueScouting: Ref<HTMLInputElement> = createRef();
 	constructor() {
 		super();
-		this.img.src = "./favicon.svg";
+		this.img.src = "./logo-no-text.svg";
 		this.img.decode();
 	}
 	render() {
@@ -77,15 +77,16 @@ export class QrCodeScreen extends LitElement {
 	renderQRCode() {
 		let data = combineData();
 		toCanvas(this.canvas.value, data, { width: 450 });
-		let logoLength = 128;
+		let logoLength = 100;
+		let logoHeight = 65;
 		this.canvas
 			.value!.getContext("2d")!
 			.drawImage(
 				this.img,
-				this.canvas.value!.height / 2 - logoLength / 2,
 				this.canvas.value!.width / 2 - logoLength / 2,
+				this.canvas.value!.height / 2 - logoHeight / 2,
 				logoLength,
-				logoLength
+				logoHeight
 			);
 		let matchInfo = getMatchInfo();
 		this.matchLabel =

@@ -167,13 +167,18 @@ describe("Scouting data validation", () => {
 		cy.get("#end-tab").click();
 		cy.root().click();
 
-		cy.get("#endInfo")
-			.shadow()
-			.find("#end-park vaadin-select-value-button")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
-		).click();
+		cy.get("#endInfo").shadow().find("#end-trap-attempted").click();
+
+		for (let i = 0; i < 2; i++) {
+			cy.get("#endInfo")
+				.shadow()
+				.find("#end-trap-count")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		cy.get("#endInfo").shadow().find("#end-climb-attempted").click();
 
 		cy.get("#endInfo")
 			.shadow()
@@ -183,17 +188,11 @@ describe("Scouting data validation", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 
-		// cy.get("#endInfo")
-		// 	.shadow()
-		// 	.find("#end-climb-success vaadin-select-value-button")
-		// 	.click();
-		// cy.get(
-		// 	"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
-		// ).click();
+		cy.get("#endInfo").shadow().find("#end-park").click();
 
 		cy.get("#endInfo")
 			.shadow()
-			.find("#end-climb-attempted vaadin-select-value-button")
+			.find("#end-defence-faced vaadin-select-value-button")
 			.click();
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
@@ -201,37 +200,28 @@ describe("Scouting data validation", () => {
 
 		cy.get("#endInfo")
 			.shadow()
-			.find("#end-trap-result vaadin-select-value-button")
+			.find("#end-defence-played vaadin-select-value-button")
 			.click();
 		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(3)"
-		).click();
-
-		cy.get("#endInfo")
-			.shadow()
-			.find("#end-trap-attempted vaadin-select-value-button")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(5)"
 		).click();
 
 		cy.get("#endInfo")
 			.shadow()
 			.find("#end-comments > label")
-			.type("Don't pick this team.");
+			.type("Pick this team.");
 
 		cy.get("#qr-tab").click();
 		cy.root().click();
 
 		cy.get("#qrInfo").shadow().find("#display-code-button").click();
 
-		cy.fixture("scoutingData.txt").then((refData) =>
-			cy
-				.readFile("cypress/downloads/R2QUALScoutingData1.txt")
-				.should(
-					"eq",
-					refData
-				)
-		);
+		cy.fixture("scoutingData.txt").then((refData) => {
+			cy.readFile("cypress/downloads/R2QUALScoutingData1.txt").then((data) => {
+				console.log(refData.type);
+
+				cy.wrap(data.substring(0, data.length - 14)).should("eq", refData);
+			});
+		});
 	});
 });

@@ -1,1 +1,1 @@
-Scouter Name;1;1;0;R;20;2;5;3;4;0;5;3;4;2;1;1;2;0;0;1;2;0;Don't pick this team.
+Scouter Name;1;1;0;R;20;2;5;3;4;0;5;3;4;2;1;1;2;1;0;1;2;0;4;1;Pick this team.

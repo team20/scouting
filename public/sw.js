@@ -1,11 +1,10 @@
 // Increment when you update the repo
-const cacheName = "Team20-Scouting-v12";
+const cacheName = "Team20-Scouting-v20";
 
 const imgs = [];
 for (let i = 0; i < 10; i++) {
 	imgs.push(`/img${i}.png`);
 }
-
 
 self.addEventListener("install", (e) => {
 	console.log("[Service Worker] Install");

@@ -141,14 +141,14 @@ export class EndScreen extends LitElement {
 						${ref(this.climbAttempted)}
 						id="end-climb-attempted"
 						label="Climb Attempted"
-						@toggled="${this.processClimbResult}"
+						@toggled="${this.processButtonToggle}"
 					></half-toggle-button>
 
 					<half-toggle-button
 						${ref(this.climbResult)}
 						id="end-climb-result"
 						label="Climb Result"
-						@toggled="${this.processClimbResult}"
+						@toggled="${this.processButtonToggle}"
 					></half-toggle-button>
 
 					<vaadin-select
@@ -162,6 +162,7 @@ export class EndScreen extends LitElement {
 				<div id="bottomRow">
 					<park-button
 						${ref(this.park)}
+						@toggled="${this.processButtonToggle}"
 						id="end-park"
 						label="Park"
 					></park-button>
@@ -201,21 +202,27 @@ export class EndScreen extends LitElement {
 	}
 
 	/**
-	 * Forces the climb result and climb attempted buttons
+	 * Forces the climb result, climb attempted, and park buttons
 	 * to always be in a valid state
 	 * @param e toggle event
 	 */
-	processClimbResult(e: CustomEvent) {
+	processButtonToggle(e: CustomEvent) {
 		// Check which button was pressed
 		if (e.detail === this.climbAttempted.value?.label) {
 			// Climb Attempted was toggled
 			if (this.climbAttempted.value?.toggled == false) {
 				this.climbResult.value!.toggled = false;
 			}
-		} else {
+		} else if (e.detail === this.climbResult.value?.label) {
 			// Climb Result was toggled
 			if (this.climbResult.value?.toggled == true) {
 				this.climbAttempted.value!.toggled = true;
+				this.park.value!.toggled = false;
+			}
+		} else {
+			// Park was toggled
+			if (this.park.value?.toggled == true) {
+				this.climbResult.value!.toggled = false;
 			}
 		}
 	}
@@ -235,10 +242,9 @@ export class EndScreen extends LitElement {
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
 			defensePlayed: this.defensePlayed.value!.value || 0,
 			defenseFaced: this.defenseFaced.value!.value || 0,
-			comments: (this.comments.value!.value || "No comment.").replaceAll(
-				";",
-				"."
-			)
+			comments: (this.comments.value!.value || "No comment.")
+				.replaceAll(";", ".")
+				.replaceAll("\n", " ")
 		};
 	}
 

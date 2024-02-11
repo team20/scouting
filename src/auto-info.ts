@@ -1,8 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
-import { GameCounter } from "./counter.ts";
-import { ToggleButton } from "./toggle-button.ts";
+import { GameCounter } from "./counter";
+import { ToggleButton } from "./toggle-button";
 
 /**
  * Contains information on the auto period.
@@ -17,46 +17,66 @@ export class AutoInfo extends LitElement {
 			flex-wrap: wrap;
 			gap: 30px;
 			text-align: center;
-			padding-top: 50px;
+			padding-top: 20px;
 		}
 		toggle-button {
 			width: 600px;
-			height: 200px;
-			padding-bottom: 25px;
+			height: 175px;
+			padding-bottom: 15px;
 			margin: 0;
+		}
+		#right-buttons {
+			margin-top: -33px;
 		}
 	`;
 	speakerCounter: Ref<GameCounter> = createRef();
+	speakerMissCounter: Ref<GameCounter> = createRef();
 	ampCounter: Ref<GameCounter> = createRef();
+	ampMissCounter: Ref<GameCounter> = createRef();
+
 	notesDroppedCounter: Ref<GameCounter> = createRef();
 	toggleLeft: Ref<ToggleButton> = createRef();
 
 	render() {
 		return html`
-		<div>
-			<game-counter
-				${ref(this.speakerCounter)}
-				class="counter"
-				id="auto-speaker-counter"
-				countLabel="Speaker Notes"
-			></game-counter>
-
-			<game-counter
-				${ref(this.ampCounter)}
-				class="counter"
-				id="auto-amp-counter"
-				countLabel="AMP Notes"
-			></game-counter>
-			</div>
 			<div>
-			<game-counter
-				${ref(this.notesDroppedCounter)}
-				class="counter"
-				id="auto-drop-counter"
-				countLabel="Dropped Notes"
-			></game-counter>
+				<game-counter
+					${ref(this.speakerCounter)}
+					class="counter"
+					id="auto-speaker-counter"
+					countLabel="Speaker Notes"
+				></game-counter>
 
-			<toggle-button ${ref(this.toggleLeft)} label="Leave"></toggle-button>
+				<game-counter
+					${ref(this.speakerMissCounter)}
+					class="counter"
+					id="auto-speaker-miss-counter"
+					countLabel="Speaker Miss"
+				></game-counter>
+
+				<game-counter
+					${ref(this.notesDroppedCounter)}
+					class="counter"
+					id="auto-drop-counter"
+					countLabel="Dropped Notes"
+				></game-counter>
+			</div>
+			<div id="right-buttons">
+				<game-counter
+					${ref(this.ampCounter)}
+					class="counter"
+					id="auto-amp-counter"
+					countLabel="AMP Notes"
+				></game-counter>
+
+				<game-counter
+					${ref(this.ampMissCounter)}
+					class="counter"
+					id="auto-amp-miss-counter"
+					countLabel="AMP Miss"
+				></game-counter>
+
+				<toggle-button ${ref(this.toggleLeft)} label="Leave"></toggle-button>
 			</div>
 		`;
 	}
@@ -67,7 +87,9 @@ export class AutoInfo extends LitElement {
 	getInfo() {
 		return {
 			speakerNum: this.speakerCounter.value!.count,
+			speakerNumMiss: this.speakerMissCounter.value!.count,
 			ampNum: this.ampCounter.value!.count,
+			ampNumMiss: this.ampMissCounter.value!.count,
 			notesDroppedCounter: this.notesDroppedCounter.value!.count,
 			toggleLeft: this.toggleLeft.value!.toggled ? 1 : 0
 		};
@@ -78,6 +100,9 @@ export class AutoInfo extends LitElement {
 	 * Resets all values to their defaults.
 	 */
 	reset() {
+		this.speakerMissCounter.value!.count = 0;
+		this.ampMissCounter.value!.count = 0;
+
 		this.speakerCounter.value!.count = 0;
 		this.ampCounter.value!.count = 0;
 		this.notesDroppedCounter.value!.count = 0;

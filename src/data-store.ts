@@ -35,9 +35,13 @@ export function combineData(): string {
 
 	return (
 		`${matchInfo.name};${matchTypeNum};${matchInfo.matchNum};${matchInfo.isReplay};${matchInfo.alliance};${matchInfo.teamNum};${matchInfo.startingPosition};` +
-		`${autoInfo.speakerNum};${autoInfo.ampNum};${autoInfo.notesDroppedCounter};${autoInfo.toggleLeft};` +
-		`${teleopInfo.speakerNum};${teleopInfo.ampNum};${teleopInfo.notesDroppedCounter};${teleopInfo.foulCounter};${teleopInfo.techCounter};` +
-		`${endInfo.trapAttempted};${endInfo.trapResult};${endInfo.climbAttempted};${endInfo.climbResult};${endInfo.park};${endInfo.harmony};${endInfo.breakdown};${endInfo.defensePlayed};${endInfo.defenseFaced};${endInfo.comments};${new Date().valueOf()}`
+		`${autoInfo.speakerNum};${autoInfo.speakerNumMiss};${autoInfo.ampNum};${autoInfo.ampNumMiss};${autoInfo.notesDroppedCounter};${autoInfo.toggleLeft};` +
+		`${teleopInfo.speakerNum};${teleopInfo.speakerNumMiss};${teleopInfo.ampNum};${teleopInfo.ampNumMiss};${teleopInfo.notesDroppedCounter};${teleopInfo.foulCounter};${teleopInfo.techCounter};` +
+		`${endInfo.trapAttempted};${endInfo.trapResult};${endInfo.climbAttempted};${
+			endInfo.climbResult
+		};${endInfo.park};${endInfo.harmony};${endInfo.breakdown};${
+			endInfo.defensePlayed
+		};${endInfo.defenseFaced};${endInfo.comments};${new Date().valueOf()}`
 	);
 }
 export function getMatchInfo() {

@@ -16,7 +16,7 @@ export class HalfCounter extends LitElement {
 		vaadin-button {
 			min-width: 50px;
 			width: 67px;
-			height: 200px;
+			height: 175px;
 			margin: 0;
 			cursor: pointer;
 		}

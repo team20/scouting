@@ -94,7 +94,9 @@ export class TeleopInfo extends LitElement {
 	getInfo() {
 		return {
 			speakerNum: this.speakerCounter.value!.count,
+			speakerNumMiss: this.speakerMissCounter.value!.count,
 			ampNum: this.ampCounter.value!.count,
+			ampNumMiss: this.ampMissCounter.value!.count,
 			notesDroppedCounter: this.notesDroppedCounter.value!.count,
 			foulCounter: this.foulCounter.value!.count,
 			techCounter: this.techCounter.value!.count
@@ -107,6 +109,9 @@ export class TeleopInfo extends LitElement {
 	 * Resets all values to their defaults.
 	 */
 	reset() {
+		this.speakerMissCounter.value!.count = 0;
+		this.ampMissCounter.value!.count = 0;
+
 		this.speakerCounter.value!.count = 0;
 		this.ampCounter.value!.count = 0;
 		this.notesDroppedCounter.value!.count = 0;

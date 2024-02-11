@@ -25,7 +25,7 @@ export class ParkButton extends LitElement {
 		}
 
 		.off {
-			--lumo-contrast-5pct: #27313C;
+			--lumo-contrast-5pct: #27313c;
 			color: white;
 		}
 		.on {
@@ -50,6 +50,8 @@ export class ParkButton extends LitElement {
 
 	onClick() {
 		this.toggled = !this.toggled;
+		const event = new CustomEvent("toggled", { detail: this.label });
+		this.dispatchEvent(event);
 	}
 
 	/**

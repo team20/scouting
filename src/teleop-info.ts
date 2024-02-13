@@ -47,18 +47,18 @@ export class TeleopInfo extends LitElement {
 				></game-counter>
 
 				<game-counter
-					${ref(this.ampCounter)}
-					class="counter"
-					id="teleop-amp-counter"
-					countLabel="AMP Notes"
-				></game-counter>
-			</div>
-			<div>
-				<game-counter
 					${ref(this.notesDroppedCounter)}
 					class="counter"
 					id="teleop-drop-counter"
 					countLabel="Dropped Notes"
+				></game-counter>
+			</div>
+			<div>
+				<game-counter
+					${ref(this.ampCounter)}
+					class="counter"
+					id="teleop-amp-counter"
+					countLabel="AMP Notes"
 				></game-counter>
 
 				<game-counter

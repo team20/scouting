@@ -72,6 +72,9 @@ export class TrapCounter extends LitElement {
 	}
 
 	increment() {
+		if (this.count >= 3) {
+			return;
+		}
 		this.count++;
 	}
 }

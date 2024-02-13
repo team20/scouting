@@ -9,7 +9,7 @@ export class HalfCounter extends LitElement {
 		:host {
 			display: grid;
 			grid-template-columns: min-content min-content min-content;
-			grid-template-rows: 25px 200px;
+			grid-template-rows: 100px min-content;
 			width: min-content;
 			text-align: center;
 		}
@@ -21,6 +21,8 @@ export class HalfCounter extends LitElement {
 			cursor: pointer;
 		}
 		div {
+			display: flex;
+			justify-content: center;
 			color: var(--lumo-primary-text-color);
 			font-size: medium;
 			width: 160px;
@@ -34,16 +36,16 @@ export class HalfCounter extends LitElement {
 			grid-row: 1 / span 2;
 		}
 		.countLabel {
-			padding-top: 20px;
+			align-items: flex-end;
 			grid-column: 2;
 			grid-row: 1;
 			font-size: 40px;
 		}
 		.count {
+			align-items: flex-start;
 			grid-column: 2;
 			grid-row: 2;
 			font-size: 30px;
-			padding-top: 50px;
 		}
 	`;
 	@property()

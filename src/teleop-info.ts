@@ -12,11 +12,13 @@ export class TeleopInfo extends LitElement {
 	static styles = css`
 		:host {
 			display: flex;
-			align-items: center;
 			justify-content: center;
 			flex-wrap: wrap;
 			gap: 30px;
 			text-align: center;
+		}
+
+		.counter {
 			padding-top: 20px;
 		}
 	`;

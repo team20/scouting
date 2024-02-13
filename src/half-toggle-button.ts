@@ -50,8 +50,6 @@ export class HalfToggleButton extends LitElement {
 
 	onClick() {
 		this.toggled = !this.toggled;
-		const event = new CustomEvent("toggled", { detail: this.label });
-		this.dispatchEvent(event);
 	}
 
 	/**

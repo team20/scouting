@@ -25,20 +25,16 @@ export class EndScreen extends LitElement {
 			font-weight: 500;
 			line-height: 2;
 		}
-		.diagram {
-			width: 400px;
-			aspect-ratio: 1056 / 562;
-		}
 		.row {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			gap: 10px;
-			height: 150px;
+			height: min-content;
 		}
 		#bottomRow {
 			display: flex;
-			height: fit-content;
+			height: min-content;
 			gap: 10px;
 			align-items: center;
 			justify-content: center;
@@ -49,35 +45,30 @@ export class EndScreen extends LitElement {
 		#end-breakdown {
 			width: 200px;
 			height: 150px;
-			margin-bottom: 0;
-			margin-top: 45px;
 		}
 		#end-park {
 			width: 200px;
 			height: 150px;
-			margin-bottom: 0;
-			margin-top: 45px;
 		}
 
 		#end-climb-attempted {
 			width: 235px;
 			height: 125px;
-			margin-bottom: 0;
-			margin-top: 45px;
 		}
 
 		#end-climb-result {
 			width: 235px;
 			height: 125px;
-			margin-bottom: 0;
-			margin-top: 45px;
 		}
 
 		#end-trap-attempted {
 			width: 235px;
 			height: 125px;
-			margin-bottom: 0;
-			margin-top: 75px;
+		}
+		.inputContainer {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
 		}
 	`;
 
@@ -121,7 +112,7 @@ export class EndScreen extends LitElement {
 
 	render() {
 		return html`
-			<div>
+			<div class="inputContainer">
 				<div class="row">
 					<half-toggle-button
 						${ref(this.trapAttempted)}
@@ -174,7 +165,7 @@ export class EndScreen extends LitElement {
 					></breakdown-button>
 				</div>
 
-				<div style="display:flex; justify-content: center; gap: 30px;">
+				<div style="display:flex; justify-content: center; gap: 30px">
 					<vaadin-select
 						${ref(this.defenseFaced)}
 						theme="small"

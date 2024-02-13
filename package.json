@@ -6,7 +6,8 @@
 	"scripts": {
 		"dev": "vite --base /scouting --port 5000",
 		"build": "tsc && vite build",
-		"preview": "vite preview --base /scouting --port 5000"
+		"preview": "vite preview --base /scouting --port 5000",
+		"test": "cypress run --component && cypress run --e2e"
 	},
 	"devDependencies": {
 		"@types/qrcode": "^1.5.2",

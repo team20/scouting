@@ -19,7 +19,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
+        # Remove --force when cypress-ct-lit supports lit 3.0.0
+      - run: npm ci --force
       - name: Cypress E2E tests
         uses: cypress-io/github-action@v6.6.1
         with:

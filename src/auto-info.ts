@@ -12,21 +12,19 @@ export class AutoInfo extends LitElement {
 	static styles = css`
 		:host {
 			display: flex;
-			align-items: center;
 			justify-content: center;
 			flex-wrap: wrap;
 			gap: 30px;
 			text-align: center;
-			padding-top: 20px;
 		}
 		toggle-button {
 			width: 600px;
 			height: 175px;
-			padding-bottom: 15px;
 			margin: 0;
+			padding-top: 20px;
 		}
-		#right-buttons {
-			margin-top: -33px;
+		game-counter {
+			padding-top: 20px;
 		}
 	`;
 	speakerCounter: Ref<GameCounter> = createRef();

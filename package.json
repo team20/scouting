@@ -6,7 +6,8 @@
 	"scripts": {
 		"dev": "vite --base /scouting --port 5000",
 		"build": "tsc && vite build",
-		"preview": "vite preview --base /scouting --port 5000"
+		"preview": "vite preview --base /scouting --port 5000",
+		"test": "cypress run --component && cypress run --e2e"
 	},
 	"devDependencies": {
 		"@types/qrcode": "^1.5.2",
@@ -16,18 +17,17 @@
 		"vite": "^5.0.11"
 	},
 	"dependencies": {
-		"@vaadin/button": "^24.2.1",
-		"@vaadin/checkbox": "^24.2.1",
-		"@vaadin/confirm-dialog": "^24.2.3",
-		"@vaadin/icon": "^24.2.2",
-		"@vaadin/icons": "^24.2.2",
-		"@vaadin/integer-field": "^24.2.1",
-		"@vaadin/select": "^24.2.1",
-		"@vaadin/tabs": "^24.2.1",
-		"@vaadin/tabsheet": "^24.2.1",
-		"@vaadin/text-area": "^24.3.3",
-		"@vaadin/text-field": "^24.2.1",
-		"lit": "^2.8.0",
+		"@vaadin/button": "^24.3.6",
+		"@vaadin/checkbox": "^24.3.6",
+		"@vaadin/confirm-dialog": "^24.3.6",
+		"@vaadin/icon": "^24.3.6",
+		"@vaadin/icons": "^24.3.6",
+		"@vaadin/integer-field": "^24.3.6",
+		"@vaadin/select": "^24.3.6",
+		"@vaadin/tabsheet": "^24.3.6",
+		"@vaadin/text-area": "^24.3.6",
+		"@vaadin/text-field": "^24.3.6",
+		"lit": "^3.0.0",
 		"qrcode": "^1.5.3"
 	}
 }

@@ -2,7 +2,6 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { BreakdownButton } from "./breakdown-button";
-import { ParkButton } from "./park-button";
 import { HalfToggleButton } from "./half-toggle-button";
 import { TrapCounter } from "./trap-counter";
 
@@ -25,20 +24,16 @@ export class EndScreen extends LitElement {
 			font-weight: 500;
 			line-height: 2;
 		}
-		.diagram {
-			width: 400px;
-			aspect-ratio: 1056 / 562;
-		}
 		.row {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			gap: 10px;
-			height: 150px;
+			height: min-content;
 		}
 		#bottomRow {
 			display: flex;
-			height: fit-content;
+			height: min-content;
 			gap: 10px;
 			align-items: center;
 			justify-content: center;
@@ -49,35 +44,30 @@ export class EndScreen extends LitElement {
 		#end-breakdown {
 			width: 200px;
 			height: 150px;
-			margin-bottom: 0;
-			margin-top: 45px;
 		}
 		#end-park {
 			width: 200px;
 			height: 150px;
-			margin-bottom: 0;
-			margin-top: 45px;
 		}
 
 		#end-climb-attempted {
 			width: 235px;
 			height: 125px;
-			margin-bottom: 0;
-			margin-top: 45px;
 		}
 
 		#end-climb-result {
 			width: 235px;
 			height: 125px;
-			margin-bottom: 0;
-			margin-top: 45px;
 		}
 
 		#end-trap-attempted {
 			width: 235px;
 			height: 125px;
-			margin-bottom: 0;
-			margin-top: 75px;
+		}
+		.inputContainer {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
 		}
 	`;
 
@@ -112,7 +102,7 @@ export class EndScreen extends LitElement {
 	climbAttempted: Ref<HalfToggleButton> = createRef();
 	climbResult: Ref<HalfToggleButton> = createRef();
 	harmony: Ref<HTMLInputElement> = createRef();
-	park: Ref<ParkButton> = createRef();
+	park: Ref<HalfToggleButton> = createRef();
 	breakdown: Ref<BreakdownButton> = createRef();
 	comments: Ref<HTMLInputElement> = createRef();
 
@@ -121,7 +111,7 @@ export class EndScreen extends LitElement {
 
 	render() {
 		return html`
-			<div>
+			<div class="inputContainer">
 				<div class="row">
 					<half-toggle-button
 						${ref(this.trapAttempted)}
@@ -141,14 +131,14 @@ export class EndScreen extends LitElement {
 						${ref(this.climbAttempted)}
 						id="end-climb-attempted"
 						label="Climb Attempted"
-						@toggled="${this.processButtonToggle}"
+						@click="${this.onClimbAttemptedClick}"
 					></half-toggle-button>
 
 					<half-toggle-button
 						${ref(this.climbResult)}
 						id="end-climb-result"
 						label="Climb Result"
-						@toggled="${this.processButtonToggle}"
+						@click="${this.onClimbResultClick}"
 					></half-toggle-button>
 
 					<vaadin-select
@@ -160,12 +150,12 @@ export class EndScreen extends LitElement {
 					></vaadin-select>
 				</div>
 				<div id="bottomRow">
-					<park-button
+					<half-toggle-button
 						${ref(this.park)}
-						@toggled="${this.processButtonToggle}"
+						@click="${this.onParkClick}"
 						id="end-park"
 						label="Park"
-					></park-button>
+					></half-toggle-button>
 
 					<breakdown-button
 						${ref(this.breakdown)}
@@ -174,7 +164,7 @@ export class EndScreen extends LitElement {
 					></breakdown-button>
 				</div>
 
-				<div style="display:flex; justify-content: center; gap: 30px;">
+				<div style="display:flex; justify-content: center; gap: 30px">
 					<vaadin-select
 						${ref(this.defenseFaced)}
 						theme="small"
@@ -202,28 +192,34 @@ export class EndScreen extends LitElement {
 	}
 
 	/**
-	 * Forces the climb result, climb attempted, and park buttons
-	 * to always be in a valid state
-	 * @param e toggle event
+	 * Forces the climb result and climb attempted buttons to always be in a
+	 * valid state.
 	 */
-	processButtonToggle(e: CustomEvent) {
-		// Check which button was pressed
-		if (e.detail === this.climbAttempted.value?.label) {
-			// Climb Attempted was toggled
-			if (this.climbAttempted.value?.toggled == false) {
-				this.climbResult.value!.toggled = false;
-			}
-		} else if (e.detail === this.climbResult.value?.label) {
-			// Climb Result was toggled
-			if (this.climbResult.value?.toggled == true) {
-				this.climbAttempted.value!.toggled = true;
-				this.park.value!.toggled = false;
-			}
-		} else {
-			// Park was toggled
-			if (this.park.value?.toggled == true) {
-				this.climbResult.value!.toggled = false;
-			}
+	onClimbAttemptedClick() {
+		if (!this.climbAttempted.value?.toggled) {
+			this.climbResult.value!.toggled = false;
+		}
+	}
+
+	/**
+	 * Forces the climb result, climb attempted, and park buttons to always be
+	 * in a valid state.
+	 */
+	onClimbResultClick() {
+		if (this.climbResult.value?.toggled) {
+			this.climbAttempted.value!.toggled = true;
+			this.park.value!.toggled = false;
+		}
+	}
+
+	/**
+	 * Forces the climb result, and park buttons to always be
+	 * in a valid state.
+	 */
+	onParkClick() {
+		// Park was toggled
+		if (this.park.value?.toggled) {
+			this.climbResult.value!.toggled = false;
 		}
 	}
 

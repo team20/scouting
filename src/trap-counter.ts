@@ -7,10 +7,9 @@ import { customElement, property } from "lit/decorators.js";
 export class TrapCounter extends LitElement {
 	static styles = css`
 		:host {
-			padding-top:175px;
 			display: grid;
 			grid-template-columns: min-content min-content min-content;
-			grid-template-rows: 25px 200px;
+			grid-template-rows: min-content min-content;
 			width: min-content;
 			text-align: center;
 		}
@@ -22,6 +21,8 @@ export class TrapCounter extends LitElement {
 			cursor: pointer;
 		}
 		div {
+			display: flex;
+			justify-content: center;
 			color: var(--lumo-primary-text-color);
 			font-size: medium;
 			width: 160px;
@@ -35,16 +36,16 @@ export class TrapCounter extends LitElement {
 			grid-row: 1 / span 2;
 		}
 		.countLabel {
-			padding-top: 5px;
+			align-items: flex-end;
 			grid-column: 2;
 			grid-row: 1;
 			font-size: 22px;
 		}
 		.count {
+			align-items: flex-start;
 			grid-column: 2;
 			grid-row: 2;
 			font-size: 30px;
-			padding-top: 50px;
 		}
 	`;
 	@property()
@@ -71,6 +72,9 @@ export class TrapCounter extends LitElement {
 	}
 
 	increment() {
+		if (this.count >= 3) {
+			return;
+		}
 		this.count++;
 	}
 }

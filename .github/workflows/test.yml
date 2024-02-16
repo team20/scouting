@@ -1,0 +1,31 @@
+name: Test Scouting App
+
+on:
+  push:
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cypress E2E tests
+        uses: cypress-io/github-action@v6.6.1
+        with:
+          build: npm run build
+          install-command: npm ci --force
+          node-version: 18.x
+          start: npm run preview
+      - name: Cypress component tests
+        uses: cypress-io/github-action@v6.6.1
+        with:
+          component: true
+          install-command: npm ci --force
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore

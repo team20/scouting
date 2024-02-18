@@ -1,5 +1,5 @@
 // Increment when you update the repo
-const cacheName = "Team20-Scouting-v21";
+const cacheName = "Team20-Scouting-v22";
 
 const imgs = [];
 for (let i = 0; i < 10; i++) {

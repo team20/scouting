@@ -1,8 +1,5 @@
 /// <reference types="cypress" />
 
-import { MatchInfo } from "../../src/match-info";
-import { AutoInfo } from "../../src/auto-info";
-
 describe("Scouting data validation", () => {
 	it("Test data output", () => {
 		cy.viewport(1366, 768);
@@ -23,7 +20,7 @@ describe("Scouting data validation", () => {
 		cy.get("#matchInfo")
 			.shadow()
 			.find("div > label:nth-child(3) > vaadin-integer-field")
-			.type("1");
+			.type("50");
 		cy.get("#matchInfo")
 			.shadow()
 			.find("div > label:nth-child(5) > vaadin-select")
@@ -36,7 +33,7 @@ describe("Scouting data validation", () => {
 			.find("div > label:nth-child(6) > vaadin-select")
 			.click();
 		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
 		).click();
 		cy.root().click(); // Required before typing into another input field to fix weird focus bug
 		cy.get("#matchInfo")
@@ -44,48 +41,11 @@ describe("Scouting data validation", () => {
 			.find("div > label:nth-child(7) > vaadin-integer-field")
 			.type("20");
 
-		cy.get("match-info").then((element) => {
-			cy.wrap((element.get(0) as MatchInfo).getInfo())
-				.its("name")
-				.should("eq", "Scouter Name");
-			cy.wrap((element.get(0) as MatchInfo).getInfo())
-				.its("matchType")
-				.should("eq", "QUAL");
-			cy.wrap((element.get(0) as MatchInfo).getInfo())
-				.its("matchNum")
-				.should("eq", "1");
-			cy.wrap((element.get(0) as MatchInfo).getInfo())
-				.its("isReplay")
-				.should("eq", 0);
-			cy.wrap((element.get(0) as MatchInfo).getInfo())
-				.its("alliance")
-				.should("eq", "R");
-			cy.wrap((element.get(0) as MatchInfo).getInfo())
-				.its("teamNum")
-				.should("eq", "20");
-		});
-
 		// Auto tab
 		cy.get("#auto-tab").click();
 		cy.root().click();
 
-		cy.get("#autoInfo").shadow().find("toggle-button").click();
-
-		cy.get("auto-info").then((element) => {
-			cy.wrap((element.get(0) as AutoInfo).getInfo())
-				.its("toggleLeft")
-				.should("eq", 1);
-		});
-
-		cy.get("#autoInfo").shadow().find("toggle-button").click();
-
-		cy.get("auto-info").then((element) => {
-			cy.wrap((element.get(0) as AutoInfo).getInfo())
-				.its("toggleLeft")
-				.should("eq", 0);
-		});
-
-		for (let i = 0; i < 5; i++) {
+		for (let i = 0; i < 6; i++) {
 			cy.get("#autoInfo")
 				.shadow()
 				.find("#auto-speaker-counter")
@@ -94,16 +54,16 @@ describe("Scouting data validation", () => {
 				.click();
 		}
 
-		for (let i = 0; i < 4; i++) {
+		for (let i = 0; i < 5; i++) {
 			cy.get("#autoInfo")
 				.shadow()
-				.find("#auto-drop-counter")
+				.find("#auto-speaker-miss-counter")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
 		}
 
-		for (let i = 0; i < 3; i++) {
+		for (let i = 0; i < 4; i++) {
 			cy.get("#autoInfo")
 				.shadow()
 				.find("#auto-amp-counter")
@@ -112,16 +72,30 @@ describe("Scouting data validation", () => {
 				.click();
 		}
 
-		cy.get("auto-info").then((element) => {
-			cy.wrap((element.get(0) as AutoInfo).getInfo())
-				.its("ampNum")
-				.should("eq", 3);
-		});
+		for (let i = 0; i < 3; i++) {
+			cy.get("#autoInfo")
+				.shadow()
+				.find("#auto-amp-miss-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 2; i++) {
+			cy.get("#autoInfo")
+				.shadow()
+				.find("#auto-drop-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		cy.get("#autoInfo").shadow().find("toggle-button").click();
 
 		cy.get("#teleop-tab").click();
 		cy.root().click();
 
-		for (let i = 0; i < 5; i++) {
+		for (let i = 0; i < 7; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
 				.find("#teleop-speaker-counter")
@@ -130,10 +104,28 @@ describe("Scouting data validation", () => {
 				.click();
 		}
 
+		for (let i = 0; i < 6; i++) {
+			cy.get("#teleopInfo")
+				.shadow()
+				.find("#teleop-speaker-miss-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 5; i++) {
+			cy.get("#teleopInfo")
+				.shadow()
+				.find("#teleop-amp-counter")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
 		for (let i = 0; i < 4; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
-				.find("#teleop-drop-counter")
+				.find("#teleop-amp-miss-counter")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -142,7 +134,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 3; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
-				.find("#teleop-amp-counter")
+				.find("#teleop-drop-counter")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -169,7 +161,7 @@ describe("Scouting data validation", () => {
 
 		cy.get("#endInfo").shadow().find("#end-trap-attempted").click();
 
-		for (let i = 0; i < 2; i++) {
+		for (let i = 0; i < 3; i++) {
 			cy.get("#endInfo")
 				.shadow()
 				.find("#end-trap-count")
@@ -178,7 +170,7 @@ describe("Scouting data validation", () => {
 				.click();
 		}
 
-		cy.get("#endInfo").shadow().find("#end-climb-attempted").click();
+		cy.get("#endInfo").shadow().find("#end-climb-result").click();
 
 		cy.get("#endInfo")
 			.shadow()
@@ -188,14 +180,12 @@ describe("Scouting data validation", () => {
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
 
-		cy.get("#endInfo").shadow().find("#end-park").click();
-
 		cy.get("#endInfo")
 			.shadow()
 			.find("#end-defence-faced vaadin-select-value-button")
 			.click();
 		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(4)"
 		).click();
 
 		cy.get("#endInfo")
@@ -217,10 +207,10 @@ describe("Scouting data validation", () => {
 		cy.get("#qrInfo").shadow().find("#display-code-button").click();
 
 		cy.fixture("scoutingData.txt").then((refData) => {
-			cy.readFile("cypress/downloads/R2QUALScoutingData1.txt").then((data) => {
+			cy.readFile("cypress/downloads/R1QUALScoutingData50.txt").then((data) => {
 				console.log(refData.type);
 
-				cy.wrap(data.substring(0, data.length - 14)).should("eq", refData);
+				cy.wrap(data.substring(0, data.length - 13)).should("eq", refData);
 			});
 		});
 	});

@@ -44,7 +44,7 @@ export class TeleopInfo extends LitElement {
 				<game-counter
 					${ref(this.speakerMissCounter)}
 					class="counter"
-					id="auto-speaker-miss-counter"
+					id="teleop-speaker-miss-counter"
 					countLabel="Speaker Miss"
 				></game-counter>
 
@@ -66,7 +66,7 @@ export class TeleopInfo extends LitElement {
 				<game-counter
 					${ref(this.ampMissCounter)}
 					class="counter"
-					id="auto-amp-miss-counter"
+					id="teleop-amp-miss-counter"
 					countLabel="AMP Miss"
 				></game-counter>
 

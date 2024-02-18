@@ -32,7 +32,6 @@ export class ToggleButton extends LitElement {
 	`;
 	@property()
 	label!: string;
-	statusLabel: string = "No";
 	@property()
 	toggled: boolean = false;
 
@@ -42,13 +41,12 @@ export class ToggleButton extends LitElement {
 			@click=${this.onClick}
 			><h1 style="margin-bottom: 0;">${this.label}</h1>
 			<br />
-			<h3>${this.statusLabel}</h3></vaadin-button
+			<h3>${this.calculateLabel()}</h3></vaadin-button
 		>`;
 	}
 
 	onClick() {
 		this.toggled = !this.toggled;
-		this.statusLabel! = this.calculateLabel();
 	}
 
 	/**

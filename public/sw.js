@@ -1,9 +1,19 @@
 // Increment when you update the repo
-const cacheName = "Team20-Scouting-v22";
+const cacheName = "Team20-Scouting-v23";
 
-const imgs = [];
+const resources = [
+	"/scouting/",
+	"/scouting/dark_logo.svg",
+	"/scouting/favicon.svg",
+	"/scouting/logo-no-text.svg",
+	"/scouting/assets/elements.js",
+	"/scouting/assets/index.js",
+	"/scouting/assets/vaadin-confirm-dialog.js",
+	"/scouting/assets/vaadin-iconset.js",
+	"/scouting/assets/vaadin-text-area.js"
+];
 for (let i = 0; i < 10; i++) {
-	imgs.push(`/scouting/img${i}.png`);
+	resources.push(`/scouting/img${i}.png`);
 }
 
 self.addEventListener("install", (e) => {
@@ -13,7 +23,7 @@ self.addEventListener("install", (e) => {
 			// Retrieve our cache object
 			const cache = await caches.open(cacheName);
 			console.log("[ServiceWorker] Caching assets");
-			await cache.addAll(imgs);
+			await cache.addAll(resources);
 		})()
 	);
 });

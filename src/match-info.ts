@@ -31,9 +31,7 @@ export class MatchInfo extends LitElement {
 
 		.bottom {
 			display: flex;
-			position: fixed;
-			left: 15px;
-			bottom: 15px;
+			justify-content: space-around;
 		}
 
 		#icon {
@@ -45,16 +43,25 @@ export class MatchInfo extends LitElement {
 			text-align: center;
 		}
 
-		#container {
-			display: flex;
+		.diagram {
+			height: calc(100vh - 100px);
 		}
 
-		.diagram {
-			height: 100%;
+		.outline {
+			height: calc(100vh - 100px);
+			position: absolute;
+			left: 0;
 		}
 
 		.diagram-container {
-			
+			position: relative;
+			height: calc(100vh - 100px);
+		}
+		.rotate {
+			margin: 0;
+			min-width: 1px;
+			width: 80px;
+			height: 80px;
 		}
 	`;
 	name: Ref<HTMLInputElement> = createRef();
@@ -66,7 +73,8 @@ export class MatchInfo extends LitElement {
 	teamNum: Ref<HTMLInputElement> = createRef();
 	img: Ref<HTMLImageElement> = createRef();
 	diagram: Ref<HTMLImageElement> = createRef();
-
+	outline: Ref<HTMLImageElement> = createRef();
+	isRotated: boolean = false;
 	matchTypes = [
 		{ label: "Practice", value: "PRAC" },
 		{ label: "Qualifications", value: "QUAL" },
@@ -142,33 +150,38 @@ export class MatchInfo extends LitElement {
 				<div id="icon-container">
 					<img ${ref(this.img)} id="icon" src="./dark_logo.svg" />
 				</div>
+				<div class="bottom">
+					<theme-button @click=${this.onClick}></theme-button>
+					<vaadin-button class="rotate" @click=${this.onRotate}>
+						<vaadin-icon icon="vaadin:refresh"></vaadin-icon>
+					</vaadin-button>
+					<label>Revision ${__version__}</label>
+				</div>
 			</div>
-			<div class="bottom">
-				<theme-button @click=${this.onClick}></theme-button>
-				<label style="padding-left:10em; padding-top: 2em;"
-					>Revision ${__version__}</label
-				>
+			<div class="diagram-container">
+				<img ${ref(this.diagram)} class="diagram" />
+				<img ${ref(this.outline)} class="outline" />
 			</div>
-
-			<img
-				${ref(this.diagram)}
-				class="diagram"
-				style="height: calc(100vh - 100px)"
-				src=""
-			/>
 		`;
 	}
 
+	onRotate() {
+		this.isRotated = !this.isRotated;
+		this.updateDiagram();
+	}
 	updateDiagram() {
 		if (
 			this.alliance.value?.value.length != 0 &&
 			this.startingPosition.value?.value.length != 0
 		) {
-			var color: number = this.alliance.value!.value == "Red" ? 1 : 0;
-			var pos: number = +this.startingPosition.value!.value;
-			var id: number = 5 * color + pos - 1;
-			//console.log("Id: " + id);
-			this.diagram.value!.src = `./img${id}.png`;
+			let color = this.alliance.value!.value.toLowerCase();
+			let side = this.isRotated ? "br" : "rb";
+			let position = this.startingPosition.value!.value;
+			this.diagram.value!.src = `./${color}_${side}.png`;
+			this.outline.value!.src = `./${color}_outline_${position}.svg`;
+			this.outline.value!.style.transform = this.isRotated
+				? "rotate(0.5turn)"
+				: "";
 		} else {
 			this.diagram.value!.src = ``;
 		}
@@ -216,7 +229,6 @@ export class MatchInfo extends LitElement {
 		} else {
 			this.img.value!.src = "./favicon.svg";
 		}
-		this.img.value!.decode();
 	}
 }
 

@@ -1,5 +1,5 @@
 // Increment when you update the repo
-const cacheName = "Team20-Scouting-v23";
+const cacheName = "Team20-Scouting-v24";
 
 const resources = [
 	"/scouting/",
@@ -10,10 +10,15 @@ const resources = [
 	"/scouting/assets/index.js",
 	"/scouting/assets/vaadin-confirm-dialog.js",
 	"/scouting/assets/vaadin-iconset.js",
-	"/scouting/assets/vaadin-text-area.js"
+	"/scouting/assets/vaadin-text-area.js",
+	"/scouting/blue_br.png",
+	"/scouting/blue_rb.png",
+	"/scouting/red_br.png",
+	"/scouting/red_rb.png"
 ];
-for (let i = 0; i < 10; i++) {
-	resources.push(`/scouting/img${i}.png`);
+for (let i = 1; i < 6; i++) {
+	resources.push(`/scouting/red_outline_${i}.svg`);
+	resources.push(`/scouting/blue_outline_${i}.svg`);
 }
 
 self.addEventListener("install", (e) => {

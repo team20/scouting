@@ -238,10 +238,9 @@ export class EndScreen extends LitElement {
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
 			defensePlayed: this.defensePlayed.value!.value || 0,
 			defenseFaced: this.defenseFaced.value!.value || 0,
-			comments: (this.comments.value!.value || "No comment.").replaceAll(
-				"\n",
-				" "
-			)
+			comments: (this.comments.value!.value || "No comment.")
+				.replaceAll("\n", " ")
+				.replaceAll("\t", " ")
 		};
 	}
 

@@ -34,14 +34,16 @@ export function combineData(): string {
 		matchInfo.matchType == "PRAC" ? 0 : matchInfo.matchType == "QUAL" ? 1 : 2;
 
 	return (
-		`${matchInfo.name};${matchTypeNum};${matchInfo.matchNum};${matchInfo.isReplay};${matchInfo.alliance};${matchInfo.teamNum};${matchInfo.startingPosition};` +
-		`${autoInfo.speakerNum};${autoInfo.speakerNumMiss};${autoInfo.ampNum};${autoInfo.ampNumMiss};${autoInfo.notesDroppedCounter};${autoInfo.toggleLeft};` +
-		`${teleopInfo.speakerNum};${teleopInfo.speakerNumMiss};${teleopInfo.ampNum};${teleopInfo.ampNumMiss};${teleopInfo.notesDroppedCounter};${teleopInfo.foulCounter};${teleopInfo.techCounter};` +
-		`${endInfo.trapAttempted};${endInfo.trapResult};${endInfo.climbAttempted};${
-			endInfo.climbResult
-		};${endInfo.park};${endInfo.harmony};${endInfo.breakdown};${
-			endInfo.defensePlayed
-		};${endInfo.defenseFaced};${endInfo.comments};${new Date().valueOf()}`
+		`${matchInfo.name}\t${matchTypeNum}\t${matchInfo.matchNum}\t${matchInfo.isReplay}\t${matchInfo.alliance}\t${matchInfo.teamNum}\t${matchInfo.startingPosition}\t` +
+		`${autoInfo.speakerNum}\t${autoInfo.speakerNumMiss}\t${autoInfo.ampNum}\t${autoInfo.ampNumMiss}\t${autoInfo.notesDroppedCounter}\t${autoInfo.toggleLeft}\t` +
+		`${teleopInfo.speakerNum}\t${teleopInfo.speakerNumMiss}\t${teleopInfo.ampNum}\t${teleopInfo.ampNumMiss}\t${teleopInfo.notesDroppedCounter}\t${teleopInfo.foulCounter}\t${teleopInfo.techCounter}\t` +
+		`${endInfo.trapAttempted}\t${endInfo.trapResult}\t${
+			endInfo.climbAttempted
+		}\t${endInfo.climbResult}\t${endInfo.park}\t${endInfo.harmony}\t${
+			endInfo.breakdown
+		}\t${endInfo.defensePlayed}\t${endInfo.defenseFaced}\t${
+			endInfo.comments
+		}\t${new Date().valueOf()}`
 	);
 }
 export function getMatchInfo() {

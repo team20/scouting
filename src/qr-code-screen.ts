@@ -22,7 +22,7 @@ export class QrCodeScreen extends LitElement {
 			align-items: center;
 			color: var(--lumo-primary-text-color);
 		}
-		h1 {
+		h2 {
 			margin: 0;
 		}
 		canvas {
@@ -52,7 +52,7 @@ export class QrCodeScreen extends LitElement {
 				id="display-code-button"
 				>Display QR Code</vaadin-button
 			>
-			<h1>${this.matchLabel}</h1>
+			<h2>${this.matchLabel}</h2>
 			<canvas ${ref(this.canvas)}></canvas>
 			<div>
 				<vaadin-button ${ref(this.sessionRestart)} @click=${this.restartSession}

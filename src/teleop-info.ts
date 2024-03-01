@@ -38,32 +38,32 @@ export class TeleopInfo extends LitElement {
 				<game-counter
 					${ref(this.speakerCounter)}
 					id="teleop-speaker-counter"
-					countLabel="Speaker Notes"
+					countLabel="Teleop Speaker Notes"
 				></game-counter>
 
 				<game-counter
 					${ref(this.speakerMissCounter)}
 					id="teleop-speaker-miss-counter"
-					countLabel="Speaker Miss"
+					countLabel="Teleop Speaker Miss"
 				></game-counter>
 
 				<game-counter
 					${ref(this.notesDroppedCounter)}
 					id="teleop-drop-counter"
-					countLabel="Dropped Notes"
+					countLabel="Teleop Dropped Notes"
 				></game-counter>
 			</div>
 			<div>
 				<game-counter
 					${ref(this.ampCounter)}
 					id="teleop-amp-counter"
-					countLabel="AMP Notes"
+					countLabel="Teleop AMP Notes"
 				></game-counter>
 
 				<game-counter
 					${ref(this.ampMissCounter)}
 					id="teleop-amp-miss-counter"
-					countLabel="AMP Miss"
+					countLabel="Teleop AMP Miss"
 				></game-counter>
 
 				<div style="display:flex;">

@@ -41,32 +41,32 @@ export class AutoInfo extends LitElement {
 				<game-counter
 					${ref(this.speakerCounter)}
 					id="auto-speaker-counter"
-					countLabel="Speaker Notes"
+					countLabel="Auto Speaker Notes"
 				></game-counter>
 
 				<game-counter
 					${ref(this.speakerMissCounter)}
 					id="auto-speaker-miss-counter"
-					countLabel="Speaker Miss"
+					countLabel="Auto Speaker Miss"
 				></game-counter>
 
 				<game-counter
 					${ref(this.notesDroppedCounter)}
 					id="auto-drop-counter"
-					countLabel="Dropped Notes"
+					countLabel="Auto Dropped Notes"
 				></game-counter>
 			</div>
 			<div id="right-buttons">
 				<game-counter
 					${ref(this.ampCounter)}
 					id="auto-amp-counter"
-					countLabel="AMP Notes"
+					countLabel="Auto AMP Notes"
 				></game-counter>
 
 				<game-counter
 					${ref(this.ampMissCounter)}
 					id="auto-amp-miss-counter"
-					countLabel="AMP Miss"
+					countLabel="Auto AMP Miss"
 				></game-counter>
 
 				<toggle-button ${ref(this.toggleLeft)} label="Leave"></toggle-button>

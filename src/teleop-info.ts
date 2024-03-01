@@ -18,7 +18,8 @@ export class TeleopInfo extends LitElement {
 			text-align: center;
 		}
 
-		.counter {
+		game-counter,
+		half-counter {
 			padding-top: 20px;
 		}
 	`;
@@ -36,21 +37,18 @@ export class TeleopInfo extends LitElement {
 			<div>
 				<game-counter
 					${ref(this.speakerCounter)}
-					class="counter"
 					id="teleop-speaker-counter"
 					countLabel="Speaker Notes"
 				></game-counter>
 
 				<game-counter
 					${ref(this.speakerMissCounter)}
-					class="counter"
 					id="teleop-speaker-miss-counter"
 					countLabel="Speaker Miss"
 				></game-counter>
 
 				<game-counter
 					${ref(this.notesDroppedCounter)}
-					class="counter"
 					id="teleop-drop-counter"
 					countLabel="Dropped Notes"
 				></game-counter>
@@ -58,14 +56,12 @@ export class TeleopInfo extends LitElement {
 			<div>
 				<game-counter
 					${ref(this.ampCounter)}
-					class="counter"
 					id="teleop-amp-counter"
 					countLabel="AMP Notes"
 				></game-counter>
 
 				<game-counter
 					${ref(this.ampMissCounter)}
-					class="counter"
 					id="teleop-amp-miss-counter"
 					countLabel="AMP Miss"
 				></game-counter>
@@ -73,14 +69,12 @@ export class TeleopInfo extends LitElement {
 				<div style="display:flex;">
 					<half-counter
 						${ref(this.foulCounter)}
-						class="counter"
 						id="teleop-foul-counter"
 						countLabel="Fouls"
 					></half-counter>
 					<half-counter
 						style="margin-left:10px;"
 						${ref(this.techCounter)}
-						class="counter"
 						id="teleop-tech-counter"
 						countLabel="Techs"
 					></half-counter>

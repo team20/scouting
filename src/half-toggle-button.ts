@@ -15,10 +15,10 @@ export class HalfToggleButton extends LitElement {
 		}
 		vaadin-button {
 			display: block;
-			height: 60%;
+			height: 100%;
 			margin: 0;
 			line-height: 100px;
-			color: #000000;
+			color: white;
 			cursor: pointer;
 			font-weight: bold;
 			font-size: 23px;
@@ -26,11 +26,9 @@ export class HalfToggleButton extends LitElement {
 
 		.off {
 			--lumo-contrast-5pct: #27313c;
-			color: white;
 		}
 		.on {
 			--lumo-contrast-5pct: #506070;
-			color: white;
 		}
 	`;
 	@property()
@@ -41,10 +39,9 @@ export class HalfToggleButton extends LitElement {
 
 	render() {
 		return html`<vaadin-button
-			style="height:100%"
 			class=${this.calculateColor()}
 			@click=${this.onClick}
-			>${this.label}<br />${this.statusLabel}</vaadin-button
+			><slot></slot> <br />${this.statusLabel}</vaadin-button
 		>`;
 	}
 

@@ -24,42 +24,24 @@ export class EndScreen extends LitElement {
 			font-weight: 500;
 			line-height: 2;
 		}
-		.row {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
-			height: min-content;
-		}
+		.row,
 		#bottomRow {
 			display: flex;
-			height: min-content;
-			gap: 10px;
 			align-items: center;
 			justify-content: center;
+			gap: 10px;
+			height: min-content;
 		}
 		#end-comments {
 			width: 100%;
 		}
-		#end-breakdown {
-			width: 200px;
-			height: 150px;
-		}
+		#end-breakdown,
 		#end-park {
 			width: 200px;
 			height: 150px;
 		}
-
-		#end-climb-attempted {
-			width: 235px;
-			height: 125px;
-		}
-
-		#end-climb-result {
-			width: 235px;
-			height: 125px;
-		}
-
+		#end-climb-attempted,
+		#end-climb-result,
 		#end-trap-attempted {
 			width: 235px;
 			height: 125px;
@@ -113,15 +95,12 @@ export class EndScreen extends LitElement {
 		return html`
 			<div class="inputContainer">
 				<div class="row">
-					<half-toggle-button
-						${ref(this.trapAttempted)}
-						id="end-trap-attempted"
-						label="Trap Attempted"
-					></half-toggle-button>
+					<half-toggle-button ${ref(this.trapAttempted)} id="end-trap-attempted"
+						><span>Trap Attempted</span>
+					</half-toggle-button>
 
 					<trap-counter
 						${ref(this.trapResult)}
-						class="counter"
 						id="end-trap-count"
 						countLabel="Notes Trap"
 					></trap-counter>
@@ -130,16 +109,16 @@ export class EndScreen extends LitElement {
 					<half-toggle-button
 						${ref(this.climbAttempted)}
 						id="end-climb-attempted"
-						label="Climb Attempted"
 						@click="${this.onClimbAttemptedClick}"
-					></half-toggle-button>
+						>Climb Attempted</half-toggle-button
+					>
 
 					<half-toggle-button
 						${ref(this.climbResult)}
 						id="end-climb-result"
-						label="Climb Result"
 						@click="${this.onClimbResultClick}"
-					></half-toggle-button>
+						>Climb Result
+					</half-toggle-button>
 
 					<vaadin-select
 						${ref(this.harmony)}
@@ -154,8 +133,8 @@ export class EndScreen extends LitElement {
 						${ref(this.park)}
 						@click="${this.onParkClick}"
 						id="end-park"
-						label="Park"
-					></half-toggle-button>
+						>Park</half-toggle-button
+					>
 
 					<breakdown-button
 						${ref(this.breakdown)}

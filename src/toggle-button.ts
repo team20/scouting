@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 /**
- * A button that switches between red and Team 20 green.
+ * A button that can be toggled on or off.
  */
 @customElement("toggle-button")
 export class ToggleButton extends LitElement {
@@ -12,22 +12,23 @@ export class ToggleButton extends LitElement {
 			width: min-content;
 			height: 100%;
 			aspect-ratio: 1 / 1;
+			color: white;
 		}
 		vaadin-button {
 			display: block;
 			height: 100%;
 			margin: 0;
 			line-height: 100px;
-			color: #000000;
-			/* color: var(--lumo-primary-text-color); */
+			color: inherit;
 			cursor: pointer;
+			font-weight: bold;
+			font-size: 23px;
 		}
-
 		.off {
-			--lumo-contrast-5pct: #ff0000;
+			--lumo-contrast-5pct: var(--off-color);
 		}
 		.on {
-			--lumo-contrast-5pct: #019d04;
+			--lumo-contrast-5pct: var(--on-color);
 		}
 	`;
 	@property()
@@ -39,12 +40,13 @@ export class ToggleButton extends LitElement {
 		return html`<vaadin-button
 			class=${this.calculateColor()}
 			@click=${this.onClick}
-			><h1 style="margin-bottom: 0;">${this.label}</h1>
-			<br />
-			<h3>${this.calculateLabel()}</h3></vaadin-button
+			><slot></slot> <br />${this.calculateLabel()}</vaadin-button
 		>`;
 	}
 
+	/**
+	 * Inverts the toggle state.
+	 */
 	onClick() {
 		this.toggled = !this.toggled;
 	}
@@ -60,6 +62,10 @@ export class ToggleButton extends LitElement {
 		return "off";
 	}
 
+	/**
+	 * Calculate the status label when the button is clicked.
+	 * @returns The button status label.
+	 */
 	calculateLabel() {
 		if (this.toggled) {
 			return "Yes";

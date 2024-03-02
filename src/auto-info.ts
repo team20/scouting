@@ -22,6 +22,12 @@ export class AutoInfo extends LitElement {
 			height: 175px;
 			margin: 0;
 			padding-top: 20px;
+			--off-color: red;
+			--on-color: #019d04;
+			color: black;
+		}
+		toggle-button > h1 {
+			margin: 0;
 		}
 		game-counter {
 			padding-top: 20px;
@@ -69,7 +75,7 @@ export class AutoInfo extends LitElement {
 					countLabel="Auto AMP Miss"
 				></game-counter>
 
-				<toggle-button ${ref(this.toggleLeft)} label="Leave"></toggle-button>
+				<toggle-button ${ref(this.toggleLeft)}><h1>Leave</h1></toggle-button>
 			</div>
 		`;
 	}

@@ -1,8 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
-import { BreakdownButton } from "./breakdown-button";
-import { HalfToggleButton } from "./half-toggle-button";
+import { ToggleButton } from "./toggle-button";
 import { TrapCounter } from "./trap-counter";
 
 /**
@@ -36,15 +35,19 @@ export class EndScreen extends LitElement {
 			width: 100%;
 		}
 		#end-breakdown,
-		#end-park {
-			width: 200px;
-			height: 150px;
-		}
 		#end-climb-attempted,
 		#end-climb-result,
+		#end-park,
 		#end-trap-attempted {
 			width: 235px;
 			height: 125px;
+			--off-color: #27313c;
+			--on-color: #506070;
+		}
+		#end-breakdown {
+			--off-color: #019d04;
+			--on-color: red;
+			color: black;
 		}
 		.inputContainer {
 			display: flex;
@@ -79,13 +82,13 @@ export class EndScreen extends LitElement {
 		{ label: "Excellent", value: "4" }
 	];
 
-	trapAttempted: Ref<HalfToggleButton> = createRef();
+	trapAttempted: Ref<ToggleButton> = createRef();
 	trapResult: Ref<TrapCounter> = createRef();
-	climbAttempted: Ref<HalfToggleButton> = createRef();
-	climbResult: Ref<HalfToggleButton> = createRef();
+	climbAttempted: Ref<ToggleButton> = createRef();
+	climbResult: Ref<ToggleButton> = createRef();
 	harmony: Ref<HTMLInputElement> = createRef();
-	park: Ref<HalfToggleButton> = createRef();
-	breakdown: Ref<BreakdownButton> = createRef();
+	park: Ref<ToggleButton> = createRef();
+	breakdown: Ref<ToggleButton> = createRef();
 	comments: Ref<HTMLInputElement> = createRef();
 
 	defenseFaced: Ref<HTMLInputElement> = createRef();
@@ -95,9 +98,9 @@ export class EndScreen extends LitElement {
 		return html`
 			<div class="inputContainer">
 				<div class="row">
-					<half-toggle-button ${ref(this.trapAttempted)} id="end-trap-attempted"
+					<toggle-button ${ref(this.trapAttempted)} id="end-trap-attempted"
 						><span>Trap Attempted</span>
-					</half-toggle-button>
+					</toggle-button>
 
 					<trap-counter
 						${ref(this.trapResult)}
@@ -106,19 +109,19 @@ export class EndScreen extends LitElement {
 					></trap-counter>
 				</div>
 				<div class="row">
-					<half-toggle-button
+					<toggle-button
 						${ref(this.climbAttempted)}
 						id="end-climb-attempted"
 						@click="${this.onClimbAttemptedClick}"
-						>Climb Attempted</half-toggle-button
+						>Climb Attempted</toggle-button
 					>
 
-					<half-toggle-button
+					<toggle-button
 						${ref(this.climbResult)}
 						id="end-climb-result"
 						@click="${this.onClimbResultClick}"
 						>Climb Result
-					</half-toggle-button>
+					</toggle-button>
 
 					<vaadin-select
 						${ref(this.harmony)}
@@ -129,21 +132,19 @@ export class EndScreen extends LitElement {
 					></vaadin-select>
 				</div>
 				<div id="bottomRow">
-					<half-toggle-button
+					<toggle-button
 						${ref(this.park)}
 						@click="${this.onParkClick}"
 						id="end-park"
-						>Park</half-toggle-button
+						>Park</toggle-button
 					>
 
-					<breakdown-button
-						${ref(this.breakdown)}
-						id="end-breakdown"
-						label="BREAKDOWN"
-					></breakdown-button>
+					<toggle-button ${ref(this.breakdown)} id="end-breakdown"
+						>BREAKDOWN</toggle-button
+					>
 				</div>
 
-				<div style="display:flex; justify-content: center; gap: 30px">
+				<div style="display:flex; justify-content: center; gap: 10px">
 					<vaadin-select
 						${ref(this.defenseFaced)}
 						theme="small"
@@ -163,8 +164,8 @@ export class EndScreen extends LitElement {
 			</div>
 
 			<vaadin-text-area
-				id="end-comments"
 				${ref(this.comments)}
+				id="end-comments"
 				label="Comments?"
 			></vaadin-text-area>
 		`;

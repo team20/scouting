@@ -57,7 +57,7 @@ export class MatchInfo extends LitElement {
 			position: relative;
 			height: calc(100vh - 100px);
 		}
-		.rotate {
+		vaadin-button {
 			margin: 0;
 			min-width: 1px;
 			width: 80px;
@@ -74,6 +74,7 @@ export class MatchInfo extends LitElement {
 	img: Ref<HTMLImageElement> = createRef();
 	diagram: Ref<HTMLImageElement> = createRef();
 	outline: Ref<HTMLImageElement> = createRef();
+	themeToggled: boolean = true;
 	isRotated: boolean = false;
 	matchTypes = [
 		{ label: "Practice", value: "PRAC" },
@@ -151,7 +152,9 @@ export class MatchInfo extends LitElement {
 					<img ${ref(this.img)} id="icon" src="./dark_logo.svg" />
 				</div>
 				<div class="bottom">
-					<theme-button @click=${this.onClick}></theme-button>
+					<vaadin-button @click=${this.onThemeToggle}>
+						<vaadin-icon icon="vaadin:adjust"></vaadin-icon>
+					</vaadin-button>
 					<vaadin-button class="rotate" @click=${this.onRotate}>
 						<vaadin-icon icon="vaadin:refresh"></vaadin-icon>
 					</vaadin-button>
@@ -223,10 +226,13 @@ export class MatchInfo extends LitElement {
 		this.isReplay.value!.checked = false;
 		this.teamNum.value!.value = "";
 	}
-	onClick() {
-		if (document.querySelector("html")?.className == "dark") {
+	onThemeToggle() {
+		this.themeToggled = !this.themeToggled;
+		if (this.themeToggled) {
+			document.querySelector("html")!.className = "dark";
 			this.img.value!.src = "./dark_logo.svg";
 		} else {
+			document.querySelector("html")!.className = "light";
 			this.img.value!.src = "./favicon.svg";
 		}
 	}

@@ -9,6 +9,5 @@ import "./match-info";
 import "./qr-code";
 import "./qr-code-screen";
 import "./teleop-info";
-import "./theme-button";
 import "./toggle-button";
 import "./trap-counter";

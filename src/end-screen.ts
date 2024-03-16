@@ -3,7 +3,6 @@ import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { ToggleButton } from "./toggle-button";
 import { TrapCounter } from "./trap-counter";
-
 /**
  * Contains information relating to the end of the match.
  */
@@ -139,7 +138,10 @@ export class EndScreen extends LitElement {
 						>Park</toggle-button
 					>
 
-					<toggle-button ${ref(this.breakdown)} id="end-breakdown"
+					<toggle-button
+						${ref(this.breakdown)}
+						@click="${this.commentHandler}"
+						id="end-breakdown"
 						>BREAKDOWN</toggle-button
 					>
 				</div>
@@ -167,6 +169,7 @@ export class EndScreen extends LitElement {
 				${ref(this.comments)}
 				id="end-comments"
 				label="Comments?"
+				@value-changed="${this.commentHandler}"
 			></vaadin-text-area>
 		`;
 	}
@@ -203,6 +206,23 @@ export class EndScreen extends LitElement {
 		}
 	}
 
+	/**
+	 * Forces comments to be made when breakdown is marked true.
+	 */
+	commentHandler() {
+		if (this.breakdown.value?.toggled) {
+			if (this.comments.value?.value) {
+				// @ts-ignore
+				this.comments.value!.invalid = false;
+			} else {
+				// @ts-ignore
+				this.comments.value!.invalid = true;
+			}
+		} else {
+			// @ts-ignore
+			this.comments.value!.invalid = false;
+		}
+	}
 	/**
 	 * Combines all the data into JSON.
 	 * @returns An object containing this element's data

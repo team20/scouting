@@ -1,8 +1,10 @@
+import { Notification } from "@vaadin/notification";
 import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { toCanvas } from "qrcode";
 import {
+	allFieldsValid,
 	combineData,
 	getMatchInfo,
 	resetSession,
@@ -75,6 +77,13 @@ export class QrCodeScreen extends LitElement {
 	}
 
 	renderQRCode() {
+		if (!allFieldsValid()) {
+			Notification.show("You must add a comment!", {
+				position: "middle",
+				theme: "error"
+			});
+			return;
+		}
 		let data = combineData();
 		toCanvas(this.canvas.value, data, { width: 450 });
 		let logoLength = 100;

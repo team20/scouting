@@ -214,4 +214,25 @@ describe("Scouting data validation", () => {
 			});
 		});
 	});
+	it("Breakdown requires comments", () => {
+		cy.visit("/scouting");
+		cy.get("#qr-tab").click();
+		cy.get("#qrInfo").shadow().find("#display-code-button").click();
+		cy.get("vaadin-notification-container").should("not.exist");
+
+		cy.get("#end-tab").click();
+		cy.get("#endInfo").shadow().find("#end-breakdown").click();
+
+		cy.get("#qr-tab").click();
+		cy.get("#qrInfo").shadow().find("#display-code-button").click();
+		cy.get("vaadin-notification-container").should("exist");
+		cy.wait(5000);
+
+		cy.get("#end-tab").click();
+		cy.get("#endInfo").shadow().find("#end-comments").type("Intake broke");
+
+		cy.get("#qr-tab").click();
+		cy.get("#qrInfo").shadow().find("#display-code-button").click();
+		cy.get("vaadin-notification-container").should("not.exist");
+	});
 });

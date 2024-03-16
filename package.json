@@ -11,7 +11,7 @@
 	},
 	"devDependencies": {
 		"@types/qrcode": "^1.5.2",
-		"cypress": "^13.6.3",
+		"cypress": "^13.7.0",
 		"cypress-ct-lit": "^0.4.0",
 		"typescript": "^5.0.2",
 		"vite": "^5.0.11"
@@ -23,6 +23,7 @@
 		"@vaadin/icon": "^24.3.6",
 		"@vaadin/icons": "^24.3.6",
 		"@vaadin/integer-field": "^24.3.6",
+		"@vaadin/notification": "^24.3.9",
 		"@vaadin/select": "^24.3.6",
 		"@vaadin/tabsheet": "^24.3.6",
 		"@vaadin/text-area": "^24.3.6",

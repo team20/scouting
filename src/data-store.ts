@@ -24,6 +24,19 @@ let autoInfoBar = document.getElementById("autoInfo")! as AutoInfo;
 let teleopInfoBar = document.getElementById("teleopInfo")! as TeleopInfo;
 let endScreen = document.getElementById("endInfo")! as EndScreen;
 
+/**
+ * Returns whether or not all the fields are valid.
+ * Use this to force scouters to fill out fields properly.
+ *
+ * If there was a breakdown and no comments, this returns false.
+ * @returns If all the fields are valid.
+ */
+export function allFieldsValid(): boolean {
+	return (
+		endScreen.getInfo().comments !== "No comment." ||
+		endScreen.getInfo().breakdown == 0
+	);
+}
 export function combineData(): string {
 	let matchInfo = matchScreen.getInfo();
 	let autoInfo = autoInfoBar.getInfo();

@@ -145,6 +145,7 @@ export class MatchInfo extends LitElement {
 					<vaadin-integer-field
 						${ref(this.teamNum)}
 						theme="small"
+						@value-changed="${this.onTeamNumberChange}"
 					></vaadin-integer-field>
 				</label>
 
@@ -171,6 +172,11 @@ export class MatchInfo extends LitElement {
 	onRotate() {
 		this.isRotated = !this.isRotated;
 		this.updateDiagram();
+	}
+	onTeamNumberChange() {
+		// TODO: wrap entire app into one component
+		document.querySelector("#teamNumber")!.textContent =
+			this.teamNum.value!.value;
 	}
 	updateDiagram() {
 		if (

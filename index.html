@@ -97,11 +97,19 @@
 			}
 
 			vaadin-tabsheet {
-				height: 100vh;
+				height: 96.4vh;
 			}
 
 			vaadin-tab[selected] {
 				background-color: #00c000;
+			}
+			label {
+				display: flex;
+				align-items: center;
+				color: var(--lumo-secondary-text-color);
+				font-family: var(--lumo-font-family);
+				font-size: var(--lumo-font-size-s);
+				font-weight: 500;
 			}
 		</style>
 	</head>
@@ -123,5 +131,6 @@
 			<div tab="qr-tab"><qr-code-screen id="qrInfo"></qr-code-screen></div>
 			<div tab="data-tab"><data-screen id="dataScreen"></data-screen></div>
 		</vaadin-tabsheet>
+		<label id="teamNumber"></label>
 	</body>
 </html>

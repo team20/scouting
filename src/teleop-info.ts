@@ -28,7 +28,7 @@ export class TeleopInfo extends LitElement {
 	speakerMissCounter: Ref<GameCounter> = createRef();
 	ampCounter: Ref<GameCounter> = createRef();
 	ampMissCounter: Ref<GameCounter> = createRef();
-	notesDroppedCounter: Ref<GameCounter> = createRef();
+	notesPassedCounter: Ref<GameCounter> = createRef();
 	foulCounter: Ref<HalfCounter> = createRef();
 	techCounter: Ref<HalfCounter> = createRef();
 
@@ -48,9 +48,9 @@ export class TeleopInfo extends LitElement {
 				></game-counter>
 
 				<game-counter
-					${ref(this.notesDroppedCounter)}
-					id="teleop-drop-counter"
-					countLabel="Teleop Dropped Notes"
+					${ref(this.notesPassedCounter)}
+					id="teleop-pass-counter"
+					countLabel="Teleop Passed Notes"
 				></game-counter>
 			</div>
 			<div>
@@ -93,7 +93,7 @@ export class TeleopInfo extends LitElement {
 			speakerNumMiss: this.speakerMissCounter.value!.count,
 			ampNum: this.ampCounter.value!.count,
 			ampNumMiss: this.ampMissCounter.value!.count,
-			notesDroppedCounter: this.notesDroppedCounter.value!.count,
+			notesPassedCounter: this.notesPassedCounter.value!.count,
 			foulCounter: this.foulCounter.value!.count,
 			techCounter: this.techCounter.value!.count
 		};
@@ -110,7 +110,7 @@ export class TeleopInfo extends LitElement {
 
 		this.speakerCounter.value!.count = 0;
 		this.ampCounter.value!.count = 0;
-		this.notesDroppedCounter.value!.count = 0;
+		this.notesPassedCounter.value!.count = 0;
 		this.foulCounter.value!.count = 0;
 		this.techCounter.value!.count = 0;
 	}

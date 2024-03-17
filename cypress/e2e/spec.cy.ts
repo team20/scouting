@@ -134,7 +134,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 3; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
-				.find("#teleop-drop-counter")
+				.find("#teleop-pass-counter")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();

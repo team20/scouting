@@ -84,7 +84,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 2; i++) {
 			cy.get("#autoInfo")
 				.shadow()
-				.find("#auto-drop-counter")
+				.find("#auto-centerline-notes")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();

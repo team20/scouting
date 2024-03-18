@@ -32,13 +32,17 @@ export class AutoInfo extends LitElement {
 		game-counter {
 			padding-top: 20px;
 		}
+		#auto-centerline-note {
+			--off-color: #27313c;
+			--on-color: #506070;
+		}
 	`;
 	speakerCounter: Ref<GameCounter> = createRef();
 	speakerMissCounter: Ref<GameCounter> = createRef();
 	ampCounter: Ref<GameCounter> = createRef();
 	ampMissCounter: Ref<GameCounter> = createRef();
 
-	notesDroppedCounter: Ref<GameCounter> = createRef();
+	centerlineNotesCounter: Ref<GameCounter> = createRef();
 	toggleLeft: Ref<ToggleButton> = createRef();
 
 	render() {
@@ -57,9 +61,9 @@ export class AutoInfo extends LitElement {
 				></game-counter>
 
 				<game-counter
-					${ref(this.notesDroppedCounter)}
-					id="auto-drop-counter"
-					countLabel="Auto Dropped Notes"
+					${ref(this.centerlineNotesCounter)}
+					id="auto-centerline-notes"
+					countLabel="Auto Centerline Notes"
 				></game-counter>
 			</div>
 			<div id="right-buttons">
@@ -89,7 +93,7 @@ export class AutoInfo extends LitElement {
 			speakerNumMiss: this.speakerMissCounter.value!.count,
 			ampNum: this.ampCounter.value!.count,
 			ampNumMiss: this.ampMissCounter.value!.count,
-			notesDroppedCounter: this.notesDroppedCounter.value!.count,
+			centerlineNotes: this.centerlineNotesCounter.value!.count,
 			toggleLeft: this.toggleLeft.value!.toggled ? 1 : 0
 		};
 	}
@@ -104,7 +108,7 @@ export class AutoInfo extends LitElement {
 
 		this.speakerCounter.value!.count = 0;
 		this.ampCounter.value!.count = 0;
-		this.notesDroppedCounter.value!.count = 0;
+		this.centerlineNotesCounter.value!.count = 0;
 		this.toggleLeft.value!.toggled = false;
 	}
 }

@@ -48,7 +48,7 @@ export function combineData(): string {
 
 	return (
 		`${matchInfo.name}\t${matchTypeNum}\t${matchInfo.matchNum}\t${matchInfo.isReplay}\t${matchInfo.alliance}\t${matchInfo.teamNum}\t${matchInfo.startingPosition}\t` +
-		`${autoInfo.speakerNum}\t${autoInfo.speakerNumMiss}\t${autoInfo.ampNum}\t${autoInfo.ampNumMiss}\t${autoInfo.notesDroppedCounter}\t${autoInfo.toggleLeft}\t` +
+		`${autoInfo.speakerNum}\t${autoInfo.speakerNumMiss}\t${autoInfo.ampNum}\t${autoInfo.ampNumMiss}\t${autoInfo.centerlineNotes}\t${autoInfo.toggleLeft}\t` +
 		`${teleopInfo.speakerNum}\t${teleopInfo.speakerNumMiss}\t${teleopInfo.ampNum}\t${teleopInfo.ampNumMiss}\t${teleopInfo.notesPassedCounter}\t${teleopInfo.foulCounter}\t${teleopInfo.techCounter}\t` +
 		`${endInfo.trapAttempted}\t${endInfo.trapResult}\t${
 			endInfo.climbAttempted

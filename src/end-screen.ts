@@ -128,6 +128,7 @@ export class EndScreen extends LitElement {
 						id="end-harmony"
 						label="Harmony?"
 						.items="${this.harmonyOptions}"
+						value="0"
 					></vaadin-select>
 				</div>
 				<div id="bottomRow">

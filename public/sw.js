@@ -1,5 +1,5 @@
 // Increment when you update the repo
-const cacheName = "Team20-Scouting-v30";
+const cacheName = "Team20-Scouting-v31";
 
 const resources = [
 	"/scouting/",

@@ -82,6 +82,9 @@ export class QrCodeScreen extends LitElement {
 				position: "middle",
 				theme: "error"
 			});
+			this.canvas.value
+				?.getContext("2d")
+				?.clearRect(0, 0, this.canvas.value!.width, this.canvas.value!.height);
 			return;
 		}
 		let data = combineData();

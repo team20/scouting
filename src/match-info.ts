@@ -10,6 +10,7 @@ import { createRef, ref, Ref } from "lit/directives/ref.js";
 export class MatchInfo extends LitElement {
 	static styles = css`
 		:host {
+			height: 80vh;
 			display: flex;
 			justify-content: space-between;
 			margin: 0px;
@@ -44,11 +45,10 @@ export class MatchInfo extends LitElement {
 		}
 
 		.diagram {
-			height: calc(100vh - 100px);
+			height: 80vh;
 		}
 
 		.outline {
-			height: calc(100vh - 100px);
 			position: absolute;
 			left: 0;
 		}
@@ -164,7 +164,7 @@ export class MatchInfo extends LitElement {
 			</div>
 			<div class="diagram-container">
 				<img ${ref(this.diagram)} class="diagram" />
-				<img ${ref(this.outline)} class="outline" />
+				<img ${ref(this.outline)} class="diagram outline" />
 			</div>
 		`;
 	}

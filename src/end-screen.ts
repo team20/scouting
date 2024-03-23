@@ -3,6 +3,7 @@ import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { ToggleButton } from "./toggle-button";
 import { TrapCounter } from "./trap-counter";
+import { isTouchInBounds } from "./util";
 /**
  * Contains information relating to the end of the match.
  */
@@ -89,10 +90,12 @@ export class EndScreen extends LitElement {
 	park: Ref<ToggleButton> = createRef();
 	breakdown: Ref<ToggleButton> = createRef();
 	comments: Ref<HTMLInputElement> = createRef();
-
 	defenseFaced: Ref<HTMLInputElement> = createRef();
 	defensePlayed: Ref<HTMLInputElement> = createRef();
 
+	wasEndClimbAttemptedAlreadyClicked: boolean = false;
+	wasEndClimbResultAlreadyClicked: boolean = false;
+	wasParkAlreadyClicked: boolean = false;
 	render() {
 		return html`
 			<div class="inputContainer">
@@ -111,14 +114,48 @@ export class EndScreen extends LitElement {
 					<toggle-button
 						${ref(this.climbAttempted)}
 						id="end-climb-attempted"
-						@click="${this.onClimbAttemptedClick}"
+						@click=${() => {
+							if (this.wasEndClimbAttemptedAlreadyClicked) {
+								this.wasEndClimbAttemptedAlreadyClicked = false;
+								return;
+							}
+							this.onClimbAttemptedClick();
+						}}
+						@touchend=${(e: TouchEvent) => {
+							if (
+								isTouchInBounds(
+									e,
+									this.climbAttempted.value!.getBoundingClientRect()
+								)
+							) {
+								this.wasEndClimbAttemptedAlreadyClicked = true;
+								this.onClimbAttemptedClick();
+							}
+						}}
 						>Climb Attempted</toggle-button
 					>
 
 					<toggle-button
 						${ref(this.climbResult)}
 						id="end-climb-result"
-						@click="${this.onClimbResultClick}"
+						@click=${() => {
+							if (this.wasEndClimbResultAlreadyClicked) {
+								this.wasEndClimbResultAlreadyClicked = false;
+								return;
+							}
+							this.onClimbResultClick();
+						}}
+						@touchend=${(e: TouchEvent) => {
+							if (
+								isTouchInBounds(
+									e,
+									this.climbResult.value!.getBoundingClientRect()
+								)
+							) {
+								this.wasEndClimbResultAlreadyClicked = true;
+								this.onClimbResultClick();
+							}
+						}}
 						>Climb Result
 					</toggle-button>
 
@@ -134,7 +171,21 @@ export class EndScreen extends LitElement {
 				<div id="bottomRow">
 					<toggle-button
 						${ref(this.park)}
-						@click="${this.onParkClick}"
+						@click=${() => {
+							if (this.wasParkAlreadyClicked) {
+								this.wasParkAlreadyClicked = false;
+								return;
+							}
+							this.onParkClick();
+						}}
+						@touchend=${(e: TouchEvent) => {
+							if (
+								isTouchInBounds(e, this.park.value!.getBoundingClientRect())
+							) {
+								this.wasParkAlreadyClicked = true;
+								this.onParkClick();
+							}
+						}}
 						id="end-park"
 						>Park</toggle-button
 					>

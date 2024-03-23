@@ -1,5 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { isTouchInBounds } from "./util";
 /**
  * A button that can be toggled on or off.
  */
@@ -35,11 +36,23 @@ export class ToggleButton extends LitElement {
 	label!: string;
 	@property()
 	toggled: boolean = false;
-
+	wasAlreadyClicked: boolean = false;
 	render() {
 		return html`<vaadin-button
 			class=${this.calculateColor()}
-			@click=${this.onClick}
+			@click=${() => {
+				if (this.wasAlreadyClicked) {
+					this.wasAlreadyClicked = false;
+					return;
+				}
+				this.toggle();
+			}}
+			@touchend=${(e: TouchEvent) => {
+				if (isTouchInBounds(e, this.getBoundingClientRect())) {
+					this.wasAlreadyClicked = true;
+					this.toggle();
+				}
+			}}
 			><slot></slot> <br />${this.calculateLabel()}</vaadin-button
 		>`;
 	}
@@ -47,7 +60,7 @@ export class ToggleButton extends LitElement {
 	/**
 	 * Inverts the toggle state.
 	 */
-	onClick() {
+	toggle() {
 		this.toggled = !this.toggled;
 	}
 

@@ -10,7 +10,7 @@ import { createRef, ref, Ref } from "lit/directives/ref.js";
 export class MatchInfo extends LitElement {
 	static styles = css`
 		:host {
-			height: 80vh;
+			height: 84vh;
 			display: flex;
 			justify-content: space-between;
 			margin: 0px;

@@ -1,5 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { isOnElement } from "./util";
 /**
  * Half-width counter for various game related things like fouls.
  */
@@ -52,14 +53,43 @@ export class TrapCounter extends LitElement {
 	countLabel!: string;
 	@property()
 	count: number = 0;
-
+	wasLeftAlreadyClicked: boolean = false;
+	wasRightAlreadyClicked: boolean = false;
 	render() {
-		return html`<vaadin-button class="leftButton" @click=${this.decrement}
+		return html`<vaadin-button
+				class="leftButton"
+				@click=${() => {
+					if (this.wasLeftAlreadyClicked) {
+						this.wasLeftAlreadyClicked = false;
+						return;
+					}
+					this.decrement();
+				}}
+				@touchend=${(e: TouchEvent) => {
+					if (isOnElement(e)) {
+						this.wasLeftAlreadyClicked = true;
+						this.decrement();
+					}
+				}}
 				>-</vaadin-button
 			>
 			<div class="countLabel" style="margin-top:10px;">${this.countLabel}</div>
 			<div class="count" style="margin-top:-20px;">${this.count}</div>
-			<vaadin-button class="rightButton" @click=${this.increment}
+			<vaadin-button
+				class="rightButton"
+				@click=${() => {
+					if (this.wasRightAlreadyClicked) {
+						this.wasRightAlreadyClicked = false;
+						return;
+					}
+					this.increment();
+				}}
+				@touchend=${(e: TouchEvent) => {
+					if (isOnElement(e)) {
+						this.wasRightAlreadyClicked = true;
+						this.increment();
+					}
+				}}
 				>+</vaadin-button
 			>`;
 	}

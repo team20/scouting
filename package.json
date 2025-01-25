@@ -10,25 +10,25 @@
 		"test": "cypress run --component && cypress run --e2e"
 	},
 	"devDependencies": {
-		"@types/qrcode": "^1.5.2",
-		"cypress": "^13.7.0",
-		"cypress-ct-lit": "^0.4.0",
-		"typescript": "^5.0.2",
-		"vite": "^5.0.11"
+		"@types/qrcode": "*",
+		"cypress": "*",
+		"cypress-ct-lit": "*",
+		"typescript": "*",
+		"vite": "*"
 	},
 	"dependencies": {
-		"@vaadin/button": "^24.3.6",
-		"@vaadin/checkbox": "^24.3.6",
-		"@vaadin/confirm-dialog": "^24.3.6",
-		"@vaadin/icon": "^24.3.6",
-		"@vaadin/icons": "^24.3.6",
-		"@vaadin/integer-field": "^24.3.6",
-		"@vaadin/notification": "^24.3.9",
-		"@vaadin/select": "^24.3.6",
-		"@vaadin/tabsheet": "^24.3.6",
-		"@vaadin/text-area": "^24.3.6",
-		"@vaadin/text-field": "^24.3.6",
-		"lit": "^3.0.0",
-		"qrcode": "^1.5.3"
+		"@vaadin/button": "*",
+		"@vaadin/checkbox": "*",
+		"@vaadin/confirm-dialog": "*",
+		"@vaadin/icon": "*",
+		"@vaadin/icons": "*",
+		"@vaadin/integer-field": "*",
+		"@vaadin/notification": "*",
+		"@vaadin/select": "*",
+		"@vaadin/tabsheet": "*",
+		"@vaadin/text-area": "*",
+		"@vaadin/text-field": "*",
+		"lit": "*",
+		"qrcode": "*"
 	}
 }

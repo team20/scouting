@@ -10,14 +10,14 @@ export class GameCounter extends LitElement {
 		:host {
 			display: grid;
 			grid-template-columns: min-content min-content min-content;
-			grid-template-rows: 100px min-content;
+			grid-template-rows: 4em min-content;
 			width: min-content;
 			text-align: center;
 		}
 		vaadin-button {
-			min-width: 50px;
-			width: 100px;
-			height: 175px;
+			min-width: 1em;
+			width: 1.5em;
+			height: 2em;
 			margin: 0;
 			cursor: pointer;
 		}
@@ -26,13 +26,19 @@ export class GameCounter extends LitElement {
 			justify-content: center;
 			color: var(--lumo-primary-text-color);
 			font-size: medium;
-			width: 400px;
+			width: 6em;
 		}
 		.leftButton {
+			font-size: 3em;
+			color: black;
+			background: salmon;
 			grid-column: 1;
 			grid-row: 1 / span 2;
 		}
 		.rightButton {
+			font-size: 3em;
+			color: black;
+			background: lightgreen;
 			grid-column: 3;
 			grid-row: 1 / span 2;
 		}
@@ -40,13 +46,13 @@ export class GameCounter extends LitElement {
 			align-items: flex-end;
 			grid-column: 2;
 			grid-row: 1;
-			font-size: 40px;
+			font-size: 1.5em;
 		}
 		.count {
 			align-items: flex-start;
 			grid-column: 2;
 			grid-row: 2;
-			font-size: 30px;
+			font-size: 1.5em;
 		}
 	`;
 	@property()

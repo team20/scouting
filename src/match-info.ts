@@ -170,7 +170,7 @@ export class MatchInfo extends LitElement {
 	}
 
 	onRotate() {
-		this.isRotated = !this.isRotated;
+		this.isRotated ^= 1;
 		this.updateDiagram();
 	}
 	onTeamNumberChange() {
@@ -189,7 +189,7 @@ export class MatchInfo extends LitElement {
 			this.diagram.value!.src = `./${color}_${side}.png`;
 			this.outline.value!.src = `./${color}_outline_${position}.svg`;
 			this.outline.value!.style.transform = this.isRotated
-				? "rotate(0.5turn)"
+				? "rotate(180deg)"
 				: "";
 		} else {
 			this.diagram.value!.src = ``;

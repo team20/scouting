@@ -46,18 +46,47 @@ export function combineData(): string {
 	var matchTypeNum =
 		matchInfo.matchType == "PRAC" ? 0 : matchInfo.matchType == "QUAL" ? 1 : 2;
 
-	return (
-		`${matchInfo.name}\t${matchTypeNum}\t${matchInfo.matchNum}\t${matchInfo.isReplay}\t${matchInfo.alliance}\t${matchInfo.teamNum}\t${matchInfo.startingPosition}\t` +
-		`${autoInfo.speakerNum}\t${autoInfo.speakerNumMiss}\t${autoInfo.ampNum}\t${autoInfo.ampNumMiss}\t${autoInfo.centerlineNotes}\t${autoInfo.toggleLeft}\t` +
-		`${teleopInfo.speakerNum}\t${teleopInfo.speakerNumMiss}\t${teleopInfo.ampNum}\t${teleopInfo.ampNumMiss}\t${teleopInfo.notesPassedCounter}\t${teleopInfo.foulCounter}\t${teleopInfo.techCounter}\t` +
-		`${endInfo.trapAttempted}\t${endInfo.trapResult}\t${
-			endInfo.climbAttempted
-		}\t${endInfo.climbResult}\t${endInfo.park}\t${endInfo.harmony}\t${
-			endInfo.breakdown
-		}\t${endInfo.defensePlayed}\t${endInfo.defenseFaced}\t${
-			endInfo.comments
-		}\t${new Date().valueOf()}`
-	);
+	return [
+		matchInfo.name,
+		matchTypeNum,
+		matchInfo.matchNum,
+		matchInfo.isReplay,
+		matchInfo.alliance,
+		matchInfo.teamNum,
+		matchInfo.startingPosition,
+
+		autoInfo.coralOneCounter,
+		autoInfo.coralTwoCounter,
+		autoInfo.coralThreeCounter,
+		autoInfo.coralFourCounter,
+		autoInfo.coralMissCounter,
+		autoInfo.algaeRemovedCounter,
+		autoInfo.algaeNetCounter,
+		autoInfo.algaeProcessorCounter,
+		autoInfo.algaeMissCounter,
+		autoInfo.toggleLeft,
+
+		teleopInfo.coralOneCounter,
+		teleopInfo.coralTwoCounter,
+		teleopInfo.coralThreeCounter,
+		teleopInfo.coralFourCounter,
+		teleopInfo.coralMissCounter,
+		teleopInfo.algaeRemovedCounter,
+		teleopInfo.algaeNetCounter,
+		teleopInfo.algaeProcessorCounter,
+		teleopInfo.algaeMissCounter,
+		teleopInfo.foulCounter,
+
+		endInfo.cageAttempted,
+		endInfo.cageResult,
+		endInfo.park,
+		endInfo.breakdown,
+		endInfo.defensePlayed,
+		endInfo.defenseFaced,
+		endInfo.comments,
+		
+		new Date().valueOf()
+	].join("\t");
 }
 export function getMatchInfo() {
 	return matchScreen.getInfo();

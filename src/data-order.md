@@ -4,25 +4,29 @@ Replay
 Alliance
 Team
 Start Position
-Auto Speaker
-Auto Speaker Miss
-Auto Amp
-Auto Amp Miss
-Centerline Notes
+Auto Coral L1
+Auto Coral L2
+Auto Coral L3
+Auto Coral L4
+Auto Coral Miss
+Auto Algae Removed
+Auto Algae NET
+Auto Algae Processor
+Auto Algae Miss
 Leave
-Teleop Speaker
-Teleop Speaker Miss
-Teleop Amp
-Teleop Amp Miss
-Passes
+Teleop Coral L1
+Teleop Coral L2
+Teleop Coral L3
+Teleop Coral L4
+Teleop Coral Miss
+Teleop Algae Removed
+Teleop Algae NET
+Teleop Algae Processor
+Teleop Algae Miss
 Fouls
-Tech Fouls
-Trap Attempt
-Trap Result
-Climb Attempt
-Climb Result
+Cage Climb Attempted
+Cage Height
 Park
-Harmony
 Breakdown
 Defense Played
 Defense Faced

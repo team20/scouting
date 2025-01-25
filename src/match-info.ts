@@ -184,13 +184,11 @@ export class MatchInfo extends LitElement {
 			this.startingPosition.value?.value.length != 0
 		) {
 			let color = this.alliance.value!.value.toLowerCase();
-			let side = this.isRotated ? "br" : "rb";
-			let position = this.startingPosition.value!.value;
-			this.diagram.value!.src = `./${color}_${side}.png`;
-			this.outline.value!.src = `./${color}_outline_${position}.svg`;
-			this.outline.value!.style.transform = this.isRotated
-				? "rotate(180deg)"
-				: "";
+			this.diagram.value!.src = `./${color}.jpg`;
+			this.outline.value!.src = `./${color}_outline_${this.startingPosition.value!.value}.svg`;
+			this.diagram.value!.style.transform =
+				this.outline.value!.style.transform =
+				this.isRotated ? "rotate(180deg)" : "";
 		} else {
 			this.diagram.value!.src = ``;
 		}

@@ -17,7 +17,7 @@ export class GameCounter extends LitElement {
 		vaadin-button {
 			min-width: 1em;
 			width: 1.5em;
-			height: 2em;
+			height: 2.5em;
 			margin: 0;
 			cursor: pointer;
 		}
@@ -26,7 +26,7 @@ export class GameCounter extends LitElement {
 			justify-content: center;
 			color: var(--lumo-primary-text-color);
 			font-size: medium;
-			width: 6em;
+			width: 8em;
 		}
 		.leftButton {
 			font-size: 3em;

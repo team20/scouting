@@ -19,8 +19,8 @@ export class AutoInfo extends LitElement {
 		}
 
 		toggle-button {
-			width: 600px;
-			height: 175px;
+			width: 20em;
+			height: 8em;
 			margin: 0;
 			padding-top: 20px;
 			--off-color: red;
@@ -49,7 +49,8 @@ export class AutoInfo extends LitElement {
 	algaeMissedCounter: Ref<GameCounter> = createRef();
 	algaeRemovedCounter: Ref<GameCounter> = createRef();
 	coralMissedCounter: Ref<GameCounter> = createRef();
-	algaeProcessorCounter: Ref<ToggleButton> = createRef();
+	algaeProcessorCounter: Ref<GameCounter> = createRef();
+	toggleLeft: Ref<ToggleButton> = createRef();
 
 	render() {
 		return html`

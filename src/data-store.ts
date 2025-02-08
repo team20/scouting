@@ -85,7 +85,7 @@ export function combineData(): string {
 		endInfo.comments,
 		
 		new Date().valueOf()
-	].map(x => x ?? 0).join("");
+	].map(x => x ?? 0).join("\t");
 }
 export function getMatchInfo() {
 	return matchScreen.getInfo();

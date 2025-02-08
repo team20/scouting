@@ -63,6 +63,9 @@ export class MatchInfo extends LitElement {
 			width: 80px;
 			height: 80px;
 		}
+		::part(input-field), vaadin-button {
+			backdrop-filter: blur(10px);
+		}
 	`;
 	name: Ref<HTMLInputElement> = createRef();
 	matchType: Ref<HTMLInputElement> = createRef();
@@ -170,7 +173,7 @@ export class MatchInfo extends LitElement {
 	}
 
 	onRotate() {
-		this.isRotated ^= 1;
+		this.isRotated = !this.isRotated;
 		this.updateDiagram();
 	}
 	onTeamNumberChange() {

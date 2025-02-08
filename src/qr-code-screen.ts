@@ -32,6 +32,10 @@ export class QrCodeScreen extends LitElement {
 			width: 450px;
 			height: 450px;
 			margin-bottom: 5px;
+			backdrop-filter: blur(10px);
+		}
+		::part(input-field), vaadin-button {
+			backdrop-filter: blur(10px);
 		}
 	`;
 

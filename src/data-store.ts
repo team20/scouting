@@ -45,7 +45,6 @@ export function combineData(): string {
 
 	var matchTypeNum =
 		matchInfo.matchType == "PRAC" ? 0 : matchInfo.matchType == "QUAL" ? 1 : 2;
-
 	return [
 		matchInfo.name,
 		matchTypeNum,
@@ -55,27 +54,27 @@ export function combineData(): string {
 		matchInfo.teamNum,
 		matchInfo.startingPosition,
 
-		autoInfo.coralOneCounter,
-		autoInfo.coralTwoCounter,
-		autoInfo.coralThreeCounter,
-		autoInfo.coralFourCounter,
-		autoInfo.coralMissCounter,
-		autoInfo.algaeRemovedCounter,
-		autoInfo.algaeNetCounter,
-		autoInfo.algaeProcessorCounter,
-		autoInfo.algaeMissCounter,
+		autoInfo.coralOneNum,
+		autoInfo.coralTwoNum,
+		autoInfo.coralThreeNum,
+		autoInfo.coralFourNum,
+		autoInfo.coralMissedNum,
+		autoInfo.algaeRemovedNum,
+		autoInfo.algaeNetNum,
+		autoInfo.algaeProcessorNum,
+		autoInfo.algaeMissedNum,
 		autoInfo.toggleLeft,
 
-		teleopInfo.coralOneCounter,
-		teleopInfo.coralTwoCounter,
-		teleopInfo.coralThreeCounter,
-		teleopInfo.coralFourCounter,
-		teleopInfo.coralMissCounter,
-		teleopInfo.algaeRemovedCounter,
-		teleopInfo.algaeNetCounter,
-		teleopInfo.algaeProcessorCounter,
-		teleopInfo.algaeMissCounter,
-		teleopInfo.foulCounter,
+		teleopInfo.coralOneNum,
+		teleopInfo.coralTwoNum,
+		teleopInfo.coralThreeNum,
+		teleopInfo.coralFourNum,
+		teleopInfo.coralMissedNum,
+		teleopInfo.algaeRemovedNum,
+		teleopInfo.algaeNetNum,
+		teleopInfo.algaeProcessorNum,
+		teleopInfo.algaeMissedNum,
+		teleopInfo.foulNum,
 
 		endInfo.cageAttempted,
 		endInfo.cageResult,
@@ -86,7 +85,7 @@ export function combineData(): string {
 		endInfo.comments,
 		
 		new Date().valueOf()
-	].join("\t");
+	].map(x => x ?? 0).join("");
 }
 export function getMatchInfo() {
 	return matchScreen.getInfo();

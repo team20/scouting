@@ -2,7 +2,6 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { ToggleButton } from "./toggle-button";
-import { isTouchInBounds } from "./util";
 /**
  * Contains information relating to the end of the match.
  */
@@ -46,6 +45,9 @@ export class EndScreen extends LitElement {
 			justify-items: center;
 			grid-template-columns: auto auto;
 			gap: 10px;
+		}
+		::part(input-field), vaadin-button {
+			backdrop-filter: blur(10px);
 		}
 	`;
 
@@ -122,38 +124,6 @@ export class EndScreen extends LitElement {
 				@value-changed="${this.commentHandler}"
 			></vaadin-text-area>
 		`;
-	}
-
-	/**
-	 * Forces the climb result and climb attempted buttons to always be in a
-	 * valid state.
-	 */
-	onClimbAttemptedClick() {
-		if (!this.climbAttempted.value?.toggled) {
-			this.climbResult.value!.toggled = false;
-		}
-	}
-
-	/**
-	 * Forces the climb result, climb attempted, and park buttons to always be
-	 * in a valid state.
-	 */
-	onClimbResultClick() {
-		if (this.climbResult.value?.toggled) {
-			this.climbAttempted.value!.toggled = true;
-			this.park.value!.toggled = false;
-		}
-	}
-
-	/**
-	 * Forces the climb result, and park buttons to always be
-	 * in a valid state.
-	 */
-	onParkClick() {
-		// Park was toggled
-		if (this.park.value?.toggled) {
-			this.climbResult.value!.toggled = false;
-		}
 	}
 
 	/**

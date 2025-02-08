@@ -11,10 +11,9 @@ const resources = [
 	"/scouting/assets/vaadin-confirm-dialog.js",
 	"/scouting/assets/vaadin-iconset.js",
 	"/scouting/assets/vaadin-text-area.js",
-	"/scouting/blue_br.png",
-	"/scouting/blue_rb.png",
-	"/scouting/red_br.png",
-	"/scouting/red_rb.png"
+	"/scouting/blue.png",
+	"/scouting/red.png",
+	"/scouting/sea.svg"
 ];
 for (let i = 1; i < 6; i++) {
 	resources.push(`/scouting/red_outline_${i}.svg`);

@@ -13,7 +13,6 @@ import "./counter";
 import "./data-screen";
 import "./end-screen";
 import "./match-info";
-import "./qr-code";
 import "./qr-code-screen";
 import "./teleop-info";
 import "./toggle-button";

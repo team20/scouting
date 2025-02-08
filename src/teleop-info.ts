@@ -2,7 +2,6 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { GameCounter } from "./counter";
-import { HalfCounter } from "./half-counter";
 
 /**
  * Contains info about the teleop period.

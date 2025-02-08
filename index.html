@@ -14,7 +14,14 @@
 		</script>
 		<script type="module" src="src/main.ts"></script>
 		<style>
-			@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
+			@font-face {
+			  font-family: "ABeeZee";
+			  font-style: normal;
+			  font-weight: 400;
+			  font-display: swap;
+			  src: url(font.woff2) format('woff2');
+			  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			}
 			html {
 				transition-property: background-color;
 				transition-duration: 0.15s;
@@ -30,6 +37,10 @@
 				--lumo-size-l: 55px;
 				/* Controls font */
 				--lumo-font-family: "ABeeZee", serif;
+			}
+
+			html.light {
+				background: center / cover url(sea.svg);
 			}
 
 			body {
@@ -83,16 +94,16 @@
 			.light {
 				background-color: #ffffff;
 				--lumo-primary-text-color: var(--lumo-primary-text-color);
-				--lumo-secondary-text-color: hsla(214, 42%, 18%, 0.69);
-				--lumo-body-text-color: hsla(214, 40%, 16%, 0.94);
+				--lumo-secondary-text-color: hsla(214, 42%, 18%, 0.89);
+				--lumo-body-text-color: hsla(214, 40%, 16%, 1);
 				/* Button */
-				--lumo-contrast-5pct: hsla(214, 61%, 25%, 0.05);
+				--lumo-contrast-5pct: hsla(214, 61%, 25%, 0.45);
 				/* Input field */
-				--lumo-contrast-10pct: hsla(214, 57%, 24%, 0.1);
+				--lumo-contrast-10pct: hsla(214, 57%, 24%, 0.5);
 				/* Checkbox */
-				--lumo-contrast-20pct: hsla(214, 53%, 23%, 0.16);
+				--lumo-contrast-20pct: hsla(214, 53%, 23%, 0.56);
 				/* Disabled text */
-				--lumo-contrast-30pct: hsla(214, 50%, 22%, 0.26);
+				--lumo-contrast-30pct: hsla(214, 50%, 22%, 0.66);
 			}
 
 			vaadin-tabsheet::part(tabs-container) {

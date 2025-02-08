@@ -11,15 +11,17 @@ import { ToggleButton } from "./toggle-button";
 export class AutoInfo extends LitElement {
 	static styles = css`
 		:host {
-			display: flex;
+			display: grid;
+			grid-template-columns: auto auto;
 			justify-content: center;
 			flex-wrap: wrap;
 			gap: 30px;
 			text-align: center;
 		}
+
 		toggle-button {
-			width: 600px;
-			height: 175px;
+			width: 20em;
+			height: 8em;
 			margin: 0;
 			padding-top: 20px;
 			--off-color: red;
@@ -30,56 +32,77 @@ export class AutoInfo extends LitElement {
 			margin: 0;
 		}
 		game-counter {
-			padding-top: 20px;
+			padding-top: 10px;
 		}
-		#auto-centerline-note {
-			--off-color: #27313c;
-			--on-color: #506070;
+		#right-buttons {
+			display: grid;
+			grid-template-columns: auto auto;
+			justify-items: center;
+			gap: 30px;
 		}
 	`;
-	speakerCounter: Ref<GameCounter> = createRef();
-	speakerMissCounter: Ref<GameCounter> = createRef();
-	ampCounter: Ref<GameCounter> = createRef();
-	ampMissCounter: Ref<GameCounter> = createRef();
-
-	centerlineNotesCounter: Ref<GameCounter> = createRef();
+	coralFourCounter: Ref<GameCounter> = createRef();
+	coralThreeCounter: Ref<GameCounter> = createRef();
+	coralTwoCounter: Ref<GameCounter> = createRef();
+	coralOneCounter: Ref<GameCounter> = createRef();
+	algaeNetCounter: Ref<GameCounter> = createRef();
+	algaeMissedCounter: Ref<GameCounter> = createRef();
+	algaeRemovedCounter: Ref<GameCounter> = createRef();
+	coralMissedCounter: Ref<GameCounter> = createRef();
+	algaeProcessorCounter: Ref<GameCounter> = createRef();
 	toggleLeft: Ref<ToggleButton> = createRef();
 
 	render() {
 		return html`
 			<div>
 				<game-counter
-					${ref(this.speakerCounter)}
-					id="auto-speaker-counter"
-					countLabel="Auto Speaker Notes"
+					${ref(this.coralFourCounter)}
+					id="auto-coral-four"
+					countLabel="Auto Coral L4"
 				></game-counter>
-
 				<game-counter
-					${ref(this.speakerMissCounter)}
-					id="auto-speaker-miss-counter"
-					countLabel="Auto Speaker Miss"
+					${ref(this.coralThreeCounter)}
+					id="auto-coral-three"
+					countLabel="Auto Coral L3"
 				></game-counter>
-
 				<game-counter
-					${ref(this.centerlineNotesCounter)}
-					id="auto-centerline-notes"
-					countLabel="Auto Centerline Notes"
+					${ref(this.coralTwoCounter)}
+					id="auto-coral-two"
+					countLabel="Auto Coral L2"
+				></game-counter>
+				<game-counter
+					${ref(this.coralOneCounter)}
+					id="auto-coral-one"
+					countLabel="Auto Coral L1"
 				></game-counter>
 			</div>
 			<div id="right-buttons">
-				<game-counter
-					${ref(this.ampCounter)}
-					id="auto-amp-counter"
-					countLabel="Auto AMP Notes"
-				></game-counter>
-
-				<game-counter
-					${ref(this.ampMissCounter)}
-					id="auto-amp-miss-counter"
-					countLabel="Auto AMP Miss"
-				></game-counter>
-
 				<toggle-button ${ref(this.toggleLeft)}><h1>Leave</h1></toggle-button>
+				<game-counter
+					${ref(this.algaeNetCounter)}
+					id="auto-algae-net"
+					countLabel="Auto Algae Net"
+				></game-counter>
+				<game-counter
+					${ref(this.algaeMissedCounter)}
+					id="auto-algae-missed"
+					countLabel="Auto Algae Missed"
+				></game-counter>
+				<game-counter
+					${ref(this.algaeRemovedCounter)}
+					id="auto-algae-removed"
+					countLabel="Auto Algae Removed"
+				></game-counter>
+				<game-counter
+					${ref(this.coralMissedCounter)}
+					id="auto-coral-missed"
+					countLabel="Auto Coral Missed"
+				></game-counter>
+				<game-counter
+					${ref(this.algaeProcessorCounter)}
+					id="auto-algae-processor"
+					countLabel="Auto Algae Processor"
+				></game-counter>
 			</div>
 		`;
 	}
@@ -89,11 +112,15 @@ export class AutoInfo extends LitElement {
 	 */
 	getInfo() {
 		return {
-			speakerNum: this.speakerCounter.value!.count,
-			speakerNumMiss: this.speakerMissCounter.value!.count,
-			ampNum: this.ampCounter.value!.count,
-			ampNumMiss: this.ampMissCounter.value!.count,
-			centerlineNotes: this.centerlineNotesCounter.value!.count,
+			coralFourNum: this.coralFourCounter.value!.count,
+			coralThreeNum: this.coralThreeCounter.value!.count,
+			coralTwoNum: this.coralTwoCounter.value!.count,
+			coralOneNum: this.coralOneCounter.value!.count,
+			algaeNetNum: this.algaeNetCounter.value!.count,
+			algaeMissedNum: this.algaeMissedCounter.value!.count,
+			algaeRemovedNum: this.algaeRemovedCounter.value!.count,
+			coralMissedNum: this.coralMissedCounter.value!.count,
+			algaeProcessorNum: this.algaeProcessorCounter.value!.count,
 			toggleLeft: this.toggleLeft.value!.toggled ? 1 : 0
 		};
 	}
@@ -103,12 +130,15 @@ export class AutoInfo extends LitElement {
 	 * Resets all values to their defaults.
 	 */
 	reset() {
-		this.speakerMissCounter.value!.count = 0;
-		this.ampMissCounter.value!.count = 0;
-
-		this.speakerCounter.value!.count = 0;
-		this.ampCounter.value!.count = 0;
-		this.centerlineNotesCounter.value!.count = 0;
+		this.coralFourCounter.value!.count = 0;
+		this.coralThreeCounter.value!.count = 0;
+		this.coralTwoCounter.value!.count = 0;
+		this.coralOneCounter.value!.count = 0;
+		this.algaeNetCounter.value!.count = 0;
+		this.algaeMissedCounter.value!.count = 0;
+		this.algaeRemovedCounter.value!.count = 0;
+		this.coralMissedCounter.value!.count = 0;
+		this.algaeProcessorCounter.value!.count = 0;
 		this.toggleLeft.value!.toggled = false;
 	}
 }

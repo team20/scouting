@@ -14,6 +14,9 @@ export class DataScreen extends LitElement {
 			display: flex;
 			flex-wrap: wrap;
 		}
+		::part(input-field), vaadin-button {
+			backdrop-filter: blur(10px);
+		}
 	`;
 	div: Ref<HTMLDivElement> = createRef();
 	passwordField: Ref<HTMLInputElement> = createRef();

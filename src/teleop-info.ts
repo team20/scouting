@@ -10,7 +10,8 @@ import { GameCounter } from "./counter";
 export class TeleopInfo extends LitElement {
 	static styles = css`
 		:host {
-			display: flex;
+			display: grid;
+			grid-template-columns: auto auto;
 			justify-content: center;
 			flex-wrap: wrap;
 			gap: 30px;

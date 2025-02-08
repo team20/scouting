@@ -11,7 +11,8 @@ import { ToggleButton } from "./toggle-button";
 export class AutoInfo extends LitElement {
 	static styles = css`
 		:host {
-			display: flex;
+			display: grid;
+			grid-template-columns: auto auto;
 			justify-content: center;
 			flex-wrap: wrap;
 			gap: 30px;
@@ -31,12 +32,11 @@ export class AutoInfo extends LitElement {
 			margin: 0;
 		}
 		game-counter {
-			padding-top: 20px;
+			padding-top: 10px;
 		}
 		#right-buttons {
 			display: grid;
 			grid-template-columns: auto auto;
-			align-items: center;
 			justify-items: center;
 			gap: 30px;
 		}

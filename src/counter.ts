@@ -26,7 +26,7 @@ export class GameCounter extends LitElement {
 			justify-content: center;
 			color: var(--lumo-primary-text-color);
 			font-size: medium;
-			width: 8em;
+			width: 7em;
 		}
 		.leftButton {
 			font-size: 3em;
@@ -46,13 +46,13 @@ export class GameCounter extends LitElement {
 			align-items: flex-end;
 			grid-column: 2;
 			grid-row: 1;
-			font-size: 1.5em;
+			font-size: 1em;
 		}
 		.count {
 			align-items: flex-start;
 			grid-column: 2;
 			grid-row: 2;
-			font-size: 1.5em;
+			font-size: 1em;
 		}
 	`;
 	@property()

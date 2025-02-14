@@ -107,7 +107,7 @@ export class MatchInfo extends LitElement {
 					></vaadin-text-field>
 				</label>
 				<label>
-					Match:&nbsp
+					Match Type:&nbsp
 					<vaadin-select
 						${ref(this.matchType)}
 						theme="small"

@@ -82,11 +82,13 @@ export class EndScreen extends LitElement {
 					theme="small"
 					id="end-cage-attempted"
 					label="Cage Climb Attempted"
+					@change="${this.onClimbAttemptedClick}"
 					.items="${this.cageOptions}"
 				></vaadin-select>
 				<toggle-button
 					${ref(this.park)}
 					id="end-park"
+					@click="${this.onParkClick}"
 					>Park</toggle-button
 				>
 				<vaadin-select
@@ -94,6 +96,7 @@ export class EndScreen extends LitElement {
 					theme="small"
 					id="end-cage-result"
 					label="Cage Climb Result"
+					@change="${this.onClimbResultClick}"
 					.items="${this.cageOptions}"
 				></vaadin-select>
 				<toggle-button
@@ -160,6 +163,38 @@ export class EndScreen extends LitElement {
 				.replaceAll("\t", " ")
 		};
 	}
+
+		/**
+		 * Forces the climb result and climb attempted buttons to always be in a
+		 * valid state.
+		 */
+		onClimbAttemptedClick() {
+			if (this.cageAttempted.value?.value == "0") {
+				this.cageResult.value!.value = "0";
+			}
+		}
+	
+		/**
+		 * Forces the climb result, climb attempted, and park buttons to always be
+		 * in a valid state.
+		 */
+		onClimbResultClick() {
+			if (this.cageResult.value?.value != "0") {
+				this.cageAttempted.value!.value = this.cageResult.value!.value;
+				this.park.value!.toggled = false;
+			}
+		}
+	
+		/**
+		 * Forces the climb result, and park buttons to always be
+		 * in a valid state.
+		 */
+		onParkClick() {
+			// Park was toggled
+			if (this.park.value?.toggled) {
+				this.cageResult.value!.value = "0";
+			}
+		}
 
 	/**
 	 * Prepares this element for a new scouting session.

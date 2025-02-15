@@ -45,10 +45,39 @@ describe("Scouting data validation", () => {
 		cy.get("#auto-tab").click();
 		cy.root().click();
 
+		cy.get("#autoInfo").shadow().find("#right-buttons").find("#leave").click();
+
 		for (let i = 0; i < 6; i++) {
 			cy.get("#autoInfo")
 				.shadow()
-				.find("#auto-speaker-counter")
+				.find("#auto-coral-one")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 6; i++) {
+			cy.get("#autoInfo")
+				.shadow()
+				.find("#auto-coral-two")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 6; i++) {
+			cy.get("#autoInfo")
+				.shadow()
+				.find("#auto-coral-three")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 6; i++) {
+			cy.get("#autoInfo")
+				.shadow()
+				.find("#auto-coral-four")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -57,7 +86,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 5; i++) {
 			cy.get("#autoInfo")
 				.shadow()
-				.find("#auto-speaker-miss-counter")
+				.find("#auto-algae-net")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -66,7 +95,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 4; i++) {
 			cy.get("#autoInfo")
 				.shadow()
-				.find("#auto-amp-counter")
+				.find("#auto-algae-missed")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -75,7 +104,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 3; i++) {
 			cy.get("#autoInfo")
 				.shadow()
-				.find("#auto-amp-miss-counter")
+				.find("#auto-algae-removed")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -84,13 +113,18 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 2; i++) {
 			cy.get("#autoInfo")
 				.shadow()
-				.find("#auto-centerline-notes")
+				.find("#auto-algae-processor")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
 		}
 
-		cy.get("#autoInfo").shadow().find("toggle-button").click();
+		cy.get("#autoInfo")
+				.shadow()
+				.find("#auto-coral-missed")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
 
 		cy.get("#teleop-tab").click();
 		cy.root().click();
@@ -98,7 +132,34 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 7; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
-				.find("#teleop-speaker-counter")
+				.find("#teleop-coral-one")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 7; i++) {
+			cy.get("#teleopInfo")
+				.shadow()
+				.find("#teleop-coral-two")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 7; i++) {
+			cy.get("#teleopInfo")
+				.shadow()
+				.find("#teleop-coral-three")
+				.shadow()
+				.find("vaadin-button.rightButton")
+				.click();
+		}
+
+		for (let i = 0; i < 7; i++) {
+			cy.get("#teleopInfo")
+				.shadow()
+				.find("#teleop-coral-four")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -107,7 +168,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 6; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
-				.find("#teleop-speaker-miss-counter")
+				.find("#teleop-algae-net")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -116,7 +177,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 5; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
-				.find("#teleop-amp-counter")
+				.find("#teleop-algae-missed")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -125,7 +186,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 4; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
-				.find("#teleop-amp-miss-counter")
+				.find("#teleop-algae-removed")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -134,7 +195,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 3; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
-				.find("#teleop-pass-counter")
+				.find("#teleop-coral-missed")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -143,7 +204,7 @@ describe("Scouting data validation", () => {
 		for (let i = 0; i < 2; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
-				.find("#teleop-foul-counter")
+				.find("#teleop-algae-processor")
 				.shadow()
 				.find("vaadin-button.rightButton")
 				.click();
@@ -151,7 +212,7 @@ describe("Scouting data validation", () => {
 
 		cy.get("#teleopInfo")
 			.shadow()
-			.find("#teleop-tech-counter")
+			.find("#teleop-foul")
 			.shadow()
 			.find("vaadin-button.rightButton")
 			.click();
@@ -159,41 +220,26 @@ describe("Scouting data validation", () => {
 		cy.get("#end-tab").click();
 		cy.root().click();
 
-		cy.get("#endInfo").shadow().find("#end-trap-attempted").click();
+		cy.get("#endInfo").shadow().find("#end-cage-attempted").click();
+		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)").click();
 
-		for (let i = 0; i < 3; i++) {
-			cy.get("#endInfo")
-				.shadow()
-				.find("#end-trap-count")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
-		}
-
-		cy.get("#endInfo").shadow().find("#end-climb-result").click();
+		cy.get("#endInfo").shadow().find("#end-cage-result").click();
+		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)").click();
 
 		cy.get("#endInfo")
 			.shadow()
-			.find("#end-harmony vaadin-select-value-button")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
-		).click();
-
-		cy.get("#endInfo")
-			.shadow()
-			.find("#end-defence-faced vaadin-select-value-button")
-			.click();
-		cy.get(
-			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(4)"
-		).click();
-
-		cy.get("#endInfo")
-			.shadow()
-			.find("#end-defence-played vaadin-select-value-button")
+			.find("#end-defence-played")
 			.click();
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(5)"
+		).click();
+
+		cy.get("#endInfo")
+			.shadow()
+			.find("#end-defence-faced")
+			.click();
+		cy.get(
+			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(4)"
 		).click();
 
 		cy.get("#endInfo")

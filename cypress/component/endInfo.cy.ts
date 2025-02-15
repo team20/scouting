@@ -9,7 +9,7 @@ describe("endInfo.cy.ts", () => {
 
 		cy.get("end-screen").shadow().find("#end-cage-result").click();
 		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)").click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("end-screen").then((element) => {
 			cy.wrap(element.get(0).getInfo()).its("cageResult").should("eq", "1");
@@ -20,7 +20,7 @@ describe("endInfo.cy.ts", () => {
 
 		cy.get("end-screen").shadow().find("#end-cage-result").click();
 		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)").click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("end-screen").then((element) => {
 			cy.wrap(element.get(0).getInfo()).its("cageResult").should("eq", "0");
@@ -36,7 +36,7 @@ describe("endInfo.cy.ts", () => {
 
 		cy.get("end-screen").shadow().find("#end-cage-result").click();
 		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)").click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("end-screen").then((element) => {
 			cy.wrap(element.get(0).getInfo()).its("cageResult").should("eq", "1");
@@ -47,7 +47,7 @@ describe("endInfo.cy.ts", () => {
 
 		cy.get("end-screen").shadow().find("#end-cage-attempted").click();
 		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)").click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("end-screen").then((element) => {
 			cy.wrap(element.get(0).getInfo()).its("cageResult").should("eq", "0");
@@ -63,7 +63,7 @@ describe("endInfo.cy.ts", () => {
 
 		cy.get("end-screen").shadow().find("#end-cage-result").click();
 		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)").click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("end-screen").then((element) => {
 			cy.wrap(element.get(0).getInfo()).its("cageResult").should("eq", "1");
@@ -95,7 +95,7 @@ describe("endInfo.cy.ts", () => {
 
 		cy.get("end-screen").shadow().find("#end-cage-result").click();
 		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)").click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("end-screen").then((element) => {
 			cy.wrap(element.get(0).getInfo()).its("cageResult").should("eq", "1");

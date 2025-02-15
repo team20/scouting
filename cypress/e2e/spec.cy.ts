@@ -16,7 +16,7 @@ describe("Scouting data validation", () => {
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
-		cy.wait(1000);
+		cy.root().click();
 		cy.root().click(); // Required before typing into another input field to fix weird focus bug
 		cy.get("#matchInfo")
 			.shadow()
@@ -29,7 +29,7 @@ describe("Scouting data validation", () => {
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
 		).click();
-		cy.wait(1000);
+		cy.root().click();
 		cy.get("#matchInfo")
 			.shadow()
 			.find("div > label:nth-child(6) > vaadin-select")
@@ -37,7 +37,7 @@ describe("Scouting data validation", () => {
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
 		).click();
-		cy.wait(1000);
+		cy.root().click();
 		cy.root().click(); // Required before typing into another input field to fix weird focus bug
 		cy.get("#matchInfo")
 			.shadow()
@@ -225,11 +225,11 @@ describe("Scouting data validation", () => {
 
 		cy.get("#endInfo").shadow().find("#end-cage-attempted").click();
 		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)").click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("#endInfo").shadow().find("#end-cage-result").click();
 		cy.get("body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)").click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("#endInfo")
 			.shadow()
@@ -238,7 +238,7 @@ describe("Scouting data validation", () => {
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(5)"
 		).click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("#endInfo")
 			.shadow()
@@ -247,7 +247,7 @@ describe("Scouting data validation", () => {
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(4)"
 		).click();
-		cy.wait(1000);
+		cy.root().click();
 
 		cy.get("#endInfo")
 			.shadow()

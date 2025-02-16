@@ -1,5 +1,5 @@
 // Increment when you update the repo
-const cacheName = "Team20-Scouting-v32";
+const cacheName = "Team20-Scouting-v33";
 
 const resources = [
 	"/scouting/",
@@ -13,7 +13,8 @@ const resources = [
 	"/scouting/assets/vaadin-text-area.js",
 	"/scouting/blue.png",
 	"/scouting/red.png",
-	"/scouting/sea.svg"
+	"/scouting/sea.svg",
+	"/scouting/font.woff2"
 ];
 for (let i = 1; i < 6; i++) {
 	resources.push(`/scouting/red_outline_${i}.svg`);

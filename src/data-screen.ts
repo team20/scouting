@@ -1,8 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { createRef, Ref, ref } from "lit/directives/ref.js";
+import { toCanvas } from "qrcode";
 import { getData, removeData } from "./data-store";
-import { QRCode } from "./qr-code";
 /**
  * A button that switches between red and Team 20 green.
  */
@@ -54,9 +54,11 @@ export class DataScreen extends LitElement {
 		getData().then((matches) => {
 			this.div.value!.innerHTML = "";
 			for (const match of matches.reverse()) {
-				let qrCode = document.createElement("qr-code") as QRCode;
-				this.div.value!.appendChild(qrCode);
-				qrCode.renderQRCode(match);
+				let canvas = document.createElement("canvas");
+				canvas.width = 196;
+				canvas.height = 196;
+				this.div.value!.appendChild(canvas);
+				toCanvas(canvas, match, { width: 196 });
 			}
 		});
 	}

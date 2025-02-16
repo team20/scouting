@@ -7,6 +7,8 @@ const resources = [
 	"/scouting/favicon.svg",
 	"/scouting/logo-no-text.svg",
 	"/scouting/assets/index.js",
+	"/scouting/assets/vaadin-confirm-dialog.js",
+	"/scouting/assets/vaadin-iconset.js",
 	"/scouting/blue.jpg",
 	"/scouting/red.jpg",
 	"/scouting/sea.svg",

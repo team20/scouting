@@ -50,7 +50,7 @@ describe("Scouting data validation", () => {
 
 		cy.get("#autoInfo").shadow().find("#right-buttons").find("#leave").click();
 
-		for (let i = 0; i < 6; i++) {
+		for (let i = 0; i < 9; i++) {
 			cy.get("#autoInfo")
 				.shadow()
 				.find("#auto-coral-one")
@@ -59,7 +59,7 @@ describe("Scouting data validation", () => {
 				.click();
 		}
 
-		for (let i = 0; i < 6; i++) {
+		for (let i = 0; i < 8; i++) {
 			cy.get("#autoInfo")
 				.shadow()
 				.find("#auto-coral-two")
@@ -68,7 +68,7 @@ describe("Scouting data validation", () => {
 				.click();
 		}
 
-		for (let i = 0; i < 6; i++) {
+		for (let i = 0; i < 7; i++) {
 			cy.get("#autoInfo")
 				.shadow()
 				.find("#auto-coral-three")
@@ -132,7 +132,7 @@ describe("Scouting data validation", () => {
 		cy.get("#teleop-tab").click();
 		cy.root().click();
 
-		for (let i = 0; i < 7; i++) {
+		for (let i = 0; i < 10; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
 				.find("#teleop-coral-one")
@@ -141,7 +141,7 @@ describe("Scouting data validation", () => {
 				.click();
 		}
 
-		for (let i = 0; i < 7; i++) {
+		for (let i = 0; i < 9; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
 				.find("#teleop-coral-two")
@@ -150,7 +150,7 @@ describe("Scouting data validation", () => {
 				.click();
 		}
 
-		for (let i = 0; i < 7; i++) {
+		for (let i = 0; i < 8; i++) {
 			cy.get("#teleopInfo")
 				.shadow()
 				.find("#teleop-coral-three")

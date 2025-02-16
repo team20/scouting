@@ -92,6 +92,7 @@ export class QrCodeScreen extends LitElement {
 			return;
 		}
 		let data = combineData();
+		console.info(data);
 		toCanvas(this.canvas.value, data, { width: 450 });
 		let logoLength = 100;
 		let logoHeight = 65;

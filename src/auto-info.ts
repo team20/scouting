@@ -77,7 +77,7 @@ export class AutoInfo extends LitElement {
 				></game-counter>
 			</div>
 			<div id="right-buttons">
-				<toggle-button ${ref(this.toggleLeft)}><h1>Leave</h1></toggle-button>
+				<toggle-button id="leave" ${ref(this.toggleLeft)}><h1>Leave</h1></toggle-button>
 				<game-counter
 					${ref(this.algaeNetCounter)}
 					id="auto-algae-net"

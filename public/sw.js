@@ -1,19 +1,19 @@
 // Increment when you update the repo
-const cacheName = "Team20-Scouting-v32";
+const cacheName = "Team20-Scouting-v33";
 
 const resources = [
 	"/scouting/",
 	"/scouting/dark_logo.svg",
 	"/scouting/favicon.svg",
 	"/scouting/logo-no-text.svg",
-	"/scouting/assets/elements.js",
 	"/scouting/assets/index.js",
 	"/scouting/assets/vaadin-confirm-dialog.js",
 	"/scouting/assets/vaadin-iconset.js",
-	"/scouting/assets/vaadin-text-area.js",
-	"/scouting/blue.png",
-	"/scouting/red.png",
-	"/scouting/sea.svg"
+	"/scouting/blue.jpg",
+	"/scouting/red.jpg",
+	"/scouting/sea.svg",
+	"/scouting/font.woff2",
+	"/scouting/index.html"
 ];
 for (let i = 1; i < 6; i++) {
 	resources.push(`/scouting/red_outline_${i}.svg`);

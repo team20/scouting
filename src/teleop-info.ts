@@ -66,7 +66,7 @@ export class TeleopInfo extends LitElement {
 			<div id="right-buttons">
 				<game-counter
 					${ref(this.foulCounter)}
-					id="teleop-algae-net"
+					id="teleop-foul"
 					countLabel="Teleop Fouls"
 				></game-counter>
 				<game-counter

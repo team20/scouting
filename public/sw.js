@@ -12,8 +12,7 @@ const resources = [
 	"/scouting/blue.jpg",
 	"/scouting/red.jpg",
 	"/scouting/sea.svg",
-	"/scouting/font.woff2",
-	"/scouting/index.html"
+	"/scouting/font.woff2"
 ];
 for (let i = 1; i < 6; i++) {
 	resources.push(`/scouting/red_outline_${i}.svg`);

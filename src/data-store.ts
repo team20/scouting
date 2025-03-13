@@ -19,6 +19,9 @@ dbRequest.addEventListener("upgradeneeded", (e) => {
 	db = e.target.result;
 	db.createObjectStore("scoutingData");
 });
+window.addEventListener("beforeunload", (e) => {
+	e.preventDefault();
+});
 let matchScreen = document.getElementById("matchInfo")! as MatchInfo;
 let autoInfoBar = document.getElementById("autoInfo")! as AutoInfo;
 let teleopInfoBar = document.getElementById("teleopInfo")! as TeleopInfo;
@@ -83,7 +86,7 @@ export function combineData(): string {
 		endInfo.defensePlayed,
 		endInfo.defenseFaced,
 		endInfo.comments,
-		
+
 		new Date().valueOf()
 	].join("	");
 }

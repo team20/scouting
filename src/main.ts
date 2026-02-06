@@ -7,6 +7,7 @@ import "@vaadin/tabsheet";
 import "@vaadin/text-area";
 import "@vaadin/text-field";
 import "./auto-info";
+import "./big-counter";
 import "./counter";
 import "./data-screen";
 import "./end-screen";

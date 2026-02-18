@@ -43,17 +43,23 @@ export class BigCounter extends LitElement {
 			grid-row: 1 / span 2;
 		}
 		.leftButton1 {
+			min-width: 2em;
+			width: 3em;
+			padding: 0.5em;
+			box-shadow: 30px, 10px, 4px, darkred;
 			font-size: 3em;
 			color: black;
 			background: darkred;
-			grid-column: 1;
+			grid-column: 1 / span 2;
 			grid-row: 1 / span 2;
 		}
 		.rightButton1 {
+			min-width: 2em;
+			width: 3em;
 			font-size: 3em;
 			color: black;
 			background: darkgreen;
-			grid-column: 5;
+			grid-column: 4 / span 2;
 			grid-row: 1 / span 2;
 		}
 		.countLabel {
@@ -73,11 +79,14 @@ export class BigCounter extends LitElement {
 	countLabel!: string;
 	@property()
 	count: number = 0;
+	@property()
+	disabled: boolean = false;
 	wasLeftAlreadyClicked: boolean = false;
 	wasRightAlreadyClicked: boolean = false;
 	render() {
 		return html`<vaadin-button
 				class="leftButton1"
+				${this.disabled ? "disabled" : ""}
 				@click=${() => {
 					if (this.wasLeftAlreadyClicked) {
 						this.wasLeftAlreadyClicked = false;
@@ -99,9 +108,10 @@ export class BigCounter extends LitElement {
 						this.decrement();
 					}
 				}}
-				>-5</vaadin-button
+				></vaadin-button
 			><vaadin-button
 				class="leftButton"
+				${this.disabled?.valueOf() ? "disabled" : ""}
 				@click=${() => {
 					if (this.wasLeftAlreadyClicked) {
 						this.wasLeftAlreadyClicked = false;
@@ -120,7 +130,32 @@ export class BigCounter extends LitElement {
 			<div class="countLabel">${this.countLabel}</div>
 			<div class="count">${this.count}</div>
 			<vaadin-button
+				class="rightButton1"
+				${this.disabled ? "disabled" : ""}
+				@click=${() => {
+					if (this.wasRightAlreadyClicked) {
+						this.wasRightAlreadyClicked = false;
+						return;
+					}
+					this.increment();
+					this.increment();
+					this.increment();
+					this.increment();
+					this.increment();
+				}}
+				@touchend=${(e: TouchEvent) => {
+					if (isOnElement(e)) {
+						this.wasRightAlreadyClicked = true;
+						this.increment();
+						this.increment();
+						this.increment();
+						this.increment();
+						this.increment();
+					}
+				}}
+				></vaadin-button><vaadin-button
 				class="rightButton"
+				${this.disabled ? "disabled" : ""}
 				@click=${() => {
 					if (this.wasRightAlreadyClicked) {
 						this.wasRightAlreadyClicked = false;
@@ -135,30 +170,6 @@ export class BigCounter extends LitElement {
 					}
 				}}
 				>+</vaadin-button
-			><vaadin-button
-				class="rightButton1"
-				@click=${() => {
-					if (this.wasRightAlreadyClicked) {
-						this.wasRightAlreadyClicked = false;
-						return;
-					}
-					this.increment();
-					this.increment();
-					this.increment();
-					this.increment();
-					this.increment();
-				}}
-				@touchend=${(e: TouchEvent) => {
-					if (isOnElement(e)) {
-						this.wasRightAlreadyClicked = true;
-						this.increment();
-						this.increment();
-						this.increment();
-						this.increment();
-						this.increment();
-					}
-				}}
-				>+5</vaadin-button
 			>`;
 	}
 

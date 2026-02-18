@@ -71,6 +71,7 @@ export class MatchInfo extends LitElement {
 	matchType: Ref<HTMLInputElement> = createRef();
 	matchNum: Ref<HTMLInputElement> = createRef();
 	isReplay: Ref<HTMLInputElement> = createRef();
+	isHumanPlayer: Ref<HTMLInputElement> = createRef();
 	alliance: Ref<HTMLInputElement> = createRef();
 	startingPosition: Ref<HTMLInputElement> = createRef();
 	teamNum: Ref<HTMLInputElement> = createRef();
@@ -112,6 +113,7 @@ export class MatchInfo extends LitElement {
 						${ref(this.matchType)}
 						theme="small"
 						.items="${this.matchTypes}"
+						value="QUAL"
 					></vaadin-select>
 				</label>
 				<label>
@@ -124,6 +126,10 @@ export class MatchInfo extends LitElement {
 				<label>
 					Replay?
 					<vaadin-checkbox ${ref(this.isReplay)}></vaadin-checkbox>
+				</label>
+				<label>
+					Is Human Player
+					<vaadin-checkbox ${ref(this.isHumanPlayer)}></vaadin-checkbox>
 				</label>
 				<label>
 					Alliance:&nbsp
@@ -207,6 +213,7 @@ export class MatchInfo extends LitElement {
 			matchType: this.matchType.value!.value,
 			matchNum: this.matchNum.value!.value,
 			isReplay: this.isReplay.value!.checked ? 1 : 0,
+			isHumanPlayer: this.isHumanPlayer.value!.checked ? 1 : 0,
 			alliance: this.alliance.value!.value == "Red" ? "R" : "B",
 			startingPosition: this.startingPosition.value!.value,
 			teamNum: this.teamNum.value!.value
@@ -231,6 +238,7 @@ export class MatchInfo extends LitElement {
 		}
 		// Reset everything else
 		this.isReplay.value!.checked = false;
+		this.isHumanPlayer.value!.checked = false;
 		this.teamNum.value!.value = "";
 	}
 	onThemeToggle() {

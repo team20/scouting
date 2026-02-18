@@ -48,6 +48,10 @@ export class AutoInfo extends LitElement {
 			justify-items: center;
 			gap: 30px;
 		}
+
+		big-counter {
+			padding: 1em;
+		}
 	`;
 	fuelScoredRobotCounter: Ref<BigCounter> = createRef();
 	fuelScoredHumanCounter: Ref<BigCounter> = createRef();
@@ -62,21 +66,21 @@ export class AutoInfo extends LitElement {
 			<div class="left-buttons">
 				<big-counter
 					${ref(this.fuelScoredRobotCounter)}
-					id="fuel-scored-robot"
-					countLabel="Fuel Scored(Robot)"
+					id="auto-fuel-scored-robot"
+					countLabel="Fuel Scored (Robot)"
 				></big-counter>
-<br>
+				<br>
 				<big-counter
 					${ref(this.fuelScoredHumanCounter)}
-					id="fuel-scored-human"
-					countLabel="Fuel Scored(Human)"
+					id="auto-fuel-scored-human"
+					countLabel="Fuel Scored (Human)"
 				></big-counter>
 				<br>
 
 
 				<game-counter
 					${ref(this.foulsCounter)}
-					id="auto-coral-two"
+					id="auto-fouls"
 					countLabel="Fouls"
 				></game-counter>
 
@@ -107,17 +111,17 @@ export class AutoInfo extends LitElement {
 		};
 	}
 
-onClimbAttemptedClick() {
-			if (this.climbAttemptedToggle.value?.toggled == false) {
-				this.climbSuccessfulToggle.value!.toggled = false;
-			}
+	onClimbAttemptedClick() {
+		if (this.climbAttemptedToggle.value?.toggled == false) {
+			this.climbSuccessfulToggle.value!.toggled = false;
 		}
+	}
 
-		onClimbSuccessClick() {
-			if (this.climbSuccessfulToggle.value?.toggled == true) {
-				this.climbAttemptedToggle.value!.toggled = true;
-			}
+	onClimbSuccessClick() {
+		if (this.climbSuccessfulToggle.value?.toggled == true) {
+			this.climbAttemptedToggle.value!.toggled = true;
 		}
+	}
 
 
 	/**

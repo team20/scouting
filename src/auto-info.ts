@@ -1,5 +1,5 @@
 import { css, html, LitElement } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { BigCounter } from "./big-counter";
 import { GameCounter } from "./counter";
@@ -52,6 +52,10 @@ export class AutoInfo extends LitElement {
 		big-counter {
 			padding: 1em;
 		}
+
+		.hidden {
+			display: none;
+		}
 	`;
 	fuelScoredRobotCounter: Ref<BigCounter> = createRef();
 	fuelScoredHumanCounter: Ref<BigCounter> = createRef();
@@ -60,6 +64,7 @@ export class AutoInfo extends LitElement {
 	climbAttemptedToggle: Ref<ToggleButton> = createRef();
 	climbSuccessfulToggle: Ref<ToggleButton> = createRef();
 	wonAutoToggle: Ref<ToggleButton> = createRef();
+	@property({ type: Boolean }) hp = false;
 
 	render() {
 		return html`
@@ -69,29 +74,39 @@ export class AutoInfo extends LitElement {
 					id="auto-fuel-scored-robot"
 					countLabel="Fuel Scored (Robot)"
 				></big-counter>
-				<br>
+				<br />
 				<big-counter
 					${ref(this.fuelScoredHumanCounter)}
 					id="auto-fuel-scored-human"
 					countLabel="Fuel Scored (Human)"
+					class="${this.hp ? "" : "hidden"}"
 				></big-counter>
-				<br>
-
+				<br />
 
 				<game-counter
 					${ref(this.foulsCounter)}
 					id="auto-fouls"
 					countLabel="Fouls"
 				></game-counter>
-
 			</div>
 			<div id="right-buttons">
-				<toggle-button id="climb-attempted" ${ref(this.climbAttemptedToggle)} @click="${this.onClimbAttemptedClick}"><h1>Climb Attempted?</h1></toggle-button>
-				<br>
-				<toggle-button id="climb-success" ${ref(this.climbSuccessfulToggle)} @click="${this.onClimbSuccessClick}"><h1>Climb successful?</h1></toggle-button>	
-				<br>
-				<toggle-button id="won-auto" ${ref(this.wonAutoToggle)}><h1>Won Auto?</h1></toggle-button>
-			
+				<toggle-button
+					id="climb-attempted"
+					${ref(this.climbAttemptedToggle)}
+					@click="${this.onClimbAttemptedClick}"
+					><h1>Climb Attempted?</h1></toggle-button
+				>
+				<br />
+				<toggle-button
+					id="climb-success"
+					${ref(this.climbSuccessfulToggle)}
+					@click="${this.onClimbSuccessClick}"
+					><h1>Climb successful?</h1></toggle-button
+				>
+				<br />
+				<toggle-button id="won-auto" ${ref(this.wonAutoToggle)}
+					><h1>Won Auto?</h1></toggle-button
+				>
 			</div>
 		`;
 	}
@@ -104,7 +119,7 @@ export class AutoInfo extends LitElement {
 			fuelScoredRobotCounter: this.fuelScoredRobotCounter.value!.count,
 			fuelScoredHumanCounter: this.fuelScoredHumanCounter.value!.count,
 			foulsCounter: this.foulsCounter.value!.count,
-	
+
 			climbAttemptedToggle: this.climbAttemptedToggle.value!.toggled ? 1 : 0,
 			climbSuccessfulToggle: this.climbSuccessfulToggle.value!.toggled ? 1 : 0,
 			wonAutoToggle: this.wonAutoToggle.value!.toggled ? 1 : 0
@@ -123,7 +138,6 @@ export class AutoInfo extends LitElement {
 		}
 	}
 
-
 	/**
 	 * Prepares this element for a new scouting session.
 	 *
@@ -133,7 +147,6 @@ export class AutoInfo extends LitElement {
 		this.fuelScoredRobotCounter.value!.count = 0;
 		this.fuelScoredHumanCounter.value!.count = 0;
 		this.foulsCounter.value!.count = 0;
-
 
 		this.climbAttemptedToggle.value!.toggled = false;
 		this.climbSuccessfulToggle.value!.toggled = false;

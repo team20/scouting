@@ -10,7 +10,7 @@ const resources = [
 	"/scouting/assets/vaadin-confirm-dialog.js",
 	"/scouting/assets/vaadin-iconset.js",
 	"/scouting/field.png",
-	"/scouting/sea.svg",
+	"/scouting/desert.svg",
 	"/scouting/font.woff2"
 ];
 

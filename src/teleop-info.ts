@@ -1,8 +1,9 @@
 import { css, html, LitElement } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { BigCounter } from "./big-counter";
 import { GameCounter } from "./counter";
+import { classMap } from "lit/directives/class-map.js";
 
 /**
  * Contains information on the auto period.
@@ -51,16 +52,18 @@ export class TeleopInfo extends LitElement {
 		big-counter {
 			padding: 1em;
 		}
+
+		.hidden {
+			display: none;
+		}
 	`;
 	fuelScoredRobotCounter: Ref<BigCounter> = createRef();
 	fuelScoredHumanCounter: Ref<BigCounter> = createRef();
 	fuelPassed: Ref<BigCounter> = createRef();
 	foulsCounter: Ref<GameCounter> = createRef();
+	@property({ type: Boolean }) hp = false;
 
 	render() {
-		//var info = document.getElementById("match-info")! as MatchInfo;
-		//var human = info.isHumanPlayer.value?.checked;
-
 		return html`
 			<div class="left-buttons">
 				<big-counter
@@ -68,8 +71,8 @@ export class TeleopInfo extends LitElement {
 					id="teleop-fuel-scored-robot"
 					countLabel="Fuel Scored (Robot)"
 				></big-counter>
-<br>
-				
+				<br />
+
 				<big-counter
 					${ref(this.fuelPassed)}
 					id="fuel-passed"
@@ -82,14 +85,15 @@ export class TeleopInfo extends LitElement {
 					${ref(this.fuelScoredHumanCounter)}
 					id="teleop-fuel-scored-human"
 					countLabel="Fuel Scored (Human)"
+					class="${this.hp ? "" : "hidden"}"
 				></big-counter>
-				<br>
+				<br />
 				<game-counter
 					${ref(this.foulsCounter)}
 					id="teleop-fouls"
 					countLabel="Fouls"
 				></game-counter>
-				<br>
+				<br />
 			</div>
 		`;
 	}
@@ -105,7 +109,6 @@ export class TeleopInfo extends LitElement {
 			foulsCounter: this.foulsCounter.value!.count
 		};
 	}
-
 
 	/**
 	 * Prepares this element for a new scouting session.

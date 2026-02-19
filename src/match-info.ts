@@ -50,6 +50,7 @@ export class MatchInfo extends LitElement {
 			object-fit: cover;
 			object-position: calc(var(--index) * 9.1%);
 			aspect-ratio: 0.4;
+			border-radius: 1em;
 		}
 
 		.outline {
@@ -128,7 +129,10 @@ export class MatchInfo extends LitElement {
 				</label>
 				<label>
 					Is Human Player
-					<vaadin-checkbox ${ref(this.isHumanPlayer)}></vaadin-checkbox>
+					<vaadin-checkbox
+						${ref(this.isHumanPlayer)}
+						onchange="document.getElementById('autoInfo').hp = document.getElementById('teleopInfo').hp = event.target.checked"
+					></vaadin-checkbox>
 				</label>
 				<label>
 					Alliance:&nbsp

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
 	<head>
 		<base href="/scouting/" />
@@ -15,12 +15,15 @@
 		<script type="module" src="src/main.ts"></script>
 		<style>
 			@font-face {
-			  font-family: "ABeeZee";
-			  font-style: normal;
-			  font-weight: 400;
-			  font-display: swap;
-			  src: url(font.woff2) format('woff2');
-			  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+				font-family: "ABeeZee";
+				font-style: normal;
+				font-weight: 400;
+				font-display: swap;
+				src: url(font.woff2) format("woff2");
+				unicode-range:
+					U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+					U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC,
+					U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 			}
 			html {
 				transition-property: background-color;
@@ -37,10 +40,11 @@
 				--lumo-size-l: 55px;
 				/* Controls font */
 				--lumo-font-family: "ABeeZee", serif;
+				height: 100%;
 			}
 
 			html.light {
-				background: center / cover url(sea.svg);
+				background: center / cover url(desert.svg);
 			}
 
 			body {
@@ -138,12 +142,20 @@
 				<vaadin-tab id="qr-tab">Qr</vaadin-tab>
 				<vaadin-tab id="data-tab">Data</vaadin-tab>
 			</vaadin-tabs>
-			<div tab="general-tab"><match-info id="matchInfo"></match-info></div>
+			<div tab="general-tab">
+				<match-info id="matchInfo"></match-info>
+			</div>
 			<div tab="auto-tab"><auto-info id="autoInfo"></auto-info></div>
-			<div tab="teleop-tab"><teleop-info id="teleopInfo"></teleop-info></div>
+			<div tab="teleop-tab">
+				<teleop-info id="teleopInfo"></teleop-info>
+			</div>
 			<div tab="end-tab"><end-screen id="endInfo"></end-screen></div>
-			<div tab="qr-tab"><qr-code-screen id="qrInfo"></qr-code-screen></div>
-			<div tab="data-tab"><data-screen id="dataScreen"></data-screen></div>
+			<div tab="qr-tab">
+				<qr-code-screen id="qrInfo"></qr-code-screen>
+			</div>
+			<div tab="data-tab">
+				<data-screen id="dataScreen"></data-screen>
+			</div>
 		</vaadin-tabsheet>
 		<label id="teamNumber"></label>
 	</body>

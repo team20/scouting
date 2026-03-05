@@ -25,3 +25,6 @@ dist-ssr
 *.sw?
 cypress/screenshots
 cypress/downloads
+
+package-lock.json
+bun.lock

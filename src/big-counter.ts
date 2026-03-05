@@ -108,7 +108,7 @@ export class BigCounter extends LitElement {
 						this.decrement();
 					}
 				}}
-				></vaadin-button
+				>5&nbsp;&nbsp;&nbsp;&nbsp;</vaadin-button
 			><vaadin-button
 				class="leftButton"
 				${this.disabled?.valueOf() ? "disabled" : ""}
@@ -153,7 +153,8 @@ export class BigCounter extends LitElement {
 						this.increment();
 					}
 				}}
-				></vaadin-button><vaadin-button
+				>&nbsp;&nbsp;&nbsp;&nbsp;5</vaadin-button
+			><vaadin-button
 				class="rightButton"
 				${this.disabled ? "disabled" : ""}
 				@click=${() => {

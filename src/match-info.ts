@@ -45,17 +45,17 @@ export class MatchInfo extends LitElement {
 		}
 
 		.diagram {
+			position: relative;
 			height: 80vh;
+			object-fit: cover;
+			object-position: calc(var(--index) * 9.1%);
+			aspect-ratio: 0.4;
+			border-radius: 1em;
 		}
 
 		.outline {
 			position: absolute;
 			left: 0;
-		}
-
-		.diagram-container {
-			position: relative;
-			height: calc(100vh - 100px);
 		}
 		vaadin-button {
 			margin: 0;
@@ -63,7 +63,8 @@ export class MatchInfo extends LitElement {
 			width: 80px;
 			height: 80px;
 		}
-		::part(input-field), vaadin-button {
+		::part(input-field),
+		vaadin-button {
 			backdrop-filter: blur(10px);
 		}
 	`;
@@ -77,7 +78,6 @@ export class MatchInfo extends LitElement {
 	teamNum: Ref<HTMLInputElement> = createRef();
 	img: Ref<HTMLImageElement> = createRef();
 	diagram: Ref<HTMLImageElement> = createRef();
-	outline: Ref<HTMLImageElement> = createRef();
 	themeToggled: boolean = true;
 	isRotated: boolean = false;
 	matchTypes = [
@@ -129,7 +129,10 @@ export class MatchInfo extends LitElement {
 				</label>
 				<label>
 					Is Human Player
-					<vaadin-checkbox ${ref(this.isHumanPlayer)}></vaadin-checkbox>
+					<vaadin-checkbox
+						${ref(this.isHumanPlayer)}
+						onchange="document.getElementById('autoInfo').hp = document.getElementById('teleopInfo').hp = event.target.checked"
+					></vaadin-checkbox>
 				</label>
 				<label>
 					Alliance:&nbsp
@@ -171,10 +174,7 @@ export class MatchInfo extends LitElement {
 					<label>Revision ${__version__}</label>
 				</div>
 			</div>
-			<div class="diagram-container">
-				<img ${ref(this.diagram)} class="diagram" />
-				<img ${ref(this.outline)} class="diagram outline" />
-			</div>
+			<img ${ref(this.diagram)} class="diagram" />
 		`;
 	}
 
@@ -192,12 +192,13 @@ export class MatchInfo extends LitElement {
 			this.alliance.value?.value.length != 0 &&
 			this.startingPosition.value?.value.length != 0
 		) {
-			let color = this.alliance.value!.value.toLowerCase();
-			this.diagram.value!.src = `./${color}.jpg`;
-			this.outline.value!.src = `./${color}_outline_${this.startingPosition.value!.value}.svg`;
-			this.diagram.value!.style.transform =
-				this.outline.value!.style.transform =
-				this.isRotated ? "rotate(180deg)" : "";
+			this.diagram.value!.src = `./field.png`;
+			this.diagram.value!.style = `--index: ${
+				(this.alliance.value!.value == "Red" ? 0 : 6) +
+				(this.isRotated ? 3 : 0) +
+				Number(this.startingPosition.value!.value) -
+				1
+			};`;
 		} else {
 			this.diagram.value!.src = ``;
 		}

@@ -3,7 +3,6 @@ import { customElement, property } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
 import { BigCounter } from "./big-counter";
 import { GameCounter } from "./counter";
-import { classMap } from "lit/directives/class-map.js";
 
 /**
  * Contains information on the auto period.

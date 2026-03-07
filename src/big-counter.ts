@@ -188,6 +188,6 @@ export class BigCounter extends LitElement {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"game-counter": BigCounter;
+		"big-counter": BigCounter;
 	}
 }

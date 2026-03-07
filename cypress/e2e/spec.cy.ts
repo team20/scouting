@@ -3,7 +3,7 @@
 describe("Scouting data validation", () => {
 	it("Test data output", () => {
 		cy.viewport(1366, 768);
-		cy.visit("/scouting");
+		cy.visit("");
 		//Match Info tab
 		cy.get("#matchInfo")
 			.shadow()
@@ -24,7 +24,7 @@ describe("Scouting data validation", () => {
 			.type("50");
 		cy.get("#matchInfo")
 			.shadow()
-			.find("div > label:nth-child(5) > vaadin-select")
+			.find("div > label:nth-child(6) > vaadin-select")
 			.click();
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(2)"
@@ -32,7 +32,7 @@ describe("Scouting data validation", () => {
 		cy.root().click();
 		cy.get("#matchInfo")
 			.shadow()
-			.find("div > label:nth-child(6) > vaadin-select")
+			.find("div > label:nth-child(7) > vaadin-select")
 			.click();
 		cy.get(
 			"body > vaadin-select-overlay > vaadin-select-list-box > vaadin-select-item:nth-child(1)"
@@ -41,93 +41,18 @@ describe("Scouting data validation", () => {
 		cy.root().click(); // Required before typing into another input field to fix weird focus bug
 		cy.get("#matchInfo")
 			.shadow()
-			.find("div > label:nth-child(7) > vaadin-integer-field")
+			.find("div > label:nth-child(8) > vaadin-integer-field")
 			.type("20");
 
 		// Auto tab
 		cy.get("#auto-tab").click();
 		cy.root().click();
 
-		cy.get("#autoInfo").shadow().find("#right-buttons").find("#leave").click();
+		cy.get("#autoInfo").shadow().find("#right-buttons").find("#climb-attempted").click();
+		cy.get("#autoInfo").shadow().find("#right-buttons").find("#climb-successful").click();
+		cy.get("#autoInfo").shadow().find("#right-buttons").find("#won-auto").click();
 
-		for (let i = 0; i < 9; i++) {
-			cy.get("#autoInfo")
-				.shadow()
-				.find("#auto-coral-one")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
-		}
-
-		for (let i = 0; i < 8; i++) {
-			cy.get("#autoInfo")
-				.shadow()
-				.find("#auto-coral-two")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
-		}
-
-		for (let i = 0; i < 7; i++) {
-			cy.get("#autoInfo")
-				.shadow()
-				.find("#auto-coral-three")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
-		}
-
-		for (let i = 0; i < 6; i++) {
-			cy.get("#autoInfo")
-				.shadow()
-				.find("#auto-coral-four")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
-		}
-
-		for (let i = 0; i < 5; i++) {
-			cy.get("#autoInfo")
-				.shadow()
-				.find("#auto-algae-net")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
-		}
-
-		for (let i = 0; i < 4; i++) {
-			cy.get("#autoInfo")
-				.shadow()
-				.find("#auto-algae-missed")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
-		}
-
-		for (let i = 0; i < 3; i++) {
-			cy.get("#autoInfo")
-				.shadow()
-				.find("#auto-algae-removed")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
-		}
-
-		for (let i = 0; i < 2; i++) {
-			cy.get("#autoInfo")
-				.shadow()
-				.find("#auto-algae-processor")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
-		}
-
-		cy.get("#autoInfo")
-				.shadow()
-				.find("#auto-coral-missed")
-				.shadow()
-				.find("vaadin-button.rightButton")
-				.click();
+		//cy.get("#autoInfo")
 
 		cy.get("#teleop-tab").click();
 		cy.root().click();

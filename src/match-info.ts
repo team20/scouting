@@ -45,17 +45,17 @@ export class MatchInfo extends LitElement {
 		}
 
 		.diagram {
+			position: relative;
 			height: 80vh;
+			object-fit: cover;
+			object-position: calc(var(--index) * 9.1%);
+			aspect-ratio: 0.4;
+			border-radius: 1em;
 		}
 
 		.outline {
 			position: absolute;
 			left: 0;
-		}
-
-		.diagram-container {
-			position: relative;
-			height: calc(100vh - 100px);
 		}
 		vaadin-button {
 			margin: 0;
@@ -63,7 +63,8 @@ export class MatchInfo extends LitElement {
 			width: 80px;
 			height: 80px;
 		}
-		::part(input-field), vaadin-button {
+		::part(input-field),
+		vaadin-button {
 			backdrop-filter: blur(10px);
 		}
 	`;
@@ -71,12 +72,12 @@ export class MatchInfo extends LitElement {
 	matchType: Ref<HTMLInputElement> = createRef();
 	matchNum: Ref<HTMLInputElement> = createRef();
 	isReplay: Ref<HTMLInputElement> = createRef();
+	isHumanPlayer: Ref<HTMLInputElement> = createRef();
 	alliance: Ref<HTMLInputElement> = createRef();
 	startingPosition: Ref<HTMLInputElement> = createRef();
 	teamNum: Ref<HTMLInputElement> = createRef();
 	img: Ref<HTMLImageElement> = createRef();
 	diagram: Ref<HTMLImageElement> = createRef();
-	outline: Ref<HTMLImageElement> = createRef();
 	themeToggled: boolean = true;
 	isRotated: boolean = false;
 	matchTypes = [
@@ -91,9 +92,7 @@ export class MatchInfo extends LitElement {
 	startingPositions = [
 		{ label: "1", value: "1" },
 		{ label: "2", value: "2" },
-		{ label: "3", value: "3" },
-		{ label: "4", value: "4" },
-		{ label: "5", value: "5" }
+		{ label: "3", value: "3" }
 	];
 
 	render() {
@@ -112,6 +111,7 @@ export class MatchInfo extends LitElement {
 						${ref(this.matchType)}
 						theme="small"
 						.items="${this.matchTypes}"
+						value="QUAL"
 					></vaadin-select>
 				</label>
 				<label>
@@ -124,6 +124,13 @@ export class MatchInfo extends LitElement {
 				<label>
 					Replay?
 					<vaadin-checkbox ${ref(this.isReplay)}></vaadin-checkbox>
+				</label>
+				<label>
+					Is Human Player
+					<vaadin-checkbox
+						${ref(this.isHumanPlayer)}
+						onchange="document.getElementById('autoInfo').hp = document.getElementById('teleopInfo').hp = event.target.checked"
+					></vaadin-checkbox>
 				</label>
 				<label>
 					Alliance:&nbsp
@@ -165,10 +172,7 @@ export class MatchInfo extends LitElement {
 					<label>Revision ${__version__}</label>
 				</div>
 			</div>
-			<div class="diagram-container">
-				<img ${ref(this.diagram)} class="diagram" />
-				<img ${ref(this.outline)} class="diagram outline" />
-			</div>
+			<img ${ref(this.diagram)} class="diagram" />
 		`;
 	}
 
@@ -186,12 +190,13 @@ export class MatchInfo extends LitElement {
 			this.alliance.value?.value.length != 0 &&
 			this.startingPosition.value?.value.length != 0
 		) {
-			let color = this.alliance.value!.value.toLowerCase();
-			this.diagram.value!.src = `./${color}.jpg`;
-			this.outline.value!.src = `./${color}_outline_${this.startingPosition.value!.value}.svg`;
-			this.diagram.value!.style.transform =
-				this.outline.value!.style.transform =
-				this.isRotated ? "rotate(180deg)" : "";
+			this.diagram.value!.src = `./field.png`;
+			this.diagram.value!.style = `--index: ${
+				(this.alliance.value!.value == "Red" ? 0 : 6) +
+				(this.isRotated ? 3 : 0) +
+				Number(this.startingPosition.value!.value) -
+				1
+			};`;
 		} else {
 			this.diagram.value!.src = ``;
 		}
@@ -207,6 +212,7 @@ export class MatchInfo extends LitElement {
 			matchType: this.matchType.value!.value,
 			matchNum: this.matchNum.value!.value,
 			isReplay: this.isReplay.value!.checked ? 1 : 0,
+			isHumanPlayer: this.isHumanPlayer.value!.checked ? 1 : 0,
 			alliance: this.alliance.value!.value == "Red" ? "R" : "B",
 			startingPosition: this.startingPosition.value!.value,
 			teamNum: this.teamNum.value!.value
@@ -231,6 +237,7 @@ export class MatchInfo extends LitElement {
 		}
 		// Reset everything else
 		this.isReplay.value!.checked = false;
+		this.isHumanPlayer.value!.checked = false;
 		this.teamNum.value!.value = "";
 	}
 	onThemeToggle() {

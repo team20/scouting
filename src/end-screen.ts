@@ -14,6 +14,13 @@ export class EndScreen extends LitElement {
 			width: 100%;
 			height: 100%;
 		}
+		.left-buttons {
+			display: grid;
+			grid-template-columns: auto auto;
+			justify-items: center;
+			gap: 30px;
+			padding-bottom: 0.5em;
+		}
 		label {
 			color: var(--lumo-secondary-text-color);
 			font-family: var(--lumo-font-family);
@@ -27,13 +34,6 @@ export class EndScreen extends LitElement {
 		#end-breakdown,
 		#end-climb-attempted,
 		#end-climb-result,
-		#end-park,
-		#end-trap-attempted {
-			width: 235px;
-			height: 125px;
-			--off-color: #27313c;
-			--on-color: #506070;
-		}
 		#end-breakdown {
 			--off-color: #019d04;
 			--on-color: red;
@@ -45,16 +45,18 @@ export class EndScreen extends LitElement {
 			justify-items: center;
 			grid-template-columns: auto auto;
 			gap: 10px;
+			padding-top: 3.5em;
 		}
 		::part(input-field), vaadin-button {
 			backdrop-filter: blur(10px);
 		}
 	`;
 
-	cageOptions = [
-		{ label: "None",    value: "0" },
-		{ label: "Shallow", value: "1" },
-		{ label: "Deep",    value: "2" },
+	climbOptions = [
+		{ label: "None",	value: "0" },
+		{ label: "L1",		value: "1" },
+		{ label: "L2",		value: "2" },
+		{ label: "L3",		value: "3"}
 	];
 
 	defenseOptions = [
@@ -65,9 +67,8 @@ export class EndScreen extends LitElement {
 		{ label: "Excellent", value: "4" }
 	];
 
-	cageAttempted: Ref<HTMLInputElement> = createRef();
-	cageResult: Ref<HTMLInputElement> = createRef();
-	park: Ref<ToggleButton> = createRef();
+	climbLevelAttempted: Ref<HTMLInputElement> = createRef();
+	climbLevelResult: Ref<HTMLInputElement> = createRef();
 	breakdown: Ref<ToggleButton> = createRef();
 	comments: Ref<HTMLInputElement> = createRef();
 	defenseFaced: Ref<HTMLInputElement> = createRef();
@@ -77,28 +78,25 @@ export class EndScreen extends LitElement {
 	render() {
 		return html`
 			<div class="inputContainer">
-				<vaadin-select
-					${ref(this.cageAttempted)}
-					theme="small"
-					id="end-cage-attempted"
-					label="Cage Climb Attempted"
-					@change="${this.onClimbAttemptedClick}"
-					.items="${this.cageOptions}"
-				></vaadin-select>
-				<toggle-button
-					${ref(this.park)}
-					id="end-park"
-					@click="${this.onParkClick}"
-					>Park</toggle-button
-				>
-				<vaadin-select
-					${ref(this.cageResult)}
-					theme="small"
-					id="end-cage-result"
-					label="Cage Climb Result"
-					@change="${this.onClimbResultClick}"
-					.items="${this.cageOptions}"
-				></vaadin-select>
+				<div class="left-buttons">
+					<vaadin-select
+						${ref(this.climbLevelAttempted)}
+						theme="small"
+						id="end-climb-attempted"
+						label="Climb Level Attempted"
+						@change="${this.onClimbAttemptedClick}"
+						.items="${this.climbOptions}"
+					></vaadin-select>
+					<br>
+					<vaadin-select
+						${ref(this.climbLevelResult)}
+						theme="small"
+						id="end-climb-result"
+						label="Climb Level Result"
+						@change="${this.onClimbResultClick}"
+						.items="${this.climbOptions}"
+					></vaadin-select>
+				</div>
 				<toggle-button
 					${ref(this.breakdown)}
 					@click="${this.commentHandler}"
@@ -152,9 +150,8 @@ export class EndScreen extends LitElement {
 	 */
 	getInfo() {
 		return {
-			cageAttempted: this.cageAttempted.value!.value || 0,
-			cageResult: this.cageResult.value!.value || 0,
-			park: this.park.value!.toggled ? 1 : 0,
+			climbAttempted: this.climbLevelAttempted.value!.value || 0,
+			climbResult: this.climbLevelResult.value!.value || 0,
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
 			defensePlayed: this.defensePlayed.value!.value || 0,
 			defenseFaced: this.defenseFaced.value!.value || 0,
@@ -169,8 +166,8 @@ export class EndScreen extends LitElement {
 		 * valid state.
 		 */
 		onClimbAttemptedClick() {
-			if (this.cageAttempted.value?.value == "0") {
-				this.cageResult.value!.value = "0";
+			if (this.climbLevelAttempted.value!.value < this.climbLevelResult.value!.value) {
+				this.climbLevelResult.value!.value = this.climbLevelAttempted.value!.value;
 			}
 		}
 	
@@ -179,20 +176,8 @@ export class EndScreen extends LitElement {
 		 * in a valid state.
 		 */
 		onClimbResultClick() {
-			if (this.cageResult.value?.value != "0") {
-				this.cageAttempted.value!.value = this.cageResult.value!.value;
-				this.park.value!.toggled = false;
-			}
-		}
-	
-		/**
-		 * Forces the climb result, and park buttons to always be
-		 * in a valid state.
-		 */
-		onParkClick() {
-			// Park was toggled
-			if (this.park.value?.toggled) {
-				this.cageResult.value!.value = "0";
+			if (this.climbLevelAttempted.value!.value < this.climbLevelResult.value!.value) {
+				this.climbLevelAttempted.value!.value = this.climbLevelResult.value!.value;
 			}
 		}
 
@@ -202,9 +187,8 @@ export class EndScreen extends LitElement {
 	 * Resets all values to their defaults.
 	 */
 	reset() {
-		this.cageAttempted.value!.value = "";
-		this.cageResult.value!.value = "";
-		this.park.value!.toggled = false;
+		this.climbLevelAttempted.value!.value = "";
+		this.climbLevelResult.value!.value = "";
 		this.breakdown.value!.toggled = false;
 		this.comments.value!.value = "";
 		this.defenseFaced.value!.value = "";

@@ -22,7 +22,7 @@ export class ToggleButton extends LitElement {
 			color: inherit;
 			cursor: pointer;
 			font-weight: bold;
-			font-size: 1.5em;
+			font-size: 1em;
 		}
 		.off {
 			--lumo-contrast-5pct: var(--off-color);

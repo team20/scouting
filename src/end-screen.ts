@@ -166,8 +166,8 @@ export class EndScreen extends LitElement {
 		 * valid state.
 		 */
 		onClimbAttemptedClick() {
-			if (this.climbLevelAttempted.value?.value == "0") {
-				this.climbLevelResult.value!.value = "0";
+			if (this.climbLevelAttempted.value!.value < this.climbLevelResult.value!.value) {
+				this.climbLevelResult.value!.value = this.climbLevelAttempted.value!.value;
 			}
 		}
 	
@@ -176,7 +176,7 @@ export class EndScreen extends LitElement {
 		 * in a valid state.
 		 */
 		onClimbResultClick() {
-			if (this.climbLevelResult.value?.value != "0") {
+			if (this.climbLevelAttempted.value!.value < this.climbLevelResult.value!.value) {
 				this.climbLevelAttempted.value!.value = this.climbLevelResult.value!.value;
 			}
 		}

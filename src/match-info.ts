@@ -1,6 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
+import { EndScreen } from "./end-screen";
 /**
  * The main scouting screen.
  *
@@ -80,6 +81,7 @@ export class MatchInfo extends LitElement {
 	diagram: Ref<HTMLImageElement> = createRef();
 	themeToggled: boolean = true;
 	isRotated: boolean = false;
+
 	matchTypes = [
 		{ label: "Practice", value: "PRAC" },
 		{ label: "Qualifications", value: "QUAL" },
@@ -200,6 +202,9 @@ export class MatchInfo extends LitElement {
 		} else {
 			this.diagram.value!.src = ``;
 		}
+
+		let endGame = document.getElementById("endInfo")! as EndScreen;
+		endGame.updateDiagram();
 	}
 
 	/**

@@ -1,6 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref, Ref } from "lit/directives/ref.js";
+import { MatchInfo } from "./match-info";
 import { ToggleButton } from "./toggle-button";
 /**
  * Contains information relating to the end of the match.
@@ -29,7 +30,7 @@ export class EndScreen extends LitElement {
 			line-height: 2;
 		}
 		#end-comments {
-			width: 100%;
+			width: 70%;
 		}
 		#end-breakdown,
 		#end-climb-attempted,
@@ -50,6 +51,14 @@ export class EndScreen extends LitElement {
 		::part(input-field), vaadin-button {
 			backdrop-filter: blur(10px);
 		}
+		.diagram {
+			position: relative;
+			height: 80vh;
+			object-fit: cover;
+			object-position: calc(var(--index) * 33%);
+			aspect-ratio: 0.5;
+			border-radius: 1em;
+		}
 	`;
 
 	climbOptions = [
@@ -60,11 +69,13 @@ export class EndScreen extends LitElement {
 	];
 
 	zoneOptions = [
-		{ label: "No Preference",	value: "0" },
-		{ label: "Top Left",		value: "1" },
-		{ label: "Top Right",		value: "2" },
-		{ label: "Bottom Left",		value: "3" },
-		{ label: "Bottom Right",	value: "4" }
+		{ label: "No Preference",		value: "0" },
+		{ label: "Top Left",			value: "1" },
+		{ label: "Top Center",			value: "2" },
+		{ label: "Top Right",			value: "3" },
+		{ label: "Bottom Left",			value: "4" },
+		{ label: "Bottom Center",		value: "5" },
+		{ label: "Bottom Right",		value: "6" }
 	]
 
 	defenseOptions = [
@@ -82,6 +93,9 @@ export class EndScreen extends LitElement {
 	comments: Ref<HTMLInputElement> = createRef();
 	defenseFaced: Ref<HTMLInputElement> = createRef();
 	defensePlayed: Ref<HTMLInputElement> = createRef();
+	diagram: Ref<HTMLImageElement> = createRef();
+
+	matchInfo = document.getElementById("matchInfo")! as MatchInfo;
 
 	wasParkAlreadyClicked: boolean = false;
 	render() {
@@ -142,6 +156,7 @@ export class EndScreen extends LitElement {
 				label="Comments?"
 				@value-changed="${this.commentHandler}"
 			></vaadin-text-area>
+			<img ${ref(this.diagram)} class="diagram" />
 		`;
 	}
 
@@ -178,6 +193,20 @@ export class EndScreen extends LitElement {
 				.replaceAll("\n", " ")
 				.replaceAll("\t", " ")
 		};
+	}
+
+	updateDiagram() {
+		if (
+			this.matchInfo.alliance.value?.value.length != 0
+		) {
+			this.diagram.value!.src = `./Zones.png`;
+			this.diagram.value!.style = `--index: ${
+				(this.matchInfo.alliance.value!.value == "Red" ? 0 : 2) +
+				(this.matchInfo.isRotated ? 1 : 0)
+			};`;
+		} else {
+			this.diagram.value!.src = ``;
+		}
 	}
 
 		/**

@@ -56,8 +56,16 @@ export class EndScreen extends LitElement {
 		{ label: "None",	value: "0" },
 		{ label: "L1",		value: "1" },
 		{ label: "L2",		value: "2" },
-		{ label: "L3",		value: "3"}
+		{ label: "L3",		value: "3" }
 	];
+
+	zoneOptions = [
+		{ label: "No Preference",	value: "0" },
+		{ label: "Top Left",		value: "1" },
+		{ label: "Top Right",		value: "2" },
+		{ label: "Bottom Left",		value: "3" },
+		{ label: "Bottom Right",	value: "4" }
+	]
 
 	defenseOptions = [
 		{ label: "None",      value: "0" },
@@ -69,6 +77,7 @@ export class EndScreen extends LitElement {
 
 	climbLevelAttempted: Ref<HTMLInputElement> = createRef();
 	climbLevelResult: Ref<HTMLInputElement> = createRef();
+	mostFrequentZone: Ref<HTMLInputElement> = createRef();
 	breakdown: Ref<ToggleButton> = createRef();
 	comments: Ref<HTMLInputElement> = createRef();
 	defenseFaced: Ref<HTMLInputElement> = createRef();
@@ -95,6 +104,15 @@ export class EndScreen extends LitElement {
 						label="Climb Level Result"
 						@change="${this.onClimbResultClick}"
 						.items="${this.climbOptions}"
+					></vaadin-select>
+					<br>
+					<vaadin-select
+						${ref(this.mostFrequentZone)}
+						theme="small"
+						id="most-frequent-zone"
+						label="Most Frequent Shooting Area"
+						.items="${this.zoneOptions}"
+						value="0"
 					></vaadin-select>
 				</div>
 				<toggle-button
@@ -152,6 +170,7 @@ export class EndScreen extends LitElement {
 		return {
 			climbAttempted: this.climbLevelAttempted.value!.value || 0,
 			climbResult: this.climbLevelResult.value!.value || 0,
+			zone: this.mostFrequentZone.value!.value,
 			breakdown: this.breakdown.value!.toggled ? 1 : 0,
 			defensePlayed: this.defensePlayed.value!.value || 0,
 			defenseFaced: this.defenseFaced.value!.value || 0,

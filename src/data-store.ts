@@ -68,6 +68,7 @@ export function combineData(): string {
 
 		endInfo.climbAttempted,
 		endInfo.climbResult,
+		endInfo.zone,
 		endInfo.breakdown,
 		endInfo.defensePlayed,
 		endInfo.defenseFaced,
